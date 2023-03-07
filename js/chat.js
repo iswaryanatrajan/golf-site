@@ -157,12 +157,8 @@ $(window).on("scroll", function() {
 });
 
 $(document).ready(function(){
-var menu_btn = document.querySelector("#menu-btn");
-console.log(menu_btn);
-var sidebar = document.querySelector("#sidebar");
-var container = document.querySelector(".my-container");
-menu_btn.addEventListener("click", () => {
-  sidebar.classList.toggle("active-nav");
-  container.classList.toggle("active-cont");
+$("#menu-btn").on("click", function() {
+    $("#sidebar").togglecss(".active-nav");
+    $("#my-container").togglecss(".active-cont");
 });
 });
