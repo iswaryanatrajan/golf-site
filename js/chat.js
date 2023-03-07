@@ -155,10 +155,10 @@ $(window).on("scroll", function() {
        $(".navbar").removeClass("bgwhite");
     }
 });
-
+/*
 $(document).ready(function(){
 $("#menu-btn").on("click", function() {
     $("#sidebar").togglecss(".active-nav");
     $("#my-container").togglecss(".active-cont");
 });
-});
+});*/
