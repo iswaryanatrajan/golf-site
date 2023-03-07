@@ -158,6 +158,7 @@ $(window).on("scroll", function() {
 
 $(document).ready(function(){
 var menu_btn = document.querySelector("#menu-btn");
+console.log(menu_btn);
 var sidebar = document.querySelector("#sidebar");
 var container = document.querySelector(".my-container");
 menu_btn.addEventListener("click", () => {
