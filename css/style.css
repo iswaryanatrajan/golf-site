@@ -5,7 +5,6 @@ body{font-family: "Hiragino Sans",sans-serif;font-weight: 400;font-size: 18px;co
 .openchildrow{cursor:pointer}
 .postblock{background-color: #fff;}
 .navbar{padding:10px}
-.navbar.bgwhite{background-color: #fff !important;    border-bottom: 1px solid #ccc;}
 .hero {
     min-height: 50vh;
     height: 60vh;
@@ -423,6 +422,7 @@ input::-webkit-inner-spin-button {
 .badge.bg-success {
     background-color: #26bbce!important;
 }
+
 @media (max-width: 767px) {
     .carousel-inner .carousel-item > div {
         display: none;
@@ -433,9 +433,6 @@ input::-webkit-inner-spin-button {
     .navbar-collapse{background: #fff;}
     .mt-75px{margin-top:75px !important}
     .active-cont{margin-left:0 !important}
-    .navbar {
-      background: #fff !important;
-  }
   .hero{display:none}
   .w-70{width:100%}
   .top_img{width:150px !important}
@@ -446,3 +443,59 @@ input::-webkit-inner-spin-button {
   .l-section_container h2{font-size:1.5em}
   .top-description-highlight_tx {font-size:1.5em}
 }
+@media (min-width: 768px){
+.navbar-right {
+    float: right!important;
+}
+}
+
+.waves-effect {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    vertical-align: middle;
+    z-index: 1;
+    will-change: opacity, transform;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+
+#wrapper {
+    height: 100%;
+    overflow: hidden;
+    width: 100%;
+}
+.topbar .navbar-default {
+    background-color: #f3f3f3 !important;
+    border-radius: 0;
+    border: none;
+    margin-bottom: 0;
+    padding: 0 20px;
+}
+.dashboard .card-box {
+    padding: 20px;
+    border: 2px solid #f3f3f3;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    background-clip: padding-box;
+    margin-bottom: 20px;
+    background-color: #ffffff;
+}
+.dashboard .text-overflow {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+    width: 100%;
+    overflow: hidden;
+}
+.dashboard h2{    padding-top: 0.5em;}

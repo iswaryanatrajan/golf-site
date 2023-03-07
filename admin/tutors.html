@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>Golf</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../css/chat.css">
+    <link rel="stylesheet" type="text/css" href="../css/menu.css">
+    <link rel="stylesheet" type="text/css" href="../css/responsive.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&family=Noto+Sans+JP&display=swap" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+ <script src="../js/chat.js"></script>
+
+    <link href="../fonts/Hiragino-Sans-GB-W3.otf">
+
+<script> 
+  $(function(){
+    
+    let table = new DataTable('#tutorlist');
+  });
+
+  </script> 
+  </head>
+  <body>
+    <div id="wrapper" class="forced ">
+    <div class="topbar">
+
+      <!-- LOGO -->
+      <div class="topbar-left">
+             <a href="home.html" class="logo"><span>Golf</span></a>
+      </div>
+
+      <!-- Button mobile view to collapse sidebar menu -->
+      <div class="navbar navbar-default" role="navigation">
+             <div class="container">
+
+                    <!-- Navbar-left -->
+                    <nav class="navbar top-navbar">
+                      <a class="btn border-0 waves-effect button-menu-mobile open-left" id="menu-btn"><i class="fa fa-bars"></i></a>
+                    </nav>
+
+                    <!-- Right(Notification) -->
+                    <ul class="nav navbar-nav navbar-right">
+                           <li class="dropdown user-box">
+                                  <a href="#" class="dropdown-toggle waves-effect user-link btn" role="button" data-bs-toggle="dropdown" id="profile" aria-expanded="true">
+                                         Admin
+                                  </a>
+
+                                  <ul class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right user-list notify-list">
+
+                                         <li><a href="http://165.232.142.13/fishmap/logout"><i class="ti-power-off m-r-5"></i> Logout</a></li>
+                                  </ul>
+                           </li>
+
+                    </ul> <!-- end navbar-right -->
+
+             </div><!-- end container -->
+      </div><!-- end navbar -->
+</div>
+
+   
+      <div class="left side-menu">
+        <div id="sidebar-menu">
+          <ul>
+                 <li class="menu-title"> NAVIGATION </li>
+
+                 <li class="has_sub">
+                        <a href="dashboard.html" class="waves-effect"><i class="fa fa-dashboard"></i> <span> Dashboard </span>
+                        </a>
+                 </li>
+                 <li class="has_sub"><a href="index.html" class="waves-effect"><i class="fa fa-feed"></i><span>ポスト</span> </a> </li>
+                 <li class="has_sub"><a href="users.html" class="waves-effect"><i class="fa fa-users"></i><span>Users</span> </a> </li>
+                 <li class="has_sub"><a href="events.html" class="waves-effect"><i class="fa fa-calendar"></i><span>イベント</span> </a> </li>
+                 <li class="has_sub"><a href="tournaments.html" class="waves-effect"><i class="fa fa-calendar"></i><span>Tournaments</span> </a> </li>
+             <li class="has_sub"><a href="tutors.html" class="waves-effect"><i class="fa fa-user"></i><span>Tutors</span> </a> </li>
+
+                 <hr>
+                 <li class="has_sub">
+                  <a href="home.html" class="waves-effect"><i class="fa fa-power"></i><span>Logout</span> </a>
+           </li>
+              
+
+          </ul>
+   </div>
+
+
+      </div>
+      <div class="col content-page px-0"> 
+        <div class="content">
+    
+                <div class="mb-npx p-3">
+                    <div class="row align-items-center">
+                        <div class="col-sm-6 col-12 mb-4 mb-sm-0">
+                            <!-- Title -->
+                            <h1 class="h2 mb-4 ls-tight">Tutors</h1>
+                        </div>
+                        <!-- Actions -->
+                        <div class="col-sm-6 col-12 text-sm-end">
+                            <div class="mx-n1">
+                                <a href="#" class="btn d-inline-flex btn-sm btn-warning mx-1">
+                                    <span class=" pe-2">
+                                        <i class="fa fa-plus"></i>
+                                    </span>
+                                    <span>Create</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-auto p-3">
+    
+                    <div class="card border-0 mb-7">
+                        <div class="table-responsive ">
+                            <table id="tutorlist" class="table table-hover table-nowrap">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">User Id</th>
+                                        <th scope="col">About</th>
+                                        <th scope="col">Video URL</th>
+                                        <th scope="col">Action</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <img alt="..." src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2">
+                                            <a class="text-heading font-semibold" href="#">
+                                                Robert Fox
+                                            </a>
+                                        </td>
+                                        <td> 101</td>
+                                        <td>すべての年齢層・レベルに教育指導経験1年</td>
+                                        <td>R-IlyGeHjIk </td>
+                                        <td class="text-end">
+                                            <a href="../teacher-details.html" class="btn btn-sm btn-neutral"><i class="fa fa-eye"></i></a>
+                                            <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
+                                                <i class="fa fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <img alt="..." src="https://images.unsplash.com/photo-1610878722345-79c5eaf6a48c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2">
+                                            <a class="text-heading font-semibold" href="#">
+                                                Robert Fox
+                                            </a>
+                                        </td>
+                                        <td> 102</td>
+                                        <td>すべての年齢層・レベルに教育指導経験1年</td>
+                                        <td>R-IlyGeHjIk </td>
+                                        <td class="text-end">
+                                            <a href="../teacher-details.html" class="btn btn-sm btn-neutral"><i class="fa fa-eye"></i></a>
+                                            <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
+                                                <i class="fa fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <img alt="..." src="https://images.unsplash.com/photo-1610271340738-726e199f0258?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2">
+                                            <a class="text-heading font-semibold" href="#">
+                                                Robert Fox
+                                            </a>
+                                        </td>
+                                        <td> 103</td>
+                                        <td>すべての年齢層・レベルに教育指導経験1年</td>
+                                        <td>R-IlyGeHjIk </td>
+                                        <td class="text-end">
+                                            <a href="../teacher-details.html" class="btn btn-sm btn-neutral"><i class="fa fa-eye"></i></a>
+                                            <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
+                                                <i class="fa fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                      <td>
+                                          <img alt="..." src="https://images.unsplash.com/photo-1610271340738-726e199f0258?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2">
+                                          <a class="text-heading font-semibold" href="#">
+                                              Robert Fox
+                                          </a>
+                                      </td>
+                                      <td> 104</td>
+                                      <td>すべての年齢層・レベルに教育指導経験1年</td>
+                                        <td>R-IlyGeHjIk </td>
+                                        <td class="text-end">
+                                            <a href="../teacher-details.html" class="btn btn-sm btn-neutral"><i class="fa fa-eye"></i></a>
+                                            <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
+                                                <i class="fa fa-trash"></i>
+                                            </button>
+                                        </td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                        <img alt="..." src="https://images.unsplash.com/photo-1610271340738-726e199f0258?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2">
+                                        <a class="text-heading font-semibold" href="#">
+                                            Robert Fox
+                                        </a>
+                                    </td>
+                                    <td> 105</td>
+                                    <td>すべての年齢層・レベルに教育指導経験1年</td>
+                                        <td>R-IlyGeHjIk </td>
+                                        <td class="text-end">
+                                            <a href="../teacher-details.html" class="btn btn-sm btn-neutral"><i class="fa fa-eye"></i></a>
+                                            <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
+                                                <i class="fa fa-trash"></i>
+                                            </button>
+                                        </td>
+                                </tr>
+                             
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="card-footer border-0 py-5 bg-white">
+                            <span class="text-muted text-sm">Showing 10 items out of 250 results found</span>
+                        </div>
+                    </div>
+                  
+                 
+                 
+            
+                </div>
+            </div>
+       
+           </div>
+    
+   
+</div>
+    </body>
+    </html>
