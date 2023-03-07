@@ -94,6 +94,12 @@ $(function() {
     $("#side-bar").load("sidebar.html"); 
    // $("#footer").load("footer.html"); 
   });
+  $(document).ready(function(){
+$("#menu-btn").on("click", function() {
+    $("#sidebar").togglecss(".active-nav");
+    $("#my-container").togglecss(".active-cont");
+});
+});
   </script> 
   </head>
   <body>
