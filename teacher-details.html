@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>Teacher Details</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&family=Noto+Sans+JP&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/jquery-comments.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.3.slim.min.js" integrity="sha256-ZwqZIVdD3iXNyGHbSYdsmWP//UBokj2FHAxKuSBKDSo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.0.3/index.global.min.js"></script>
+    <script type="text/javascript" src="js/jquery-comments.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        //$(document).ready(function(){
+          document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          headerToolbar: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'dayGridMonth,timeGridWeek'
+    },
+          initialDate: '2023-02-20',
+        initialView: 'dayGridMonth',
+        events: [
+          {
+            start: '2023-02-10',
+            end: '2023-02-10',
+            display: 'background'
+          },
+          {
+            start: '2023-02-24T10:00:00',
+            end: '2023-02-24T16:00:00',
+            display: 'background'
+          },
+          {
+        start: '2023-02-24',
+        end: '2023-02-28',
+        overlap: false,
+        display: 'background'
+      },
+        ]
+        });
+        calendar.render();
+      });
+//});
+    </script>
+     <style>
+      body{background: #fff !important;}
+    .userblock .card-text{    font-size: 14px;}
+    .userblock h3{  font-size: 18px;font-weight: 600;}
+    .userblock h4{  font-size: 15px;font-weight: 500;}
+    .title_GFvye {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    color:#000 !important
+}
+p{
+
+  font-weight: normal;
+    font-size: 16px;
+
+}
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top border-bottom" aria-label="Third navbar example">
+      <div class="container-fluid">
+        <a href="home.html" class="d-flex align-items-center mb-3 mb-md-0  me-5 text-dark text-decoration-none">
+          <span class="fs-4">Golf</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <div class="collapse navbar-collapse" id="navbarsExample03">
+            <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+              <li class="nav-item"><a href="index.html" class="nav-link" aria-current="page">ポスト</a></li>
+              <li class="nav-item"><a href="events.html" class="nav-link ">イベント</a></li>
+              <li class="nav-item"><a href="findteacher.html" class="nav-link active">先生を探す</a></li>
+            </ul>
+            <a href="signup.html" class="btn btn-outline-primary me-2" name="signup">Sign Up</a>
+            <a href="signin.html"class="btn btn-primary" name="signin">Sign In</a>
+        </div>
+      </div>
+    </nav>
+          <div class="container row m-auto mt-75px margin-top75">
+            <div class="col-md-9 col-12">
+          <div class="my-3">
+                <div class="row g-0 flex-md-row mb-4">
+                    <div class="col-auto">
+                        <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8" width="100" height="100" class="mx-3 userimg" alt="user">  </div>
+                    <div class="col p-4 d-flex flex-column position-static">
+                        
+                      <h3 class="mb-0 title_GFvye ">教師 1 Customized lessons🎶All ages and levels welcome✨</h3>
+                    </div>
+                  </div>
+                  <h4 class="title_GFvye"> プロフィール</h4>
+                  <p class="card-text mb-auto">📸 英語学習に不満を感じてますか? 🌸Hatsumi-sensei🇯🇵🇪🇸🇬🇧💫Customized lessons🎶All ages and levels welcome✨のレッスンに参加して、自信をつけましょう！<br>
+                    👨🏼‍💼 すべての年齢層・レベルに教育指導経験1年<br>
+                    🏆 効率的で目標志向型のレッスンであなた目標達成に役立つ、<br>
+                    📈会話&小学&フリートーク順調なスタートを切るために、専門家がレッスンプラン</p>
+                  
+                  <h3 class="mt-5 title_GFvye">動画</h3>
+                  <div id="container">
+                    <video id='video' controls="controls" preload='none' width="600" poster="https://assets.codepen.io/32795/poster.png" style="max-width:100%">
+                    </video>
+                    <div class="w-70 my-3">
+                      <h3 class="mt-5 title_GFvye">レッスン可能時間</h3>
+                      <div id='calendar'></div>
+                    </div>
+                    
+                    </div>
+                  
+          </div>
+          </div>
+          <div class="col-md-3 col-12">
+            <div class="session-purchase fixed-pos">
+              <h3 class="title_GFvye">レッスン数</h3>
+              <div class="section-body">
+                <div class="package-list">
+                  <div class="at-radius"><button class="btn btn-warning w-100 text-start d-flex justify-content-between"><strong  class="sales-price">¥593</strong><i class="fa fa-arrow-right"></i></button></div>
+              </div>
+              </div>
+              </div>
+              </div>
+    </div>
+    </body>
+    </html>

@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>Event Details</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&family=Noto+Sans+JP&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/jquery-comments.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.3.slim.min.js" integrity="sha256-ZwqZIVdD3iXNyGHbSYdsmWP//UBokj2FHAxKuSBKDSo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.0.3/index.global.min.js"></script>
+    <script type="text/javascript" src="../js/jquery-comments.js"></script>
+    <script src="../js/chat.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/chat.css">
+    <script>
+        $(document).ready(function(){
+        $('#comments').comments({
+  profilePictureURL: 'https://viima-app.s3.amazonaws.com/media/public/defaults/user-icon.png',
+  getComments: function(success, error) {
+    var commentsArray = [{
+      id: 1,
+      created: '2015-10-01',
+      content: 'Lorem ipsum dolort sit amet',
+      fullname: 'Simon Powell',
+      upvote_count: 2,
+      user_has_upvoted: false
+    }];
+    success(commentsArray);
+  }
+});
+});
+    </script>
+     <style>
+.eventdetails span{
+color:#426ecc
+}
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top d-md-none" aria-label="Third navbar example">
+      <div class="container-fluid">
+        <a href="home.html" class="d-flex align-items-center mb-3 mb-md-0  me-5 text-dark text-decoration-none">
+          <span class="fs-4">Golf</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <div class="collapse navbar-collapse" id="navbarsExample03">
+          <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+            <li class="nav-item"><a href="index.html" class="nav-link " aria-current="page">ポスト</a></li>
+            <li class="nav-item"><a href="events.html" class="nav-link active">イベント</a>
+                <ul class="nav navbar-nav ms-4 ps-3">
+                    <li class="nav-item"><a class="nav-link " href="createevent.html">Create Event</a> </li>
+                    <li class="nav-item"><a class="nav-link " href="createdevents.html">Created Events</a> </li>
+                    <li class="nav-item"><a class="nav-link " href="participatedevents.html">Participated Events<span class="badge bg-success ms-1 rounded-circle">5</span></a></li>
+                  </ul>
+            </li>
+            <li class="nav-item"><a href="findteacher.html" class="nav-link">先生を探す</a></li>
+          </ul>
+          <a href="../home.html" class="btn btn-outline-primary me-2" name="signup">Sign Out</a>
+        </div>
+      </div>
+    </nav>
+    <div class="row mt-75px">
+      <div class="col side-navbar active-nav d-flex justify-content-between flex-wrap flex-column d-md-block d-none px-0" id="sidebar">
+        <a href="home.html" class="nav-link h3 my-2 mx-2 logo">
+          Golf
+         </a>
+        <ul class="nav flex-column  w-100">
+        
+          <li class="nav-item"> <a href="index.html" class="nav-link " aria-current="page">ポスト</a></li>
+          <li class="nav-item" > <a href="events.html" class="nav-link active">イベント</a>
+                <ul class="nav navbar-nav ms-4 ps-3">
+                  <li class="nav-item"><a class="nav-link " href="createevent.html">Create Event</a> </li>
+                  <li class="nav-item"><a class="nav-link " href="createdevents.html">Created Events</a> </li>
+                  <li class="nav-item"><a class="nav-link " href="participatedevents.html">Participated Events<span class="badge bg-success ms-1 rounded-circle">5</span></a></li>
+                </ul>
+          </li>
+          <li class="nav-item"> <a href="findteacher.html" class="nav-link">先生を探す</a></li>
+       
+        </ul>
+    
+        <span href="#" class="nav-link h4 w-100 mb-5">
+          <a href=""><i class="bx bxl-instagram-alt text-white"></i></a>
+          <a href=""><i class="bx bxl-twitter px-2 text-white"></i></a>
+          <a href=""><i class="bx bxl-facebook text-white"></i></a>
+        </span>
+      </div>
+      <div class="col active-cont my-container px-0"> 
+        <nav class="navbar top-navbar navbar-light bg-light px-5 d-none d-md-block" style="position:absolute">
+          <a class="btn border-0" id="menu-btn"><i class="fa fa-bars"></i></a>
+        </nav>
+          <div class="m-5">
+            <div class="row g-0 rounded overflow-hidden flex-md-row mb-4  h-md-250 position-relative">
+                <div class="col-auto eventdetails">
+                    <svg class="bd-placeholder-img" width="100%" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                  <div class="my-3">
+                    <h3 class="mb-1">イベントタイトル : <span class="event-title">Title 1</span></h3>
+                  <p class="card-text mb-1">ダミーテキスト ダミーテキスト ダミーテキスト ダミーテキストダミーテキストダミーテキストダミーテキスト ダミーテキスト ダミーテキスト ダミーテキスト ダミーテキストダミーテキストダミーテキストダミーテキスト</p>
+                  <div class="mb-1">開催日: <span class="event-date">Nov 12 2022</span></div>
+                  <div class="mb-1">イベントオーナー: <span class="event-owner">User 1</span></div>
+                  <div class="mb-1">都道府県: <span class="event-prefecture">Fukui Prefecture</span></div>
+                  <div class="mb-1">参加者の数: <span class="event-participants">2/100</span>
+                    <img src="../images/user.png" width="20"  class="ms-3" alt="user"> User1
+                    <img src="../images/user.png" width="20" class="ms-3" alt="user"> User2
+                  </div>
+                  <div class="mb-1">登録リンク: <span class="event-link"><a href="#">Registration Link</a></span></div>
+                  <div class="mb-1">YoutubeのURL: <span class="event-url"><a href="#">Youtube link</a></span></div>
+                  <div class="mb-1"><span class="event-phone"><i class="fa fa-phone me-2" style="color: #3b5998;"></i>0775465679</span></div>
+                </div>
+                <div class="col-md-6 col-12">
+                    <div class="my-2">コメント</div>
+                    <div id="comments"></div>
+                </div>
+                <div class="m-auto mt-3 w-100 text-center"><button type="button" class="btn btn-primary ms-2 btn-lg mt-3" id="participate" >
+                  Join Event
+                  </button></div>
+                </div>
+              </div>
+         
+          </div>
+    </div>
+    <div class="chat-sidebar">
+      <div class="box-header with-border">   
+        <h3 class="box-title">Contacts</h3> 
+      <div class="box-tools pull-right">
+        <button type="button" class="btn btn-box-tool" data-bs-target="#chat-names" data-bs-toggle="collapse"  aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-minus"></i></button></div>
+        </div>
+        <div id="chat-names" class="chat-names fade collapse">
+      <div class="sidebar-name">
+          <!-- Pass username and display name to register popup -->
+          <a href="javascript:register_popup('Contact 1', 'Contact 1');">
+              <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
+              <span>Contact 1</span>
+          </a>
+      </div>
+      <div class="sidebar-name">
+          <a href="javascript:register_popup('qnimate', 'QNimate');">
+              <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
+              <span>QNimate</span>
+          </a>
+      </div>
+      <div class="sidebar-name">
+          <a href="javascript:register_popup('qscutter', 'QScutter');">
+              <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
+              <span>QScutter</span>
+          </a>
+      </div>
+      <div class="sidebar-name">
+          <a href="javascript:register_popup('qidea', 'QIdea');">
+              <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
+              <span>QIdea</span>
+          </a>
+      </div>
+      <div class="sidebar-name">
+          <a href="javascript:register_popup('qazy', 'QAzy');">
+              <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
+              <span>QAzy</span>
+          </a>
+      </div>
+      <div class="sidebar-name">
+          <a href="javascript:register_popup('qblock', 'QBlock');">
+              <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
+              <span>QBlock</span>
+          </a>
+      </div>
+    </div>
+  </div>
+    </body>
+    </html>

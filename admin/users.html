@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>Golf</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@6.0.3/main.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../css/chat.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&family=Noto+Sans+JP&display=swap" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.6.3.slim.min.js" integrity="sha256-ZwqZIVdD3iXNyGHbSYdsmWP//UBokj2FHAxKuSBKDSo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.0.3/index.global.min.js"></script>
+    <script src="../js/chat.js"></script>
+    <link href="../fonts/Hiragino-Sans-GB-W3.otf">
+    <script>
+       /*   document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          selectable: true
+        });
+        calendar.render();
+      });*/
+
+$(function() {
+  ImgUpload();
+  $(".imagePreview").hide();
+  function ImgUpload() {
+  var imgWrap = "";
+  var imgArray = [];
+
+  $('.upload__inputfile').each(function () {
+    $(this).on('change', function (e) {
+      imgWrap = $(this).closest('.upload__box').find('.upload__img-wrap');
+      var maxLength = $(this).attr('data-max_length');
+
+      var files = e.target.files;
+      var filesArr = Array.prototype.slice.call(files);
+      var iterator = 0;
+      filesArr.forEach(function (f, index) {
+
+        if (!f.type.match('image.*')) {
+          return;
+        }
+
+        if (imgArray.length > maxLength) {
+          return false
+        } else {
+          var len = 0;
+          for (var i = 0; i < imgArray.length; i++) {
+            if (imgArray[i] !== undefined) {
+              len++;
+            }
+          }
+          if (len > maxLength) {
+            return false;
+          } else {
+            imgArray.push(f);
+
+            var reader = new FileReader();
+            reader.onload = function (e) {
+              var html = "<div class='upload__img-box'><div style='background-image: url(" + e.target.result + ")' data-number='" + $(".upload__img-close").length + "' data-file='" + f.name + "' class='img-bg'><div class='upload__img-close'></div></div></div>";
+              imgWrap.append(html);
+              iterator++;
+            }
+            reader.readAsDataURL(f);
+          }
+        }
+      });
+    });
+  });
+
+  $('body').on('click', ".upload__img-close", function (e) {
+    var file = $(this).parent().data("file");
+    for (var i = 0; i < imgArray.length; i++) {
+      if (imgArray[i].name === file) {
+        imgArray.splice(i, 1);
+        break;
+      }
+    }
+    $(this).parent().parent().remove();
+  });
+}
+});
+    </script>
+     <style>
+
+    .postblock{background-color: #fff;box-shadow: 0 1px 3px 0 rgb(0 0 0 / 16%), 0 0 0 1px rgb(0 0 0 / 8%);
+    transition: box-shadow .3s cubic-bezier(.4,0,.2,1);border-radius: 5px !important;}
+    .postblock .card-text{    font-size: 14px;font-weight:100}
+    .postblock .tag{    font-size: 11px;font-weight: 400;}
+    .postblock h3{    font-size: 18px;font-weight: 600;}
+    .postblock .stretched-link{    font-size: 14px;font-weight: 400;}
+    .postblock .username{    font-size: 14px;font-weight: 400;}
+    .postblock .text-muted {
+    color: #a7adb3!important;
+    font-size: 14px;
+}
+      /*.postblock:hover{background-color: rgb(238, 241, 239);}*/
+      .upload__box {
+	 padding: 5px;
+}
+ .upload__inputfile {
+	 width: 0.1px;
+	 height: 0.1px;
+	 opacity: 0;
+	 overflow: hidden;
+	 position: absolute;
+	 z-index: -1;
+}
+
+ .upload__btn:hover {
+	 background-color: unset;
+	 color: #4045ba;
+	 transition: all 0.3s ease;
+}
+ .upload__img-wrap {
+	 display: flex;
+	 flex-wrap: wrap;
+	 margin: 0 -10px;
+}
+ .upload__img-box {
+	 width: 200px;
+	 padding: 0 10px;
+	 margin-bottom: 12px;
+}
+ .upload__img-close {
+	 width: 24px;
+	 height: 24px;
+	 border-radius: 50%;
+	 background-color: rgba(0, 0, 0, 0.5);
+	 position: absolute;
+	 top: 10px;
+	 right: 10px;
+	 text-align: center;
+	 line-height: 24px;
+	 z-index: 1;
+	 cursor: pointer;
+}
+ .upload__img-close:after {
+	 content: "\2716";
+	 font-size: 14px;
+	 color: white;
+}
+ .img-bg {
+	 background-repeat: no-repeat;
+	 background-position: center;
+	 background-size: cover;
+	 position: relative;
+	 padding-bottom: 100%;
+}
+/*@font-face {
+    font-family: "Hiragino Sans",sans-serif;
+    src: url("../fonts/Hiragino-Sans-GB-W3.otf");
+}*/
+
+    </style>
+       
+    
+      <style>
+        .at-hero{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 80%;
+    position: relative;
+    padding:15px
+}
+.navbar { background: transparent !important; }
+
+@font-face {
+  font-family: "Helvetica-Neue";
+  src: url("fonts/Helvetica\ Neue\ Medium\ Extended.ttf");
+}
+@font-face {
+  font-family: "Hiragino Sans GB";
+  src: url("../fonts/Hiragino-Sans-GB-W3.woff");
+}
+
+@-moz-keyframes ping_YmM8C {
+                75%,to {
+                    box-shadow: 0 0 0 1rem transparent
+                }
+            }
+
+            @-webkit-keyframes ping_YmM8C {
+                75%,to {
+                    box-shadow: 0 0 0 1rem transparent
+                }
+            }
+
+            @-o-keyframes ping_YmM8C {
+                75%,to {
+                    box-shadow: 0 0 0 1rem transparent
+                }
+            }
+
+            @keyframes ping_YmM8C {
+                75%,to {
+                    box-shadow: 0 0 0 1rem transparent
+                }
+            }
+ .at-shadow-box {
+    box-shadow: 0 0 0 0 hsl(0deg 0% 100% / 80%);
+    transition: box-shadow .3s cubic-bezier(.4,0,.2,1);
+    border-radius: 7px;
+    animation: ping_YmM8C 1.5s cubic-bezier(0,0,.2,1) infinite;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 16%), 0 0 0 1px rgb(0 0 0 / 8%);
+    border: 1px solid #eee;
+    color:#fff
+}
+
+      </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top d-md-none" aria-label="Third navbar example">
+        <div class="container-fluid">
+          <a href="home.html" class="d-flex align-items-center mb-3 mb-md-0  me-5 text-dark text-decoration-none">
+            <span class="fs-4">Golf</span>
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+    
+          <div class="collapse navbar-collapse" id="navbarsExample03">
+            <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+              <li class="nav-item"><a href="index.html" class="nav-link active" aria-current="page">ポスト</a></li>
+              <li class="nav-item"><a href="users.html" class="nav-link active" aria-current="page">Users</a></li>
+              <li class="nav-item"><a href="events.html" class="nav-link ">イベント</a> </li>
+              <li class="nav-item"><a href="findteacher.html" class="nav-link">先生を探す</a></li>
+            </ul>
+            <a href="../home.html" class="btn btn-outline-primary me-2" name="signup">Sign Out</a>
+          </div>
+        </div>
+      </nav>
+    <div class="row mt-75px">
+      <div class="col side-navbar active-nav d-flex justify-content-between flex-wrap flex-column d-md-block d-none px-0" id="sidebar">
+        <a href="home.html" class="nav-link h3 my-2 mx-2 logo">
+          Golf
+         </a>
+        <ul class="nav flex-column  w-100">
+        
+          <li class="nav-item"> <a href="index.html" class="nav-link " aria-current="page">ポスト</a></li>
+          <li class="nav-item"> <a href="users.html" class="nav-link " aria-current="page">Users</a></li>
+          <li class="nav-item" > <a href="events.html" class="nav-link active">イベント</a> </li>
+          <li class="nav-item"> <a href="findteacher.html" class="nav-link">先生を探す</a></li>
+       
+        </ul>
+    
+        <span href="#" class="nav-link h4 w-100 mb-5">
+          <a href=""><i class="bx bxl-instagram-alt text-white"></i></a>
+          <a href=""><i class="bx bxl-twitter px-2 text-white"></i></a>
+          <a href=""><i class="bx bxl-facebook text-white"></i></a>
+        </span>
+      </div>
+      <div class="col active-cont my-container px-0 bg-grey"> 
+        <nav class="navbar top-navbar navbar-light bg-light px-5 d-none d-md-block" style="position:absolute">
+          <a class="btn border-0" id="menu-btn"><i class="fa fa-bars"></i></a>
+        </nav>
+        <div class="container-fluid margin-top75">
+            <div class="mb-npx p-3">
+                <div class="row align-items-center">
+                    <div class="col-sm-6 col-12 mb-4 mb-sm-0">
+                        <!-- Title -->
+                        <h1 class="h2 mb-4 ls-tight">Users</h1>
+                    </div>
+                    <!-- Actions -->
+                    <div class="col-sm-6 col-12 text-sm-end">
+                        <div class="mx-n1">
+                            <a href="#" class="btn d-inline-flex btn-sm btn-neutral border-base mx-1">
+                                <span class="pe-2">
+                                    <i class="fa fa-pencil"></i>
+                                </span>
+                                <span>Edit</span>
+                            </a>
+                            <a href="#" class="btn d-inline-flex btn-sm btn-warning mx-1">
+                                <span class=" pe-2">
+                                    <i class="fa fa-plus"></i>
+                                </span>
+                                <span>Create</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row m-auto p-3">
+
+                <div class="card border-0 mb-7">
+                    <div class="table-responsive ">
+                        <table id="userlist" class="table table-hover table-nowrap">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Last Signin</th>
+                                    <th scope="col">No.of posts</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <img alt="..." src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2">
+                                        <a class="text-heading font-semibold" href="#">
+                                            Robert Fox
+                                        </a>
+                                    </td>
+                                    <td>
+                                        mailid@email.com
+                                    </td>
+                                    <td>
+                                        <span class="badge badge-lg badge-dot">
+                                            <i class="bg-success"></i>Active
+                                        </span>
+                                    </td>
+                                    <td>
+                                        A month ago
+                                    </td>
+                                    <td>10</td>
+                                    <td class="text-end">
+                                        <a href="index.html" class="btn btn-sm btn-neutral">View Posts</a>
+                                        <a href="events.html" class="btn btn-sm btn-neutral">View Events</a>
+                                        <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img alt="..." src="https://images.unsplash.com/photo-1610878722345-79c5eaf6a48c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2">
+                                        <a class="text-heading font-semibold" href="#">
+                                            Robert Fox
+                                        </a>
+                                    </td>
+                                    <td>
+                                        mailid@email.com
+                                    </td>
+                                    <td>
+                                        <span class="badge badge-lg badge-dot">
+                                            <i class="bg-success"></i>Active
+                                        </span>
+                                    </td>
+                                    <td>
+                                        A month ago
+                                    </td>
+                                    <td>10</td>
+                                    <td class="text-end">
+                                        <a href="index.html" class="btn btn-sm btn-neutral viewpost">View Posts</a>
+                                        <a href="events.html" class="btn btn-sm btn-neutral">View Events</a>
+                                        <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img alt="..." src="https://images.unsplash.com/photo-1610271340738-726e199f0258?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2">
+                                        <a class="text-heading font-semibold" href="#">
+                                            Robert Fox
+                                        </a>
+                                    </td>
+                                    <td>
+                                        mailid@email.com
+                                    </td>
+                                    <td>
+                                        <span class="badge badge-lg badge-dot">
+                                            <i class="bg-warning"></i>Inactive
+                                        </span>
+                                    </td>
+                                    <td>
+                                        4 days ago
+                                    </td>
+                                    <td>10</td>
+                                    <td class="text-end">
+                                        <a href="index.html" class="btn btn-sm btn-neutral">View Posts</a>
+                                        <a href="events.html" class="btn btn-sm btn-neutral">View Events</a>
+                                        <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-footer border-0 py-5 bg-white">
+                        <span class="text-muted text-sm">Showing 10 items out of 250 results found</span>
+                    </div>
+                </div>
+              
+             
+                <div class="chat-sidebar">
+                  <div class="box-header with-border">   
+                    <h3 class="box-title">Contacts</h3> 
+                  <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-bs-target="#chat-names" data-bs-toggle="collapse"  aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-minus"></i></button></div>
+                    </div>
+                    <div id="chat-names" class="chat-names fade collapse">
+                  <div class="sidebar-name">
+                      <!-- Pass username and display name to register popup -->
+                      <a href="javascript:register_popup('Contact 1', 'Contact 1');">
+                          <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
+                          <span>Contact 1</span>
+                      </a>
+                  </div>
+                  <div class="sidebar-name">
+                      <a href="javascript:register_popup('qnimate', 'QNimate');">
+                          <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
+                          <span>QNimate</span>
+                      </a>
+                  </div>
+                  <div class="sidebar-name">
+                      <a href="javascript:register_popup('qscutter', 'QScutter');">
+                          <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
+                          <span>QScutter</span>
+                      </a>
+                  </div>
+                  <div class="sidebar-name">
+                      <a href="javascript:register_popup('qidea', 'QIdea');">
+                          <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
+                          <span>QIdea</span>
+                      </a>
+                  </div>
+                  <div class="sidebar-name">
+                      <a href="javascript:register_popup('qazy', 'QAzy');">
+                          <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
+                          <span>QAzy</span>
+                      </a>
+                  </div>
+                  <div class="sidebar-name">
+                      <a href="javascript:register_popup('qblock', 'QBlock');">
+                          <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
+                          <span>QBlock</span>
+                      </a>
+                  </div>
+                </div>
+              </div>
+        
+            </div>
+        </div>
+   
+       </div>
+       </div>
+   
+
+    </body>
+    </html>
