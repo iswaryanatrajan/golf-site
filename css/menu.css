@@ -12,13 +12,14 @@ File: Menu
     z-index: 999;
   }
   .topbar .topbar-left {
-    background: #36404e;
+    background: #fff;
     float: left;
     text-align: center;
     height: 70px;
     position: relative;
     width: 225px;
     z-index: 1;
+    border-right: 1px solid #eee;
   }
   .navbar-default {
     background-color: #f3f3f3;
@@ -32,7 +33,6 @@ File: Menu
     line-height: 68px;
   }
   .logo {
-    color: #ffffff !important;
     font-size: 24px;
     text-transform: uppercase;
     font-family: 'Hind Madurai', sans-serif;
@@ -88,7 +88,7 @@ File: Menu
     width: 225px;
     padding-top: 10px;
     z-index: 10;
-    background: #36404e;
+    background: #fff;
     bottom: 50px;
     margin-top: 0;
     padding-bottom: 70px;
@@ -103,6 +103,7 @@ File: Menu
     position: absolute;
     top: 60px;
     bottom: 0;
+    border-right: 1px solid #eee;
   }
   body.fixed-left .side-menu.left {
     bottom: 50px;
@@ -114,10 +115,12 @@ File: Menu
   .content-page {
     margin-left: 225px;
     overflow: hidden;
+    background: #f5f9fc;
   }
   .content-page .content {
     padding: 0 5px 10px 5px;
     margin-top: 70px;
+    min-height: 90vh;
   }
   .button-menu-mobile {
     background: transparent;
@@ -218,18 +221,17 @@ File: Menu
   }
   #sidebar-menu .subdrop {
     color: #ffffff !important;
-    background-color: #313a46;
+    background-color: #333;
   }
   #sidebar-menu > ul > li > a {
-    color: #98a6ad;
+    color: #16192C;
     display: block;
     padding: 12px 20px;
     margin: 2px 0;
   }
   #sidebar-menu > ul > li > a:hover {
-    color: #ffffff;
     text-decoration: none;
-    background-color: #313a46;
+    background-color: #f5f9fc
   }
   #sidebar-menu > ul > li > a > span {
     vertical-align: middle;
@@ -252,7 +254,7 @@ File: Menu
   }
   #sidebar-menu > ul > li > a.active {
     color: #ffffff !important;
-    background-color: #313a46;
+    background-color: #f5f9fc;
   }
   .menu-title {
     padding: 12px 20px !important;
@@ -261,7 +263,7 @@ File: Menu
     cursor: default;
     font-size: 11px;
     text-transform: uppercase;
-    color: #98a6ad;
+    color: #16192C;
     font-family: 'Hind Madurai', sans-serif;
   }
   /* Help Box */
@@ -294,15 +296,15 @@ File: Menu
   }
   #wrapper.enlarged .left.side-menu #sidebar-menu > ul > li > a:hover {
     color: #ffffff !important;
-    background-color: #313a46;
+    background-color: #16192C;
   }
   #wrapper.enlarged .left.side-menu #sidebar-menu > ul > li > a:active {
     color: #ffffff !important;
-    background-color: #313a46;
+    background-color: #16192C;
   }
   #wrapper.enlarged .left.side-menu #sidebar-menu > ul > li > a:focus {
     color: #ffffff !important;
-    background-color: #313a46;
+    background-color: #16192C;
   }
   #wrapper.enlarged .left.side-menu #sidebar-menu > ul > li > a i {
     margin-right: 20px !important;
@@ -555,4 +557,7 @@ File: Menu
   body.fixed-left-void {
     min-height: 1250px;
   }
+  .topbar .container{
+    max-width: 100%;
+  }   
   

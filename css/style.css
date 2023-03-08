@@ -414,6 +414,7 @@ input::-webkit-inner-spin-button {
     border-color: #E7EAF0;
 }
 .text-danger-hover:hover{background:#fff;color: red !important;}
+.text-neutral-hover:hover{background:#fff;color:#26bbce !important;}
 .text-heading{text-decoration: none;color:#000}
 .bg-grey{background-color: #f5f9fc;min-height: 100vh;}
 #userlist th,#userlist td{padding: 1rem 1.5rem;}
@@ -475,7 +476,7 @@ input::-webkit-inner-spin-button {
     width: 100%;
 }
 .topbar .navbar-default {
-    background-color: #f3f3f3 !important;
+    background-color: #fff !important;
     border-radius: 0;
     border: none;
     margin-bottom: 0;
@@ -499,3 +500,26 @@ input::-webkit-inner-spin-button {
     overflow: hidden;
 }
 .dashboard h2{    padding-top: 0.5em;}
+.shadow {
+    box-shadow: 0px 3px 3px -1px rgb(10 22 70 / 10%), 0px 0px 1px 0px rgb(10 22 70 / 6%) !important;
+}
+.br-1{border-radius:0.8em}
+.content-page .btn{  padding: 0.5em 1em;
+border-radius: 0.5em;
+font-weight:bold
+}
+.bg-soft-success {
+    background-color: #ccf5e7 !important;
+}
+.bg-soft-danger {
+    background-color: #ffd6e0 !important;
+}
+.content-page .btn-outline-primary{
+    color: #43acba ;
+    border-color: #43acba ;
+}
+.content-page .btn-primary{
+    color: #000;
+    background-color: #26bbce !important;
+    border-color: #43acba !important;
+}

@@ -6,7 +6,6 @@
     <meta name="description" content="">
     <title>Golf - Events</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@6.0.3/main.min.css">
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="stylesheet" type="text/css" href="../css/chat.css">
     <link rel="stylesheet" type="text/css" href="../css/menu.css">
@@ -18,10 +17,9 @@
 <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.0.3/index.global.min.js"></script>
-    <script src="//cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
     <script src="../js/chat.js"></script>
+    <script src="../js/jquery-ui-touch-punch.min.js"></script>
     <link href="../fonts/Hiragino-Sans-GB-W3.otf">
     <script>
        /*   document.addEventListener('DOMContentLoaded', function() {
@@ -33,7 +31,6 @@
       });*/
 
 $(function() {
-    let table = new DataTable('#tournaments');
 
     $("#allFacets, #group1,#group2,#group3").sortable({
       connectWith: "ul",
@@ -41,6 +38,12 @@ $(function() {
       delay: 150
     })
     .disableSelection()
+
+    $( "#group1,#group2,#group3" ).on( "sortreceive", function(event, ui) {
+        if($(this).find ("li").length > 4){
+            $(ui.sender).sortable('cancel');
+        }
+    });
    
 
 });
@@ -94,6 +97,10 @@ p {
   border: 1px solid orange;
   background-color: #fffffd;
 }
+.facet-container label {
+    display: inline-block;
+    font-size: 1.3rem;
+}
      </style>
   </head>
   <body>
@@ -123,7 +130,7 @@ p {
   
                                     <ul class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right user-list notify-list">
   
-                                           <li><a href="http://165.232.142.13/fishmap/logout"><i class="ti-power-off m-r-5"></i> Logout</a></li>
+                                           <li><a href="#"><i class="ti-power-off m-r-5"></i> Logout</a></li>
                                     </ul>
                              </li>
   
@@ -145,7 +152,7 @@ p {
              <li class="has_sub"><a href="index.html" class="waves-effect"><i class="fa fa-feed"></i><span>ポスト</span> </a> </li>
              <li class="has_sub"><a href="users.html" class="waves-effect"><i class="fa fa-users"></i><span>Users</span> </a> </li>
              <li class="has_sub"><a href="events.html" class="waves-effect"><i class="fa fa-calendar"></i><span>イベント</span> </a> </li>
-             <li class="has_sub"><a href="tournaments.html" class="waves-effect"><i class="fa fa-calendar"></i><span>Tournaments</span> </a> </li>
+             <li class="has_sub"><a href="tournaments.html" class="waves-effect"><i class="fa fa-golf"></i><span>Tournaments</span> </a> </li>
              <li class="has_sub"><a href="tutors.html" class="waves-effect"><i class="fa fa-user"></i><span>Tutors</span> </a> </li>
 
              <hr>
@@ -173,9 +180,9 @@ p {
             </div>
             <div class="row m-auto p-3">
 
-                <div class="card border-0 mb-7 p-2">
-                    <div class="facet-container row">
-                        <div class="col-3">
+                <div class="card border-0 mb-7 p-2 ">
+                    <div class="facet-container row container">
+                        <div class="col-lg-2 col-12">
                           <label>Players</label>
                           <ul id="allFacets" class="facet-list">
                             <li class="facet">Player 2</li>
@@ -187,20 +194,20 @@ p {
                             <li class="facet">Player 10</li>
                           </ul>
                         </div>
-                        <div class="col-3">
+                        <div class="col-lg-2 col-md-4 col-6">
                        
                           <label>Group 1</label>
                           <ul id="group1" class="facet-list">
                             <li class="facet">Player 1</li>
                           </ul>
                         </div>
-                        <div class="col-3">
+                        <div class="col-lg-2 col-md-4 col-6">
                             <label>Group 2</label>
                             <ul id="group2" class="facet-list">
                               <li class="facet">Player 6</li>
                             </ul>
                           </div>
-                          <div class="col-3">
+                          <div class="col-lg-2 col-md-4 col-6">
                             <label>Group 3</label>
                             <ul id="group3" class="facet-list">
                                 <li class="facet">Player 7</li>
