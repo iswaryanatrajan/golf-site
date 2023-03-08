@@ -39,6 +39,7 @@ File: Menu
     font-weight: 600;
     letter-spacing: 1px;
     line-height: 70px;
+    text-decoration: none;
   }
   .logo i {
     display: none;
@@ -115,6 +116,8 @@ File: Menu
   .content-page {
     margin-left: 225px;
     overflow: hidden;
+    height: 90vh;
+    overflow-y: auto;
     background: #f5f9fc;
   }
   .content-page .content {
@@ -186,9 +189,7 @@ File: Menu
     -o-transform: rotate(90deg);
     transform: rotate(90deg);
   }
-  #sidebar-menu ul ul {
-    display: none;
-  }
+  
   #sidebar-menu ul ul li {
     border-top: 0;
   }
@@ -196,7 +197,7 @@ File: Menu
     color: #7fc1fc;
   }
   #sidebar-menu ul ul a {
-    color: #98a6ad;
+    color: #7b7d88;
     -webkit-transition: all 0.3s ease-out;
     -moz-transition: all 0.3s ease-out;
     -o-transition: all 0.3s ease-out;
@@ -205,11 +206,9 @@ File: Menu
     border-left: 3px solid transparent;
     display: block;
     padding: 10px 20px 10px 59px;
-    font-size: 13px;
+    font-size: 14px;
   }
-  #sidebar-menu ul ul a:hover {
-    color: #ffffff;
-  }
+ 
   #sidebar-menu ul ul a i {
     margin-right: 5px;
   }
@@ -230,6 +229,10 @@ File: Menu
     margin: 2px 0;
   }
   #sidebar-menu > ul > li > a:hover {
+    text-decoration: none;
+    background-color: #f5f9fc
+  }
+  #sidebar-menu > ul > ul > li > a:hover {
     text-decoration: none;
     background-color: #f5f9fc
   }
@@ -369,7 +372,7 @@ File: Menu
     transform: rotate(270deg);
   }
   #wrapper.enlarged .left.side-menu #sidebar-menu ul ul li.active a {
-    color: #ffffff;
+    color: #ffffff !important;
   }
   #wrapper.enlarged .left.side-menu #sidebar-menu ul > li > a span {
     display: none;

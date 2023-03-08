@@ -6,8 +6,8 @@ body{font-family: "Hiragino Sans",sans-serif;font-weight: 400;font-size: 18px;co
 .postblock{background-color: #fff;}
 .navbar{padding:10px}
 .hero {
-    min-height: 50vh;
-    height: 60vh;
+
+    height: 40vh;
     background: #000 url(https://image.freepik.com/free-vector/gradient-geometric-shape-background_78532-307.jpg) center center no-repeat;
     background-size: cover;
    /* position: relative;*/
@@ -310,6 +310,11 @@ position: relative;
         background-color: #fff !important;
         border-color: #43acba !important;
     }
+    .btn-outline-warning:hover, .btn-outline-warning:focus{
+        color: #fff;
+        background-color: #43acba !important;
+        border-color: #43acba !important;
+    }
     .followbtn{font-size:12px;padding:5px}
     .w-70{width:70%}
     .fc-bg-event{background-color: #43acba !important;}
@@ -523,3 +528,17 @@ font-weight:bold
     background-color: #26bbce !important;
     border-color: #43acba !important;
 }
+.jquery-comments .content{padding: 0 !important;
+    margin-top: 0!important;
+    min-height: 0 !important
+}
+    .dropdown-menu[data-bs-popper] {
+        top: 100%;
+        /* right: -21px; */
+        margin-top: 0.125rem;
+        min-width: max-content;
+        padding: 10px;
+    }
+    .navbar-nav .dropdown-menu {
+        position: absolute;
+    }
