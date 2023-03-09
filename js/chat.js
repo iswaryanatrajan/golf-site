@@ -180,7 +180,7 @@ $(document).ready(function(){
      // topbarleft.classList.toggle("active-nav");
     });
     console.log(check);
-    if(check){
+    if(!check){
         wrapper.classList.add("enlarged");
     }
 
