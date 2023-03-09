@@ -179,6 +179,7 @@ $(document).ready(function(){
       //container.classList.toggle("active-cont");
      // topbarleft.classList.toggle("active-nav");
     });
+    console.log(check);
     if(check){
         wrapper.classList.add("enlarged");
     }
