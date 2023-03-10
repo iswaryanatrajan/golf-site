@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="../css/menu.css">
     <link rel="stylesheet" type="text/css" href="../css/responsive.css">
     <link rel="stylesheet" type="text/css" href="../css/jquery-comments.css">
+    <link rel="stylesheet" type="text/css" href="../css/images-grid.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&family=Noto+Sans+JP&display=swap" rel="stylesheet">
@@ -22,6 +23,7 @@
     <script src="../js/chat.js"></script>
     <link href="../fonts/Hiragino-Sans-GB-W3.otf">
     <script type="text/javascript" src="../js/jquery-comments.js"></script>
+    <script type="text/javascript" src="../js/images-grid.js"></script>
 
     ​  
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAILGVlt-SOiL381JT3TQ9dxxoNIUuxrV8&amp;libraries=places" ></script>
@@ -110,9 +112,59 @@ $('body').on('click', ".like", function (e) {
 $('.comments').comments({
   profilePictureURL: 'https://viima-app.s3.amazonaws.com/media/public/defaults/user-icon.png',
   getComments: function(success, error) {
-    var commentsArray = [];
+    var commentsArray = [{
+      id: 1,
+      created: '2015-10-01',
+      content: 'Lorem ipsum dolort sit amet',
+      fullname: 'Simon Powell',
+      upvote_count: 2,
+      user_has_upvoted: true
+    },{
+      id: 2,
+      created: '2015-10-05',
+      content: 'Lorem ipsum dolort sit amet',
+      fullname: 'Robert Fox',
+      upvote_count: 0,
+      user_has_upvoted: false
+    }];
     success(commentsArray);
   }
+});
+var gallery2img=[
+  'https://img.freepik.com/free-photo/golf-field_654080-1351.jpg',
+  'https://img.freepik.com/free-photo/golf-field_654080-1351.jpg',
+  'https://img.freepik.com/free-photo/golf-field_654080-1351.jpg',
+  'https://img.freepik.com/free-photo/golf-field_654080-1351.jpg',
+  'https://img.freepik.com/free-photo/golf-field_654080-1351.jpg',
+  'https://img.freepik.com/free-photo/golf-field_654080-1351.jpg',
+];
+$('#gallery1').imagesGrid({
+images:['https://img.freepik.com/free-photo/golf-field_654080-1351.jpg',] 
+});
+
+$('#gallery2').imagesGrid({
+
+// an array of images
+images: gallery2img,
+
+// algin images with different sizes
+align: false,
+
+// max grid cells (1-6)
+cells: 5, 
+
+// goto next image on click
+nextOnClick: true,
+
+// text for show more
+showViewAll: 'more',
+
+});
+
+
+$('#gallery3').imagesGrid({
+images:['https://img.freepik.com/free-photo/golf-field_654080-1351.jpg',
+'https://img.freepik.com/free-photo/golf-field_654080-1351.jpg']
 });
 });
     </script>
@@ -161,13 +213,79 @@ $('.comments').comments({
                       </nav>
   
                       <!-- Right(Notification) -->
-                      <ul class="nav navbar-nav navbar-right">
-                             <li class="dropdown user-box">
-                                    <a href="#" class="dropdown-toggle waves-effect user-link btn" role="button" data-bs-toggle="dropdown" id="profile" aria-expanded="true">
+                      <ul class="nav navbar-nav navbar-right flex-row align-items-center">
+                        <li class="ps-2">
+                          <a href="#" class="dropdown-toggle waves-effect user-chat  menu-right text-decoration-none"  id="chatbtn" role="button" data-bs-toggle="dropdown" id="chat" aria-expanded="true">
+                            <i class="fa-brands fa-rocketchat"></i>
+                          </a>
+                          <div class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right chat-list shadow">
+                            <div class="chat-sidebar">
+                              <div class="box-header with-border">   
+                                <h3 class="box-title">Contacts</h3> 
+                              
+                                </div>
+                                <div id="chat-names" class="chat-names">
+                              <div class="sidebar-name">
+                                  <!-- Pass username and display name to register popup -->
+                                  <a href="javascript:register_popup('Contact 1', 'Contact 1');">
+                                      <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
+                                      <span>Contact 1</span>
+                                  </a>
+                              </div>
+                              <div class="sidebar-name">
+                                  <a href="javascript:register_popup('qnimate', 'QNimate');">
+                                      <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
+                                      <span>QNimate</span>
+                                  </a>
+                              </div>
+                              <div class="sidebar-name">
+                                  <a href="javascript:register_popup('qscutter', 'QScutter');">
+                                      <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
+                                      <span>QScutter</span>
+                                  </a>
+                              </div>
+                              <div class="sidebar-name">
+                                  <a href="javascript:register_popup('qidea', 'QIdea');">
+                                      <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
+                                      <span>QIdea</span>
+                                  </a>
+                              </div>
+                              <div class="sidebar-name">
+                                  <a href="javascript:register_popup('qazy', 'QAzy');">
+                                      <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
+                                      <span>QAzy</span>
+                                  </a>
+                              </div>
+                              <div class="sidebar-name">
+                                  <a href="javascript:register_popup('qblock', 'QBlock');">
+                                      <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
+                                      <span>QBlock</span>
+                                  </a>
+                              </div>
+                            </div>
+                          </div>
+                          </div>
+                          </li>
+                          <li class="ps-2">
+                            <a href="#" class="waves-effect user-notification  menu-right text-decoration-none"  id="notificationbtn" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                              <i class="fa fa-bell"></i><!-- <span class="badge bg-danger rounded-circle">4</span>-->
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right notification-list shadow">
+                              <div class="notification-box">
+                                <ul class="notification-drop ps-0">
+                                      <li>First Notification item from user goes here</li>
+                                      <li>Second Notification Item</li>
+                                      <li>Third  Notification Item</li>
+                                </ul>
+                            </div>
+                            </div>
+                            </li>
+                             <li class="dropdown user-box ps-3">
+                                    <a href="#" class="dropdown-toggle waves-effect user-link text-decoration-none" role="button" data-bs-toggle="dropdown" id="profile" aria-expanded="true">
                                       <img alt="..." src="https://images.unsplash.com/photo-1610271340738-726e199f0258?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3&amp;w=256&amp;h=256&amp;q=80" class="avatar avatar-sm rounded-circle me-2">
                                     </a>
   
-                                    <ul class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right user-list notify-list">
+                                    <ul class="dropdown-menu dropdown-menu-right user-list notify-list">
   
                                            <li><a href="http://165.232.142.13/fishmap/logout"><i class="ti-power-off m-r-5"></i> Logout</a></li>
                                     </ul>
@@ -267,10 +385,9 @@ $('.comments').comments({
         </div></div>
         <div class="my-3">
           <div class="row g-0   overflow-hidden flex-md-row mb-4  h-md-250 position-relative postblock">
-              <div class="col-md-2 col-12">
-                  <svg class="bd-placeholder-img" width="100%" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="30%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-                </div>
-              <div class="col-md-10 col-12 p-4 d-flex flex-column position-static">
+              <div class="col-md-6 col-12">
+                <div id="gallery1" class="gallery"></div> </div>
+              <div class="col-md-6 col-12 p-4 d-flex flex-column position-static">
                   
                 <strong class="d-inline-block mb-2 text-primary tag">ゴルフ</strong>
                 <h3 class="mb-0">ディエゴ博士 🇺🇸 ピアソン / ディズニー公式講師 ✅ 👧 キッズ/ティーンズ 🗣 会話</h3>
@@ -290,16 +407,16 @@ $('.comments').comments({
                 </div>
                 <div class="">
                   <i class="far fa-heart like" style="color: #3b5998;"></i>
-                  <i class="far fa-comment ms-2 showcomments"  style="color: #3b5998;"></i>
+                  <i class="far fa-comment ms-2 me-1 showcomments"  style="color: #3b5998;"></i>2 Comments
                 </div>
                 <div class="comments"></div>
               </div>
             </div>
             <div class="row g-0  overflow-hidden flex-md-row mb-4  position-relative postblock">
-              <div class="col-md-2 col-12 ">
-                  <svg class="bd-placeholder-img" width="100%" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="30%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+              <div class="col-md-6 col-12 ">
+                <div id="gallery2" class="gallery"></div>
                 </div>
-              <div class="col-md-10 col-12 p-4 d-flex flex-column position-static">
+              <div class="col-md-6 col-12 p-4 d-flex flex-column position-static">
                   
                 <strong class="d-inline-block mb-2 text-primary tag">イベント</strong>
                 <h3 class="mb-0">注目のポスト 2</h3>
@@ -318,16 +435,21 @@ $('.comments').comments({
               </div>
             </div>
             <div class="row g-0  overflow-hidden flex-md-row mb-4  h-md-250 position-relative postblock">
-              <div class="col-md-2 col-12 ">
-                  <svg class="bd-placeholder-img" width="100%" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="30%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-                </div>
-              <div class="col-md-10 col-12 p-4 d-flex flex-column position-static">
+              <div class="col-md-6 col-12 ">
+                <div id="gallery3" class="gallery"></div> </div>
+              <div class="col-md-6 col-12 p-4 d-flex flex-column position-static">
                 <strong class="d-inline-block mb-2 text-primary tag">ゴルフ</strong>
                 <h3 class="mb-0">注目のポスト 3</h3>
                 <div class="mb-1 text-muted">Nov 12</div>
                 <div class="mb-1 username"><i class="fa fa-user" style="color: #3b5998;"></i> User 2</div>
-                <p class="card-text mb-auto">ダミーテキスト ダミーテキスト ダミーテキスト ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト ダミーテキスト ダミーテキスト ダミーテキストダミーテキストダミーテキストダミーテキスト</p>
-                <div class="">
+                <p class="card-text mb-auto">🔥私のクライアントは、エリート大学、コンサルティング、金融、法務、およびソフトウェアの仕事に就いています。他の多くの人がキャリアと自信を大幅に高めました🔥
+                  🇬🇧 ネイティブ ブリティッシュ 🇺🇸 アメリカ在住 20 年
+                  🥇 4000時間以上のESL、楽しい+リラックス
+                  🥇 20年以上のビジネス/ファイナンス経験
+                  🥇MBA / CFA
+                  🥇セルタ/TEFL
+                  🥇プレゼンテーションと会議のアドバイス🥇
+                  </p> <div class="">
                   <i class="fab fa-facebook-f" style="color: #3b5998;"></i>
                   <i class="fab fa-twitter ms-2" style="color: #55acee;"></i>
                 </div>
@@ -344,52 +466,7 @@ $('.comments').comments({
   </div>
       </div>
       <div class="col-md-2 d-none d-md-block"> 
-        <div class="chat-sidebar">
-          <div class="box-header with-border">   
-            <h3 class="box-title">Contacts</h3> 
-          <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-bs-target="#chat-names" data-bs-toggle="collapse"  aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-minus"></i></button></div>
-            </div>
-            <div id="chat-names" class="chat-names fade collapse">
-          <div class="sidebar-name">
-              <!-- Pass username and display name to register popup -->
-              <a href="javascript:register_popup('Contact 1', 'Contact 1');">
-                  <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
-                  <span>Contact 1</span>
-              </a>
-          </div>
-          <div class="sidebar-name">
-              <a href="javascript:register_popup('qnimate', 'QNimate');">
-                  <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
-                  <span>QNimate</span>
-              </a>
-          </div>
-          <div class="sidebar-name">
-              <a href="javascript:register_popup('qscutter', 'QScutter');">
-                  <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
-                  <span>QScutter</span>
-              </a>
-          </div>
-          <div class="sidebar-name">
-              <a href="javascript:register_popup('qidea', 'QIdea');">
-                  <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
-                  <span>QIdea</span>
-              </a>
-          </div>
-          <div class="sidebar-name">
-              <a href="javascript:register_popup('qazy', 'QAzy');">
-                  <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
-                  <span>QAzy</span>
-              </a>
-          </div>
-          <div class="sidebar-name">
-              <a href="javascript:register_popup('qblock', 'QBlock');">
-                  <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
-                  <span>QBlock</span>
-              </a>
-          </div>
-        </div>
-      </div>
+       
 </div>
     </div>
        </div>

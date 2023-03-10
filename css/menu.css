@@ -47,10 +47,10 @@ File: Menu
   .logo span span {
     color: #7fc1fc;
   }
-  .user-box a.user-link {
+  /*.user-box a.user-link {
     padding-top: 17px !important;
     padding-bottom: 17px !important;
-  }
+  }*/
   .user-box .user-img {
     position: relative;
     height: 36px;
@@ -101,7 +101,7 @@ File: Menu
     background-color: rgba(127, 193, 252, 0.4);
   }
   .side-menu.left {
-    position: absolute;
+    /*position: absolute;*/
     top: 60px;
     bottom: 0;
     border-right: 1px solid #eee;

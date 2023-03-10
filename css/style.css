@@ -448,6 +448,7 @@ input::-webkit-inner-spin-button {
   }
   .l-section_container h2{font-size:1.5em}
   .top-description-highlight_tx {font-size:1.5em}
+  .container {padding-left:5px;padding-right:5px}
 }
 @media (min-width: 768px){
 .navbar-right {
@@ -542,3 +543,29 @@ font-weight:bold
     .navbar-nav .dropdown-menu {
         position: absolute;
     }
+.fa-rocketchat,.fa-bell{
+    font-size: 25px;
+    color: #119ed8;
+    
+}  
+.menu-right{
+    padding:10px;
+   /* background-color: #eee;
+    border-radius:50%*/
+}
+.chat-list,.notification-list{
+    left: auto !important;
+    right:0
+}
+.notification-list{min-width: 100px !important;
+max-width:300px}
+.dropdown-toggle.user-chat:after,.dropdown-toggle.user-link:after{display:none}
+.notification-drop li {
+    font-size: 16px;
+    padding: 15px 0 15px 25px;
+    list-style-type: none;
+  }
+  .notification-drop li:hover {
+    background: #ddd;
+    color: rgba(0, 0, 0, 0.8);
+  }
