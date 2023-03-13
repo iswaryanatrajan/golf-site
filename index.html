@@ -8,6 +8,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@6.0.3/main.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/chat.css">
+    <link rel="stylesheet" type="text/css" href="css/menu.css">
+    <link rel="stylesheet" type="text/css" href="css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery-comments.css">
+    <link rel="stylesheet" type="text/css" href="css/images-grid.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&family=Noto+Sans+JP&display=swap" rel="stylesheet">
@@ -16,7 +21,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.0.3/index.global.min.js"></script>
     <script src="js/chat.js"></script>
-   <script>
+    <link href="fonts/Hiragino-Sans-GB-W3.otf">
+    <script type="text/javascript" src="js/jquery-comments.js"></script>
+    <script type="text/javascript" src="js/images-grid.js"></script>
+
+    ​  
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAILGVlt-SOiL381JT3TQ9dxxoNIUuxrV8&amp;libraries=places" ></script>
+    <script>
        /*   document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
         var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -83,169 +94,409 @@ $(function() {
     }
     $(this).parent().parent().remove();
   });
+
 }
+$(".locationdiv").hide();
+$('body').on('click', "#locationbtn", function (e) {
+  $(".locationdiv").toggle();
+});
+
+$(".comments").hide();
+$('body').on('click', ".showcomments", function (e) {
+  $(this).parent().parent().find('.comments').toggle();
+});
+$('body').on('click', ".like", function (e) {
+  $(this).toggleClass("fa").toggleClass("far");
+});
+
+$('.comments').comments({
+  profilePictureURL: 'https://viima-app.s3.amazonaws.com/media/public/defaults/user-icon.png',
+  getComments: function(success, error) {
+    var commentsArray = [{
+      id: 1,
+      created: '2015-10-01',
+      content: 'Lorem ipsum dolort sit amet',
+      fullname: 'Simon Powell',
+      upvote_count: 2,
+      user_has_upvoted: true
+    },{
+      id: 2,
+      created: '2015-10-05',
+      content: 'Lorem ipsum dolort sit amet',
+      fullname: 'Robert Fox',
+      upvote_count: 0,
+      user_has_upvoted: false
+    }];
+    success(commentsArray);
+  }
+});
+var gallery2img=[
+  'https://img.freepik.com/free-photo/golf-field_654080-1351.jpg',
+  'https://img.freepik.com/free-photo/golf-field_654080-1351.jpg',
+  'https://img.freepik.com/free-photo/golf-field_654080-1351.jpg',
+  'https://img.freepik.com/free-photo/golf-field_654080-1351.jpg',
+  'https://img.freepik.com/free-photo/golf-field_654080-1351.jpg',
+  'https://img.freepik.com/free-photo/golf-field_654080-1351.jpg',
+];
+$('#gallery1').imagesGrid({
+images:['https://img.freepik.com/free-photo/golf-field_654080-1351.jpg',] 
+});
+
+$('#gallery2').imagesGrid({
+
+// an array of images
+images: gallery2img,
+
+// algin images with different sizes
+align: false,
+
+// max grid cells (1-6)
+cells: 5, 
+
+// goto next image on click
+nextOnClick: true,
+
+// text for show more
+showViewAll: 'more',
+
+});
+
+
+$('#gallery3').imagesGrid({
+images:['https://img.freepik.com/free-photo/golf-field_654080-1351.jpg',
+'https://img.freepik.com/free-photo/golf-field_654080-1351.jpg']
+});
 });
     </script>
      <style>
-      .postblock{background-color: #fff;}
-      .upload__box {
-	 padding: 5px;
-}
- .upload__inputfile {
-	 width: 0.1px;
-	 height: 0.1px;
-	 opacity: 0;
-	 overflow: hidden;
-	 position: absolute;
-	 z-index: -1;
-}
 
- .upload__btn:hover {
-	 background-color: unset;
-	 color: #4045ba;
-	 transition: all 0.3s ease;
-}
- .upload__img-wrap {
-	 display: flex;
-	 flex-wrap: wrap;
-	 margin: 0 -10px;
-}
- .upload__img-box {
-	 width: 200px;
-	 padding: 0 10px;
-	 margin-bottom: 12px;
-}
- .upload__img-close {
-	 width: 24px;
-	 height: 24px;
-	 border-radius: 50%;
-	 background-color: rgba(0, 0, 0, 0.5);
-	 position: absolute;
-	 top: 10px;
-	 right: 10px;
-	 text-align: center;
-	 line-height: 24px;
-	 z-index: 1;
-	 cursor: pointer;
-}
- .upload__img-close:after {
-	 content: "\2716";
-	 font-size: 14px;
-	 color: white;
-}
- .img-bg {
-	 background-repeat: no-repeat;
-	 background-position: center;
-	 background-size: cover;
-	 position: relative;
-	 padding-bottom: 100%;
-}
+
+/*@font-face {
+    font-family: "Hiragino Sans",sans-serif;
+    src: url("../fonts/Hiragino-Sans-GB-W3.otf");
+}*/
 
     </style>
+       
+    
+      <style>
+
+
+@font-face {
+  font-family: "Helvetica-Neue";
+  src: url("fonts/Helvetica\ Neue\ Medium\ Extended.ttf");
+}
+@font-face {
+  font-family: "Hiragino Sans GB";
+  src: url("../fonts/Hiragino-Sans-GB-W3.woff");
+}
+
+
+      </style>
   </head>
   <body>
-    
-    <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top" aria-label="Third navbar example">
-      <div class="container-fluid">
-        <a href="home.html" class="d-flex align-items-center mb-3 mb-md-0  me-5 text-dark text-decoration-none">
-          <span class="fs-4">Golf</span>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+    <div id="wrapper" class="forced ">
+      <div class="topbar">
   
-        <div class="collapse navbar-collapse" id="navbarsExample03">
-          <ul class="navbar-nav me-auto mb-2 mb-sm-0">
-            <li class="nav-item"><a href="index.html" class="nav-link active" aria-current="page">ポスト</a></li>
-            <li class="nav-item"><a href="events.html" class="nav-link ">イベント</a></li>
-            <li class="nav-item"><a href="findteacher.html" class="nav-link">先生を探す</a></li>
-          </ul>
-          <a href="signup.html" class="btn btn-outline-primary me-2" name="signup">Sign Up</a>
-          <a href="signin.html"class="btn btn-primary" name="signin">Sign In</a>
+        <!-- LOGO -->
+        <div class="topbar-left">
+               <a href="home.html" class="logo"><span>Golf</span></a>
         </div>
-      </div>
-    </nav>
-    <div class="hero">  
-      <div class=""  >
-       
-          <div class="row justify-content-center p-4">
-            <div class="col-lg-5 col-12 pt-2">
-                <div class="table-responsive table-scroll at-shadow-box p-2">
-                  <p>オンライン英語個人レッスン・マンツーマンの先生を紹介</p>
-                  <p class="content_vgEyl">特長1：上質な英語のマンツーマンレッスンを格安で提供しています<br>
-                      コスパNO.1！全員がプロネイティブ講師　25分 150JPY~<br><br>
-                      
-                      特長2：あなた専用にカスタマイズされたレッスン<br>
-                      95%の受講生がAIマッチングシステムにより、自分に合ったレッスンを受講していただいております。学習目標などを記入するだけであなたにピッタリの講師をAIが見つけてくれます。<br><br>
-                      
-                      ぜひ一度、無料体験レッスンをお試しください。
-                      </p>
-                </div>
-            </div>
-        </div>
-        </div>
+  
+        <!-- Button mobile view to collapse sidebar menu -->
+        <div class="navbar navbar-default" role="navigation">
+               <div class="container">
+  
+                      <!-- Navbar-left -->
+                      <nav class="navbar top-navbar">
+                        <a class="btn border-0 waves-effect button-menu-mobile open-left" id="menu-btn"><i class="fa fa-bars"></i></a>
+                      </nav>
+  
+             
+  
+               </div><!-- end container -->
+        </div><!-- end navbar -->
   </div>
-          <div class="container mt-75px">
-          
-          
+  
+     
+        <div class="left side-menu">
+          <div id="sidebar-menu">
+            <ul>
+                   <li class="menu-title"> NAVIGATION </li>
 
-          <div class="row my-3"><div class="form-outline">
-            <input type="search" id="form1" class="form-control" placeholder="Search post" aria-label="Search" />
-          </div></div>
-          <div class="my-3">
-            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative postblock">
-                <div class="col-auto d-none d-lg-block">
-                    <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="30%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-                  </div>
-                <div class="col p-4 d-flex flex-column position-static">
+                   <li class="has_sub"><a href="home.html" class="waves-effect"><i class="fa fa-home"></i><span>Home</span> </a> </li>
+                   <li class="has_sub"><a href="index.html" class="waves-effect"><i class="fa fa-feed"></i><span>ポスト</span> </a> </li>
+                   <li class="has_sub"><a href="events.html" class="waves-effect"><i class="fa fa-calendar-days"></i><span>イベント</span> </a> 
+                   </li>
+                   <li class="has_sub"><a href="findteacher.html" class="waves-effect"><i class="fa fa-user"></i><span>先生を探す</span> </a> </li>
+      
+                   <hr>
+                   <li class="has_sub">
+                    <a href="signin.html" class="waves-effect"><span>Sign In</span> </a>
+                    <a href="signup.html" class="waves-effect"><span>Sign Out</span> </a>
+             </li>
+                
+                
+      
+            </ul>
+      </div>
+  
+  
+        </div>
+        <div class="col content-page px-0 bg-grey"> 
+  <div class="content">
+
+    <div class="hero">  
+    <div class=""  >
+     
+        <div class="row justify-content-center p-4">
+          <div class="col-lg-5 col-12 pt-2">
+              <div class="table-responsive table-scroll at-shadow-box p-2">
+                <p>オンライン英語個人レッスン・マンツーマンの先生を紹介</p>
+                <p class="content_vgEyl">特長1：上質な英語のマンツーマンレッスンを格安で提供しています<br>
+                    コスパNO.1！全員がプロネイティブ講師　25分 150JPY~<br><br>
                     
-                  <strong class="d-inline-block mb-2 text-primary">ゴルフ</strong>
-                  <h3 class="mb-0">注目のポスト 1</h3>
-                  <div class="mb-1 text-muted">Nov 12</div>
-                  <div class="mb-1"><i class="fa fa-user" style="color: #3b5998;"></i> User 1</div>
-                  <p class="card-text mb-auto">ダミーテキスト ダミーテキスト ダミーテキスト ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト ダミーテキスト ダミーテキスト ダミーテキストダミーテキストダミーテキストダミーテキスト</p>
-                  <div class="">
-                    <i class="fab fa-facebook-f" style="color: #3b5998;"></i>
-                    <i class="fab fa-twitter ms-2" style="color: #55acee;"></i>
-                  </div>
-                </div>
-              </div>
-              <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative postblock">
-                <div class="col-auto d-none d-lg-block">
-                    <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="30%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-                  </div>
-                <div class="col p-4 d-flex flex-column position-static">
+                    特長2：あなた専用にカスタマイズされたレッスン<br>
+                    95%の受講生がAIマッチングシステムにより、自分に合ったレッスンを受講していただいております。学習目標などを記入するだけであなたにピッタリの講師をAIが見つけてくれます。<br><br>
                     
-                  <strong class="d-inline-block mb-2 text-primary">イベント</strong>
-                  <h3 class="mb-0">注目のポスト 2</h3>
-                  <div class="mb-1 text-muted">Nov 12</div>
-                  <div class="mb-1"><i class="fa fa-user" style="color: #3b5998;"></i> User 1</div>
-                  <p class="card-text mb-auto">ダミーテキスト ダミーテキスト ダミーテキスト ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト ダミーテキスト ダミーテキスト ダミーテキストダミーテキストダミーテキストダミーテキスト</p>
-                  <div class="">
-                    <i class="fab fa-facebook-f" style="color: #3b5998;"></i>
-                    <i class="fab fa-twitter ms-2" style="color: #55acee;"></i>
-                  </div>
-                </div>
+                    ぜひ一度、無料体験レッスンをお試しください。
+                    </p>
               </div>
-              <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative postblock">
-                <div class="col-auto d-none d-lg-block">
-                    <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="30%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-                  </div>
-                <div class="col p-4 d-flex flex-column position-static">
-                  <strong class="d-inline-block mb-2 text-primary">ゴルフ</strong>
-                  <h3 class="mb-0">注目のポスト 3</h3>
-                  <div class="mb-1 text-muted">Nov 12</div>
-                  <div class="mb-1"><i class="fa fa-user" style="color: #3b5998;"></i> User 2</div>
-                  <p class="card-text mb-auto">ダミーテキスト ダミーテキスト ダミーテキスト ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト ダミーテキスト ダミーテキスト ダミーテキストダミーテキストダミーテキストダミーテキスト</p>
-                  <div class="">
-                    <i class="fab fa-facebook-f" style="color: #3b5998;"></i>
-                    <i class="fab fa-twitter ms-2" style="color: #55acee;"></i>
-                  </div>
-                </div>
-              </div>
-         
           </div>
-         <!-- <div id='calendar'></div>-->
+      </div>
+      </div>
+</div>
+    <div class="row container m-auto">
+      <div class="col-md-10 col-12">
+        <div class="container p-0">
+      
+
+        <div class="row my-3"><div class="form-outline">
+          <input type="search" id="form1" class="form-control" placeholder="Search post" aria-label="Search" />
+        </div></div>
+        <div class="my-3">
+          <div class="row g-0   overflow-hidden flex-md-row mb-4  h-md-250 position-relative postblock">
+              <div class="col-md-6 col-12">
+                <div id="gallery1" class="gallery"></div> </div>
+              <div class="col-md-6 col-12 p-4 d-flex flex-column position-static">
+                  
+                <strong class="d-inline-block mb-2 text-primary tag">ゴルフ</strong>
+                <h3 class="mb-0">ディエゴ博士 🇺🇸 ピアソン / ディズニー公式講師 ✅ 👧 キッズ/ティーンズ 🗣 会話</h3>
+                <div class="mb-1 text-muted">Nov 12</div>
+                <div class="mb-1 username"><i class="fa fa-user" style="color: #3b5998;"></i> User 1</div>
+                <p class="card-text mb-auto">🔥私のクライアントは、エリート大学、コンサルティング、金融、法務、およびソフトウェアの仕事に就いています。他の多くの人がキャリアと自信を大幅に高めました🔥
+                    🇬🇧 ネイティブ ブリティッシュ 🇺🇸 アメリカ在住 20 年
+                    🥇 4000時間以上のESL、楽しい+リラックス
+                    🥇 20年以上のビジネス/ファイナンス経験
+                    🥇MBA / CFA
+                    🥇セルタ/TEFL
+                    🥇プレゼンテーションと会議のアドバイス🥇
+                    </p>
+                <div class="">
+                  <i class="fab fa-facebook-f" style="color: #3b5998;"></i>
+                  <i class="fab fa-twitter ms-2" style="color: #55acee;"></i>
+                </div>
+                <div class="">
+                  <i class="far fa-heart like" style="color: #3b5998;"></i>
+                  <i class="far fa-comment ms-2 me-1 showcomments"  style="color: #3b5998;"></i>2 Comments
+                </div>
+                <div class="comments"></div>
+              </div>
+            </div>
+            <div class="row g-0  overflow-hidden flex-md-row mb-4  position-relative postblock">
+              <div class="col-md-6 col-12 ">
+                <div id="gallery2" class="gallery"></div>
+                </div>
+              <div class="col-md-6 col-12 p-4 d-flex flex-column position-static">
+                  
+                <strong class="d-inline-block mb-2 text-primary tag">イベント</strong>
+                <h3 class="mb-0">注目のポスト 2</h3>
+                <div class="mb-1 text-muted">Nov 12</div>
+                <div class="mb-1 username"><i class="fa fa-user" style="color: #3b5998;"></i> User 1</div>
+                <p class="card-text mb-auto">ダミーテキスト ダミーテキスト ダミーテキスト ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト ダミーテキスト ダミーテキスト ダミーテキストダミーテキストダミーテキストダミーテキスト</p>
+                <div class="">
+                  <i class="fab fa-facebook-f" style="color: #3b5998;"></i>
+                  <i class="fab fa-twitter ms-2" style="color: #55acee;"></i>
+                </div>
+                <div class="">
+                  <i class="far fa-heart like" style="color: #3b5998;"></i>
+                  <i class="far fa-comment ms-2 showcomments"  style="color: #3b5998;"></i>
+                </div>
+                <div class="comments"></div>
+              </div>
+            </div>
+            <div class="row g-0  overflow-hidden flex-md-row mb-4  h-md-250 position-relative postblock">
+              <div class="col-md-6 col-12 ">
+                <div id="gallery3" class="gallery"></div> </div>
+              <div class="col-md-6 col-12 p-4 d-flex flex-column position-static">
+                <strong class="d-inline-block mb-2 text-primary tag">ゴルフ</strong>
+                <h3 class="mb-0">注目のポスト 3</h3>
+                <div class="mb-1 text-muted">Nov 12</div>
+                <div class="mb-1 username"><i class="fa fa-user" style="color: #3b5998;"></i> User 2</div>
+                <p class="card-text mb-auto">🔥私のクライアントは、エリート大学、コンサルティング、金融、法務、およびソフトウェアの仕事に就いています。他の多くの人がキャリアと自信を大幅に高めました🔥
+                  🇬🇧 ネイティブ ブリティッシュ 🇺🇸 アメリカ在住 20 年
+                  🥇 4000時間以上のESL、楽しい+リラックス
+                  🥇 20年以上のビジネス/ファイナンス経験
+                  🥇MBA / CFA
+                  🥇セルタ/TEFL
+                  🥇プレゼンテーションと会議のアドバイス🥇
+                  </p> <div class="">
+                  <i class="fab fa-facebook-f" style="color: #3b5998;"></i>
+                  <i class="fab fa-twitter ms-2" style="color: #55acee;"></i>
+                </div>
+                <div class="">
+                  <i class="far fa-heart like" style="color: #3b5998;"></i>
+                  <i class="far fa-comment ms-2 showcomments"  style="color: #3b5998;"></i>
+                </div>
+                <div class="comments"></div>
+              </div>
+            </div>
+       
+        </div>
+       <!-- <div id='calendar'></div>-->
+  </div>
+      </div>
+      <div class="col-md-2 d-none d-md-block"> 
+       
+</div>
     </div>
+       </div>
+       </div>
+   </div>
+      <!--<div class="modal fade" tabindex="-1"  id="locationModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Add Location</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div>
+                <input type="text" class=" bksearch">
+                <div class="bklist">
+                </div>
+              </div>
+            ​
+              <div id="map" style="height: 300px"></div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>-->
+
+
+      <script>
+        /*const defaultMarker = [35.019162, 138.480845]
+        let map = L.map('map')
+        map.setView(defaultMarker, 13)
+        // Set up the OSM layer
+        L.tileLayer(
+        'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          maxZoom: 18
+        }).addTo(map)
+        L.marker(defaultMarker).addTo(map)
+        Bkoi.onSelect(function () {
+          // get selected data from dropdown list
+          let selectedPlace = Bkoi.getSelectedData()      
+          // center of the map
+          let center = [selectedPlace.latitude, selectedPlace.longitude]
+          // Add marker to the map & bind popup
+          map.setView(center, 19)
+          L.marker(center).addTo(map).bindPopup(selectedPlace.address)
+        })*/
+
+        // Prepare location info object.
+var locationInfo = {
+  geo: null,
+  country: null,
+  state: null,
+  city: null,
+  postalCode: null,
+  street: null,
+  streetNumber: null,
+  reset: function() {
+    this.geo = null;
+    this.country = null;
+    this.state = null;
+    this.city = null;
+    this.postalCode = null;
+    this.street = null;
+    this.streetNumber = null;
+  }
+};
+
+googleAutocomplete = {
+  autocompleteField: function(fieldId) {
+    (autocomplete = new google.maps.places.Autocomplete(
+      document.getElementById(fieldId)
+    )),
+      { types: ["geocode"] };
+    google.maps.event.addListener(autocomplete, "place_changed", function() {
+      // Segment results into usable parts.
+      var place = autocomplete.getPlace(),
+        address = place.address_components,
+        lat = place.geometry.location.lat(),
+        lng = place.geometry.location.lng();
+
+      // Reset location object.
+      locationInfo.reset();
+
+      // Save the individual address components.
+      locationInfo.geo = [lat, lng];
+      for (var i = 0; i < address.length; i++) {
+        var component = address[i].types[0];
+        switch (component) {
+          case "country":
+            locationInfo.country = address[i]["long_name"];
+            break;
+          case "administrative_area_level_1":
+            locationInfo.state = address[i]["long_name"];
+            break;
+          case "locality":
+            locationInfo.city = address[i]["long_name"];
+            break;
+          case "postal_code":
+            locationInfo.postalCode = address[i]["long_name"];
+            break;
+          case "route":
+            locationInfo.street = address[i]["long_name"];
+            break;
+          case "street_number":
+            locationInfo.streetNumber = address[i]["long_name"];
+            break;
+          default:
+            break;
+        }
+      }
+
+      // Preview map.
+      var src =
+          "https://maps.googleapis.com/maps/api/staticmap?key=AIzaSyAILGVlt-SOiL381JT3TQ9dxxoNIUuxrV8&center=" +
+          lat +
+          "," +
+          lng +
+          "&zoom=14&size=480x125&maptype=roadmap&sensor=false",
+        img = document.createElement("img");
+
+      img.src = src;
+      img.className = "absolute top-0 left-0 z-20";
+      document.getElementById("js-preview-map").appendChild(img);
+
+      // Preview JSON output.
+      document.getElementById("js-preview-json").innerHTML = JSON.stringify(
+        locationInfo,
+        null,
+        4
+      );
+    });
+  }
+};
+
+// Attach listener to address input field.
+googleAutocomplete.autocompleteField("address");
+      </script>
     </body>
     </html>

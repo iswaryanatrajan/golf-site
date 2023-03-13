@@ -93,20 +93,86 @@ p{
                         <a class="btn border-0 waves-effect button-menu-mobile open-left" id="menu-btn"><i class="fa fa-bars"></i></a>
                       </nav>
   
-                      <!-- Right(Notification) -->
-                      <ul class="nav navbar-nav navbar-right">
-                             <li class="dropdown user-box">
-                                    <a href="#" class="dropdown-toggle waves-effect user-link btn" role="button" data-bs-toggle="dropdown" id="profile" aria-expanded="true">
-                                           Admin
-                                    </a>
-  
-                                    <ul class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right user-list notify-list">
-  
-                                           <li><a href="http://165.232.142.13/fishmap/logout"><i class="ti-power-off m-r-5"></i> Logout</a></li>
-                                    </ul>
-                             </li>
-  
-                      </ul> <!-- end navbar-right -->
+                             <!-- Right(Notification) -->
+                             <ul class="nav navbar-nav navbar-right flex-row align-items-center">
+                              <li class="ps-2">
+                                <a href="#" class="dropdown-toggle waves-effect user-chat  menu-right text-decoration-none"  id="chatbtn" role="button" data-bs-toggle="dropdown" id="chat" aria-expanded="true">
+                                  <i class="fa-brands fa-rocketchat"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right chat-list shadow">
+                                  <div class="chat-sidebar">
+                                    <div class="box-header with-border">   
+                                      <h3 class="box-title">Contacts</h3> 
+                                    
+                                      </div>
+                                      <div id="chat-names" class="chat-names">
+                                    <div class="sidebar-name">
+                                        <!-- Pass username and display name to register popup -->
+                                        <a href="javascript:register_popup('Contact 1', 'Contact 1');">
+                                            <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
+                                            <span>Contact 1</span>
+                                        </a>
+                                    </div>
+                                    <div class="sidebar-name">
+                                        <a href="javascript:register_popup('qnimate', 'QNimate');">
+                                            <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
+                                            <span>QNimate</span>
+                                        </a>
+                                    </div>
+                                    <div class="sidebar-name">
+                                        <a href="javascript:register_popup('qscutter', 'QScutter');">
+                                            <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
+                                            <span>QScutter</span>
+                                        </a>
+                                    </div>
+                                    <div class="sidebar-name">
+                                        <a href="javascript:register_popup('qidea', 'QIdea');">
+                                            <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
+                                            <span>QIdea</span>
+                                        </a>
+                                    </div>
+                                    <div class="sidebar-name">
+                                        <a href="javascript:register_popup('qazy', 'QAzy');">
+                                            <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
+                                            <span>QAzy</span>
+                                        </a>
+                                    </div>
+                                    <div class="sidebar-name">
+                                        <a href="javascript:register_popup('qblock', 'QBlock');">
+                                            <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
+                                            <span>QBlock</span>
+                                        </a>
+                                    </div>
+                                  </div>
+                                </div>
+                                </div>
+                                </li>
+                                <li class="ps-2">
+                                  <a href="#" class="waves-effect user-notification  menu-right text-decoration-none"  id="notificationbtn" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                                    <i class="fa fa-bell"></i><!-- <span class="badge bg-danger rounded-circle">4</span>-->
+                                  </a>
+                                  <div class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right notification-list shadow">
+                                    <div class="notification-box">
+                                      <ul class="notification-drop ps-0">
+                                            <li>First Notification item from user goes here</li>
+                                            <li>Second Notification Item</li>
+                                            <li>Third  Notification Item</li>
+                                      </ul>
+                                  </div>
+                                  </div>
+                                  </li>
+                                   <li class="dropdown user-box ps-3">
+                                          <a href="#" class="dropdown-toggle waves-effect user-link text-decoration-none" role="button" data-bs-toggle="dropdown" id="profile" aria-expanded="true">
+                                            <img alt="..." src="https://images.unsplash.com/photo-1610271340738-726e199f0258?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3&amp;w=256&amp;h=256&amp;q=80" class="avatar avatar-sm rounded-circle me-2">
+                                          </a>
+        
+                                          <ul class="dropdown-menu dropdown-menu-right user-list notify-list">
+        
+                                                 <li><a href="http://165.232.142.13/fishmap/logout"><i class="ti-power-off m-r-5"></i> Logout</a></li>
+                                          </ul>
+                                   </li>
+        
+                            </ul> <!-- end navbar-right -->
   
                </div><!-- end container -->
         </div><!-- end navbar -->
@@ -156,11 +222,27 @@ p{
                     👨🏼‍💼 すべての年齢層・レベルに教育指導経験1年<br>
                     🏆 効率的で目標志向型のレッスンであなた目標達成に役立つ、<br>
                     📈会話&小学&フリートーク順調なスタートを切るために、専門家がレッスンプラン</p>
-                  
+                    <div class="mt-2">
+                      <div class="rating" style="width: 20rem">
+                        <input id="rating-5" type="radio" name="rating" value="5"/><label for="rating-5"><i class="fas  fa-star"></i></label>
+                        <input id="rating-4" type="radio" name="rating" value="4"  /><label for="rating-4"><i class="fas  fa-star"></i></label>
+                        <input id="rating-3" type="radio" name="rating" value="3" checked/><label for="rating-3"><i class="fas  fa-star"></i></label>
+                        <input id="rating-2" type="radio" name="rating" value="2"/><label for="rating-2"><i class="fas  fa-star"></i></label>
+                        <input id="rating-1" type="radio" name="rating" value="1"/><label for="rating-1"><i class="fas  fa-star"></i></label>
+                      </div>
+                    </div>
                   <h3 class="mt-5 title_GFvye">動画</h3>
                   <div id="container">
-                    <video id='video' controls="controls" preload='none' width="600" poster="https://assets.codepen.io/32795/poster.png" style="max-width:100%">
+                    <video id='video' controls="controls" preload='none'  poster="https://assets.codepen.io/32795/poster.png" style="max-width:100%">
                     </video>
+                    <div class="row">
+                    <div class="col-4">  <video id='video' controls="controls" preload='none'  poster="https://assets.codepen.io/32795/poster.png" style="max-width:100%">
+                    </video></div>
+                    <div class="col-4">  <video id='video' controls="controls" preload='none'  poster="https://assets.codepen.io/32795/poster.png" style="max-width:100%">
+                    </video></div>
+                    <div class="col-4">  <video id='video' controls="controls" preload='none'  poster="https://assets.codepen.io/32795/poster.png" style="max-width:100%">
+                    </video></div>
+                  </div>
                     <div class="w-70 my-3">
                       <h3 class="mt-5 title_GFvye">レッスン可能時間</h3>
                       <div id='calendar'></div>
@@ -177,56 +259,12 @@ p{
                 <div class="package-list">
                   <div class="at-radius"><button class="btn btn-warning w-100 text-start d-flex justify-content-between"><strong  class="sales-price">¥593</strong><i class="fa fa-arrow-right"></i></button></div>
               </div>
+              <a href="javascript:register_popup('教師 4', '教師 4');"  class="btn btn-outline-warning w-100 text-center userchat mt-2">先生に連絡する</a>
               </div>
               </div>
               </div>
     </div>
-    <div class="chat-sidebar">
-      <div class="box-header with-border">   
-        <h3 class="box-title">Contacts</h3> 
-      <div class="box-tools pull-right">
-        <button type="button" class="btn btn-box-tool" data-bs-target="#chat-names" data-bs-toggle="collapse"  aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-minus"></i></button></div>
-        </div>
-        <div id="chat-names" class="chat-names fade collapse">
-      <div class="sidebar-name">
-          <!-- Pass username and display name to register popup -->
-          <a href="javascript:register_popup('Contact 1', 'Contact 1');">
-              <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
-              <span>Contact 1</span>
-          </a>
-      </div>
-      <div class="sidebar-name">
-          <a href="javascript:register_popup('qnimate', 'QNimate');">
-              <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
-              <span>QNimate</span>
-          </a>
-      </div>
-      <div class="sidebar-name">
-          <a href="javascript:register_popup('qscutter', 'QScutter');">
-              <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
-              <span>QScutter</span>
-          </a>
-      </div>
-      <div class="sidebar-name">
-          <a href="javascript:register_popup('qidea', 'QIdea');">
-              <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
-              <span>QIdea</span>
-          </a>
-      </div>
-      <div class="sidebar-name">
-          <a href="javascript:register_popup('qazy', 'QAzy');">
-              <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
-              <span>QAzy</span>
-          </a>
-      </div>
-      <div class="sidebar-name">
-          <a href="javascript:register_popup('qblock', 'QBlock');">
-              <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
-              <span>QBlock</span>
-          </a>
-      </div>
-    </div>
-  </div>
+  
   </div>
   </div>
   </div>

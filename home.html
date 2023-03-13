@@ -7,20 +7,23 @@
     <title>Golf - Home</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/style.css">
-
+    <link rel="stylesheet" type="text/css" href="css/chat.css">
+    <link rel="stylesheet" type="text/css" href="css/menu.css">
+    <link rel="stylesheet" type="text/css" href="css/responsive.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&family=Noto+Sans+JP&display=swap" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <script src="js/chat.js"></script>
-<script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
         $(document).ready(function(){
 
 $('#rankingcarousel').carousel();
 let items1 = document.querySelectorAll('#teachercarousel .carousel-item');
 let items2 = document.querySelectorAll('#rankingcarousel .carousel-item');
+console.log("uogteo");
 items1.forEach((el) => {
   const minPerSlide = 4
   let next = el.nextElementSibling
@@ -68,175 +71,63 @@ SetRatingStar();
 
 });
     </script>
-     <style>
-      .hero {
-  min-height: 60vh;
-  height: 60vh;
-  background: #000 url(https://image.freepik.com/free-vector/gradient-geometric-shape-background_78532-307.jpg) center center no-repeat;
-  background-size: cover;
-  position: relative;
-}
-.hero .container{
-  height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
 
-.hero-content {
-  background: #fff;
-    padding: 20px;
-    width: 60%;
-    margin: auto;
-    border-radius: 6px;
-}
-.top-bg_container{
-  background-color: #f8f0e7;
-}
-.d-md-block .top-keyword_container {
-    display: flex;
-    width: 80%;
-    max-width: 650px;
-    margin: 2rem auto;
-}
-.top-keyword-right_container {
-    margin-top: 7.5rem;
-}
-.top-keyword-left_tx, .top-keyword-right_tx {
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 0.3rem 1.3rem;
-    font-size: 0.9rem;
-    background-color: #fff;
-    border: 2px solid #ab8c36;
-    border-radius: 1.5rem;
-}
-.top-keyword_item {
-    position: relative;
-    padding: 1rem 1rem 2rem;
-    transition: 0.2s;
-}
-.top-description-highlight_tx{
-  color: #ab8c36;
-    font-size: 1.9rem;
-    line-height: 1.8;
-}
-.top_item {
-    box-sizing: border-box;
-    padding: 0 0.5rem;
-}
-.top-experience_container img{width:100%}
-.bg_container-grey{background-color: #F7F7F7;}
-.recommended-service-owners_btn {
-    margin-left: 0.8rem;
-    padding: 0.2rem 0.8rem;
-    font-weight: normal;
-    border-radius: 1.6rem;
-    vertical-align: middle;
-    color: #00AC88;
-    border: 1px solid #00AC88;
-    background-color: #fff;
-    text-decoration: none;
-}
-
-.carousel-inner{
-  width:95%;
-  margin:auto
-}
-@media (max-width: 767px) {
-		.carousel-inner .carousel-item > div {
-			display: none;
-		}
-		.carousel-inner .carousel-item > div:first-child {
-			display: block;
-		}
-	}
-
-	.carousel-inner .carousel-item.active,
-	.carousel-inner .carousel-item-next,
-	.carousel-inner .carousel-item-prev {
-		display: flex;
-	}
-
-	/* medium and up screens */
-	@media (min-width: 768px) {
-
-		.carousel-inner .carousel-item-end.active,
-		.carousel-inner .carousel-item-next {
-			transform: translateX(25%);
-		}
-
-		.carousel-inner .carousel-item-start.active, 
-		.carousel-inner .carousel-item-prev {
-			transform: translateX(-25%);
-		}
-	}
-
-	.carousel-inner .carousel-item-end,
-	.carousel-inner .carousel-item-start { 
-		transform: translateX(0);
-	}
- .carousel-control-prev,.carousel-control-next{
-  width:3%
- }
-  .carousel-control-prev-icon,.carousel-control-next-icon {
-  background-color: #00AC88;
-    height: 3rem;
-  }
-  .star-rating {
-  line-height:16px;
-  font-size:1.25em;
-}
-.star-rating .fa-star{color: #ffa500;}
-footer{background: #fff;}
-.l-section_container {
-    width: 100%;
-    max-width: 980px;
-    margin: auto;
-    padding: 0 0 3.6rem;
-    box-sizing: border-box;
-}
-.top-keyword-left_item,.top-keyword-right_item {
-    position: relative;
-    width: 70%;
-    padding: 1rem;
-    transition: 0.2s;
-}
-.d-sm-block .top-keyword-right_item {
-    margin: 0 0 0 auto;
-}
-.d-sm-block  .top-keyword-right_tx {
-    left: auto;
-    right: 0;
-}
-    </style>
 
 
 
   </head>
 
 <body>
-    <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top" aria-label="Third navbar example">
-        <div class="container-fluid">
-          <a href="home.html" class="d-flex align-items-center mb-3 mb-md-0  me-5 text-dark text-decoration-none">
-            <span class="fs-4">Golf</span>
-          </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+  <div id="wrapper" class="forced ">
+    <div class="topbar">
+
+      <!-- LOGO -->
+      <div class="topbar-left">
+             <a href="home.html" class="logo"><span>Golf</span></a>
+      </div>
+
+      <!-- Button mobile view to collapse sidebar menu -->
+      <div class="navbar navbar-default" role="navigation">
+             <div class="container">
+
+                    <!-- Navbar-left -->
+                    <nav class="navbar top-navbar">
+                      <a class="btn border-0 waves-effect button-menu-mobile open-left" id="menu-btn"><i class="fa fa-bars"></i></a>
+                    </nav>
+
+                          
+
+             </div><!-- end container -->
+      </div><!-- end navbar -->
+</div>
+
+   
+      <div class="left side-menu">
+        <div id="sidebar-menu">
+          <ul>
+                 <li class="menu-title"> NAVIGATION </li>
+
+                 <li class="has_sub"><a href="home.html" class="waves-effect"><i class="fa fa-home"></i><span>Home</span> </a> </li>
+                 <li class="has_sub"><a href="index.html" class="waves-effect"><i class="fa fa-feed"></i><span>ポスト</span> </a> </li>
+                 <li class="has_sub"><a href="events.html" class="waves-effect"><i class="fa fa-calendar-days"></i><span>イベント</span> </a> 
+                  </li>
+                 <li class="has_sub"><a href="findteacher.html" class="waves-effect"><i class="fa fa-user"></i><span>先生を探す</span> </a> </li>
     
-          <div class="collapse navbar-collapse" id="navbarsExample03">
-            <ul class="navbar-nav me-auto mb-2 mb-sm-0">
-              <li class="nav-item"><a href="index.html" class="nav-link" aria-current="page">ポスト</a></li>
-              <li class="nav-item"><a href="events.html" class="nav-link ">イベント</a></li>
-              <li class="nav-item"><a href="findteacher.html" class="nav-link">先生を探す</a></li>
-            </ul>
-            <a href="signup.html" class="btn btn-outline-primary me-2" name="signup">Sign Up</a>
-            <a href="signin.html"class="btn btn-primary" name="signin">Sign In</a>
-          </div>
-        </div>
-      </nav>
+                 <hr>
+                 <li class="has_sub">
+                  <a href="signin.html" class="waves-effect"><span>Sign In</span> </a>
+                  <a href="signup.html" class="waves-effect"><span>Sign Out</span> </a>
+           </li>
+              
+              
+    
+          </ul>
+    </div>
+
+
+      </div>
+      <div class="col content-page px-0 bg-grey"> 
+<div class="content">
       <div class="hero d-block"> 
         <div class="container">     
           <div class="hero-content"> 
@@ -253,47 +144,47 @@ footer{background: #fff;}
         </div> 
       </div>
 
-      <div class="top-bg_container">
+      <div class="top-bg_container ">
         <section class="l-section_container p-5">
           <h2 class="top_title text-center">あなたのやってみたいが見つかる</h2>
           <div class="top-keyword_container">
             <div class="top-keyword-left_container">
-              <a href="/online/cookingcooking">
+              <a href="#">
+                <div class="top-keyword_item">
+                  <img alt="" class="top_img" width="300" src="https://img.freepik.com/free-photo/golf-field_654080-1351.jpg" >
+                  <p class="top-keyword-left_tx">tag</p>
+                </div>
+  </a>            <a href="#">
                 <div class="top-keyword_item">
                   <img alt="" class="top_img" width="300"  src="https://img.freepik.com/free-photo/golf-field_654080-1351.jpg" >
-                  <p class="top-keyword-left_tx">料理</p>
+                  <p class="top-keyword-left_tx">tag</p>
                 </div>
-  </a>            <a href="/online/uranai">
+  </a>            <a href="#">
                 <div class="top-keyword_item">
-                  <img alt="" class="top_img"  width="300"  src="https://img.freepik.com/free-photo/golf-field_654080-1351.jpg" >
-                  <p class="top-keyword-left_tx">占い</p>
-                </div>
-  </a>            <a href="/online/iInterpersonal-skills">
-                <div class="top-keyword_item">
-                  <img alt="" class="top_img"  width="300"  src="https://img.freepik.com/free-photo/golf-field_654080-1351.jpg">
-                  <p class="top-keyword-left_tx">コミュニケーションスキル</p>
+                  <img alt="" class="top_img" width="300"  src="https://img.freepik.com/free-photo/golf-field_654080-1351.jpg">
+                  <p class="top-keyword-left_tx">tag</p>
                 </div>
   </a>          
         </div>
             <div class="top-keyword-right_container">
-              <a href="/online/makeup">
+              <a href="#">
                 <div class="top-keyword_item">
-                  <img alt="" class="top_img" width="300"   src="https://img.freepik.com/free-photo/golf-field_654080-1351.jpg">  <p class="top-keyword-right_tx">メイク</p>
+                  <img alt="" class="top_img" width="300"  src="https://img.freepik.com/free-photo/golf-field_654080-1351.jpg">  <p class="top-keyword-right_tx">tag</p>
                   
                 </div>
-  </a>            <a href="/online/writing">
+  </a>            <a href="#">
                 <div class="top-keyword_item">
-                  <img alt="" class="top_img" width="300"   src="https://img.freepik.com/free-photo/golf-field_654080-1351.jpg"> <p class="top-keyword-right_tx">ライティング</p>
+                  <img alt="" class="top_img" width="300"  src="https://img.freepik.com/free-photo/golf-field_654080-1351.jpg"> <p class="top-keyword-right_tx">tag</p>
                 </div>
-  </a>            <a href="/online/video">
+  </a>            <a href="#">
                 <div class="top-keyword_item">
-                  <img alt="" class="top_img" width="300"  src="https://img.freepik.com/free-photo/golf-field_654080-1351.jpg"> <p class="top-keyword-right_tx">動画編集</p>
+                  <img alt="" class="top_img" width="300"  src="https://img.freepik.com/free-photo/golf-field_654080-1351.jpg"> <p class="top-keyword-right_tx">tag</p>
                 </div>
   </a>          </div>
           </div>
         </section>
       </div>
-   
+
 
         <section class="l-section_container">
           <h2 class="top_title text-center my-5"><span class="top-description-highlight_tx">「習いごとを始めてよかった！」</span><br>レッスンを体験した方の声をご紹介</h2>
@@ -555,7 +446,10 @@ footer{background: #fff;}
             </div>	
           </div>
         </section>
-
+       </div>
+       </div>
+       
+    
         <footer class="p-2">
           <div class="container">
             <div class="row text-center">
@@ -595,6 +489,6 @@ footer{background: #fff;}
             </div>
           </div>
         </footer>
-
+       
 </body>
 </html>

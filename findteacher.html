@@ -12,20 +12,45 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/chat.css">
+    <link rel="stylesheet" type="text/css" href="css/menu.css">
+    <link rel="stylesheet" type="text/css" href="css/responsive.css">
   <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-   
+    <script src="js/chat.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="js/chat.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.0.3/index.global.min.js"></script>
    <style>
-.userblock:hover{background-color: rgb(241, 238, 234);}
-.userblock{background-color: #fff;}
+
+     .userblock{background-color: #fff;box-shadow: 0 1px 3px 0 rgb(0 0 0 / 16%), 0 0 0 1px rgb(0 0 0 / 8%);
+    transition: box-shadow .3s cubic-bezier(.4,0,.2,1);border-radius: 5px !important;}
+    .userblock .card-text{    font-size: 14px;color:#767676;font-weight: 100;}
+    .userblock h3{  font-size: 18px;font-weight: 600;}
+    .userblock .userimg{border-radius: 50%;padding: 10px;}
+    .userblock h3 a{color:#26bbce;text-decoration: none;}
+.private-lesson>.sales-price, .trial-lesson>.sales-price {
+    font-size: 20px;
+    font-weight: 500;
+}
+.private-lesson small{font-size: 65%;}
+.btn-warning {
+    color: #000;
+    background-color: #26bbce !important;
+    border-color: #43acba !important;
+}
+.btn-outline-warning{
+    color: #26bbce;
+    background-color: #fff !important;
+    border-color: #43acba !important;
+}
+.aside-board .fc-daygrid-day-events{display:none}
+body{background: #fff !important;}
     </style>
     <script>
-          $(function() {
+      $(function() {
         $(".videoblock").hide();
-        $(".buy-btn").hover(function(e){
+        $(".buy-btn").click(function(e){
+          console.log("wrtrh");
           var btn = $(this).closest(".userblock");
           console.log("clientX: " + e.clientX + "- clientY: " + e.clientY);
           $(".videoblock").show();
@@ -35,11 +60,25 @@
       top: btn.offset().top } );
         });
 
-      });
+        var closeTimer;
+
+
+    $(".buy-btn").hover(function(e){
+      var btn = $(this).closest(".userblock");
+          console.log("clientX: " + e.clientX + "- clientY: " + e.clientY);
+          $(".videoblock").show();
+          $(".videoblock").css({
+      position: 'absolute',
+      top: btn.offset().top } );
+        });
+
+
+});
       document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
         var calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
+        fixedWeekCount:false,
         events: [
        
           {
@@ -56,27 +95,56 @@
     </script>
   </head>
   <body>
-    
-    <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top" aria-label="Third navbar example">
-      <div class="container-fluid">
-        <a href="home.html" class="d-flex align-items-center mb-3 mb-md-0  me-5 text-dark text-decoration-none">
-          <span class="fs-4">Golf</span>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+    <div id="wrapper" class="forced ">
+      <div class="topbar">
   
-        <div class="collapse navbar-collapse" id="navbarsExample03">
-          <ul class="navbar-nav me-auto mb-2 mb-sm-0">
-            <li class="nav-item"><a href="index.html" class="nav-link" aria-current="page">ポスト</a></li>
-            <li class="nav-item"><a href="events.html" class="nav-link ">イベント</a></li>
-            <li class="nav-item"><a href="findteacher.html" class="nav-link active">先生を探す</a></li>
-          </ul>
-          <a href="signup.html" class="btn btn-outline-primary me-2" name="signup">Sign Up</a>
-          <a href="signin.html"class="btn btn-primary" name="signin">Sign In</a>
+        <!-- LOGO -->
+        <div class="topbar-left">
+               <a href="home.html" class="logo"><span>Golf</span></a>
         </div>
+  
+        <!-- Button mobile view to collapse sidebar menu -->
+        <div class="navbar navbar-default" role="navigation">
+               <div class="container">
+  
+                      <!-- Navbar-left -->
+                      <nav class="navbar top-navbar">
+                        <a class="btn border-0 waves-effect button-menu-mobile open-left" id="menu-btn"><i class="fa fa-bars"></i></a>
+                      </nav>
+  
+                  
+               </div><!-- end container -->
+        </div><!-- end navbar -->
+  </div>
+  
+     
+        <div class="left side-menu">
+          <div id="sidebar-menu">
+            <ul>
+                   <li class="menu-title"> NAVIGATION </li>
+
+                   <li class="has_sub"><a href="home.html" class="waves-effect"><i class="fa fa-home"></i><span>Home</span> </a> </li>
+                   <li class="has_sub"><a href="index.html" class="waves-effect"><i class="fa fa-feed"></i><span>ポスト</span> </a> </li>
+                   <li class="has_sub"><a href="events.html" class="waves-effect"><i class="fa fa-calendar-days"></i><span>イベント</span> </a> 
+                  </li>
+                   <li class="has_sub"><a href="findteacher.html" class="waves-effect"><i class="fa fa-user"></i><span>先生を探す</span> </a> </li>
+      
+                   <hr>
+                   <li class="has_sub">
+                    <a href="signin.html" class="waves-effect"><span>Sign In</span> </a>
+                    <a href="signup.html" class="waves-effect"><span>Sign Out</span> </a>
+             </li>
+                
+                
+      
+            </ul>
       </div>
-    </nav>
+  
+  
+        </div>
+        <div class="col content-page px-0 bg-grey"> 
+  <div class="content">
+
     <div class="hero">  
       <div class=""  >
        
@@ -97,127 +165,170 @@
         </div>
         </div>
   </div>
-          <div class="row container m-auto mt-75px">
-            <div class="col-md-9 col-12">
-            <div class="my-3">
+    <div class="row container m-auto">
+      <div class="col-md-9 col-12">
+          <div class="">
+          <div class="my-3">
+            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative userblock">
+              <div class="col-auto py-3 d-none d-lg-block text-center text-center">
+                <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8" width="100" height="100" class="mx-3 userimg" alt="user"> 
+                <br><button class="btn btn-small followbtn btn-outline-warning">フォロー</button>
+              </div>
+                <div class="col p-4 d-flex flex-column position-static">
+                    
+                  <h3 class="mb-0"><a href="teacher-details.html">教師 1</a></h3>
+                  <p class="card-text mb-auto">🔥私のクライアントは、エリート大学、コンサルティング、金融、法務、およびソフトウェアの仕事に就いています。他の多くの人がキャリアと自信を大幅に高めました🔥
+                    🇬🇧 ネイティブ ブリティッシュ 🇺🇸 アメリカ在住 20 年
+                    🥇 4000時間以上のESL、楽しい+リラックス
+                    🥇 20年以上のビジネス/ファイナンス経験
+                    🥇MBA / CFA
+                    🥇セルタ/TEFL
+                    🥇プレゼンテーションと会議のアドバイス🥇
+                    </p>
+                    <div class="mt-2">
+                      <div class="rating" style="width: 20rem">
+                        <input id="rating-5" type="radio" name="rating" value="5"/><label for="rating-5"><i class="fas  fa-star"></i></label>
+                        <input id="rating-4" type="radio" name="rating" value="4" checked /><label for="rating-4"><i class="fas  fa-star"></i></label>
+                        <input id="rating-3" type="radio" name="rating" value="3"/><label for="rating-3"><i class="fas  fa-star"></i></label>
+                        <input id="rating-2" type="radio" name="rating" value="2"/><label for="rating-2"><i class="fas  fa-star"></i></label>
+                        <input id="rating-1" type="radio" name="rating" value="1"/><label for="rating-1"><i class="fas  fa-star"></i></label>
+                      </div>
+                    </div>
+                  <div class="mt-2">
+                  <span class="badge bg-secondary" style="width:max-content">コース</span>
+                  <span class="badge bg-success" style="width:max-content">毎月</span>
+                </div>
+                </div>
+                <div class="col-md-3 col-12 p-4 d-flex flex-column position-static">
+                    
+                  <div  class="private-lesson d-flex flex-column"><strong class="sales-price">¥1,879</strong><small>50分</small></div>
+                  <div class="buttons mt-2">
+                    <button  class="btn btn-warning mb-2 w-100 text-center buy-btn">体験レッスン</button>
+                    <a href="javascript:register_popup('教師 1', '教師 1');"  class="btn btn-outline-warning w-100 text-center userchat">先生に連絡する</a>
+                  </div>
+                </div>
+              </div>
               <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative userblock">
                 <div class="col-auto py-3 d-none d-lg-block text-center text-center">
                   <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8" width="100" height="100" class="mx-3 userimg" alt="user"> 
                   <br><button class="btn btn-small followbtn btn-outline-warning">フォロー</button>
                 </div>
-                  <div class="col p-4 d-flex flex-column position-static">
-                      
-                    <h3 class="mb-0"><a href="teacher-details.html">教師 1</a></h3>
-                    <p class="card-text mb-auto">🔥私のクライアントは、エリート大学、コンサルティング、金融、法務、およびソフトウェアの仕事に就いています。他の多くの人がキャリアと自信を大幅に高めました🔥
-                      🇬🇧 ネイティブ ブリティッシュ 🇺🇸 アメリカ在住 20 年
-                      🥇 4000時間以上のESL、楽しい+リラックス
-                      🥇 20年以上のビジネス/ファイナンス経験
-                      🥇MBA / CFA
-                      🥇セルタ/TEFL
-                      🥇プレゼンテーションと会議のアドバイス🥇
-                      </p>
-  
-                    <div class="mt-2">
-                    <span class="badge bg-secondary" style="width:max-content">コース</span>
-                    <span class="badge bg-success" style="width:max-content">毎月</span>
-                  </div>
-                  </div>
-                  <div class="col-md-3 col-12 p-4 d-flex flex-column position-static">
-                      
-                    <div  class="private-lesson d-flex flex-column"><strong class="sales-price">¥1,879</strong><small>50分</small></div>
-                    <div class="buttons mt-2">
-                      <button  class="btn btn-warning mb-2 w-100 text-center buy-btn">体験レッスン</button>
-                      <button  class="btn btn-outline-warning w-100 text-center">先生に連絡する</button>
+                <div class="col p-4 d-flex flex-column position-static">
+                    
+                  <h3 class="mb-0"><a href="teacher-details.html">教師 2</a></h3>
+                  <p class="card-text mb-auto">ダミーテキスト ダミーテキスト ダミーテキスト ダミーテキストダミーテキストダミーテキストダミーテキスト</p>
+                  <div class="mt-2">
+                    <div class="rating" style="width: 20rem">
+                      <input id="rating1-5" type="radio" name="rating1" value="5" /><label for="rating1-5"><i class="fas  fa-star"></i></label>
+                      <input id="rating1-4" type="radio" name="rating1" value="4"  /><label for="rating1-4"><i class="fas  fa-star"></i></label>
+                      <input id="rating1-3" type="radio" name="rating1" value="3" /><label for="rating1-3"><i class="fas  fa-star"></i></label>
+                      <input id="rating1-2" type="radio" name="rating1" value="2" checked/><label for="rating1-2"><i class="fas  fa-star"></i></label>
+                      <input id="rating1-1" type="radio" name="rating1" value="1"/><label for="rating1-1"><i class="fas  fa-star"></i></label>
                     </div>
                   </div>
+                  <div class="mt-2">
+                  <span class="badge bg-secondary" style="width:max-content">コース</span>
+                  <span class="badge bg-success" style="width:max-content">毎月</span>
                 </div>
-                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative userblock">
-                  <div class="col-auto py-3 d-none d-lg-block text-center text-center">
+                </div>
+                <div class="col-md-3 col-12 p-4 d-flex flex-column position-static">
+                    
+                  <div  class="private-lesson d-flex flex-column"><strong class="sales-price">¥1,879</strong><small>50分</small></div>
+                  <div class="buttons mt-2">
+                    <button  class="btn btn-warning mb-2 w-100 text-center buy-btn">体験レッスン</button>
+                    <a href="javascript:register_popup('教師 2', '教師 2');"  class="btn btn-outline-warning w-100 text-center userchat">先生に連絡する</a>
+                  </div>
+                </div>
+              </div>
+              <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative userblock">
+                <div class="col-auto py-3 d-none d-lg-block text-center text-center">
+                  <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8" width="100" height="100" class="mx-3 userimg" alt="user"> 
+                  <br><button class="btn btn-small followbtn btn-outline-warning">フォロー</button>
+                </div>
+                <div class="col p-4 d-flex flex-column position-static">
+                    
+                  <h3 class="mb-0"><a href="teacher-details.html">教師 3</a></h3>
+                  <p class="card-text mb-auto">ダミーテキスト ダミーテキスト ダミーテキスト ダミーテキストダミーテキストダミーテキストダミーテキスト</p>
+                  <div class="mt-2">
+                    <div class="rating" style="width: 20rem">
+                      <input id="rating3-5" type="radio" name="rating3" value="5" checked/><label for="rating3-5"><i class="fas  fa-star"></i></label>
+                      <input id="rating3-4" type="radio" name="rating3" value="4"  /><label for="rating3-4"><i class="fas  fa-star"></i></label>
+                      <input id="rating3-3" type="radio" name="rating3" value="3"/><label for="rating3-3"><i class="fas  fa-star"></i></label>
+                      <input id="rating3-2" type="radio" name="rating3" value="2"/><label for="rating3-2"><i class="fas  fa-star"></i></label>
+                      <input id="rating3-1" type="radio" name="rating3" value="1"/><label for="rating3-1"><i class="fas  fa-star"></i></label>
+                    </div>
+                  </div>
+                  <div class="mt-2">
+                  <span class="badge bg-secondary" style="width:max-content">コース</span>
+                  <span class="badge bg-success" style="width:max-content">毎月</span>
+                </div>
+                </div>
+                <div class="col-md-3 col-12 p-4 d-flex flex-column position-static">
+                    
+                  <div  class="private-lesson d-flex flex-column"><strong class="sales-price">¥1,879</strong><small>50分</small></div>
+                  <div class="buttons mt-2">
+                    <button  class="btn btn-warning mb-2 w-100 text-center buy-btn">体験レッスン</button>
+                    <a href="javascript:register_popup('教師 3', '教師 3');"  class="btn btn-outline-warning w-100 text-center userchat">先生に連絡する</a>
+                  </div>
+                </div>
+              </div>
+              <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative userblock">
+                <div class="col-auto py-3 d-none d-lg-block text-center text-center">
                     <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8" width="100" height="100" class="mx-3 userimg" alt="user"> 
                     <br><button class="btn btn-small followbtn btn-outline-warning">フォロー</button>
                   </div>
-                  <div class="col p-4 d-flex flex-column position-static">
-                      
-                    <h3 class="mb-0"><a href="teacher-details.html">教師 2</a></h3>
-                    <p class="card-text mb-auto">ダミーテキスト ダミーテキスト ダミーテキスト ダミーテキストダミーテキストダミーテキストダミーテキスト</p>
-  
-                    <div class="mt-2">
-                    <span class="badge bg-secondary" style="width:max-content">コース</span>
-                    <span class="badge bg-success" style="width:max-content">毎月</span>
-                  </div>
-                  </div>
-                  <div class="col-md-3 col-12 p-4 d-flex flex-column position-static">
-                      
-                    <div  class="private-lesson d-flex flex-column"><strong class="sales-price">¥1,879</strong><small>50分</small></div>
-                    <div class="buttons mt-2">
-                      <button  class="btn btn-warning mb-2 w-100 text-center buy-btn">体験レッスン</button>
-                      <button  class="btn btn-outline-warning w-100 text-center">先生に連絡する</button>
+                <div class="col p-4 d-flex flex-column position-static">
+                    
+                  <h3 class="mb-0"><a href="teacher-details.html">教師 4</a></h3>
+                  <p class="card-text mb-auto">ダミーテキスト ダミーテキスト ダミーテキスト ダミーテキストダミーテキストダミーテキストダミーテキスト</p>
+                  <div class="mt-2">
+                    <div class="rating" style="width: 20rem">
+                      <input id="rating4-5" type="radio" name="rating4" value="5"/><label for="rating4-5"><i class="fas  fa-star"></i></label>
+                      <input id="rating4-4" type="radio" name="rating4" value="4"  /><label for="rating4-4"><i class="fas  fa-star"></i></label>
+                      <input id="rating4-3" type="radio" name="rating4" value="3" checked/><label for="rating4-3"><i class="fas  fa-star"></i></label>
+                      <input id="rating4-2" type="radio" name="rating4" value="2"/><label for="rating4-2"><i class="fas  fa-star"></i></label>
+                      <input id="rating4-1" type="radio" name="rating4" value="1"/><label for="rating4-1"><i class="fas  fa-star"></i></label>
                     </div>
                   </div>
-                </div>
-                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative userblock">
-                  <div class="col-auto py-3 d-none d-lg-block text-center text-center">
-                    <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8" width="100" height="100" class="mx-3 userimg" alt="user"> 
-                    <br><button class="btn btn-small followbtn btn-outline-warning">フォロー</button>
-                  </div>
-                  <div class="col p-4 d-flex flex-column position-static">
-                      
-                    <h3 class="mb-0"><a href="teacher-details.html">教師 3</a></h3>
-                    <p class="card-text mb-auto">ダミーテキスト ダミーテキスト ダミーテキスト ダミーテキストダミーテキストダミーテキストダミーテキスト</p>
-  
-                    <div class="mt-2">
-                    <span class="badge bg-secondary" style="width:max-content">コース</span>
-                    <span class="badge bg-success" style="width:max-content">毎月</span>
-                  </div>
-                  </div>
-                  <div class="col-md-3 col-12 p-4 d-flex flex-column position-static">
-                      
-                    <div  class="private-lesson d-flex flex-column"><strong class="sales-price">¥1,879</strong><small>50分</small></div>
-                    <div class="buttons mt-2">
-                      <button  class="btn btn-warning mb-2 w-100 text-center buy-btn">体験レッスン</button>
-                      <button  class="btn btn-outline-warning w-100 text-center">先生に連絡する</button>
-                    </div>
-                  </div>
-                </div>
-                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative userblock">
-                  <div class="col-auto py-3 d-none d-lg-block text-center text-center">
-                      <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8" width="100" height="100" class="mx-3 userimg" alt="user"> 
-                      <br><button class="btn btn-small followbtn btn-outline-warning">フォロー</button>
-                    </div>
-                  <div class="col p-4 d-flex flex-column position-static">
-                      
-                    <h3 class="mb-0"><a href="teacher-details.html">教師 4</a></h3>
-                    <p class="card-text mb-auto">ダミーテキスト ダミーテキスト ダミーテキスト ダミーテキストダミーテキストダミーテキストダミーテキスト</p>
-  
-                    <div class="mt-2">
-                    <span class="badge bg-secondary" style="width:max-content">コース</span>
-                    <span class="badge bg-success" style="width:max-content">毎月</span>
-                  </div>
-                  </div>
-                  <div class="col-md-3 col-12 p-4 d-flex flex-column position-static">
-                      
-                    <div  class="private-lesson d-flex flex-column"><strong class="sales-price">¥1,879</strong><small>50分</small></div>
-                    <div class="buttons mt-2">
-                      <button  class="btn btn-warning mb-2 w-100 text-center buy-btn">体験レッスン</button>
-                      <button  class="btn btn-outline-warning w-100 text-center">先生に連絡する</button>
-                    </div>
-                  </div>
-                </div>
-           
-            </div>
-            </div>
-            <div class="col-md-3 d-md-block d-none">
-              <div id="container" class="">
-                <div class="p-1 videoblock aside-board at-shadow-box">
-                  <video id='video' controls="controls" preload='none' width="100%" poster="https://assets.codepen.io/32795/poster.png"></video>
-                  <div id='calendar'></div>
-                  <div class="rating-aside-footer mt-3">
-                    <a href="teacher-details.html" class="btn btn-outline-warning w-100" target="_self" rel="noopener noreferrer">講師ページを見る</a>
-                  </div>
+                  <div class="mt-2">
+                  <span class="badge bg-secondary" style="width:max-content">コース</span>
+                  <span class="badge bg-success" style="width:max-content">毎月</span>
                 </div>
                 </div>
-             
-            </div>
+                <div class="col-md-3 col-12 p-4 d-flex flex-column position-static">
+                    
+                  <div  class="private-lesson d-flex flex-column"><strong class="sales-price">¥1,879</strong><small>50分</small></div>
+                  <div class="buttons mt-2">
+                    <button  class="btn btn-warning mb-2 w-100 text-center buy-btn">体験レッスン</button>
+                    <a href="javascript:register_popup('教師 4', '教師 4');"  class="btn btn-outline-warning w-100 text-center userchat">先生に連絡する</a>
+                  </div>
+                </div>
+              </div>
+         
+          </div>
     </div>
+    </div>
+    <div class="col-md-3 d-md-block d-none">
+          <div id="container" class="">
+            <div class="p-1 videoblock aside-board at-shadow-box">
+              <video id='video' controls="controls" preload='none' width="100%" poster="https://assets.codepen.io/32795/poster.png"></video>
+              <div id='calendar'></div>
+              <div class="rating-aside-footer mt-3">
+                <a href="teacher-details.html" class="btn btn-outline-warning w-100" target="_self" rel="noopener noreferrer">講師ページを見る</a>
+                <!--<button  class="btn btn-outline-warning w-100 text-center  userchat">先生に連絡する</button>-->
+              </div>
+            </div>
+            </div>
+        </div>
+
+      </div>
+    
+     
+    </div>
+
+    </div>
+    </div>
+
+ 
     </body>
     </html>
