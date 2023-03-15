@@ -116,14 +116,14 @@ File: Menu
   .content-page {
     margin-left: 225px;
     overflow: hidden;
-    height: 90vh;
+    min-height: calc(100vh - 70px);
     overflow-y: auto;
     background: #f5f9fc;
   }
   .content-page .content {
     padding: 0 5px 10px 5px;
     margin-top: 70px;
-    min-height: 90vh;
+    min-height: calc(100vh - 70px);
   }
   .button-menu-mobile {
     background: transparent;

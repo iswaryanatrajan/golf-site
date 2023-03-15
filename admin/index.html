@@ -11,6 +11,8 @@
     <link rel="stylesheet" type="text/css" href="../css/chat.css">
     <link rel="stylesheet" type="text/css" href="../css/menu.css">
     <link rel="stylesheet" type="text/css" href="../css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="../css/jquery-comments.css">
+    <link rel="stylesheet" type="text/css" href="../css/images-grid.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&family=Noto+Sans+JP&display=swap" rel="stylesheet">
@@ -20,6 +22,11 @@
  <script src="../js/chat.js"></script>
 
     <link href="../fonts/Hiragino-Sans-GB-W3.otf">
+    <script type="text/javascript" src="../js/jquery-comments.js"></script>
+    <script type="text/javascript" src="../js/images-grid.js"></script>
+
+    ​  
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAILGVlt-SOiL381JT3TQ9dxxoNIUuxrV8&amp;libraries=places" ></script>
     <script>
        /*   document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
@@ -88,14 +95,103 @@ $(function() {
     $(this).parent().parent().remove();
   });
 }
+$(".locationdiv").hide();
+$('body').on('click', "#locationbtn", function (e) {
+  $(".locationdiv").toggle();
+});
 });
     </script>
 <script> 
   $(function(){
 
+$(".comments").hide();
+$('body').on('click', ".showcomments", function (e) {
+  $(this).parent().parent().find('.comments').toggle();
   });
+$('body').on('click', ".like", function (e) {
+  $(this).toggleClass("fa").toggleClass("far");
+});
+
+$('.comments').comments({
+  profilePictureURL: 'https://viima-app.s3.amazonaws.com/media/public/defaults/user-icon.png',
+  getComments: function(success, error) {
+    var commentsArray = [{
+      id: 1,
+      created: '2015-10-01',
+      content: 'Lorem ipsum dolort sit amet',
+      fullname: 'Simon Powell',
+      upvote_count: 2,
+      user_has_upvoted: true
+    },{
+      id: 2,
+      created: '2015-10-05',
+      content: 'Lorem ipsum dolort sit amet',
+      fullname: 'Robert Fox',
+      upvote_count: 0,
+      user_has_upvoted: false
+    }];
+    success(commentsArray);
+  }
+});
+var gallery2img=[
+  'https://img.freepik.com/free-photo/golf-field_654080-1351.jpg',
+  'https://img.freepik.com/free-photo/golf-field_654080-1351.jpg',
+  'https://img.freepik.com/free-photo/golf-field_654080-1351.jpg',
+  'https://img.freepik.com/free-photo/golf-field_654080-1351.jpg',
+  'https://img.freepik.com/free-photo/golf-field_654080-1351.jpg',
+  'https://img.freepik.com/free-photo/golf-field_654080-1351.jpg',
+];
+$('#gallery1').imagesGrid({
+images:['https://img.freepik.com/free-photo/golf-field_654080-1351.jpg',] 
+});
+
+$('#gallery2').imagesGrid({
+
+// an array of images
+images: gallery2img,
+
+// algin images with different sizes
+align: false,
+
+// max grid cells (1-6)
+cells: 5, 
+
+// goto next image on click
+nextOnClick: true,
+
+// text for show more
+showViewAll: 'more',
+
+});
+
+
+$('#gallery3').imagesGrid({
+images:['https://img.freepik.com/free-photo/golf-field_654080-1351.jpg',
+'https://img.freepik.com/free-photo/golf-field_654080-1351.jpg']
+});
+
+/*for testing */
+$('#publish').click(function(){
+var post= $('#post').val();
+console.log(post);
+$('.newpost').html(post);
+});
+/*for testing ends - delete later*/
+
+});
+
 
   </script> 
+     <style>
+.postblock p::first-line {
+  font-weight: bold;
+  font-size: 130%;
+}
+
+
+    </style>
+       
+
   </head>
   <body>
     <div id="wrapper" class="forced ">
@@ -124,7 +220,7 @@ $(function() {
 
                                   <ul class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right user-list notify-list">
 
-                                         <li><a href="http://165.232.142.13/fishmap/logout"><i class="ti-power-off m-r-5"></i> Logout</a></li>
+                                         <li><a href="../home.html"><i class="ti-power-off m-r-5"></i> Logout</a></li>
                                   </ul>
                            </li>
 
@@ -152,7 +248,7 @@ $(function() {
     
                  <hr>
                  <li class="has_sub">
-                  <a href="home.html" class="waves-effect"><i class="fa fa-power"></i><span>Logout</span> </a>
+                  <a href="../home.html" class="waves-effect"><i class="fa fa-power"></i><span>Logout</span> </a>
            </li>
               
     
@@ -169,16 +265,34 @@ $(function() {
           <div class="my-3 signedinblock">
             <textarea id="post" class="form-control" placeholder="Write a post..." rows="3"></textarea>
            
-          <div class="upload__box">
+            <div class="row m-0">
+          <div class="upload__box col-md-10 col-12">
             <div class="upload__img-wrap"></div>
             <div class="upload__btn-box">
               <label class="">
                 <p class="btn btn-outline-warning mb-0">画像をアップロード</p>
                 <input type="file" multiple="" data-max_length="20" class="upload__inputfile">
               </label>
+              <!--data-bs-toggle="modal" data-bs-target="#locationModal"-->
+              <button type="button" class="btn btn-outline-warning" id="locationbtn" >
+                Add Location
+              </button>
+
+            <div class="flex justify-center p-8 mt-3 locationdiv">
+              <div class="max-w-sm bg-white rounded overflow-hidden" style="    width: 480px;
+              height: 200px;">
+                <div class="w-full relative" id="js-preview-map"><img src="https://maps.googleapis.com/maps/api/staticmap?key=AIzaSyAILGVlt-SOiL381JT3TQ9dxxoNIUuxrV8&amp;center=35.019162, 138.480845&amp;zoom=12&amp;size=480x125&amp;maptype=roadmap&amp;sensor=false" width="480" height="125" alt="Google Maps"/></div>
+                <div class="w-full float-left border-b-2 border-gray-400 px-6 py-4">
+                  <label class="block text-gray-700 text-sm w-full font-semibold mb-2">Address:</label>
+                  <input class="w-full bg-gray-200 text-gray-700 appearance-none rounded border-2 border-gray-300 py-2 px-4" type="text" id="address"/>
+            </div>
+                <pre class="w-full bg-gray-200 text-blue-900 float-left px-6 py-4"><code id="js-preview-json"></code></pre>
+          </div>
+            </div>
             </div>
           </div>
-          <div class="text-end w-100"><a href="#" class="btn btn-warning my-2" name="publish">Publish</a></div>
+          <div class="text-end w-100 col-md-2 col-12"><a href="#" class="btn btn-warning my-2" id="publish" name="publish">Publish</a></div>
+        </div>
         </div>
 
         <div class="row my-3"><div class="form-outline">
@@ -186,16 +300,14 @@ $(function() {
         </div></div>
         <div class="my-3">
           <div class="row g-0   overflow-hidden flex-md-row mb-4  h-md-250 position-relative postblock">
-              <div class="col-md-2 col-12">
-                  <svg class="bd-placeholder-img" width="100%" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="30%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-                </div>
-              <div class="col-md-8 col-12 p-4 d-flex flex-column position-static">
+              <div class="col-md-5 col-12">
+                <div id="gallery1" class="gallery"></div> </div>
+              <div class="col-md-5 col-12 p-4 d-flex flex-column position-static">
                   
                 <strong class="d-inline-block mb-2 text-primary tag">ゴルフ</strong>
-                <h3 class="mb-0">ディエゴ博士 🇺🇸 ピアソン / ディズニー公式講師 ✅ 👧 キッズ/ティーンズ 🗣 会話</h3>
-                <div class="mb-1 text-muted">Nov 12</div>
                 <div class="mb-1 username"><i class="fa fa-user" style="color: #3b5998;"></i> User 1</div>
-                <p class="card-text mb-auto">🔥私のクライアントは、エリート大学、コンサルティング、金融、法務、およびソフトウェアの仕事に就いています。他の多くの人がキャリアと自信を大幅に高めました🔥
+                <div class="mb-1 text-muted">Nov 12</div>
+                <p class="card-text mb-auto newpost" style="white-space: pre-line">🔥私のクライアントは、エリート大学、コンサルティング、金融、法務、およびソフトウェアの仕事に就いています。他の多くの人がキャリアと自信を大幅に高めました🔥
                     🇬🇧 ネイティブ ブリティッシュ 🇺🇸 アメリカ在住 20 年
                     🥇 4000時間以上のESL、楽しい+リラックス
                     🥇 20年以上のビジネス/ファイナンス経験
@@ -207,20 +319,24 @@ $(function() {
                   <i class="fab fa-facebook-f" style="color: #3b5998;"></i>
                   <i class="fab fa-twitter ms-2" style="color: #55acee;"></i>
                 </div>
+                <div class="">
+                  <i class="far fa-heart like" style="color: #3b5998;"></i>
+                  <span class="showcomments"><i class="far fa-comment ms-2 me-1 "  style="color: #3b5998;"></i>2 Comments</span>
               </div>
-              <div class="col-md-2 col-12 p-2">
+                <div class="comments"></div>
+             </div>
+             <div class="col-md-2 col-12  p-2">
                 <a href="#" class="btn d-inline-flex btn-sm btn-neutral border-base mx-1 my-3"><span class="pe-2"><i class="fa fa-pencil"></i></span><span>Edit</span></a>
                 <a href="#" class="btn d-inline-flex btn-sm btn-primary mx-1"> <span class=" pe-2"> <i class="fa fa-trash"></i></span><span>Delete</span></a>
              </div>
             </div>
             <div class="row g-0  overflow-hidden flex-md-row mb-4  position-relative postblock">
-              <div class="col-md-2 col-12 ">
-                  <svg class="bd-placeholder-img" width="100%" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="30%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+              <div class="col-md-5 col-12 ">
+                <div id="gallery2" class="gallery"></div>
                 </div>
-              <div class="col-md-8 col-12 p-4 d-flex flex-column position-static">
+              <div class="col-md-5 col-12 p-4 d-flex flex-column position-static">
                   
                 <strong class="d-inline-block mb-2 text-primary tag">イベント</strong>
-                <h3 class="mb-0">注目のポスト 2</h3>
                 <div class="mb-1 text-muted">Nov 12</div>
                 <div class="mb-1 username"><i class="fa fa-user" style="color: #3b5998;"></i> User 1</div>
                 <p class="card-text mb-auto">ダミーテキスト ダミーテキスト ダミーテキスト ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト ダミーテキスト ダミーテキスト ダミーテキストダミーテキストダミーテキストダミーテキスト</p>
@@ -228,26 +344,41 @@ $(function() {
                   <i class="fab fa-facebook-f" style="color: #3b5998;"></i>
                   <i class="fab fa-twitter ms-2" style="color: #55acee;"></i>
                 </div>
+                <div class="">
+                  <i class="far fa-heart like" style="color: #3b5998;"></i>
+                  <span class="showcomments"><i class="far fa-comment ms-2 me-1 "  style="color: #3b5998;"></i></span>
+                </div>
+                <div class="comments"></div>
               </div>
               <div class="col-md-2 col-12  p-2">
                 <a href="#" class="btn d-inline-flex btn-sm btn-neutral border-base mx-1 my-3"><span class="pe-2"><i class="fa fa-pencil"></i></span><span>Edit</span></a>
                 <a href="#" class="btn d-inline-flex btn-sm btn-primary mx-1"> <span class=" pe-2"> <i class="fa fa-trash"></i></span><span>Delete</span></a>
              </div>
             </div>
+          
             <div class="row g-0  overflow-hidden flex-md-row mb-4  h-md-250 position-relative postblock">
-              <div class="col-md-2 col-12 ">
-                  <svg class="bd-placeholder-img" width="100%" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="30%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-                </div>
-              <div class="col-md-8 col-12 p-4 d-flex flex-column position-static">
+              <div class="col-md-5 col-12 ">
+                <div id="gallery3" class="gallery"></div> </div>
+              <div class="col-md-5 col-12 p-4 d-flex flex-column position-static">
                 <strong class="d-inline-block mb-2 text-primary tag">ゴルフ</strong>
-                <h3 class="mb-0">注目のポスト 3</h3>
                 <div class="mb-1 text-muted">Nov 12</div>
                 <div class="mb-1 username"><i class="fa fa-user" style="color: #3b5998;"></i> User 2</div>
-                <p class="card-text mb-auto">ダミーテキスト ダミーテキスト ダミーテキスト ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト ダミーテキスト ダミーテキスト ダミーテキストダミーテキストダミーテキストダミーテキスト</p>
-                <div class="">
+                <p class="card-text mb-auto">🔥私のクライアントは、エリート大学、コンサルティング、金融、法務、およびソフトウェアの仕事に就いています。他の多くの人がキャリアと自信を大幅に高めました🔥
+                  🇬🇧 ネイティブ ブリティッシュ 🇺🇸 アメリカ在住 20 年
+                  🥇 4000時間以上のESL、楽しい+リラックス
+                  🥇 20年以上のビジネス/ファイナンス経験
+                  🥇MBA / CFA
+                  🥇セルタ/TEFL
+                  🥇プレゼンテーションと会議のアドバイス🥇
+                  </p> <div class="">
                   <i class="fab fa-facebook-f" style="color: #3b5998;"></i>
                   <i class="fab fa-twitter ms-2" style="color: #55acee;"></i>
                 </div>
+                <div class="">
+                  <i class="far fa-heart like" style="color: #3b5998;"></i>
+                  <span class="showcomments"><i class="far fa-comment ms-2 me-1 "  style="color: #3b5998;"></i></span>
+                </div>
+                <div class="comments"></div>
               </div>
               <div class="col-md-2 col-12  p-2">
                 <a href="#" class="btn d-inline-flex btn-sm btn-neutral border-base mx-1 my-3"><span class="pe-2"><i class="fa fa-pencil"></i></span><span>Edit</span></a>
@@ -259,52 +390,7 @@ $(function() {
        <!-- <div id='calendar'></div>-->
   </div>
    
-        <div class="chat-sidebar">
-          <div class="box-header with-border">   
-            <h3 class="box-title">Contacts</h3> 
-          <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-bs-target="#chat-names" data-bs-toggle="collapse"  aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-minus"></i></button></div>
-            </div>
-            <div id="chat-names" class="chat-names fade collapse">
-          <div class="sidebar-name">
-              <!-- Pass username and display name to register popup -->
-              <a href="javascript:register_popup('Contact 1', 'Contact 1');">
-                  <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
-                  <span>Contact 1</span>
-              </a>
-          </div>
-          <div class="sidebar-name">
-              <a href="javascript:register_popup('qnimate', 'QNimate');">
-                  <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
-                  <span>QNimate</span>
-              </a>
-          </div>
-          <div class="sidebar-name">
-              <a href="javascript:register_popup('qscutter', 'QScutter');">
-                  <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
-                  <span>QScutter</span>
-              </a>
-          </div>
-          <div class="sidebar-name">
-              <a href="javascript:register_popup('qidea', 'QIdea');">
-                  <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
-                  <span>QIdea</span>
-              </a>
-          </div>
-          <div class="sidebar-name">
-              <a href="javascript:register_popup('qazy', 'QAzy');">
-                  <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
-                  <span>QAzy</span>
-              </a>
-          </div>
-          <div class="sidebar-name">
-              <a href="javascript:register_popup('qblock', 'QBlock');">
-                  <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
-                  <span>QBlock</span>
-              </a>
-          </div>
-        </div>
-      </div>
+   
 
     </div>
   </div>

@@ -166,33 +166,29 @@ $('#gallery3').imagesGrid({
 images:['https://img.freepik.com/free-photo/golf-field_654080-1351.jpg',
 'https://img.freepik.com/free-photo/golf-field_654080-1351.jpg']
 });
+
+/*for testing */
+$('#publish').click(function(){
+var post= $('#post').val();
+console.log(post);
+$('.newpost').html(post);
 });
+/*for testing ends - delete later*/
+
+});
+
+
     </script>
      <style>
+.postblock p::first-line {
+  font-weight: bold;
+  font-size: 130%;
+}
 
-
-/*@font-face {
-    font-family: "Hiragino Sans",sans-serif;
-    src: url("../fonts/Hiragino-Sans-GB-W3.otf");
-}*/
 
     </style>
        
-    
-      <style>
 
-
-@font-face {
-  font-family: "Helvetica-Neue";
-  src: url("fonts/Helvetica\ Neue\ Medium\ Extended.ttf");
-}
-@font-face {
-  font-family: "Hiragino Sans GB";
-  src: url("../fonts/Hiragino-Sans-GB-W3.woff");
-}
-
-
-      </style>
   </head>
   <body>
     <div id="wrapper" class="forced ">
@@ -287,7 +283,7 @@ images:['https://img.freepik.com/free-photo/golf-field_654080-1351.jpg',
   
                                     <ul class="dropdown-menu dropdown-menu-right user-list notify-list">
   
-                                           <li><a href="http://165.232.142.13/fishmap/logout"><i class="ti-power-off m-r-5"></i> Logout</a></li>
+                                           <li><a href="../home.html"><i class="ti-power-off m-r-5"></i> Logout</a></li>
                                     </ul>
                              </li>
   
@@ -314,7 +310,7 @@ images:['https://img.freepik.com/free-photo/golf-field_654080-1351.jpg',
       
                    <hr>
                    <li class="has_sub">
-                    <a href="home.html" class="waves-effect"><i class="fa fa-power"></i><span>Logout</span> </a>
+                    <a href="../home.html" class="waves-effect"><i class="fa fa-power"></i><span>Logout</span> </a>
              </li>
                 
       
@@ -347,12 +343,12 @@ images:['https://img.freepik.com/free-photo/golf-field_654080-1351.jpg',
       </div>
 </div>
     <div class="row container m-auto">
-      <div class="col-md-10 col-12">
+      <div class="col-lg-10 col-12">
         <div class="container p-0">
           <div class="my-3 signedinblock">
             <textarea id="post" class="form-control" placeholder="Write a post..." rows="3"></textarea>
-           
-          <div class="upload__box">
+            <div class="row m-0">
+          <div class="upload__box col-md-10 col-12">
             <div class="upload__img-wrap"></div>
             <div class="upload__btn-box">
               <label class="">
@@ -377,7 +373,8 @@ images:['https://img.freepik.com/free-photo/golf-field_654080-1351.jpg',
             </div>
             </div>
           </div>
-          <div class="text-end w-100"><a href="#" class="btn btn-warning my-2" name="publish">Publish</a></div>
+          <div class="text-end col-md-2 col-12"><a href="#" class="btn btn-warning my-2" id="publish" name="publish">Publish</a></div>
+        </div>
         </div>
 
         <div class="row my-3"><div class="form-outline">
@@ -390,10 +387,9 @@ images:['https://img.freepik.com/free-photo/golf-field_654080-1351.jpg',
               <div class="col-md-6 col-12 p-4 d-flex flex-column position-static">
                   
                 <strong class="d-inline-block mb-2 text-primary tag">ゴルフ</strong>
-                <h3 class="mb-0">ディエゴ博士 🇺🇸 ピアソン / ディズニー公式講師 ✅ 👧 キッズ/ティーンズ 🗣 会話</h3>
-                <div class="mb-1 text-muted">Nov 12</div>
                 <div class="mb-1 username"><i class="fa fa-user" style="color: #3b5998;"></i> User 1</div>
-                <p class="card-text mb-auto">🔥私のクライアントは、エリート大学、コンサルティング、金融、法務、およびソフトウェアの仕事に就いています。他の多くの人がキャリアと自信を大幅に高めました🔥
+                <div class="mb-1 text-muted">Nov 12</div>
+                <p class="card-text mb-auto newpost" style="white-space: pre-line">🔥私のクライアントは、エリート大学、コンサルティング、金融、法務、およびソフトウェアの仕事に就いています。他の多くの人がキャリアと自信を大幅に高めました🔥
                     🇬🇧 ネイティブ ブリティッシュ 🇺🇸 アメリカ在住 20 年
                     🥇 4000時間以上のESL、楽しい+リラックス
                     🥇 20年以上のビジネス/ファイナンス経験
@@ -401,13 +397,14 @@ images:['https://img.freepik.com/free-photo/golf-field_654080-1351.jpg',
                     🥇セルタ/TEFL
                     🥇プレゼンテーションと会議のアドバイス🥇
                     </p>
+                    
                 <div class="">
                   <i class="fab fa-facebook-f" style="color: #3b5998;"></i>
                   <i class="fab fa-twitter ms-2" style="color: #55acee;"></i>
                 </div>
                 <div class="">
                   <i class="far fa-heart like" style="color: #3b5998;"></i>
-                  <i class="far fa-comment ms-2 me-1 showcomments"  style="color: #3b5998;"></i>2 Comments
+                  <span class="showcomments"><i class="far fa-comment ms-2 me-1 "  style="color: #3b5998;"></i>2 Comments</span>
                 </div>
                 <div class="comments"></div>
               </div>
@@ -419,7 +416,6 @@ images:['https://img.freepik.com/free-photo/golf-field_654080-1351.jpg',
               <div class="col-md-6 col-12 p-4 d-flex flex-column position-static">
                   
                 <strong class="d-inline-block mb-2 text-primary tag">イベント</strong>
-                <h3 class="mb-0">注目のポスト 2</h3>
                 <div class="mb-1 text-muted">Nov 12</div>
                 <div class="mb-1 username"><i class="fa fa-user" style="color: #3b5998;"></i> User 1</div>
                 <p class="card-text mb-auto">ダミーテキスト ダミーテキスト ダミーテキスト ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト ダミーテキスト ダミーテキスト ダミーテキストダミーテキストダミーテキストダミーテキスト</p>
@@ -429,7 +425,7 @@ images:['https://img.freepik.com/free-photo/golf-field_654080-1351.jpg',
                 </div>
                 <div class="">
                   <i class="far fa-heart like" style="color: #3b5998;"></i>
-                  <i class="far fa-comment ms-2 showcomments"  style="color: #3b5998;"></i>
+                  <span class="showcomments"><i class="far fa-comment ms-2 me-1 "  style="color: #3b5998;"></i></span>
                 </div>
                 <div class="comments"></div>
               </div>
@@ -439,7 +435,6 @@ images:['https://img.freepik.com/free-photo/golf-field_654080-1351.jpg',
                 <div id="gallery3" class="gallery"></div> </div>
               <div class="col-md-6 col-12 p-4 d-flex flex-column position-static">
                 <strong class="d-inline-block mb-2 text-primary tag">ゴルフ</strong>
-                <h3 class="mb-0">注目のポスト 3</h3>
                 <div class="mb-1 text-muted">Nov 12</div>
                 <div class="mb-1 username"><i class="fa fa-user" style="color: #3b5998;"></i> User 2</div>
                 <p class="card-text mb-auto">🔥私のクライアントは、エリート大学、コンサルティング、金融、法務、およびソフトウェアの仕事に就いています。他の多くの人がキャリアと自信を大幅に高めました🔥
@@ -455,7 +450,7 @@ images:['https://img.freepik.com/free-photo/golf-field_654080-1351.jpg',
                 </div>
                 <div class="">
                   <i class="far fa-heart like" style="color: #3b5998;"></i>
-                  <i class="far fa-comment ms-2 showcomments"  style="color: #3b5998;"></i>
+                  <span class="showcomments"><i class="far fa-comment ms-2 me-1 "  style="color: #3b5998;"></i></span>
                 </div>
                 <div class="comments"></div>
               </div>
@@ -465,7 +460,7 @@ images:['https://img.freepik.com/free-photo/golf-field_654080-1351.jpg',
        <!-- <div id='calendar'></div>-->
   </div>
       </div>
-      <div class="col-md-2 d-none d-md-block"> 
+      <div class="col-lg-2 d-none d-md-block"> 
        
 </div>
     </div>
