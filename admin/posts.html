@@ -211,9 +211,75 @@ $('.newpost').html(post);
                       <a class="btn border-0 waves-effect button-menu-mobile open-left" id="menu-btn"><i class="fa fa-bars"></i></a>
                     </nav>
 
-                    <!-- Right(Notification) -->
-                    <ul class="nav navbar-nav navbar-right">
-                           <li class="dropdown user-box">
+                     <!-- Right(Notification) -->
+                     <ul class="nav navbar-nav navbar-right flex-row align-items-center">
+                      <li class="ps-2">
+                        <a href="#" class="dropdown-toggle waves-effect user-chat  menu-right text-decoration-none"  id="chatbtn" role="button" data-bs-toggle="dropdown" id="chat" aria-expanded="true">
+                          <i class="fa-brands fa-rocketchat"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right chat-list shadow">
+                          <div class="chat-sidebar">
+                            <div class="box-header with-border">   
+                              <h3 class="box-title">Contacts</h3> 
+                            
+                              </div>
+                              <div id="chat-names" class="chat-names">
+                            <div class="sidebar-name">
+                                <!-- Pass username and display name to register popup -->
+                                <a href="javascript:register_popup('Contact 1', 'Contact 1');">
+                                    <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
+                                    <span>Contact 1</span>
+                                </a>
+                            </div>
+                            <div class="sidebar-name">
+                                <a href="javascript:register_popup('qnimate', 'QNimate');">
+                                    <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
+                                    <span>QNimate</span>
+                                </a>
+                            </div>
+                            <div class="sidebar-name">
+                                <a href="javascript:register_popup('qscutter', 'QScutter');">
+                                    <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
+                                    <span>QScutter</span>
+                                </a>
+                            </div>
+                            <div class="sidebar-name">
+                                <a href="javascript:register_popup('qidea', 'QIdea');">
+                                    <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
+                                    <span>QIdea</span>
+                                </a>
+                            </div>
+                            <div class="sidebar-name">
+                                <a href="javascript:register_popup('qazy', 'QAzy');">
+                                    <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
+                                    <span>QAzy</span>
+                                </a>
+                            </div>
+                            <div class="sidebar-name">
+                                <a href="javascript:register_popup('qblock', 'QBlock');">
+                                    <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
+                                    <span>QBlock</span>
+                                </a>
+                            </div>
+                          </div>
+                        </div>
+                        </div>
+                        </li>
+                        <li class="ps-2">
+                          <a href="#" class="waves-effect user-notification  menu-right text-decoration-none"  id="notificationbtn" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                            <i class="fa fa-bell"></i><!-- <span class="badge bg-danger rounded-circle">4</span>-->
+                          </a>
+                          <div class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right notification-list shadow">
+                            <div class="notification-box">
+                              <ul class="notification-drop ps-0">
+                                    <li>First Notification item from user goes here</li>
+                                    <li>Second Notification Item</li>
+                                    <li>Third  Notification Item</li>
+                              </ul>
+                          </div>
+                          </div>
+                          </li>
+                           <li class="dropdown user-box ps-3">
                                   <a href="#" class="dropdown-toggle waves-effect user-link btn" role="button" data-bs-toggle="dropdown" id="profile" aria-expanded="true">
                                          Admin
                                   </a>
@@ -326,7 +392,7 @@ $('.newpost').html(post);
                 <div class="comments"></div>
              </div>
              <div class="col-md-2 col-12  p-2">
-                <a href="#" class="btn d-inline-flex btn-sm btn-neutral border-base mx-1 my-3"><span class="pe-2"><i class="fa fa-pencil"></i></span><span>Edit</span></a>
+                <a href="editpost.html" class="btn d-inline-flex btn-sm btn-neutral border-base mx-1 my-3"><span class="pe-2"><i class="fa fa-pencil"></i></span><span>Edit</span></a>
                 <a href="#" class="btn d-inline-flex btn-sm btn-primary mx-1"> <span class=" pe-2"> <i class="fa fa-trash"></i></span><span>Delete</span></a>
              </div>
             </div>

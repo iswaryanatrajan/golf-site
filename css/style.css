@@ -450,6 +450,7 @@ input::-webkit-inner-spin-button {
   .l-section_container h2{font-size:1.5em}
   .top-description-highlight_tx {font-size:1.5em}
   .container {padding-left:5px;padding-right:5px}
+  .logo::before{content:"G"}
 }
 @media (min-width: 768px){
 .navbar-right {

@@ -180,20 +180,86 @@ $(function() {
                         <a class="btn border-0 waves-effect button-menu-mobile open-left" id="menu-btn"><i class="fa fa-bars"></i></a>
                       </nav>
   
-                      <!-- Right(Notification) -->
-                      <ul class="nav navbar-nav navbar-right">
-                             <li class="dropdown user-box">
-                                    <a href="#" class="dropdown-toggle waves-effect user-link btn" role="button" data-bs-toggle="dropdown" id="profile" aria-expanded="true">
-                                           Admin
-                                    </a>
-  
-                                    <ul class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right user-list notify-list">
-  
-                                           <li><a href="../index.html"><i class="ti-power-off m-r-5"></i> Logout</a></li>
+                        <!-- Right(Notification) -->
+                        <ul class="nav navbar-nav navbar-right flex-row align-items-center">
+                            <li class="ps-2">
+                              <a href="#" class="dropdown-toggle waves-effect user-chat  menu-right text-decoration-none"  id="chatbtn" role="button" data-bs-toggle="dropdown" id="chat" aria-expanded="true">
+                                <i class="fa-brands fa-rocketchat"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right chat-list shadow">
+                                <div class="chat-sidebar">
+                                  <div class="box-header with-border">   
+                                    <h3 class="box-title">Contacts</h3> 
+                                  
+                                    </div>
+                                    <div id="chat-names" class="chat-names">
+                                  <div class="sidebar-name">
+                                      <!-- Pass username and display name to register popup -->
+                                      <a href="javascript:register_popup('Contact 1', 'Contact 1');">
+                                          <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
+                                          <span>Contact 1</span>
+                                      </a>
+                                  </div>
+                                  <div class="sidebar-name">
+                                      <a href="javascript:register_popup('qnimate', 'QNimate');">
+                                          <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
+                                          <span>QNimate</span>
+                                      </a>
+                                  </div>
+                                  <div class="sidebar-name">
+                                      <a href="javascript:register_popup('qscutter', 'QScutter');">
+                                          <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
+                                          <span>QScutter</span>
+                                      </a>
+                                  </div>
+                                  <div class="sidebar-name">
+                                      <a href="javascript:register_popup('qidea', 'QIdea');">
+                                          <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
+                                          <span>QIdea</span>
+                                      </a>
+                                  </div>
+                                  <div class="sidebar-name">
+                                      <a href="javascript:register_popup('qazy', 'QAzy');">
+                                          <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
+                                          <span>QAzy</span>
+                                      </a>
+                                  </div>
+                                  <div class="sidebar-name">
+                                      <a href="javascript:register_popup('qblock', 'QBlock');">
+                                          <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
+                                          <span>QBlock</span>
+                                      </a>
+                                  </div>
+                                </div>
+                              </div>
+                              </div>
+                              </li>
+                              <li class="ps-2">
+                                <a href="#" class="waves-effect user-notification  menu-right text-decoration-none"  id="notificationbtn" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                                  <i class="fa fa-bell"></i><!-- <span class="badge bg-danger rounded-circle">4</span>-->
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right notification-list shadow">
+                                  <div class="notification-box">
+                                    <ul class="notification-drop ps-0">
+                                          <li>First Notification item from user goes here</li>
+                                          <li>Second Notification Item</li>
+                                          <li>Third  Notification Item</li>
                                     </ul>
-                             </li>
-  
-                      </ul> <!-- end navbar-right -->
+                                </div>
+                                </div>
+                                </li>
+                                 <li class="dropdown user-box ps-3">
+                                        <a href="#" class="dropdown-toggle waves-effect user-link btn" role="button" data-bs-toggle="dropdown" id="profile" aria-expanded="true">
+                                               Admin
+                                        </a>
+      
+                                        <ul class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right user-list notify-list">
+      
+                                               <li><a href="../index.html"><i class="ti-power-off m-r-5"></i> Logout</a></li>
+                                        </ul>
+                                 </li>
+      
+                          </ul> <!-- end navbar-right -->
   
                </div><!-- end container -->
         </div><!-- end navbar -->
@@ -228,11 +294,11 @@ $(function() {
   <div class="col content-page px-0"> 
     <div class="content">
 
-            <div class="mb-npx p-3">
-                <div class="row align-items-center">
-                    <div class="col-sm-6 col-12 mb-4 mb-sm-0">
-                        <!-- Title -->
-                        <h1 class="h2 mb-4 ls-tight">Users</h1>
+        <div class="m-3 page-title-box">
+            <div class="row align-items-center">
+                <div class="col-sm-6 col-12 mb-4 mb-sm-0">
+                    <!-- Title -->
+                    <h1 class="page-title">Users</h1>
                     </div>
                     <!-- Actions -->
                     <div class="col-sm-6 col-12 text-sm-end">
@@ -251,7 +317,7 @@ $(function() {
 
                 <div class="card border-0 shadow mb-7 p-3 br-1">
                     <div class="table-responsive ">
-                        <table id="userlist" class="table table-hover table-nowrap">
+                        <table id="userlist" class="table table-hover table-nowrap py-3">
                             <thead class="thead-light">
                                 <tr>
                                     <th scope="col">Name</th>
@@ -387,9 +453,7 @@ $(function() {
                             </tbody>
                         </table>
                     </div>
-                    <div class="card-footer border-0 py-5 bg-white">
-                        <span class="text-muted text-sm">Showing 10 items out of 250 results found</span>
-                    </div>
+                  
                 </div>
               
              

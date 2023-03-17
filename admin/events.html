@@ -181,8 +181,74 @@ $(function() {
                       </nav>
   
                       <!-- Right(Notification) -->
-                      <ul class="nav navbar-nav navbar-right">
-                             <li class="dropdown user-box">
+                      <ul class="nav navbar-nav navbar-right flex-row align-items-center">
+                        <li class="ps-2">
+                          <a href="#" class="dropdown-toggle waves-effect user-chat  menu-right text-decoration-none"  id="chatbtn" role="button" data-bs-toggle="dropdown" id="chat" aria-expanded="true">
+                            <i class="fa-brands fa-rocketchat"></i>
+                          </a>
+                          <div class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right chat-list shadow">
+                            <div class="chat-sidebar">
+                              <div class="box-header with-border">   
+                                <h3 class="box-title">Contacts</h3> 
+                              
+                                </div>
+                                <div id="chat-names" class="chat-names">
+                              <div class="sidebar-name">
+                                  <!-- Pass username and display name to register popup -->
+                                  <a href="javascript:register_popup('Contact 1', 'Contact 1');">
+                                      <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
+                                      <span>Contact 1</span>
+                                  </a>
+                              </div>
+                              <div class="sidebar-name">
+                                  <a href="javascript:register_popup('qnimate', 'QNimate');">
+                                      <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
+                                      <span>QNimate</span>
+                                  </a>
+                              </div>
+                              <div class="sidebar-name">
+                                  <a href="javascript:register_popup('qscutter', 'QScutter');">
+                                      <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
+                                      <span>QScutter</span>
+                                  </a>
+                              </div>
+                              <div class="sidebar-name">
+                                  <a href="javascript:register_popup('qidea', 'QIdea');">
+                                      <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
+                                      <span>QIdea</span>
+                                  </a>
+                              </div>
+                              <div class="sidebar-name">
+                                  <a href="javascript:register_popup('qazy', 'QAzy');">
+                                      <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
+                                      <span>QAzy</span>
+                                  </a>
+                              </div>
+                              <div class="sidebar-name">
+                                  <a href="javascript:register_popup('qblock', 'QBlock');">
+                                      <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
+                                      <span>QBlock</span>
+                                  </a>
+                              </div>
+                            </div>
+                          </div>
+                          </div>
+                          </li>
+                          <li class="ps-2">
+                            <a href="#" class="waves-effect user-notification  menu-right text-decoration-none"  id="notificationbtn" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                              <i class="fa fa-bell"></i><!-- <span class="badge bg-danger rounded-circle">4</span>-->
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right notification-list shadow">
+                              <div class="notification-box">
+                                <ul class="notification-drop ps-0">
+                                      <li>First Notification item from user goes here</li>
+                                      <li>Second Notification Item</li>
+                                      <li>Third  Notification Item</li>
+                                </ul>
+                            </div>
+                            </div>
+                            </li>
+                             <li class="dropdown user-box ps-3">
                                     <a href="#" class="dropdown-toggle waves-effect user-link btn" role="button" data-bs-toggle="dropdown" id="profile" aria-expanded="true">
                                            Admin
                                     </a>
@@ -228,11 +294,11 @@ $(function() {
   <div class="col content-page px-0"> 
     <div class="content">
 
-            <div class="mb-npx p-3">
+            <div class="m-3 page-title-box">
                 <div class="row align-items-center">
                     <div class="col-sm-6 col-12 mb-4 mb-sm-0">
                         <!-- Title -->
-                        <h1 class="h2 mb-4 ls-tight">Events</h1>
+                        <h1 class="page-title">Events</h1>
                     </div>
                     <!-- Actions -->
                     <div class="col-sm-6 col-12 text-sm-end">
@@ -249,9 +315,9 @@ $(function() {
             </div>
             <div class="row m-auto p-3">
 
-                <div class="card border-0 mb-7 p-3 shadow br-1">
+                <div class="card border-0 mb-5 p-3 shadow br-1">
                     <div class="table-responsive">
-                        <table id="userlist" class="table table-hover table-nowrap">
+                        <table id="userlist" class="table table-hover table-nowrap py-3">
                             <thead class="thead-light">
                                 <tr>
                                     <th scope="col">Feed Id</th>
@@ -282,11 +348,10 @@ $(function() {
                                     <td>2022-03-23 00:58:31</td>
                                     <td ><img src="https://img.freepik.com/free-vector/golf-swing-silhouette-collection_23-2147768420.jpg?w=826&amp;t=st=1675408330~exp=1675408930~hmac=e4411e2879607034615fcc432dc0062727a403bfab00d1e29466443da45a9a59" class="avatar avatar-sm  me-2"> </td>
                                      
-                                      <td class="text-end">
-                                        <a href="#" class="btn btn-sm btn-neutral text-neutral-hover"><i class="fa fa-pen"></i></a>
-                                        <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
-                                            <i class="fa fa-trash"></i>
-                                        </button>
+                                      <td >
+                                        <a href="event-details.html" class="btn btn-sm btn-neutral text-neutral-hover"><i class="fa fa-eye"></i></a>
+                                        <a href="createevent.html" class="btn btn-sm btn-neutral text-neutral-hover"><i class="fa fa-pen"></i></a><!--edit event-->
+                                        <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover"><i class="fa fa-trash"></i> </button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -302,8 +367,9 @@ $(function() {
                                     <td>2022-03-23 00:58:31</td>
                                     <td ><img src="https://img.freepik.com/free-vector/golf-swing-silhouette-collection_23-2147768420.jpg?w=826&amp;t=st=1675408330~exp=1675408930~hmac=e4411e2879607034615fcc432dc0062727a403bfab00d1e29466443da45a9a59" class="avatar avatar-sm  me-2"> </td>
                                      
-                                      <td class="text-end">
-                                        <a href="#" class="btn btn-sm btn-neutral text-neutral-hover"><i class="fa fa-pen"></i></a>
+                                      <td >
+                                        <a href="event-details.html" class="btn btn-sm btn-neutral text-neutral-hover"><i class="fa fa-eye"></i></a>
+                                        <a href="createevent.html" class="btn btn-sm btn-neutral text-neutral-hover"><i class="fa fa-pen"></i></a>
                                         <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
                                             <i class="fa fa-trash"></i>
                                         </button>
@@ -322,8 +388,9 @@ $(function() {
                                     <td>2022-03-23 00:58:31</td>
                                     <td ><img src="https://img.freepik.com/free-vector/golf-swing-silhouette-collection_23-2147768420.jpg?w=826&amp;t=st=1675408330~exp=1675408930~hmac=e4411e2879607034615fcc432dc0062727a403bfab00d1e29466443da45a9a59" class="avatar avatar-sm  me-2"> </td>
                                      
-                                      <td class="text-end">
-                                        <a href="#" class="btn btn-sm btn-neutral text-neutral-hover"><i class="fa fa-pen"></i></a>
+                                      <td >
+                                        <a href="event-details.html" class="btn btn-sm btn-neutral text-neutral-hover"><i class="fa fa-eye"></i></a>
+                                        <a href="createevent.html" class="btn btn-sm btn-neutral text-neutral-hover"><i class="fa fa-pen"></i></a>
                                         <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
                                             <i class="fa fa-trash"></i>
                                         </button>

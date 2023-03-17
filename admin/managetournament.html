@@ -72,7 +72,7 @@ p {
   margin-right: 10px;
   background: #eee;
   padding: 5px;
-  width: 143px;
+  width: max-content;
   min-height: 1.5em;
   font-size: 0.85em;
 }
@@ -80,7 +80,8 @@ p {
   margin: 5px;
   padding: 5px;
   font-size: 1.2em;
-  width: 120px;
+  width: max-content;
+  min-width: 185px;
 }
 .facet-list li.placeholder {
   height: 1.2em
@@ -121,16 +122,82 @@ p {
                         <a class="btn border-0 waves-effect button-menu-mobile open-left" id="menu-btn"><i class="fa fa-bars"></i></a>
                       </nav>
   
-                      <!-- Right(Notification) -->
-                      <ul class="nav navbar-nav navbar-right">
-                             <li class="dropdown user-box">
+                       <!-- Right(Notification) -->
+                       <ul class="nav navbar-nav navbar-right flex-row align-items-center">
+                        <li class="ps-2">
+                          <a href="#" class="dropdown-toggle waves-effect user-chat  menu-right text-decoration-none"  id="chatbtn" role="button" data-bs-toggle="dropdown" id="chat" aria-expanded="true">
+                            <i class="fa-brands fa-rocketchat"></i>
+                          </a>
+                          <div class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right chat-list shadow">
+                            <div class="chat-sidebar">
+                              <div class="box-header with-border">   
+                                <h3 class="box-title">Contacts</h3> 
+                              
+                                </div>
+                                <div id="chat-names" class="chat-names">
+                              <div class="sidebar-name">
+                                  <!-- Pass username and display name to register popup -->
+                                  <a href="javascript:register_popup('Contact 1', 'Contact 1');">
+                                      <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
+                                      <span>Contact 1</span>
+                                  </a>
+                              </div>
+                              <div class="sidebar-name">
+                                  <a href="javascript:register_popup('qnimate', 'QNimate');">
+                                      <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
+                                      <span>QNimate</span>
+                                  </a>
+                              </div>
+                              <div class="sidebar-name">
+                                  <a href="javascript:register_popup('qscutter', 'QScutter');">
+                                      <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
+                                      <span>QScutter</span>
+                                  </a>
+                              </div>
+                              <div class="sidebar-name">
+                                  <a href="javascript:register_popup('qidea', 'QIdea');">
+                                      <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
+                                      <span>QIdea</span>
+                                  </a>
+                              </div>
+                              <div class="sidebar-name">
+                                  <a href="javascript:register_popup('qazy', 'QAzy');">
+                                      <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
+                                      <span>QAzy</span>
+                                  </a>
+                              </div>
+                              <div class="sidebar-name">
+                                  <a href="javascript:register_popup('qblock', 'QBlock');">
+                                      <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
+                                      <span>QBlock</span>
+                                  </a>
+                              </div>
+                            </div>
+                          </div>
+                          </div>
+                          </li>
+                          <li class="ps-2">
+                            <a href="#" class="waves-effect user-notification  menu-right text-decoration-none"  id="notificationbtn" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                              <i class="fa fa-bell"></i><!-- <span class="badge bg-danger rounded-circle">4</span>-->
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right notification-list shadow">
+                              <div class="notification-box">
+                                <ul class="notification-drop ps-0">
+                                      <li>First Notification item from user goes here</li>
+                                      <li>Second Notification Item</li>
+                                      <li>Third  Notification Item</li>
+                                </ul>
+                            </div>
+                            </div>
+                            </li>
+                             <li class="dropdown user-box ps-3">
                                     <a href="#" class="dropdown-toggle waves-effect user-link btn" role="button" data-bs-toggle="dropdown" id="profile" aria-expanded="true">
                                            Admin
                                     </a>
   
                                     <ul class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right user-list notify-list">
   
-                                           <li><a href="#"><i class="ti-power-off m-r-5"></i> Logout</a></li>
+                                           <li><a href="../index.html"><i class="ti-power-off m-r-5"></i> Logout</a></li>
                                     </ul>
                              </li>
   
@@ -151,8 +218,8 @@ p {
              </li>
              <li class="has_sub"><a href="posts.html" class="waves-effect"><i class="fa fa-feed"></i><span>ポスト</span> </a> </li>
              <li class="has_sub"><a href="users.html" class="waves-effect"><i class="fa fa-users"></i><span>Users</span> </a> </li>
-             <li class="has_sub"><a href="events.html" class="waves-effect"><i class="fa fa-calendar"></i><span>イベント</span> </a> </li>
-             <li class="has_sub"><a href="tournaments.html" class="waves-effect"><i class="fa fa-golf"></i><span>Tournaments</span> </a> </li>
+             <li class="has_sub"><a href="events.html" class="waves-effect"><i class="fa fa-calendar-days"></i><span>イベント</span> </a> </li>
+             <li class="has_sub"><a href="tournaments.html" class="waves-effect"><i class="fa-solid fa-trophy"></i><span>Tournaments</span> </a> </li>
              <li class="has_sub"><a href="tutors.html" class="waves-effect"><i class="fa fa-user"></i><span>Tutors</span> </a> </li>
 
              <hr>
@@ -180,37 +247,40 @@ p {
             </div>
             <div class="row m-auto p-3">
 
-                <div class="card border-0 mb-7 p-2 ">
+                <div class="card border-0 mb-7 p-2 shadow">
+                  <p>* Please select 4 players per group for this event</p>
                     <div class="facet-container row container">
                         <div class="col-lg-2 col-12">
                           <label>Players</label>
                           <ul id="allFacets" class="facet-list">
-                            <li class="facet">Player 2</li>
-                            <li class="facet">Player 3</li>
-                            <li class="facet">Player 4</li>
-                            <li class="facet">Player 5</li>
-                            <li class="facet">Player 8</li>
-                            <li class="facet">Player 9</li>
-                            <li class="facet">Player 10</li>
+                            <li class="facet"> <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8" width="40" height="40" class="mx-3 rounded-circle" alt="user"><span class="player name">Player 4</span></li>
+                            <li class="facet"> <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8" width="40" height="40" class="mx-3 rounded-circle" alt="user"><span class="player name">Player 5</span></li>
+                            <li class="facet"> <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8" width="40" height="40" class="mx-3 rounded-circle" alt="user"><span class="player name">Player 6</span></li>
+                            <li class="facet"> <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8" width="40" height="40" class="mx-3 rounded-circle" alt="user"><span class="player name">Player 7</span></li>
+                            <li class="facet"> <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8" width="40" height="40" class="mx-3 rounded-circle" alt="user"><span class="player name">Player 8</span></li>
+                            <li class="facet"> <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8" width="40" height="40" class="mx-3 rounded-circle" alt="user"><span class="player name">Player 9</span></li>
+                            <li class="facet"> <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8" width="40" height="40" class="mx-3 rounded-circle" alt="user"><span class="player name">Player 10</span></li>
+                            <li class="facet"> <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8" width="40" height="40" class="mx-3 rounded-circle" alt="user"><span class="player name">Player 11</span></li>
+                            <li class="facet"> <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8" width="40" height="40" class="mx-3 rounded-circle" alt="user"><span class="player name">Player 12</span></li>
                           </ul>
                         </div>
                         <div class="col-lg-2 col-md-4 col-6">
                        
                           <label>Group 1</label>
                           <ul id="group1" class="facet-list">
-                            <li class="facet">Player 1</li>
+                            <li class="facet"> <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8" width="40" height="40" class="mx-3 rounded-circle" alt="user"><span class="player name">Player 1</span></li>
                           </ul>
                         </div>
                         <div class="col-lg-2 col-md-4 col-6">
                             <label>Group 2</label>
                             <ul id="group2" class="facet-list">
-                              <li class="facet">Player 6</li>
+                              <li class="facet"> <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8" width="40" height="40" class="mx-3 rounded-circle" alt="user"><span class="player name">Player 2</span></li>
                             </ul>
                           </div>
                           <div class="col-lg-2 col-md-4 col-6">
                             <label>Group 3</label>
                             <ul id="group3" class="facet-list">
-                                <li class="facet">Player 7</li>
+                              <li class="facet"> <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8" width="40" height="40" class="mx-3 rounded-circle" alt="user"><span class="player name">Player 3</span></li>
                             </ul>
                           </div>
                         

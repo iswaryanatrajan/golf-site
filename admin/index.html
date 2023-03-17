@@ -21,81 +21,22 @@
 
     <link href="../fonts/Hiragino-Sans-GB-W3.otf">
     <script>
-       /*   document.addEventListener('DOMContentLoaded', function() {
-        var calendarEl = document.getElementById('calendar');
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-          selectable: true
+              $(document).ready(function(){
+$('.counter').each(function () {
+        $(this).prop('Counter',0).animate({
+            Counter: $(this).text()
+        }, {
+          
+          //chnage count up speed here
+            duration: 1000,
+            easing: 'swing',
+            step: function (now) {
+                $(this).text(Math.ceil(now));
+            }
         });
-        calendar.render();
-      });*/
-
-$(function() {
-  ImgUpload();
-  $(".imagePreview").hide();
-  function ImgUpload() {
-  var imgWrap = "";
-  var imgArray = [];
-
-  $('.upload__inputfile').each(function () {
-    $(this).on('change', function (e) {
-      imgWrap = $(this).closest('.upload__box').find('.upload__img-wrap');
-      var maxLength = $(this).attr('data-max_length');
-
-      var files = e.target.files;
-      var filesArr = Array.prototype.slice.call(files);
-      var iterator = 0;
-      filesArr.forEach(function (f, index) {
-
-        if (!f.type.match('image.*')) {
-          return;
-        }
-
-        if (imgArray.length > maxLength) {
-          return false
-        } else {
-          var len = 0;
-          for (var i = 0; i < imgArray.length; i++) {
-            if (imgArray[i] !== undefined) {
-              len++;
-            }
-          }
-          if (len > maxLength) {
-            return false;
-          } else {
-            imgArray.push(f);
-
-            var reader = new FileReader();
-            reader.onload = function (e) {
-              var html = "<div class='upload__img-box'><div style='background-image: url(" + e.target.result + ")' data-number='" + $(".upload__img-close").length + "' data-file='" + f.name + "' class='img-bg'><div class='upload__img-close'></div></div></div>";
-              imgWrap.append(html);
-              iterator++;
-            }
-            reader.readAsDataURL(f);
-          }
-        }
-      });
     });
-  });
-
-  $('body').on('click', ".upload__img-close", function (e) {
-    var file = $(this).parent().data("file");
-    for (var i = 0; i < imgArray.length; i++) {
-      if (imgArray[i].name === file) {
-        imgArray.splice(i, 1);
-        break;
-      }
-    }
-    $(this).parent().parent().remove();
-  });
-}
-});
-    </script>
-<script> 
-  $(function(){
-
-  });
-
-  </script> 
+    });
+</script>
   </head>
   <body>
     <div id="wrapper" class="forced ">
@@ -116,8 +57,74 @@ $(function() {
                     </nav>
 
                     <!-- Right(Notification) -->
-                    <ul class="nav navbar-nav navbar-right">
-                           <li class="dropdown user-box">
+                    <ul class="nav navbar-nav navbar-right flex-row align-items-center">
+                      <li class="ps-2">
+                        <a href="#" class="dropdown-toggle waves-effect user-chat  menu-right text-decoration-none"  id="chatbtn" role="button" data-bs-toggle="dropdown" id="chat" aria-expanded="true">
+                          <i class="fa-brands fa-rocketchat"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right chat-list shadow">
+                          <div class="chat-sidebar">
+                            <div class="box-header with-border">   
+                              <h3 class="box-title">Contacts</h3> 
+                            
+                              </div>
+                              <div id="chat-names" class="chat-names">
+                            <div class="sidebar-name">
+                                <!-- Pass username and display name to register popup -->
+                                <a href="javascript:register_popup('Contact 1', 'Contact 1');">
+                                    <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
+                                    <span>Contact 1</span>
+                                </a>
+                            </div>
+                            <div class="sidebar-name">
+                                <a href="javascript:register_popup('qnimate', 'QNimate');">
+                                    <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
+                                    <span>QNimate</span>
+                                </a>
+                            </div>
+                            <div class="sidebar-name">
+                                <a href="javascript:register_popup('qscutter', 'QScutter');">
+                                    <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
+                                    <span>QScutter</span>
+                                </a>
+                            </div>
+                            <div class="sidebar-name">
+                                <a href="javascript:register_popup('qidea', 'QIdea');">
+                                    <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
+                                    <span>QIdea</span>
+                                </a>
+                            </div>
+                            <div class="sidebar-name">
+                                <a href="javascript:register_popup('qazy', 'QAzy');">
+                                    <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
+                                    <span>QAzy</span>
+                                </a>
+                            </div>
+                            <div class="sidebar-name">
+                                <a href="javascript:register_popup('qblock', 'QBlock');">
+                                    <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
+                                    <span>QBlock</span>
+                                </a>
+                            </div>
+                          </div>
+                        </div>
+                        </div>
+                        </li>
+                        <li class="ps-2">
+                          <a href="#" class="waves-effect user-notification  menu-right text-decoration-none"  id="notificationbtn" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                            <i class="fa fa-bell"></i><!-- <span class="badge bg-danger rounded-circle">4</span>-->
+                          </a>
+                          <div class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right notification-list shadow">
+                            <div class="notification-box">
+                              <ul class="notification-drop ps-0">
+                                    <li>First Notification item from user goes here</li>
+                                    <li>Second Notification Item</li>
+                                    <li>Third  Notification Item</li>
+                              </ul>
+                          </div>
+                          </div>
+                          </li>
+                           <li class="dropdown user-box ps-3">
                                   <a href="#" class="dropdown-toggle waves-effect user-link btn" role="button" data-bs-toggle="dropdown" id="profile" aria-expanded="true">
                                          Admin
                                   </a>
@@ -168,16 +175,7 @@ $(function() {
                <div class="col-xs-12">
                       <div class="page-title-box">
                              <h4 class="page-title"> Dashboard </h4>
-
-                             <!-- <ol class="breadcrumb p-0 m-0">
-                                 <li>
-                                     <a href="#"></a>
-                                 </li>
-
-                             </ol> -->
-                             <div class="clearfix">
-
-                             </div>
+                             <div class="clearfix"></div>
                       </div>
                </div>
 
@@ -190,11 +188,12 @@ $(function() {
                           <div class="row">
                               <div class="col">
                                   <span class="h6 font-semibold text-muted text-sm d-block mb-2">TOTAL USERS</span>
-                                  <span class="h3 font-bold mb-0">300</span>
+                                  <span class="h3 font-bold mb-0 counter" >300</span>
+                                  
                               </div>
                               <div class="col-auto">
-                                  <div class="icon icon-shape bg-tertiary text-white text-lg rounded-circle">
-                                      <i class="fa fa-card"></i>
+                                  <div class="icon p-2 bg-danger text-white text-lg rounded-circle">
+                                      <i class="fa-solid fa-credit-card fa-lg"></i>
                                   </div>
                               </div>
                           </div>
@@ -213,17 +212,17 @@ $(function() {
                           <div class="row">
                               <div class="col">
                                   <span class="h6 font-semibold text-muted text-sm d-block mb-2">TOTAL FEED</span>
-                                  <span class="h3 font-bold mb-0">215</span>
+                                  <span class="h3 font-bold mb-0 counter">215</span>
                               </div>
                               <div class="col-auto">
-                                  <div class="icon icon-shape bg-primary text-white text-lg rounded-circle">
-                                      <i class="fa fa-people"></i>
+                                  <div class="icon p-2 bg-primary text-white text-lg rounded-circle">
+                                      <i class="fa fa-users fa-lg"></i>
                                   </div>
                               </div>
                           </div>
                           <div class="mt-2 mb-0 text-sm">
                               <span class="badge badge-pill bg-soft-success text-success me-2">
-                                  <i class="fa fa-arrow-up me-1"></i>30%
+                                  <i class="fa fa-arrow-up fa-lg me-1"></i>30%
                               </span>
                               <span class="text-nowrap text-xs text-muted">Since last month</span>
                           </div>
@@ -236,11 +235,11 @@ $(function() {
                           <div class="row">
                               <div class="col">
                                   <span class="h6 font-semibold text-muted text-sm d-block mb-2">TOTAL EVENT</span>
-                                  <span class="h3 font-bold mb-0">24</span>
+                                  <span class="h3 font-bold mb-0 counter">24</span>
                               </div>
                               <div class="col-auto">
-                                  <div class="icon icon-shape bg-info text-white text-lg rounded-circle">
-                                      <i class="fa fa-clock"></i>
+                                  <div class="icon p-2 bg-info text-white text-lg rounded-circle">
+                                    <i class="fa-regular fa-calendar-check fa-lg"></i>
                                   </div>
                               </div>
                           </div>
@@ -259,11 +258,11 @@ $(function() {
                           <div class="row">
                               <div class="col">
                                   <span class="h6 font-semibold text-muted text-sm d-block mb-2">TOTAL COMMENT</span>
-                                  <span class="h3 font-bold mb-0">250</span>
+                                  <span class="h3 font-bold mb-0 counter">250</span>
                               </div>
                               <div class="col-auto">
-                                  <div class="icon icon-shape bg-warning text-white text-lg rounded-circle">
-                                      <i class="fa fa-cart"></i>
+                                  <div class="icon p-2 bg-warning text-white text-lg rounded-circle">
+                                    <i class="fa-solid fa-comment fa-lg"></i>
                                   </div>
                               </div>
                           </div>
