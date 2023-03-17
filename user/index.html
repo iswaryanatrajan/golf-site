@@ -4,601 +4,571 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <title>Golf</title>
+    <title>Golf - Home</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@6.0.3/main.min.css">
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="stylesheet" type="text/css" href="../css/chat.css">
     <link rel="stylesheet" type="text/css" href="../css/menu.css">
     <link rel="stylesheet" type="text/css" href="../css/responsive.css">
-    <link rel="stylesheet" type="text/css" href="../css/jquery-comments.css">
-    <link rel="stylesheet" type="text/css" href="../css/images-grid.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&family=Noto+Sans+JP&display=swap" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.0.3/index.global.min.js"></script>
-    <script src="../js/chat.js"></script>
-    <link href="../fonts/Hiragino-Sans-GB-W3.otf">
-    <script type="text/javascript" src="../js/jquery-comments.js"></script>
-    <script type="text/javascript" src="../js/images-grid.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAILGVlt-SOiL381JT3TQ9dxxoNIUuxrV8&amp;libraries=places" ></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="../js/chat.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script>
-       /*   document.addEventListener('DOMContentLoaded', function() {
-        var calendarEl = document.getElementById('calendar');
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-          selectable: true
-        });
-        calendar.render();
-      });*/
+        $(document).ready(function(){
 
-$(function() {
-  ImgUpload();
-  $(".imagePreview").hide();
-  function ImgUpload() {
-  var imgWrap = "";
-  var imgArray = [];
-
-  $('.upload__inputfile').each(function () {
-    $(this).on('change', function (e) {
-      imgWrap = $(this).closest('.upload__box').find('.upload__img-wrap');
-      var maxLength = $(this).attr('data-max_length');
-
-      var files = e.target.files;
-      var filesArr = Array.prototype.slice.call(files);
-      var iterator = 0;
-      filesArr.forEach(function (f, index) {
-
-        if (!f.type.match('image.*')) {
-          return;
-        }
-
-        if (imgArray.length > maxLength) {
-          return false
-        } else {
-          var len = 0;
-          for (var i = 0; i < imgArray.length; i++) {
-            if (imgArray[i] !== undefined) {
-              len++;
-            }
-          }
-          if (len > maxLength) {
-            return false;
-          } else {
-            imgArray.push(f);
-
-            var reader = new FileReader();
-            reader.onload = function (e) {
-              var html = "<div class='upload__img-box'><div style='background-image: url(" + e.target.result + ")' data-number='" + $(".upload__img-close").length + "' data-file='" + f.name + "' class='img-bg'><div class='upload__img-close'></div></div></div>";
-              imgWrap.append(html);
-              iterator++;
-            }
-            reader.readAsDataURL(f);
-          }
-        }
-      });
-    });
-  });
-
-  $('body').on('click', ".upload__img-close", function (e) {
-    var file = $(this).parent().data("file");
-    for (var i = 0; i < imgArray.length; i++) {
-      if (imgArray[i].name === file) {
-        imgArray.splice(i, 1);
-        break;
-      }
+$('#rankingcarousel').carousel();
+let items1 = document.querySelectorAll('#teachercarousel .carousel-item');
+let items2 = document.querySelectorAll('#rankingcarousel .carousel-item');
+console.log("uogteo");
+items1.forEach((el) => {
+  const minPerSlide = 4
+  let next = el.nextElementSibling
+  for (var i=1; i<minPerSlide; i++) {
+    if (!next) {
+        // wrap carousel by using first child
+        next = items1[0]
     }
-    $(this).parent().parent().remove();
+    let cloneChild = next.cloneNode(true)
+    el.appendChild(cloneChild.children[0])
+    next = next.nextElementSibling
+}
+});
+items2.forEach((el) => {
+  const minPerSlide = 4
+  let next = el.nextElementSibling
+  for (var i=1; i<minPerSlide; i++) {
+    if (!next) {
+        // wrap carousel by using first child
+        next = items2[0]
+    }
+    let cloneChild = next.cloneNode(true)
+    el.appendChild(cloneChild.children[0])
+    next = next.nextElementSibling
+}
+});
+var $star_rating = $('.star-rating .fa');
+
+var SetRatingStar = function() {
+  return $star_rating.each(function() {
+    if (parseInt($star_rating.siblings('input.rating-value').val()) >= parseInt($(this).data('rating'))) {
+      return $(this).removeClass('fa-regular fa-star').addClass('fa-solid fa-star');
+    } else {
+      return $(this).removeClass('fa-solid fa-star').addClass('fa-regular fa-star');
+    }
   });
+};
 
-}
-$(".locationdiv").hide();
-$('body').on('click', "#locationbtn", function (e) {
-  $(".locationdiv").toggle();
+$star_rating.on('click', function() {
+  $star_rating.siblings('input.rating-value').val($(this).data('rating'));
+  return SetRatingStar();
 });
 
-$(".comments").hide();
-$('body').on('click', ".showcomments", function (e) {
-  $(this).parent().parent().find('.comments').toggle();
-});
-$('body').on('click', ".like", function (e) {
-  $(this).toggleClass("fa").toggleClass("far");
-});
-
-$('.comments').comments({
-  profilePictureURL: 'https://viima-app.s3.amazonaws.com/media/public/defaults/user-icon.png',
-  getComments: function(success, error) {
-    var commentsArray = [{
-      id: 1,
-      created: '2015-10-01',
-      content: 'Lorem ipsum dolort sit amet',
-      fullname: 'Simon Powell',
-      upvote_count: 2,
-      user_has_upvoted: true
-    },{
-      id: 2,
-      created: '2015-10-05',
-      content: 'Lorem ipsum dolort sit amet',
-      fullname: 'Robert Fox',
-      upvote_count: 0,
-      user_has_upvoted: false
-    }];
-    success(commentsArray);
-  }
-});
-var gallery2img=[
-  'https://img.freepik.com/free-photo/golf-field_654080-1351.jpg',
-  'https://img.freepik.com/free-photo/golf-field_654080-1351.jpg',
-  'https://img.freepik.com/free-photo/golf-field_654080-1351.jpg',
-  'https://img.freepik.com/free-photo/golf-field_654080-1351.jpg',
-  'https://img.freepik.com/free-photo/golf-field_654080-1351.jpg',
-  'https://img.freepik.com/free-photo/golf-field_654080-1351.jpg',
-];
-$('#gallery1').imagesGrid({
-images:['https://img.freepik.com/free-photo/golf-field_654080-1351.jpg',] 
-});
-
-$('#gallery2').imagesGrid({
-
-// an array of images
-images: gallery2img,
-
-// algin images with different sizes
-align: false,
-
-// max grid cells (1-6)
-cells: 5, 
-
-// goto next image on click
-nextOnClick: true,
-
-// text for show more
-showViewAll: 'more',
+SetRatingStar();
 
 });
-
-
-$('#gallery3').imagesGrid({
-images:['https://img.freepik.com/free-photo/golf-field_654080-1351.jpg',
-'https://img.freepik.com/free-photo/golf-field_654080-1351.jpg']
-});
-
-/*for testing */
-$('#publish').click(function(){
-var post= $('#post').val();
-console.log(post);
-$('.newpost').html(post);
-});
-/*for testing ends - delete later*/
-
-});
-
-
     </script>
-     <style>
-.postblock p::first-line {
-  font-weight: bold;
-  font-size: 130%;
-}
 
 
-    </style>
-       
+
 
   </head>
-  <body>
-    <div id="wrapper" class="forced ">
-      <div class="topbar">
-  
-        <!-- LOGO -->
-        <div class="topbar-left">
-               <a href="home.html" class="logo"><span>Golf</span></a>
-        </div>
-  
-        <!-- Button mobile view to collapse sidebar menu -->
-        <div class="navbar navbar-default" role="navigation">
-               <div class="container">
-  
-                      <!-- Navbar-left -->
-                      <nav class="navbar top-navbar">
-                        <a class="btn border-0 waves-effect button-menu-mobile open-left" id="menu-btn"><i class="fa fa-bars"></i></a>
-                      </nav>
-  
-                      <!-- Right(Notification) -->
-                      <ul class="nav navbar-nav navbar-right flex-row align-items-center">
-                        <li class="ps-2">
-                          <a href="#" class="dropdown-toggle waves-effect user-chat  menu-right text-decoration-none"  id="chatbtn" role="button" data-bs-toggle="dropdown" id="chat" aria-expanded="true">
-                            <i class="fa-brands fa-rocketchat"></i>
-                          </a>
-                          <div class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right chat-list shadow">
-                            <div class="chat-sidebar">
-                              <div class="box-header with-border">   
-                                <h3 class="box-title">Contacts</h3> 
-                              
+
+<body>
+  <div id="wrapper" class="forced ">
+    <div class="topbar">
+
+      <!-- LOGO -->
+      <div class="topbar-left">
+             <a href="index.html" class="logo"><span>Golf</span></a>
+      </div>
+
+      <!-- Button mobile view to collapse sidebar menu -->
+      <div class="navbar navbar-default" role="navigation">
+             <div class="container">
+
+                    <!-- Navbar-left -->
+                    <nav class="navbar top-navbar">
+                      <a class="btn border-0 waves-effect button-menu-mobile open-left" id="menu-btn"><i class="fa fa-bars"></i></a>
+                    </nav>
+
+                             <!-- Right(Notification) -->
+                             <ul class="nav navbar-nav navbar-right flex-row align-items-center">
+                              <li class="ps-2">
+                                <a href="#" class="dropdown-toggle waves-effect user-chat  menu-right text-decoration-none"  id="chatbtn" role="button" data-bs-toggle="dropdown" id="chat" aria-expanded="true">
+                                  <i class="fa-brands fa-rocketchat"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right chat-list shadow">
+                                  <div class="chat-sidebar">
+                                    <div class="box-header with-border">   
+                                      <h3 class="box-title">Contacts</h3> 
+                                    
+                                      </div>
+                                      <div id="chat-names" class="chat-names">
+                                    <div class="sidebar-name">
+                                        <!-- Pass username and display name to register popup -->
+                                        <a href="javascript:register_popup('Contact 1', 'Contact 1');">
+                                            <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
+                                            <span>Contact 1</span>
+                                        </a>
+                                    </div>
+                                    <div class="sidebar-name">
+                                        <a href="javascript:register_popup('qnimate', 'QNimate');">
+                                            <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
+                                            <span>QNimate</span>
+                                        </a>
+                                    </div>
+                                    <div class="sidebar-name">
+                                        <a href="javascript:register_popup('qscutter', 'QScutter');">
+                                            <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
+                                            <span>QScutter</span>
+                                        </a>
+                                    </div>
+                                    <div class="sidebar-name">
+                                        <a href="javascript:register_popup('qidea', 'QIdea');">
+                                            <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
+                                            <span>QIdea</span>
+                                        </a>
+                                    </div>
+                                    <div class="sidebar-name">
+                                        <a href="javascript:register_popup('qazy', 'QAzy');">
+                                            <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
+                                            <span>QAzy</span>
+                                        </a>
+                                    </div>
+                                    <div class="sidebar-name">
+                                        <a href="javascript:register_popup('qblock', 'QBlock');">
+                                            <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
+                                            <span>QBlock</span>
+                                        </a>
+                                    </div>
+                                  </div>
                                 </div>
-                                <div id="chat-names" class="chat-names">
-                              <div class="sidebar-name">
-                                  <!-- Pass username and display name to register popup -->
-                                  <a href="javascript:register_popup('Contact 1', 'Contact 1');">
-                                      <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
-                                      <span>Contact 1</span>
+                                </div>
+                                </li>
+                                <li class="ps-2">
+                                  <a href="#" class="waves-effect user-notification  menu-right text-decoration-none"  id="notificationbtn" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                                    <i class="fa fa-bell"></i><!-- <span class="badge bg-danger rounded-circle">4</span>-->
                                   </a>
-                              </div>
-                              <div class="sidebar-name">
-                                  <a href="javascript:register_popup('qnimate', 'QNimate');">
-                                      <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
-                                      <span>QNimate</span>
-                                  </a>
-                              </div>
-                              <div class="sidebar-name">
-                                  <a href="javascript:register_popup('qscutter', 'QScutter');">
-                                      <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
-                                      <span>QScutter</span>
-                                  </a>
-                              </div>
-                              <div class="sidebar-name">
-                                  <a href="javascript:register_popup('qidea', 'QIdea');">
-                                      <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
-                                      <span>QIdea</span>
-                                  </a>
-                              </div>
-                              <div class="sidebar-name">
-                                  <a href="javascript:register_popup('qazy', 'QAzy');">
-                                      <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
-                                      <span>QAzy</span>
-                                  </a>
-                              </div>
-                              <div class="sidebar-name">
-                                  <a href="javascript:register_popup('qblock', 'QBlock');">
-                                      <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
-                                      <span>QBlock</span>
-                                  </a>
-                              </div>
-                            </div>
-                          </div>
-                          </div>
-                          </li>
-                          <li class="ps-2">
-                            <a href="#" class="waves-effect user-notification  menu-right text-decoration-none"  id="notificationbtn" role="button" data-bs-toggle="dropdown" aria-expanded="true">
-                              <i class="fa fa-bell"></i><!-- <span class="badge bg-danger rounded-circle">4</span>-->
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right notification-list shadow">
-                              <div class="notification-box">
-                                <ul class="notification-drop ps-0">
-                                      <li>First Notification item from user goes here</li>
-                                      <li>Second Notification Item</li>
-                                      <li>Third  Notification Item</li>
-                                </ul>
-                            </div>
-                            </div>
-                            </li>
-                             <li class="dropdown user-box ps-3">
-                                    <a href="#" class="dropdown-toggle waves-effect user-link text-decoration-none" role="button" data-bs-toggle="dropdown" id="profile" aria-expanded="true">
-                                      <img alt="..." src="https://images.unsplash.com/photo-1610271340738-726e199f0258?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3&amp;w=256&amp;h=256&amp;q=80" class="avatar avatar-sm rounded-circle me-2">
-                                    </a>
-  
-                                    <ul class="dropdown-menu dropdown-menu-right user-list notify-list">
-  
-                                           <li><a href="../home.html"><i class="ti-power-off m-r-5"></i> Logout</a></li>
-                                    </ul>
-                             </li>
-  
-                      </ul> <!-- end navbar-right -->
-  
-               </div><!-- end container -->
-        </div><!-- end navbar -->
-  </div>
-  
-     
-        <div class="left side-menu">
-          <div id="sidebar-menu">
-            <ul>
-                   <li class="menu-title"> NAVIGATION </li>
+                                  <div class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right notification-list shadow">
+                                    <div class="notification-box">
+                                      <ul class="notification-drop ps-0">
+                                            <li>First Notification item from user goes here</li>
+                                            <li>Second Notification Item</li>
+                                            <li>Third  Notification Item</li>
+                                      </ul>
+                                  </div>
+                                  </div>
+                                  </li>
+                                   <li class="dropdown user-box ps-3">
+                                          <a href="#" class="dropdown-toggle waves-effect user-link text-decoration-none" role="button" data-bs-toggle="dropdown" id="profile" aria-expanded="true">
+                                            <img alt="..." src="https://images.unsplash.com/photo-1610271340738-726e199f0258?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3&amp;w=256&amp;h=256&amp;q=80" class="avatar avatar-sm rounded-circle me-2">
+                                          </a>
+        
+                                          <ul class="dropdown-menu dropdown-menu-right user-list notify-list">
+        
+                                                 <li><a href="../index.html"><i class="ti-power-off m-r-5"></i> Logout</a></li>
+                                          </ul>
+                                   </li>
+        
+                            </ul> <!-- end navbar-right -->
 
-                   <li class="has_sub"><a href="home.html" class="waves-effect"><i class="fa fa-home"></i><span>Home</span> </a> </li>
-                   <li class="has_sub"><a href="posts.html" class="waves-effect"><i class="fa fa-feed"></i><span>ポスト</span> </a> </li>
-                   <li class="has_sub"><a href="events.html" class="waves-effect"><i class="fa fa-calendar-days"></i><span>イベント</span> </a> 
-                    <ul class="ps-1">
-                      <li class=""><a class="waves-effect " href="createdevents.html">Created Events</a> </li>
-                      <li class=""><a class="waves-effect " href="participatedevents.html">Joined Events<span class="badge bg-success ms-1 rounded-circle">5</span></a></li>
-                    </ul></li>
-                   <li class="has_sub"><a href="findteacher.html" class="waves-effect"><i class="fa fa-user"></i><span>先生を探す</span> </a> </li>
-      
-                   <hr>
-                   <li class="has_sub">
-                    <a href="../home.html" class="waves-effect"><i class="fa fa-power"></i><span>Logout</span> </a>
-             </li>
-                
-      
-            </ul>
-      </div>
-  
-  
-        </div>
-        <div class="col content-page px-0 bg-grey"> 
-  <div class="content">
-
-    <div class="hero">  
-    <div class=""  >
-     
-        <div class="row justify-content-center p-4">
-          <div class="col-lg-5 col-12 pt-2">
-              <div class="table-responsive table-scroll at-shadow-box p-2">
-                <p>オンライン英語個人レッスン・マンツーマンの先生を紹介</p>
-                <p class="content_vgEyl">特長1：上質な英語のマンツーマンレッスンを格安で提供しています<br>
-                    コスパNO.1！全員がプロネイティブ講師　25分 150JPY~<br><br>
-                    
-                    特長2：あなた専用にカスタマイズされたレッスン<br>
-                    95%の受講生がAIマッチングシステムにより、自分に合ったレッスンを受講していただいております。学習目標などを記入するだけであなたにピッタリの講師をAIが見つけてくれます。<br><br>
-                    
-                    ぜひ一度、無料体験レッスンをお試しください。
-                    </p>
-              </div>
-          </div>
-      </div>
-      </div>
+             </div><!-- end container -->
+      </div><!-- end navbar -->
 </div>
-    <div class="row container m-auto">
-      <div class="col-lg-10 col-12">
-        <div class="container p-0">
-          <div class="my-3 signedinblock">
-            <textarea id="post" class="form-control" placeholder="Write a post..." rows="3"></textarea>
-            <div class="row m-0">
-          <div class="upload__box col-md-10 col-12">
-            <div class="upload__img-wrap"></div>
-            <div class="upload__btn-box">
-              <label class="">
-                <p class="btn btn-outline-warning mb-0">画像をアップロード</p>
-                <input type="file" multiple="" data-max_length="20" class="upload__inputfile">
-              </label>
-              <!--data-bs-toggle="modal" data-bs-target="#locationModal"-->
-              <button type="button" class="btn btn-outline-warning" id="locationbtn" >
-                Add Location
-              </button>
 
-            <div class="flex justify-center p-8 mt-3 locationdiv">
-              <div class="max-w-sm bg-white rounded overflow-hidden" style="    width: 480px;
-              height: 200px;">
-                <div class="w-full relative" id="js-preview-map"><img src="https://maps.googleapis.com/maps/api/staticmap?key=AIzaSyAILGVlt-SOiL381JT3TQ9dxxoNIUuxrV8&amp;center=35.019162, 138.480845&amp;zoom=12&amp;size=480x125&amp;maptype=roadmap&amp;sensor=false" width="480" height="125" alt="Google Maps"/></div>
-                <div class="w-full float-left border-b-2 border-gray-400 px-6 py-4">
-                  <label class="block text-gray-700 text-sm w-full font-semibold mb-2">Address:</label>
-                  <input class="w-full bg-gray-200 text-gray-700 appearance-none rounded border-2 border-gray-300 py-2 px-4" type="text" id="address"/>
-                </div>
-                <pre class="w-full bg-gray-200 text-blue-900 float-left px-6 py-4"><code id="js-preview-json"></code></pre>
-              </div>
-            </div>
-            </div>
-          </div>
-          <div class="text-end col-md-2 col-12"><a href="#" class="btn btn-warning my-2" id="publish" name="publish">Publish</a></div>
-        </div>
-        </div>
+   
+      <div class="left side-menu">
+        <div id="sidebar-menu">
+          <ul>
+                 <li class="menu-title"> NAVIGATION </li>
 
-        <div class="row my-3"><div class="form-outline">
-          <input type="search" id="form1" class="form-control" placeholder="Search post" aria-label="Search" />
-        </div></div>
-        <div class="my-3">
-          <div class="row g-0   overflow-hidden flex-md-row mb-4  h-md-250 position-relative postblock">
-              <div class="col-md-6 col-12">
-                <div id="gallery1" class="gallery"></div> </div>
-              <div class="col-md-6 col-12 p-4 d-flex flex-column position-static">
-                  
-                <strong class="d-inline-block mb-2 text-primary tag">ゴルフ</strong>
-                <div class="mb-1 username"><i class="fa fa-user" style="color: #3b5998;"></i> User 1</div>
-                <div class="mb-1 text-muted">Nov 12</div>
-                <p class="card-text mb-auto newpost" style="white-space: pre-line">🔥私のクライアントは、エリート大学、コンサルティング、金融、法務、およびソフトウェアの仕事に就いています。他の多くの人がキャリアと自信を大幅に高めました🔥
-                    🇬🇧 ネイティブ ブリティッシュ 🇺🇸 アメリカ在住 20 年
-                    🥇 4000時間以上のESL、楽しい+リラックス
-                    🥇 20年以上のビジネス/ファイナンス経験
-                    🥇MBA / CFA
-                    🥇セルタ/TEFL
-                    🥇プレゼンテーションと会議のアドバイス🥇
-                    </p>
-                    
-                <div class="">
-                  <i class="fab fa-facebook-f" style="color: #3b5998;"></i>
-                  <i class="fab fa-twitter ms-2" style="color: #55acee;"></i>
-                </div>
-                <div class="">
-                  <i class="far fa-heart like" style="color: #3b5998;"></i>
-                  <span class="showcomments"><i class="far fa-comment ms-2 me-1 "  style="color: #3b5998;"></i>2 Comments</span>
-                </div>
-                <div class="comments"></div>
-              </div>
-            </div>
-            <div class="row g-0  overflow-hidden flex-md-row mb-4  position-relative postblock">
-              <div class="col-md-6 col-12 ">
-                <div id="gallery2" class="gallery"></div>
-                </div>
-              <div class="col-md-6 col-12 p-4 d-flex flex-column position-static">
-                  
-                <strong class="d-inline-block mb-2 text-primary tag">イベント</strong>
-                <div class="mb-1 text-muted">Nov 12</div>
-                <div class="mb-1 username"><i class="fa fa-user" style="color: #3b5998;"></i> User 1</div>
-                <p class="card-text mb-auto">ダミーテキスト ダミーテキスト ダミーテキスト ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト ダミーテキスト ダミーテキスト ダミーテキストダミーテキストダミーテキストダミーテキスト</p>
-                <div class="">
-                  <i class="fab fa-facebook-f" style="color: #3b5998;"></i>
-                  <i class="fab fa-twitter ms-2" style="color: #55acee;"></i>
-                </div>
-                <div class="">
-                  <i class="far fa-heart like" style="color: #3b5998;"></i>
-                  <span class="showcomments"><i class="far fa-comment ms-2 me-1 "  style="color: #3b5998;"></i></span>
-                </div>
-                <div class="comments"></div>
-              </div>
-            </div>
-            <div class="row g-0  overflow-hidden flex-md-row mb-4  h-md-250 position-relative postblock">
-              <div class="col-md-6 col-12 ">
-                <div id="gallery3" class="gallery"></div> </div>
-              <div class="col-md-6 col-12 p-4 d-flex flex-column position-static">
-                <strong class="d-inline-block mb-2 text-primary tag">ゴルフ</strong>
-                <div class="mb-1 text-muted">Nov 12</div>
-                <div class="mb-1 username"><i class="fa fa-user" style="color: #3b5998;"></i> User 2</div>
-                <p class="card-text mb-auto">🔥私のクライアントは、エリート大学、コンサルティング、金融、法務、およびソフトウェアの仕事に就いています。他の多くの人がキャリアと自信を大幅に高めました🔥
-                  🇬🇧 ネイティブ ブリティッシュ 🇺🇸 アメリカ在住 20 年
-                  🥇 4000時間以上のESL、楽しい+リラックス
-                  🥇 20年以上のビジネス/ファイナンス経験
-                  🥇MBA / CFA
-                  🥇セルタ/TEFL
-                  🥇プレゼンテーションと会議のアドバイス🥇
-                  </p> <div class="">
-                  <i class="fab fa-facebook-f" style="color: #3b5998;"></i>
-                  <i class="fab fa-twitter ms-2" style="color: #55acee;"></i>
-                </div>
-                <div class="">
-                  <i class="far fa-heart like" style="color: #3b5998;"></i>
-                  <span class="showcomments"><i class="far fa-comment ms-2 me-1 "  style="color: #3b5998;"></i></span>
-                </div>
-                <div class="comments"></div>
-              </div>
-            </div>
-       
-        </div>
-       <!-- <div id='calendar'></div>-->
-  </div>
-      </div>
-      <div class="col-lg-2 d-none d-md-block"> 
-       
-</div>
+                 <li class="has_sub"><a href="index.html" class="waves-effect"><i class="fa fa-home"></i><span>Home</span> </a> </li>
+                 <li class="has_sub"><a href="posts.html" class="waves-effect"><i class="fa fa-feed"></i><span>ポスト</span> </a> </li>
+                 <li class="has_sub"><a href="events.html" class="waves-effect"><i class="fa fa-calendar-days"></i><span>イベント</span> </a> 
+                  <ul class="ps-1">
+                    <li class=""><a class="waves-effect " href="createdevents.html">Created Events</a> </li>
+                    <li class=""><a class="waves-effect " href="participatedevents.html">Joined Events<span class="badge bg-success ms-1 rounded-circle">5</span></a></li>
+                  </ul></li>
+                 <li class="has_sub"><a href="findteacher.html" class="waves-effect"><i class="fa fa-user"></i><span>先生を探す</span> </a> </li>
+    
+                 <hr>
+                 <li class="has_sub">
+                  <a href="../index.html" class="waves-effect"><i class="fa fa-power"></i><span>Logout</span> </a>
+           </li>
+              
+    
+          </ul>
     </div>
-       </div>
-       </div>
-   </div>
-      <!--<div class="modal fade" tabindex="-1"  id="locationModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Add Location</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <div>
-                <input type="text" class=" bksearch">
-                <div class="bklist">
+
+
+      </div>
+      <div class="col content-page px-0 bg-grey"> 
+<div class="content">
+      <div class="hero d-block"> 
+        <div class="container">     
+          <div class="hero-content"> 
+            <div class="row"> 
+              <div class="col-md-12 text-center"> 
+                <h1>Golf Hero Image</h1> 
+                <p>ストアカは<br>
+                  1回から気軽にレッスンを検索・予約できる<br>
+                  日本最大級の習いごと検索サービスです</p>
+                  <button class="nav-link badge bg-success p-2 border-0" id="tournaments"   type="button" >View</button>
+              </div>  
+            </div> 
+          </div>
+        </div> 
+      </div>
+
+      <div class="top-bg_container ">
+        <section class="l-section_container p-5">
+          <h2 class="top_title text-center">あなたのやってみたいが見つかる</h2>
+          <div class="top-keyword_container">
+            <div class="top-keyword-left_container">
+              <a href="#">
+                <div class="top-keyword_item">
+                  <img alt="" class="top_img" width="300" src="https://img.freepik.com/free-photo/golf-field_654080-1351.jpg" >
+                  <p class="top-keyword-left_tx">tag</p>
                 </div>
-              </div>
-            ​
-              <div id="map" style="height: 300px"></div>
+  </a>            <a href="#">
+                <div class="top-keyword_item">
+                  <img alt="" class="top_img" width="300"  src="https://img.freepik.com/free-photo/golf-field_654080-1351.jpg" >
+                  <p class="top-keyword-left_tx">tag</p>
+                </div>
+  </a>            <a href="#">
+                <div class="top-keyword_item">
+                  <img alt="" class="top_img" width="300"  src="https://img.freepik.com/free-photo/golf-field_654080-1351.jpg">
+                  <p class="top-keyword-left_tx">tag</p>
+                </div>
+  </a>          
+        </div>
+            <div class="top-keyword-right_container">
+              <a href="#">
+                <div class="top-keyword_item">
+                  <img alt="" class="top_img" width="300"  src="https://img.freepik.com/free-photo/golf-field_654080-1351.jpg">  <p class="top-keyword-right_tx">tag</p>
+                  
+                </div>
+  </a>            <a href="#">
+                <div class="top-keyword_item">
+                  <img alt="" class="top_img" width="300"  src="https://img.freepik.com/free-photo/golf-field_654080-1351.jpg"> <p class="top-keyword-right_tx">tag</p>
+                </div>
+  </a>            <a href="#">
+                <div class="top-keyword_item">
+                  <img alt="" class="top_img" width="300"  src="https://img.freepik.com/free-photo/golf-field_654080-1351.jpg"> <p class="top-keyword-right_tx">tag</p>
+                </div>
+  </a>          </div>
+          </div>
+        </section>
+      </div>
+
+
+        <section class="l-section_container">
+          <h2 class="top_title text-center my-5"><span class="top-description-highlight_tx">「習いごとを始めてよかった！」</span><br>レッスンを体験した方の声をご紹介</h2>
+          <div class="top-experience_container row container m-auto">
+            <div class="col-4">
+                <img alt="" class="top_img" src="https://img.freepik.com/free-photo/back-view-man-playing-golf-field_23-2148822936.jpg">
+                <p class="py-1">「私、機械オンチなんです。だから、Zoom(ズーム)の使い方からストアカで教えてもらいました」と、笑顔で話す佐藤さん（仮名）。</p>  
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
+            <div class="col-4">
+              <img alt="" class="top_img" src="https://img.freepik.com/free-photo/back-view-man-playing-golf-field_23-2148822936.jpg">
+              <p class="py-1">「私、機械オンチなんです。だから、Zoom(ズーム)の使い方からストアカで教えてもらいました」と、笑顔で話す佐藤さん（仮名）。</p>  
+          </div>
+          <div class="col-4">
+            <img alt="" class="top_img" src="https://img.freepik.com/free-photo/back-view-man-playing-golf-field_23-2148822936.jpg">
+            <p class="py-1">「私、機械オンチなんです。だから、Zoom(ズーム)の使い方からストアカで教えてもらいました」と、笑顔で話す佐藤さん（仮名）。</p>  
+        </div>
+                   </div>
+        </section>
+
+        <section class="l-section_container bg_container-grey">
+          <div class="top-experience_container row container m-auto">
+          <h2 class="m-section_title py-5">初めての方におすすめの先生<a class="recommended-service-owners_btn" href="findteacher.html">先生を探す</a>​</h2>
+          <div class="container text-center my-3">
+            <div class="row mx-auto my-auto justify-content-center">
+              <div id="teachercarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner" role="listbox">
+                  <div class="carousel-item active">
+                    <div class="col-md-3">
+                      <div class="card pt-2 m-2">
+                        <div class="card-img">
+                          <img src="https://cdn-icons-png.flaticon.com/512/1253/1253756.png?w=826&t=st=1675407321~exp=1675407921~hmac=25ce66b4a66724044935cd66613a29b0adcf1f099d8e20162105dc6301010bed" width="130" class="img-fluid">
+                        </div>
+                        <div class="col p-4 d-flex flex-column position-static">
+                          <h4 class="mb-0">教師 1</h4>
+                          <p class="card-text mb-auto">ダミーテキスト ダミーテキスト ダミーテキスト ダミーテキスト</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <div class="col-md-3">
+                      <div class="card pt-2 m-2">
+                        <div class="card-img">
+                          <img src="https://cdn-icons-png.flaticon.com/512/1253/1253756.png?w=826&t=st=1675407321~exp=1675407921~hmac=25ce66b4a66724044935cd66613a29b0adcf1f099d8e20162105dc6301010bed" width="130" class="img-fluid">
+                        </div>
+                        <div class="col p-4 d-flex flex-column position-static">
+                          <h4 class="mb-0">教師 2</h4>
+                          <p class="card-text mb-auto">ダミーテキスト ダミーテキスト ダミーテキスト ダミーテキスト</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <div class="col-md-3">
+                      <div class="card pt-2 m-2">
+                        <div class="card-img">
+                          <img src="https://cdn-icons-png.flaticon.com/512/1253/1253756.png?w=826&t=st=1675407321~exp=1675407921~hmac=25ce66b4a66724044935cd66613a29b0adcf1f099d8e20162105dc6301010bed" width="130" class="img-fluid">
+                        </div>
+                        <div class="col p-4 d-flex flex-column position-static">
+                          <h4 class="mb-0">教師 3</h4>
+                          <p class="card-text mb-auto">ダミーテキスト ダミーテキスト ダミーテキスト ダミーテキスト</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <div class="col-md-3">
+                      <div class="card pt-2 m-2">
+                        <div class="card-img">
+                          <img src="https://cdn-icons-png.flaticon.com/512/1253/1253756.png?w=826&t=st=1675407321~exp=1675407921~hmac=25ce66b4a66724044935cd66613a29b0adcf1f099d8e20162105dc6301010bed" width="130" class="img-fluid">
+                        </div>
+                        <div class="col p-4 d-flex flex-column position-static">
+                          <h4 class="mb-0">教師 4</h4>
+                          <p class="card-text mb-auto">ダミーテキスト ダミーテキスト ダミーテキスト ダミーテキスト</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <div class="col-md-3">
+                      <div class="card pt-2 m-2">
+                        <div class="card-img">
+                          <img src="https://cdn-icons-png.flaticon.com/512/1253/1253756.png?w=826&t=st=1675407321~exp=1675407921~hmac=25ce66b4a66724044935cd66613a29b0adcf1f099d8e20162105dc6301010bed" width="130" class="img-fluid">
+                        </div>
+                        <div class="col p-4 d-flex flex-column position-static">
+                          <h4 class="mb-0">教師 5</h4>
+                          <p class="card-text mb-auto">ダミーテキスト ダミーテキスト ダミーテキスト ダミーテキスト</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <div class="col-md-3">
+                      <div class="card pt-2 m-2">
+                        <div class="card-img">
+                          <img src="https://cdn-icons-png.flaticon.com/512/1253/1253756.png?w=826&t=st=1675407321~exp=1675407921~hmac=25ce66b4a66724044935cd66613a29b0adcf1f099d8e20162105dc6301010bed" width="130" class="img-fluid">
+                        </div>
+                        <div class="col p-4 d-flex flex-column position-static">
+                          <h4 class="mb-0">教師 6</h4>
+                          <p class="card-text mb-auto">ダミーテキスト ダミーテキスト ダミーテキスト ダミーテキスト</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                 
+                </div>
+                <a class="carousel-control-prev bg-transparent w-aut" href="#teachercarousel" role="button" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </a>
+                <a class="carousel-control-next bg-transparent w-aut" href="#teachercarousel" role="button" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </a>
+              </div>
+            </div>		
+          </div>
+                   </div>
+        </section>
+
+        <section class="l-section_container">
+          <div class="top-experience_container row container m-auto">
+          <h2 class="m-section_title py-5"><i class="fa fa-crown"></i>月間ランキング</h2>
+          <div class="container text-center my-3">
+            <div class="row mx-auto my-auto justify-content-center">
+              <div id="rankingcarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner" role="listbox">
+                  <div class="carousel-item active">
+                    <div class="col-md-3">
+                      <div class="card pt-2 m-2">
+                        <div class="card-img">
+                          <img src="https://img.freepik.com/free-vector/golf-swing-silhouette-collection_23-2147768420.jpg?w=826&t=st=1675408330~exp=1675408930~hmac=e4411e2879607034615fcc432dc0062727a403bfab00d1e29466443da45a9a59" width="130" class="img-fluid">
+                        </div>
+                        <div class="col p-4 d-flex flex-column position-static text-start">
+                          <h4 class="mb-0">イベント 1</h4>
+                          <p class="card-text mb-auto">ダミーテキスト ダミーテキスト ダミーテキスト ダミーテキスト</p>
+                          <div class="row">
+                            <div class="col-lg-12">
+                              <div class="star-rating">
+                                <span class="fa fa-star-o" data-rating="1"></span>
+                                <span class="fa fa-star-o" data-rating="2"></span>
+                                <span class="fa fa-star-o" data-rating="3"></span>
+                                <span class="fa fa-star-o" data-rating="4"></span>
+                                <span class="fa fa-star-o" data-rating="5"></span>
+                                <input type="hidden" name="whatever1" class="rating-value" value="2.56">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <div class="col-md-3">
+                      <div class="card pt-2 m-2">
+                        <div class="card-img">
+                          <img src="https://img.freepik.com/free-vector/golf-swing-silhouette-collection_23-2147768420.jpg?w=826&t=st=1675408330~exp=1675408930~hmac=e4411e2879607034615fcc432dc0062727a403bfab00d1e29466443da45a9a59" width="130" class="img-fluid">
+                        </div>
+                        <div class="col p-4 d-flex flex-column position-static text-start">
+                          <h4 class="mb-0">イベント 2</h4>
+                          <p class="card-text mb-auto">ダミーテキスト ダミーテキスト ダミーテキスト ダミーテキスト</p>
+                          <div class="row">
+                            <div class="col-lg-12">
+                              <div class="star-rating">
+                                <span class="fa fa-star-o" data-rating="1"></span>
+                                <span class="fa fa-star-o" data-rating="2"></span>
+                                <span class="fa fa-star-o" data-rating="3"></span>
+                                <span class="fa fa-star-o" data-rating="4"></span>
+                                <span class="fa fa-star-o" data-rating="5"></span>
+                                <input type="hidden" name="whatever1" class="rating-value" value="2.56">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <div class="col-md-3">
+                      <div class="card pt-2 m-2">
+                        <div class="card-img">
+                          <img src="https://img.freepik.com/free-vector/golf-swing-silhouette-collection_23-2147768420.jpg?w=826&t=st=1675408330~exp=1675408930~hmac=e4411e2879607034615fcc432dc0062727a403bfab00d1e29466443da45a9a59" width="130" class="img-fluid">
+                        </div>
+                        <div class="col p-4 d-flex flex-column position-static text-start">
+                          <h4 class="mb-0">イベント 3</h4>
+                          <p class="card-text mb-auto">ダミーテキスト ダミーテキスト ダミーテキスト ダミーテキスト</p>
+                          <div class="row">
+                            <div class="col-lg-12">
+                              <div class="star-rating">
+                                <span class="fa fa-star-o" data-rating="1"></span>
+                                <span class="fa fa-star-o" data-rating="2"></span>
+                                <span class="fa fa-star-o" data-rating="3"></span>
+                                <span class="fa fa-star-o" data-rating="4"></span>
+                                <span class="fa fa-star-o" data-rating="5"></span>
+                                <input type="hidden" name="whatever1" class="rating-value" value="2.56">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <div class="col-md-3">
+                      <div class="card pt-2 m-2">
+                        <div class="card-img">
+                          <img src="https://img.freepik.com/free-vector/golf-swing-silhouette-collection_23-2147768420.jpg?w=826&t=st=1675408330~exp=1675408930~hmac=e4411e2879607034615fcc432dc0062727a403bfab00d1e29466443da45a9a59" width="130" class="img-fluid">
+                        </div>
+                        <div class="col p-4 d-flex flex-column position-static text-start">
+                          <h4 class="mb-0">イベント 4</h4>
+                          <p class="card-text mb-auto">ダミーテキスト ダミーテキスト ダミーテキスト ダミーテキスト</p>
+                          <div class="row">
+                            <div class="col-lg-12">
+                              <div class="star-rating">
+                                <span class="fa fa-star-o" data-rating="1"></span>
+                                <span class="fa fa-star-o" data-rating="2"></span>
+                                <span class="fa fa-star-o" data-rating="3"></span>
+                                <span class="fa fa-star-o" data-rating="4"></span>
+                                <span class="fa fa-star-o" data-rating="5"></span>
+                                <input type="hidden" name="whatever1" class="rating-value" value="2.56">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <div class="col-md-3">
+                      <div class="card pt-2 m-2">
+                        <div class="card-img">
+                          <img src="https://img.freepik.com/free-vector/golf-swing-silhouette-collection_23-2147768420.jpg?w=826&t=st=1675408330~exp=1675408930~hmac=e4411e2879607034615fcc432dc0062727a403bfab00d1e29466443da45a9a59" width="130" class="img-fluid">
+                        </div>
+                        <div class="col p-4 d-flex flex-column position-static text-start">
+                          <h4 class="mb-0">イベント 5</h4>
+                          <p class="card-text mb-auto">ダミーテキスト ダミーテキスト ダミーテキスト ダミーテキスト</p>
+                          <div class="row">
+                            <div class="col-lg-12">
+                              <div class="star-rating">
+                                <span class="fa fa-star-o" data-rating="1"></span>
+                                <span class="fa fa-star-o" data-rating="2"></span>
+                                <span class="fa fa-star-o" data-rating="3"></span>
+                                <span class="fa fa-star-o" data-rating="4"></span>
+                                <span class="fa fa-star-o" data-rating="5"></span>
+                                <input type="hidden" name="whatever1" class="rating-value" value="2.56">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <a class="carousel-control-prev bg-transparent w-aut" href="#rankingcarousel" role="button" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </a>
+                <a class="carousel-control-next bg-transparent w-aut" href="#rankingcarousel" role="button" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </a>
+              </div>
+            </div>	
+          </div>
+        </section>
+       </div>
+       </div>
+       
+    
+        <footer class="p-2">
+          <div class="container">
+            <div class="row text-center">
+              <div class="col-md-4 box">
+                <span class="copyright quick-links">Copyright &copy; Golf Website <script>document.write(new Date().getFullYear())</script>
+                </span>
+              </div>
+              <div class="col-md-4 box">
+                <ul class="list-inline social-buttons">
+                  <li class="list-inline-item">
+                    <a href="#">
+                    <i class="fab fa-twitter"></i>
+                  </a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a href="#">
+                    <i class="fab fa-facebook-f"></i>
+                  </a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a href="#">
+                    <i class="fab fa-linkedin-in"></i>
+                  </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-md-4 box">
+                <ul class="list-inline quick-links">
+                  <li class="list-inline-item">
+                    <a href="#">Privacy Policy</a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a href="#">Terms of Use</a>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
-        </div>
-      </div>-->
-
-
-      <script>
-        /*const defaultMarker = [35.019162, 138.480845]
-        let map = L.map('map')
-        map.setView(defaultMarker, 13)
-        // Set up the OSM layer
-        L.tileLayer(
-        'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          maxZoom: 18
-        }).addTo(map)
-        L.marker(defaultMarker).addTo(map)
-        Bkoi.onSelect(function () {
-          // get selected data from dropdown list
-          let selectedPlace = Bkoi.getSelectedData()      
-          // center of the map
-          let center = [selectedPlace.latitude, selectedPlace.longitude]
-          // Add marker to the map & bind popup
-          map.setView(center, 19)
-          L.marker(center).addTo(map).bindPopup(selectedPlace.address)
-        })*/
-
-        // Prepare location info object.
-var locationInfo = {
-  geo: null,
-  country: null,
-  state: null,
-  city: null,
-  postalCode: null,
-  street: null,
-  streetNumber: null,
-  reset: function() {
-    this.geo = null;
-    this.country = null;
-    this.state = null;
-    this.city = null;
-    this.postalCode = null;
-    this.street = null;
-    this.streetNumber = null;
-  }
-};
-
-googleAutocomplete = {
-  autocompleteField: function(fieldId) {
-    (autocomplete = new google.maps.places.Autocomplete(
-      document.getElementById(fieldId)
-    )),
-      { types: ["geocode"] };
-    google.maps.event.addListener(autocomplete, "place_changed", function() {
-      // Segment results into usable parts.
-      var place = autocomplete.getPlace(),
-        address = place.address_components,
-        lat = place.geometry.location.lat(),
-        lng = place.geometry.location.lng();
-
-      // Reset location object.
-      locationInfo.reset();
-
-      // Save the individual address components.
-      locationInfo.geo = [lat, lng];
-      for (var i = 0; i < address.length; i++) {
-        var component = address[i].types[0];
-        switch (component) {
-          case "country":
-            locationInfo.country = address[i]["long_name"];
-            break;
-          case "administrative_area_level_1":
-            locationInfo.state = address[i]["long_name"];
-            break;
-          case "locality":
-            locationInfo.city = address[i]["long_name"];
-            break;
-          case "postal_code":
-            locationInfo.postalCode = address[i]["long_name"];
-            break;
-          case "route":
-            locationInfo.street = address[i]["long_name"];
-            break;
-          case "street_number":
-            locationInfo.streetNumber = address[i]["long_name"];
-            break;
-          default:
-            break;
-        }
-      }
-
-      // Preview map.
-      var src =
-          "https://maps.googleapis.com/maps/api/staticmap?key=AIzaSyAILGVlt-SOiL381JT3TQ9dxxoNIUuxrV8&center=" +
-          lat +
-          "," +
-          lng +
-          "&zoom=14&size=480x125&maptype=roadmap&sensor=false",
-        img = document.createElement("img");
-
-      img.src = src;
-      img.className = "absolute top-0 left-0 z-20";
-      document.getElementById("js-preview-map").appendChild(img);
-
-      // Preview JSON output.
-      document.getElementById("js-preview-json").innerHTML = JSON.stringify(
-        locationInfo,
-        null,
-        4
-      );
-    });
-  }
-};
-
-// Attach listener to address input field.
-googleAutocomplete.autocompleteField("address");
-      </script>
-    </body>
-    </html>
+        </footer>
+       
+</body>
+</html>
