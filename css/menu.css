@@ -227,6 +227,7 @@ File: Menu
     display: block;
     padding: 12px 20px;
     margin: 2px 0;
+    font-family: 'Noto Sans JP';
   }
   #sidebar-menu > ul > li > a:hover {
     text-decoration: none;
@@ -234,7 +235,9 @@ File: Menu
   }
   #sidebar-menu > ul > ul > li > a:hover {
     text-decoration: none;
-    background-color: #f5f9fc
+    background-color: #f5f9fc;
+    background-color: #16192C;
+    
   }
   #sidebar-menu > ul > li > a > span {
     vertical-align: middle;
