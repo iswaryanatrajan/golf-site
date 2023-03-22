@@ -5,16 +5,26 @@ body{font-family: "Hiragino Sans",sans-serif;font-weight: 400;font-size: 18px;co
 .openchildrow{cursor:pointer}
 .postblock{background-color: #fff;}
 .navbar{padding:10px}
-.hero {
+/*.hero {
 
-    height: 40vh;
-    background: #000 url(https://image.freepik.com/free-vector/gradient-geometric-shape-background_78532-307.jpg) center center no-repeat;
+    height: 50vh;
+    background: #000 url("../images/golf-bg4.jpg") center center no-repeat;
     background-size: cover;
-   /* position: relative;*/
     background-repeat: repeat;
     display: flex;
     align-items: center;
     justify-content: center;
+}*/
+.hero{
+    height: 40vh;
+    background: #273517 url(../images/golf-bg4.jpg) center center no-repeat;
+    background-size: cover;
+    /* position: relative; */
+    /* background-repeat: repeat; */
+    background-position: 0 70%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
   
   .hero .container{
@@ -429,6 +439,15 @@ input::-webkit-inner-spin-button {
     background-color: #26bbce!important;
 }
 
+@media (min-width: 1441px) {
+    .hero{height:70vh;
+   }
+}
+@media (min-width: 1025px) {
+.hero .row{width:60%;}
+}
+
+
 @media (max-width: 767px) {
     .carousel-inner .carousel-item > div {
         display: none;
@@ -439,7 +458,7 @@ input::-webkit-inner-spin-button {
     .navbar-collapse{background: #fff;}
     .mt-75px{margin-top:75px !important}
     .active-cont{margin-left:0 !important}
-  .hero{display:none}
+  .hero{display:none;height:auto}
   .w-70{width:100%}
   .top_img{width:150px !important}
   .top-keyword_container {
@@ -457,6 +476,7 @@ input::-webkit-inner-spin-button {
     float: right!important;
 }
 .fixed-pos{position: fixed;width: 200px;}
+.hero div:first{width:70%}
 }
 
 .waves-effect {
