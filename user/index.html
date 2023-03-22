@@ -19,6 +19,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script>
         $(document).ready(function(){
+          $("#topbar").load("header.html");
 $('#rankingcarousel').carousel();
 let items1 = document.querySelectorAll('#teachercarousel .carousel-item');
 let items2 = document.querySelectorAll('#rankingcarousel .carousel-item');
@@ -78,7 +79,7 @@ SetRatingStar();
 
 <body>
   <div id="wrapper" class="forced ">
-    <div class="topbar">
+    <div class="topbar d-none">
 
       <!-- LOGO -->
       <div class="topbar-left">
@@ -178,6 +179,9 @@ SetRatingStar();
              </div><!-- end container -->
       </div><!-- end navbar -->
 </div>
+<div id="topbar"></div>
+
+<div 
 
    
       <div class="left side-menu">
@@ -207,20 +211,22 @@ SetRatingStar();
       </div>
       <div class="col content-page px-0 bg-grey"> 
 <div class="content">
-      <div class="hero d-block"> 
-        <div class="container">     
-          <div class="hero-content"> 
-            <div class="row"> 
-              <div class="col-md-12 text-center"> 
-                <h1>Golf Hero Image</h1> 
-                <p>ストアカは<br>
-                  1回から気軽にレッスンを検索・予約できる<br>
-                  日本最大級の習いごと検索サービスです</p>
-                  <button class="nav-link badge bg-success p-2 border-0" id="tournaments"   type="button" >View</button>
-              </div>  
-            </div> 
+      <div class="hero d-flex"> 
+        <div class="row justify-content-center p-4">
+          <div class="col-lg-6 col-12 pt-2">
+              <div class="table-responsive table-scroll at-shadow-box p-2">
+                <p>オンライン個人レッスン・マンツーマンの先生を紹介</p>
+                <p class="content_vgEyl">特長1：上質なのマンツーマンレッスンを格安で提供しています<br>
+                    コスパNO.1！全員がプロネイティブ講師　25分 150JPY~<br><br>
+                    
+                    特長2：あなた専用にカスタマイズされたレッスン<br>
+                    95%の受講生がAIマッチングシステムにより、自分に合ったレッスンを受講していただいております。学習目標などを記入するだけであなたにピッタリの講師をAIが見つけてくれます。<br><br>
+                    
+                    ぜひ一度、無料体験レッスンをお試しください。
+                    </p>
+              </div>
           </div>
-        </div> 
+      </div>
       </div>
 
       <div class="top-bg_container ">
@@ -235,12 +241,12 @@ SetRatingStar();
                 </div>
   </a>            <a href="#">
                 <div class="top-keyword_item">
-                  <img alt="" class="top_img" width="300"  src="https://img.freepik.com/free-photo/golf-field_654080-1351.jpg" >
+                  <img alt="" class="top_img" width="300"  src="../images/golf-bg.jpg" >
                   <p class="top-keyword-left_tx">tag</p>
                 </div>
   </a>            <a href="#">
                 <div class="top-keyword_item">
-                  <img alt="" class="top_img" width="300"  src="https://img.freepik.com/free-photo/golf-field_654080-1351.jpg">
+                  <img alt="" class="top_img" width="300"  src="../images/golf-bg2.jpg">
                   <p class="top-keyword-left_tx">tag</p>
                 </div>
   </a>          
@@ -248,7 +254,7 @@ SetRatingStar();
             <div class="top-keyword-right_container">
               <a href="#">
                 <div class="top-keyword_item">
-                  <img alt="" class="top_img" width="300"  src="https://img.freepik.com/free-photo/golf-field_654080-1351.jpg">  <p class="top-keyword-right_tx">tag</p>
+                  <img alt="" class="top_img" width="300"  src="../images/golf-bg3.jpg">  <p class="top-keyword-right_tx">tag</p>
                   
                 </div>
   </a>            <a href="#">
@@ -257,7 +263,8 @@ SetRatingStar();
                 </div>
   </a>            <a href="#">
                 <div class="top-keyword_item">
-                  <img alt="" class="top_img" width="300"  src="https://img.freepik.com/free-photo/golf-field_654080-1351.jpg"> <p class="top-keyword-right_tx">tag</p>
+                 
+                  <img alt="" class="top_img" width="300"  src="../images/golf-bg4.jpg"> <p class="top-keyword-right_tx">tag</p>
                 </div>
   </a>          </div>
           </div>
@@ -292,9 +299,9 @@ SetRatingStar();
                 <div class="carousel-inner" role="listbox">
                   <div class="carousel-item active">
                     <div class="col-md-3">
-                      <div class="card pt-2 m-2">
+                      <div class="card  m-2">
                         <div class="card-img">
-                          <img src="https://cdn-icons-png.flaticon.com/512/1253/1253756.png?w=826&t=st=1675407321~exp=1675407921~hmac=25ce66b4a66724044935cd66613a29b0adcf1f099d8e20162105dc6301010bed" width="130" class="img-fluid">
+                          <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d" width="130" class="img-fluid">
                         </div>
                         <div class="col p-4 d-flex flex-column position-static">
                           <h4 class="mb-0">教師 1</h4>
@@ -305,7 +312,7 @@ SetRatingStar();
                   </div>
                   <div class="carousel-item">
                     <div class="col-md-3">
-                      <div class="card pt-2 m-2">
+                      <div class="card  m-2">
                         <div class="card-img">
                           <img src="https://cdn-icons-png.flaticon.com/512/1253/1253756.png?w=826&t=st=1675407321~exp=1675407921~hmac=25ce66b4a66724044935cd66613a29b0adcf1f099d8e20162105dc6301010bed" width="130" class="img-fluid">
                         </div>
@@ -318,9 +325,9 @@ SetRatingStar();
                   </div>
                   <div class="carousel-item">
                     <div class="col-md-3">
-                      <div class="card pt-2 m-2">
+                      <div class="card  m-2">
                         <div class="card-img">
-                          <img src="https://cdn-icons-png.flaticon.com/512/1253/1253756.png?w=826&t=st=1675407321~exp=1675407921~hmac=25ce66b4a66724044935cd66613a29b0adcf1f099d8e20162105dc6301010bed" width="130" class="img-fluid">
+                          <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61" width="130" class="img-fluid">
                         </div>
                         <div class="col p-4 d-flex flex-column position-static">
                           <h4 class="mb-0">教師 3</h4>
@@ -344,7 +351,7 @@ SetRatingStar();
                   </div>
                   <div class="carousel-item">
                     <div class="col-md-3">
-                      <div class="card pt-2 m-2">
+                      <div class="card  m-2">
                         <div class="card-img">
                           <img src="https://cdn-icons-png.flaticon.com/512/1253/1253756.png?w=826&t=st=1675407321~exp=1675407921~hmac=25ce66b4a66724044935cd66613a29b0adcf1f099d8e20162105dc6301010bed" width="130" class="img-fluid">
                         </div>
@@ -357,7 +364,7 @@ SetRatingStar();
                   </div>
                   <div class="carousel-item">
                     <div class="col-md-3">
-                      <div class="card pt-2 m-2">
+                      <div class="card  m-2">
                         <div class="card-img">
                           <img src="https://cdn-icons-png.flaticon.com/512/1253/1253756.png?w=826&t=st=1675407321~exp=1675407921~hmac=25ce66b4a66724044935cd66613a29b0adcf1f099d8e20162105dc6301010bed" width="130" class="img-fluid">
                         </div>
@@ -391,7 +398,7 @@ SetRatingStar();
                 <div class="carousel-inner" role="listbox">
                   <div class="carousel-item active">
                     <div class="col-md-3">
-                      <div class="card pt-2 m-2">
+                      <div class="card  m-2">
                         <div class="card-img">
                           <img src="https://img.freepik.com/free-vector/golf-swing-silhouette-collection_23-2147768420.jpg?w=826&t=st=1675408330~exp=1675408930~hmac=e4411e2879607034615fcc432dc0062727a403bfab00d1e29466443da45a9a59" width="130" class="img-fluid">
                         </div>
@@ -416,7 +423,7 @@ SetRatingStar();
                   </div>
                   <div class="carousel-item">
                     <div class="col-md-3">
-                      <div class="card pt-2 m-2">
+                      <div class="card  m-2">
                         <div class="card-img">
                           <img src="https://img.freepik.com/free-vector/golf-swing-silhouette-collection_23-2147768420.jpg?w=826&t=st=1675408330~exp=1675408930~hmac=e4411e2879607034615fcc432dc0062727a403bfab00d1e29466443da45a9a59" width="130" class="img-fluid">
                         </div>
@@ -441,7 +448,7 @@ SetRatingStar();
                   </div>
                   <div class="carousel-item">
                     <div class="col-md-3">
-                      <div class="card pt-2 m-2">
+                      <div class="card  m-2">
                         <div class="card-img">
                           <img src="https://img.freepik.com/free-vector/golf-swing-silhouette-collection_23-2147768420.jpg?w=826&t=st=1675408330~exp=1675408930~hmac=e4411e2879607034615fcc432dc0062727a403bfab00d1e29466443da45a9a59" width="130" class="img-fluid">
                         </div>
@@ -466,7 +473,7 @@ SetRatingStar();
                   </div>
                   <div class="carousel-item">
                     <div class="col-md-3">
-                      <div class="card pt-2 m-2">
+                      <div class="card  m-2">
                         <div class="card-img">
                           <img src="https://img.freepik.com/free-vector/golf-swing-silhouette-collection_23-2147768420.jpg?w=826&t=st=1675408330~exp=1675408930~hmac=e4411e2879607034615fcc432dc0062727a403bfab00d1e29466443da45a9a59" width="130" class="img-fluid">
                         </div>
@@ -491,7 +498,7 @@ SetRatingStar();
                   </div>
                   <div class="carousel-item">
                     <div class="col-md-3">
-                      <div class="card pt-2 m-2">
+                      <div class="card  m-2">
                         <div class="card-img">
                           <img src="https://img.freepik.com/free-vector/golf-swing-silhouette-collection_23-2147768420.jpg?w=826&t=st=1675408330~exp=1675408930~hmac=e4411e2879607034615fcc432dc0062727a403bfab00d1e29466443da45a9a59" width="130" class="img-fluid">
                         </div>
