@@ -152,6 +152,7 @@ font-family: "Helvetica-Neue";
 src: url("fonts/Helvetica\ Neue\ Medium\ Extended.ttf");
 }
 body{font-family: 'Roboto', Arial, Helvetica, sans-serif;font-weight:400;color: #484848;font-size:14px}
+body.landingpage{font-family: 'Noto Sans JP', sans-serif;font-size:1rem}
 @-moz-keyframes ping_YmM8C {
           75%,to {
               box-shadow: 0 0 0 1rem transparent
@@ -180,7 +181,7 @@ box-shadow: 0 0 0 0 hsl(0deg 0% 100% / 80%);
 transition: box-shadow .3s cubic-bezier(.4,0,.2,1);
 border-radius: 7px;
 animation: ping_YmM8C 1.5s cubic-bezier(0,0,.2,1) infinite;
-box-shadow: 0 1px 3px 0 rgb(0 0 0 / 16%), 0 0 0 1px rgb(0 0 0 / 8%);
+/*box-shadow: 0 1px 3px 0 rgb(0 0 0 / 16%), 0 0 0 1px rgb(0 0 0 / 8%);*/
 border: 1px solid #eee;
 z-index: 1;
 position: relative;
