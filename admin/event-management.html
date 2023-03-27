@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>Golf - Events</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../css/chat.css">
+    <link rel="stylesheet" type="text/css" href="../css/menu.css">
+    <link rel="stylesheet" type="text/css" href="../css/responsive.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&family=Noto+Sans+JP&display=swap" rel="stylesheet">
+<link href="https://cdn.datatables.net/1.13.3/css/jquery.dataTables.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="../js/chat.js"></script>
+    <link href="../fonts/Hiragino-Sans-GB-W3.otf">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.5/index.global.min.js'></script>
+<!-- Popperjs -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<!-- Tempus Dominus JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/js/tempusdominus-bootstrap-4.min.js" crossorigin="anonymous"></script>
+
+<!-- Tempus Dominus Styles -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/css/tempusdominus-bootstrap-4.min.css" crossorigin="anonymous">
+    <script>
+
+
+
+
+
+
+
+
+var events = [
+          {
+            start: '2023-03-10',
+            end: '2023-03-10',
+            title:"event1",
+            id:1
+          },
+          {
+            start: '2023-03-24T10:00:00',
+            end: '2023-03-24T16:00:00',
+            title:"event2",
+            id:2
+          },
+          {
+            start: '2023-03-24T16:00:00',
+            end: '2023-03-24T18:00:00',
+            title:"event4",
+            id:3
+          },
+          {
+        start: '2023-03-24',
+        end: '2023-03-28',
+        overlap: false,
+        title:"event3",
+        id:4
+      },
+        ];
+
+        function addevent(){
+            let s = (new Date()).getTime().toString(16) + Math.random().toString(16).substring(2) + "0".repeat(16);
+            let uuid = s.substr(0,8) + '-' + s.substr(8,4) + '-4000-8' + s.substr(12,3) + '-' + s.substr(15,12);
+  events.push({
+    title: document.getElementById('eventName').value,
+    start: document.getElementById('event-from').value,
+    end: document.getElementById('event-to').value,
+    id:uuid
+  });
+  console.log(events);
+  calendar.refetchEvents()
+ // calendar.addEventSource( events )
+        }
+      /*  $(document).ready(function(){
+        $("#addEvent").on("click", function() {
+            console.log("twert"+events);
+  events.push({
+    title: $("#eventName").val(),
+    start: $("#fromDate").val(),
+    end: $("#toDate").val()
+  });
+  console.log(events);
+  calendar.refetchEvents()
+});
+});*/
+        console.log(events);
+        var calendar; 
+    document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+         calendar = new FullCalendar.Calendar(calendarEl, {
+            dayMaxEventRows: true,
+          headerToolbar: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'dayGridMonth,timeGridWeek'
+    },
+        initialView: 'dayGridMonth',
+        editable: true,
+        selectable:true,
+        events: function(info, successCallback, failureCallback) {
+            successCallback(events);
+  },
+/*  eventReceive: function( info ) {
+
+//get the bits of data we want to send into a simple object
+var eventData = {
+  title: info.event.title,
+  start: info.event.start,
+  end: info.event.end,
+  id: info.event.id,
+};
+//send the data via an AJAX POST request, and log any response which comes from the server
+fetch('add_event.php', {
+  method: 'POST',
+  headers: {'Accept': 'application/json'},
+  body: encodeFormData(eventData)
+})
+.then(response => console.log(response))
+.catch(error => console.log(error));
+}*/
+        });
+        calendar.render();
+      });
+
+      $(function () {
+        
+       $('#fromDate').datetimepicker({
+        icons: {
+      time: 'far fa-clock',
+      date: 'far fa-calendar-alt',
+      up: 'fas fa-arrow-up',
+      down: 'fas fa-arrow-down',
+    },
+    format: 'YYYY-MM-DD HH:mm',
+    buttons: {
+      showClose: true,
+    },
+       });
+       $('#toDate').datetimepicker({
+        icons: {
+      time: 'far fa-clock',
+      date: 'far fa-calendar-alt',
+      up: 'fas fa-arrow-up',
+      down: 'fas fa-arrow-down',
+    },
+    format: 'YYYY-MM-DD HH:mm',
+    buttons: {
+      showClose: true,
+    },
+       });
+
+   });
+    </script>
+     <style>
+
+    </style>
+  </head>
+  <body>
+    <div id="wrapper" class="forced ">
+      <div class="topbar">
+  
+        <!-- LOGO -->
+        <div class="topbar-left">
+               <a href="index.html" class="logo"><span>Golf</span></a>
+        </div>
+  
+        <!-- Button mobile view to collapse sidebar menu -->
+        <div class="navbar navbar-default" role="navigation">
+               <div class="container">
+  
+                      <!-- Navbar-left -->
+                      <nav class="navbar top-navbar">
+                        <a class="btn border-0 waves-effect button-menu-mobile open-left" id="menu-btn"><i class="fa fa-bars"></i></a>
+                      </nav>
+  
+                      <!-- Right(Notification) -->
+                      <ul class="nav navbar-nav navbar-right flex-row align-items-center">
+                        <li class="ps-2">
+                          <a href="#" class="dropdown-toggle waves-effect user-chat  menu-right text-decoration-none"  id="chatbtn" role="button" data-bs-toggle="dropdown" id="chat" aria-expanded="true">
+                            <i class="fa-brands fa-rocketchat"></i>
+                          </a>
+                          <div class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right chat-list shadow">
+                            <div class="chat-sidebar">
+                              <div class="box-header with-border">   
+                                <h3 class="box-title">Contacts</h3> 
+                              
+                                </div>
+                                <div id="chat-names" class="chat-names">
+                              <div class="sidebar-name">
+                                  <!-- Pass username and display name to register popup -->
+                                  <a href="javascript:register_popup('Contact 1', 'Contact 1');">
+                                      <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
+                                      <span>Contact 1</span>
+                                  </a>
+                              </div>
+                              <div class="sidebar-name">
+                                  <a href="javascript:register_popup('qnimate', 'QNimate');">
+                                      <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
+                                      <span>QNimate</span>
+                                  </a>
+                              </div>
+                              <div class="sidebar-name">
+                                  <a href="javascript:register_popup('qscutter', 'QScutter');">
+                                      <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
+                                      <span>QScutter</span>
+                                  </a>
+                              </div>
+                              <div class="sidebar-name">
+                                  <a href="javascript:register_popup('qidea', 'QIdea');">
+                                      <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
+                                      <span>QIdea</span>
+                                  </a>
+                              </div>
+                              <div class="sidebar-name">
+                                  <a href="javascript:register_popup('qazy', 'QAzy');">
+                                      <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
+                                      <span>QAzy</span>
+                                  </a>
+                              </div>
+                              <div class="sidebar-name">
+                                  <a href="javascript:register_popup('qblock', 'QBlock');">
+                                      <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
+                                      <span>QBlock</span>
+                                  </a>
+                              </div>
+                            </div>
+                          </div>
+                          </div>
+                          </li>
+                          <li class="ps-2">
+                            <a href="#" class="waves-effect user-notification  menu-right text-decoration-none"  id="notificationbtn" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                              <i class="fa fa-bell"></i><!-- <span class="badge bg-danger rounded-circle">4</span>-->
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right notification-list shadow">
+                              <div class="notification-box">
+                                <ul class="notification-drop ps-0">
+                                      <li>First Notification item from user goes here</li>
+                                      <li>Second Notification Item</li>
+                                      <li>Third  Notification Item</li>
+                                </ul>
+                            </div>
+                            </div>
+                            </li>
+                             <li class="dropdown user-box ps-3">
+                                    <a href="#" class="dropdown-toggle waves-effect user-link btn" role="button" data-bs-toggle="dropdown" id="profile" aria-expanded="true">
+                                           Admin
+                                    </a>
+  
+                                    <ul class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right user-list notify-list">
+  
+                                           <li><a href="../index.html"><i class="ti-power-off m-r-5"></i> Logout</a></li>
+                                    </ul>
+                             </li>
+  
+                      </ul> <!-- end navbar-right -->
+  
+               </div><!-- end container -->
+        </div><!-- end navbar -->
+  </div>
+   
+  <div class="left side-menu">
+    <div id="sidebar-menu">
+        <ul>
+               <li class="menu-title"> NAVIGATION </li>
+  
+               <li class="has_sub">
+                      <a href="index.html" class="waves-effect"><i class="fa fa-dashboard"></i> <span> Dashboard </span>
+                      </a>
+               </li>
+               <li class="has_sub"><a href="posts.html" class="waves-effect"><i class="fa fa-feed"></i><span>ポスト</span> </a> </li>
+               <li class="has_sub"><a href="users.html" class="waves-effect"><i class="fa fa-users"></i><span>Users</span> </a> </li>
+               <li class="has_sub"><a href="events.html" class="waves-effect"><i class="fa fa-calendar-days"></i><span>イベント</span> </a> </li>
+               <li class="has_sub"><a href="event-management.html" class="waves-effect"><i class="fa fa-calendar-days"></i><span>イベント管理</span> </a> </li>
+               <li class="has_sub"><a href="tournaments.html" class="waves-effect"><i class="fa-solid fa-trophy"></i><span>Tournaments</span> </a> </li>
+               <li class="has_sub"><a href="tutors.html" class="waves-effect"><i class="fa fa-user"></i><span>Tutors</span> </a> </li>
+  
+               <hr>
+               <li class="has_sub">
+                <a href="../index.html" class="waves-effect"><i class="fa fa-power"></i><span>Logout</span> </a>
+         </li>
+            
+  
+        </ul>
+  </div>
+
+
+  </div>
+  <div class="col content-page px-0"> 
+    <div class="content">
+
+        <div class="m-3 page-title-box">
+            <div class="row align-items-center">
+                <div class="col-sm-6 col-12 mb-4 mb-sm-0">
+                    <!-- Title -->
+                    <h1 class="page-title">Event Management</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row m-auto p-3">
+
+                <div class="card border-0 mb-7 p-3 shadow br-1">
+                    <div class="container at-shadow-box ms-0 mb-3 p-3">
+                    <form>
+
+                        <div class="row mb-3">
+                          <div class="col-md-12">
+                            <div class="form-group">
+                              <label for="name">Event Name:</label>
+                              <input type="text" class="form-control" placeholder="Enter Event Title" id="eventName">
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <div class="row mb-2">
+                            <div class='col-md-5'>
+                               <div class="form-group">
+                                <label for="fromDate"> From：</label>
+                                <div class="input-group date mb-3" id="fromDate" data-target-input="nearest">
+                                    <input type="text" id="event-from" class="form-control datetimepicker-input" data-target="#fromDate"/>
+                                    <div class="input-group-text" data-target="#fromDate" data-toggle="datetimepicker">
+                                      <i class="far fa-calendar-alt"></i>
+                                    </div>
+                                  </div>
+                               </div>
+                            </div>
+                            <div class='col-md-5'>
+                               <div class="form-group">
+                                <label for="fromDate"> To</label>
+                                <div class="input-group date mb-3" id="toDate" data-target-input="nearest">
+                                    <input type="text" id="event-to" class="form-control datetimepicker-input" data-target="#toDate"/>
+                                    <div class="input-group-text" data-target="#toDate" data-toggle="datetimepicker">
+                                      <i class="far fa-calendar-alt"></i>
+                                    </div>
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+                  
+                        <button type="button" class="btn btn-primary" id="addEvent" onclick="addevent()">Add Event</button>
+                      
+                      </form>
+                    </div>
+                    <div id='calendar'></div>
+                </div>
+              
+             
+            
+        
+            </div>
+        </div>
+   
+       </div>
+       </div>
+   
+
+    </body>
+    </html>
