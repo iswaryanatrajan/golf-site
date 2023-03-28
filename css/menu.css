@@ -47,10 +47,10 @@ File: Menu
   .logo span span {
     color: #7fc1fc;
   }
-  .user-box a.user-link {
+  /*.user-box a.user-link {
     padding-top: 17px !important;
     padding-bottom: 17px !important;
-  }
+  }*/
   .user-box .user-img {
     position: relative;
     height: 36px;
@@ -101,7 +101,7 @@ File: Menu
     background-color: rgba(127, 193, 252, 0.4);
   }
   .side-menu.left {
-    position: absolute;
+    /*position: absolute;*/
     top: 60px;
     bottom: 0;
     border-right: 1px solid #eee;
@@ -116,14 +116,14 @@ File: Menu
   .content-page {
     margin-left: 225px;
     overflow: hidden;
-    height: 90vh;
+    min-height: calc(100vh - 70px);
     overflow-y: auto;
     background: #f5f9fc;
   }
   .content-page .content {
     padding: 0 5px 10px 5px;
     margin-top: 70px;
-    min-height: 90vh;
+    min-height: calc(100vh - 70px);
   }
   .button-menu-mobile {
     background: transparent;
@@ -227,6 +227,7 @@ File: Menu
     display: block;
     padding: 12px 20px;
     margin: 2px 0;
+    font-family: 'Noto Sans JP';
   }
   #sidebar-menu > ul > li > a:hover {
     text-decoration: none;
@@ -234,7 +235,9 @@ File: Menu
   }
   #sidebar-menu > ul > ul > li > a:hover {
     text-decoration: none;
-    background-color: #f5f9fc
+    background-color: #f5f9fc;
+    background-color: #16192C;
+    
   }
   #sidebar-menu > ul > li > a > span {
     vertical-align: middle;
@@ -563,4 +566,3 @@ File: Menu
   .topbar .container{
     max-width: 100%;
   }   
-  

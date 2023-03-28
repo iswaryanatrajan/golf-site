@@ -168,7 +168,7 @@ $(function() {
   
         <!-- LOGO -->
         <div class="topbar-left">
-               <a href="home.html" class="logo"><span>Golf</span></a>
+               <a href="index.html" class="logo"><span>Golf</span></a>
         </div>
   
         <!-- Button mobile view to collapse sidebar menu -->
@@ -181,15 +181,81 @@ $(function() {
                       </nav>
   
                       <!-- Right(Notification) -->
-                      <ul class="nav navbar-nav navbar-right">
-                             <li class="dropdown user-box">
+                      <ul class="nav navbar-nav navbar-right flex-row align-items-center">
+                        <li class="ps-2">
+                          <a href="#" class="dropdown-toggle waves-effect user-chat  menu-right text-decoration-none"  id="chatbtn" role="button" data-bs-toggle="dropdown" id="chat" aria-expanded="true">
+                            <i class="fa-brands fa-rocketchat"></i>
+                          </a>
+                          <div class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right chat-list shadow">
+                            <div class="chat-sidebar">
+                              <div class="box-header with-border">   
+                                <h3 class="box-title">Contacts</h3> 
+                              
+                                </div>
+                                <div id="chat-names" class="chat-names">
+                              <div class="sidebar-name">
+                                  <!-- Pass username and display name to register popup -->
+                                  <a href="javascript:register_popup('Contact 1', 'Contact 1');">
+                                      <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
+                                      <span>Contact 1</span>
+                                  </a>
+                              </div>
+                              <div class="sidebar-name">
+                                  <a href="javascript:register_popup('qnimate', 'QNimate');">
+                                      <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
+                                      <span>QNimate</span>
+                                  </a>
+                              </div>
+                              <div class="sidebar-name">
+                                  <a href="javascript:register_popup('qscutter', 'QScutter');">
+                                      <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
+                                      <span>QScutter</span>
+                                  </a>
+                              </div>
+                              <div class="sidebar-name">
+                                  <a href="javascript:register_popup('qidea', 'QIdea');">
+                                      <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
+                                      <span>QIdea</span>
+                                  </a>
+                              </div>
+                              <div class="sidebar-name">
+                                  <a href="javascript:register_popup('qazy', 'QAzy');">
+                                      <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
+                                      <span>QAzy</span>
+                                  </a>
+                              </div>
+                              <div class="sidebar-name">
+                                  <a href="javascript:register_popup('qblock', 'QBlock');">
+                                      <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
+                                      <span>QBlock</span>
+                                  </a>
+                              </div>
+                            </div>
+                          </div>
+                          </div>
+                          </li>
+                          <li class="ps-2">
+                            <a href="#" class="waves-effect user-notification  menu-right text-decoration-none"  id="notificationbtn" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                              <i class="fa fa-bell"></i><!-- <span class="badge bg-danger rounded-circle">4</span>-->
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right notification-list shadow">
+                              <div class="notification-box">
+                                <ul class="notification-drop ps-0">
+                                      <li>First Notification item from user goes here</li>
+                                      <li>Second Notification Item</li>
+                                      <li>Third  Notification Item</li>
+                                </ul>
+                            </div>
+                            </div>
+                            </li>
+                             <li class="dropdown user-box ps-3">
                                     <a href="#" class="dropdown-toggle waves-effect user-link btn" role="button" data-bs-toggle="dropdown" id="profile" aria-expanded="true">
                                            Admin
                                     </a>
   
                                     <ul class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right user-list notify-list">
   
-                                           <li><a href="http://165.232.142.13/fishmap/logout"><i class="ti-power-off m-r-5"></i> Logout</a></li>
+                                           <li><a href="../index.html"><i class="ti-power-off m-r-5"></i> Logout</a></li>
                                     </ul>
                              </li>
   
@@ -205,10 +271,10 @@ $(function() {
                <li class="menu-title"> NAVIGATION </li>
   
                <li class="has_sub">
-                      <a href="dashboard.html" class="waves-effect"><i class="fa fa-dashboard"></i> <span> Dashboard </span>
+                      <a href="index.html" class="waves-effect"><i class="fa fa-dashboard"></i> <span> Dashboard </span>
                       </a>
                </li>
-               <li class="has_sub"><a href="index.html" class="waves-effect"><i class="fa fa-feed"></i><span>ポスト</span> </a> </li>
+               <li class="has_sub"><a href="posts.html" class="waves-effect"><i class="fa fa-feed"></i><span>ポスト</span> </a> </li>
                <li class="has_sub"><a href="users.html" class="waves-effect"><i class="fa fa-users"></i><span>Users</span> </a> </li>
                <li class="has_sub"><a href="events.html" class="waves-effect"><i class="fa fa-calendar-days"></i><span>イベント</span> </a> </li>
                <li class="has_sub"><a href="tournaments.html" class="waves-effect"><i class="fa-solid fa-trophy"></i><span>Tournaments</span> </a> </li>
@@ -216,7 +282,7 @@ $(function() {
   
                <hr>
                <li class="has_sub">
-                <a href="home.html" class="waves-effect"><i class="fa fa-power"></i><span>Logout</span> </a>
+                <a href="../index.html" class="waves-effect"><i class="fa fa-power"></i><span>Logout</span> </a>
          </li>
             
   
@@ -228,11 +294,11 @@ $(function() {
   <div class="col content-page px-0"> 
     <div class="content">
 
-            <div class="mb-npx p-3">
-                <div class="row align-items-center">
-                    <div class="col-sm-6 col-12 mb-4 mb-sm-0">
-                        <!-- Title -->
-                        <h1 class="h2 mb-4 ls-tight">Events</h1>
+        <div class="m-3 page-title-box">
+            <div class="row align-items-center">
+                <div class="col-sm-6 col-12 mb-4 mb-sm-0">
+                    <!-- Title -->
+                    <h1 class="page-title">Tournaments</h1>
                     </div>
                     <!-- Actions -->
                     <div class="col-sm-6 col-12 text-sm-end">
@@ -251,13 +317,11 @@ $(function() {
 
                 <div class="card border-0 mb-7 p-3 shadow br-1">
                     <div class="table-responsive">
-                        <table id="userlist" class="table table-hover table-nowrap">
+                        <table id="tournaments" class="table table-hover table-nowrap py-3">
                             <thead class="thead-light">
                                 <tr>
                                     <th scope="col">Feed Id</th>
                                     <th scope="col">Title</th>
-                                    <th scope="col">About</th>
-                                    <th scope="col">Category</th>
                                     <th scope="col">Username</th>
                                     <th scope="col">Location</th>
                                     <th scope="col">Members</th>
@@ -272,8 +336,6 @@ $(function() {
                                 <tr>
                                     <td>101</td>
                                     <td>Event 1</td>
-                                    <td>山でキャンプ　持物</td>
-                                    <td>キャンプ</td>
                                     <td>西端友基</td>
                                     <td>静岡県</td>
                                     <td>5</td>
@@ -282,8 +344,9 @@ $(function() {
                                     <td>2022-03-23 00:58:31</td>
                                     <td ><img src="https://img.freepik.com/free-vector/golf-swing-silhouette-collection_23-2147768420.jpg?w=826&amp;t=st=1675408330~exp=1675408930~hmac=e4411e2879607034615fcc432dc0062727a403bfab00d1e29466443da45a9a59" class="avatar avatar-sm  me-2"> </td>
                                       <td class="text-end">
-                                        <a href="managetournament.html" class="btn btn-sm btn-neutral text-neutral-hover"><i class="fa fa-pen"></i></a>
-                                        <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
+                                        <a href="tournament-details.html" class="btn btn-sm btn-neutral text-neutral-hover" title="View Details"> <i class="fa fa-eye"></i></a>
+                                        <a href="managetournament.html" class="btn btn-sm btn-neutral text-neutral-hover" title="Manage Players"><i class="fa fa-pen"></i></a>
+                                        <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover" title="Delete">
                                             <i class="fa fa-trash"></i>
                                         </button>
                                     </td>
@@ -291,8 +354,6 @@ $(function() {
                                 <tr>
                                     <td>102</td>
                                     <td>Event 134</td>
-                                    <td>山でキャンプ　持物</td>
-                                    <td>キャンプ</td>
                                     <td>西端友基</td>
                                     <td>静岡県</td>
                                     <td>5</td>
@@ -301,7 +362,8 @@ $(function() {
                                     <td>2022-03-23 00:58:31</td>
                                     <td ><img src="https://img.freepik.com/free-vector/golf-swing-silhouette-collection_23-2147768420.jpg?w=826&amp;t=st=1675408330~exp=1675408930~hmac=e4411e2879607034615fcc432dc0062727a403bfab00d1e29466443da45a9a59" class="avatar avatar-sm  me-2"> </td>
                                       <td class="text-end">
-                                        <a href="managetournament.html" class="btn btn-sm btn-neutral text-neutral-hover"><i class="fa fa-pen"></i></a>
+                                        <a href="tournament-details.html" class="btn btn-sm btn-neutral text-neutral-hover" title="View Details"> <i class="fa fa-eye"></i></a>
+                                        <a href="managetournament.html" class="btn btn-sm btn-neutral text-neutral-hover" title="Manage Players"><i class="fa fa-pen"></i></a>
                                         <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
                                             <i class="fa fa-trash"></i>
                                         </button>
@@ -310,8 +372,6 @@ $(function() {
                                 <tr>
                                     <td>103</td>
                                     <td>Event 5641</td>
-                                    <td>山でキャンプ　持物</td>
-                                    <td>キャンプ</td>
                                     <td>西端友基</td>
                                     <td>静岡県</td>
                                     <td>5</td>
@@ -320,7 +380,8 @@ $(function() {
                                     <td>2022-03-23 00:58:31</td>
                                     <td ><img src="https://img.freepik.com/free-vector/golf-swing-silhouette-collection_23-2147768420.jpg?w=826&amp;t=st=1675408330~exp=1675408930~hmac=e4411e2879607034615fcc432dc0062727a403bfab00d1e29466443da45a9a59" class="avatar avatar-sm  me-2"> </td>
                                       <td class="text-end">
-                                        <a href="managetournament.html" class="btn btn-sm btn-neutral text-neutral-hover"><i class="fa fa-pen"></i></a>
+                                        <a href="tournament-details.html" class="btn btn-sm btn-neutral text-neutral-hover" title="View Details"> <i class="fa fa-eye"></i></a>
+                                        <a href="managetournament.html" class="btn btn-sm btn-neutral text-neutral-hover" title="Manage Players"><i class="fa fa-pen"></i></a>
                                         <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
                                             <i class="fa fa-trash"></i>
                                         </button>

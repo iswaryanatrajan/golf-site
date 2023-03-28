@@ -21,81 +21,22 @@
 
     <link href="../fonts/Hiragino-Sans-GB-W3.otf">
     <script>
-       /*   document.addEventListener('DOMContentLoaded', function() {
-        var calendarEl = document.getElementById('calendar');
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-          selectable: true
+              $(document).ready(function(){
+$('.counter').each(function () {
+        $(this).prop('Counter',0).animate({
+            Counter: $(this).text()
+        }, {
+          
+          //chnage count up speed here
+            duration: 1000,
+            easing: 'swing',
+            step: function (now) {
+                $(this).text(Math.ceil(now));
+            }
         });
-        calendar.render();
-      });*/
-
-$(function() {
-  ImgUpload();
-  $(".imagePreview").hide();
-  function ImgUpload() {
-  var imgWrap = "";
-  var imgArray = [];
-
-  $('.upload__inputfile').each(function () {
-    $(this).on('change', function (e) {
-      imgWrap = $(this).closest('.upload__box').find('.upload__img-wrap');
-      var maxLength = $(this).attr('data-max_length');
-
-      var files = e.target.files;
-      var filesArr = Array.prototype.slice.call(files);
-      var iterator = 0;
-      filesArr.forEach(function (f, index) {
-
-        if (!f.type.match('image.*')) {
-          return;
-        }
-
-        if (imgArray.length > maxLength) {
-          return false
-        } else {
-          var len = 0;
-          for (var i = 0; i < imgArray.length; i++) {
-            if (imgArray[i] !== undefined) {
-              len++;
-            }
-          }
-          if (len > maxLength) {
-            return false;
-          } else {
-            imgArray.push(f);
-
-            var reader = new FileReader();
-            reader.onload = function (e) {
-              var html = "<div class='upload__img-box'><div style='background-image: url(" + e.target.result + ")' data-number='" + $(".upload__img-close").length + "' data-file='" + f.name + "' class='img-bg'><div class='upload__img-close'></div></div></div>";
-              imgWrap.append(html);
-              iterator++;
-            }
-            reader.readAsDataURL(f);
-          }
-        }
-      });
     });
-  });
-
-  $('body').on('click', ".upload__img-close", function (e) {
-    var file = $(this).parent().data("file");
-    for (var i = 0; i < imgArray.length; i++) {
-      if (imgArray[i].name === file) {
-        imgArray.splice(i, 1);
-        break;
-      }
-    }
-    $(this).parent().parent().remove();
-  });
-}
-});
-    </script>
-<script> 
-  $(function(){
-
-  });
-
-  </script> 
+    });
+</script>
   </head>
   <body>
     <div id="wrapper" class="forced ">
@@ -103,7 +44,7 @@ $(function() {
 
       <!-- LOGO -->
       <div class="topbar-left">
-             <a href="home.html" class="logo"><span>Golf</span></a>
+             <a href="index.html" class="logo"><span>Golf</span></a>
       </div>
 
       <!-- Button mobile view to collapse sidebar menu -->
@@ -116,15 +57,81 @@ $(function() {
                     </nav>
 
                     <!-- Right(Notification) -->
-                    <ul class="nav navbar-nav navbar-right">
-                           <li class="dropdown user-box">
+                    <ul class="nav navbar-nav navbar-right flex-row align-items-center">
+                      <li class="ps-2">
+                        <a href="#" class="dropdown-toggle waves-effect user-chat  menu-right text-decoration-none"  id="chatbtn" role="button" data-bs-toggle="dropdown" id="chat" aria-expanded="true">
+                          <i class="fa-brands fa-rocketchat"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right chat-list shadow">
+                          <div class="chat-sidebar">
+                            <div class="box-header with-border">   
+                              <h3 class="box-title">Contacts</h3> 
+                            
+                              </div>
+                              <div id="chat-names" class="chat-names">
+                            <div class="sidebar-name">
+                                <!-- Pass username and display name to register popup -->
+                                <a href="javascript:register_popup('Contact 1', 'Contact 1');">
+                                    <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
+                                    <span>Contact 1</span>
+                                </a>
+                            </div>
+                            <div class="sidebar-name">
+                                <a href="javascript:register_popup('qnimate', 'QNimate');">
+                                    <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
+                                    <span>QNimate</span>
+                                </a>
+                            </div>
+                            <div class="sidebar-name">
+                                <a href="javascript:register_popup('qscutter', 'QScutter');">
+                                    <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
+                                    <span>QScutter</span>
+                                </a>
+                            </div>
+                            <div class="sidebar-name">
+                                <a href="javascript:register_popup('qidea', 'QIdea');">
+                                    <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
+                                    <span>QIdea</span>
+                                </a>
+                            </div>
+                            <div class="sidebar-name">
+                                <a href="javascript:register_popup('qazy', 'QAzy');">
+                                    <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
+                                    <span>QAzy</span>
+                                </a>
+                            </div>
+                            <div class="sidebar-name">
+                                <a href="javascript:register_popup('qblock', 'QBlock');">
+                                    <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
+                                    <span>QBlock</span>
+                                </a>
+                            </div>
+                          </div>
+                        </div>
+                        </div>
+                        </li>
+                        <li class="ps-2">
+                          <a href="#" class="waves-effect user-notification  menu-right text-decoration-none"  id="notificationbtn" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                            <i class="fa fa-bell"></i><!-- <span class="badge bg-danger rounded-circle">4</span>-->
+                          </a>
+                          <div class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right notification-list shadow">
+                            <div class="notification-box">
+                              <ul class="notification-drop ps-0">
+                                    <li>First Notification item from user goes here</li>
+                                    <li>Second Notification Item</li>
+                                    <li>Third  Notification Item</li>
+                              </ul>
+                          </div>
+                          </div>
+                          </li>
+                           <li class="dropdown user-box ps-3">
                                   <a href="#" class="dropdown-toggle waves-effect user-link btn" role="button" data-bs-toggle="dropdown" id="profile" aria-expanded="true">
                                          Admin
                                   </a>
 
                                   <ul class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right user-list notify-list">
 
-                                         <li><a href="http://165.232.142.13/fishmap/logout"><i class="ti-power-off m-r-5"></i> Logout</a></li>
+                                         <li><a href="../index.html"><i class="ti-power-off m-r-5"></i> Logout</a></li>
                                   </ul>
                            </li>
 
@@ -136,177 +143,219 @@ $(function() {
 
    
       <div class="left side-menu">
-        <div id="sidebar-menu">
-          <ul>
-                 <li class="menu-title"> NAVIGATION </li>
-    
-                 <li class="has_sub">
-                        <a href="dashboard.html" class="waves-effect"><i class="fa fa-dashboard"></i> <span> Dashboard </span>
-                        </a>
-                 </li>
-                 <li class="has_sub"><a href="index.html" class="waves-effect"><i class="fa fa-feed"></i><span>ポスト</span> </a> </li>
-                 <li class="has_sub"><a href="users.html" class="waves-effect"><i class="fa fa-users"></i><span>Users</span> </a> </li>
-                 <li class="has_sub"><a href="events.html" class="waves-effect"><i class="fa fa-calendar-days"></i><span>イベント</span> </a> </li>
-                 <li class="has_sub"><a href="tournaments.html" class="waves-effect"><i class="fa-solid fa-trophy"></i><span>Tournaments</span> </a> </li>
-                 <li class="has_sub"><a href="tutors.html" class="waves-effect"><i class="fa fa-user"></i><span>Tutors</span> </a> </li>
-    
-                 <hr>
-                 <li class="has_sub">
-                  <a href="home.html" class="waves-effect"><i class="fa fa-power"></i><span>Logout</span> </a>
-           </li>
-              
-    
-          </ul>
-    </div>
+       <div id="sidebar-menu">
+              <ul>
+                     <li class="menu-title"> NAVIGATION </li>
+        
+                     <li class="has_sub">
+                            <a href="index.html" class="waves-effect"><i class="fa fa-dashboard"></i> <span> Dashboard </span>
+                            </a>
+                     </li>
+                     <li class="has_sub"><a href="posts.html" class="waves-effect"><i class="fa fa-feed"></i><span>ポスト</span> </a> </li>
+                     <li class="has_sub"><a href="users.html" class="waves-effect"><i class="fa fa-users"></i><span>Users</span> </a> </li>
+                     <li class="has_sub"><a href="events.html" class="waves-effect"><i class="fa fa-calendar-days"></i><span>イベント</span> </a> </li>
+                     <li class="has_sub"><a href="event-management.html" class="waves-effect"><i class="fa fa-calendar-days"></i><span>イベント管理</span> </a> </li>
+                     <li class="has_sub"><a href="tournaments.html" class="waves-effect"><i class="fa-solid fa-trophy"></i><span>Tournaments</span> </a> </li>
+                     <li class="has_sub"><a href="tutors.html" class="waves-effect"><i class="fa fa-user"></i><span>Tutors</span> </a> </li>
+        
+                     <hr>
+                     <li class="has_sub">
+                      <a href="../index.html" class="waves-effect"><i class="fa fa-power"></i><span>Logout</span> </a>
+               </li>
+                  
+        
+              </ul>
+        </div>
 
 
       </div>
-      <div class="col content-page px-0 bg-grey"> 
-<div class="content">
-    <div class="row m-5 ">
-      
-        <div class="container p-0">
-          <div class="my-3 signedinblock">
-            <textarea id="post" class="form-control" placeholder="Write a post..." rows="3"></textarea>
-           
-          <div class="upload__box">
-            <div class="upload__img-wrap"></div>
-            <div class="upload__btn-box">
-              <label class="">
-                <p class="btn btn-outline-warning mb-0">画像をアップロード</p>
-                <input type="file" multiple="" data-max_length="20" class="upload__inputfile">
-              </label>
-            </div>
-          </div>
-          <div class="text-end w-100"><a href="#" class="btn btn-warning my-2" name="publish">Publish</a></div>
-        </div>
+      <div class="col content-page px-0"> 
+<div class="content dashboard">
+    <div class="container">
+        <div class="row">
+               <div class="col-xs-12">
+                      <div class="page-title-box">
+                             <h4 class="page-title"> Dashboard </h4>
+                             <div class="clearfix"></div>
+                      </div>
+               </div>
 
-        <div class="row my-3"><div class="form-outline">
-          <input type="search" id="form1" class="form-control" placeholder="Search post" aria-label="Search" />
-        </div></div>
-        <div class="my-3">
-          <div class="row g-0   overflow-hidden flex-md-row mb-4  h-md-250 position-relative postblock">
-              <div class="col-md-2 col-12">
-                  <svg class="bd-placeholder-img" width="100%" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="30%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-                </div>
-              <div class="col-md-8 col-12 p-4 d-flex flex-column position-static">
-                  
-                <strong class="d-inline-block mb-2 text-primary tag">ゴルフ</strong>
-                <h3 class="mb-0">ディエゴ博士 🇺🇸 ピアソン / ディズニー公式講師 ✅ 👧 キッズ/ティーンズ 🗣 会話</h3>
-                <div class="mb-1 text-muted">Nov 12</div>
-                <div class="mb-1 username"><i class="fa fa-user" style="color: #3b5998;"></i> User 1</div>
-                <p class="card-text mb-auto">🔥私のクライアントは、エリート大学、コンサルティング、金融、法務、およびソフトウェアの仕事に就いています。他の多くの人がキャリアと自信を大幅に高めました🔥
-                    🇬🇧 ネイティブ ブリティッシュ 🇺🇸 アメリカ在住 20 年
-                    🥇 4000時間以上のESL、楽しい+リラックス
-                    🥇 20年以上のビジネス/ファイナンス経験
-                    🥇MBA / CFA
-                    🥇セルタ/TEFL
-                    🥇プレゼンテーションと会議のアドバイス🥇
-                    </p>
-                <div class="">
-                  <i class="fab fa-facebook-f" style="color: #3b5998;"></i>
-                  <i class="fab fa-twitter ms-2" style="color: #55acee;"></i>
-                </div>
-              </div>
-              <div class="col-md-2 col-12 p-2">
-                <a href="#" class="btn d-inline-flex btn-sm btn-neutral border-base mx-1 my-3"><span class="pe-2"><i class="fa fa-pencil"></i></span><span>Edit</span></a>
-                <a href="#" class="btn d-inline-flex btn-sm btn-primary mx-1"> <span class=" pe-2"> <i class="fa fa-trash"></i></span><span>Delete</span></a>
-             </div>
-            </div>
-            <div class="row g-0  overflow-hidden flex-md-row mb-4  position-relative postblock">
-              <div class="col-md-2 col-12 ">
-                  <svg class="bd-placeholder-img" width="100%" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="30%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-                </div>
-              <div class="col-md-8 col-12 p-4 d-flex flex-column position-static">
-                  
-                <strong class="d-inline-block mb-2 text-primary tag">イベント</strong>
-                <h3 class="mb-0">注目のポスト 2</h3>
-                <div class="mb-1 text-muted">Nov 12</div>
-                <div class="mb-1 username"><i class="fa fa-user" style="color: #3b5998;"></i> User 1</div>
-                <p class="card-text mb-auto">ダミーテキスト ダミーテキスト ダミーテキスト ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト ダミーテキスト ダミーテキスト ダミーテキストダミーテキストダミーテキストダミーテキスト</p>
-                <div class="">
-                  <i class="fab fa-facebook-f" style="color: #3b5998;"></i>
-                  <i class="fab fa-twitter ms-2" style="color: #55acee;"></i>
-                </div>
-              </div>
-              <div class="col-md-2 col-12  p-2">
-                <a href="#" class="btn d-inline-flex btn-sm btn-neutral border-base mx-1 my-3"><span class="pe-2"><i class="fa fa-pencil"></i></span><span>Edit</span></a>
-                <a href="#" class="btn d-inline-flex btn-sm btn-primary mx-1"> <span class=" pe-2"> <i class="fa fa-trash"></i></span><span>Delete</span></a>
-             </div>
-            </div>
-            <div class="row g-0  overflow-hidden flex-md-row mb-4  h-md-250 position-relative postblock">
-              <div class="col-md-2 col-12 ">
-                  <svg class="bd-placeholder-img" width="100%" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="30%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-                </div>
-              <div class="col-md-8 col-12 p-4 d-flex flex-column position-static">
-                <strong class="d-inline-block mb-2 text-primary tag">ゴルフ</strong>
-                <h3 class="mb-0">注目のポスト 3</h3>
-                <div class="mb-1 text-muted">Nov 12</div>
-                <div class="mb-1 username"><i class="fa fa-user" style="color: #3b5998;"></i> User 2</div>
-                <p class="card-text mb-auto">ダミーテキスト ダミーテキスト ダミーテキスト ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト ダミーテキスト ダミーテキスト ダミーテキストダミーテキストダミーテキストダミーテキスト</p>
-                <div class="">
-                  <i class="fab fa-facebook-f" style="color: #3b5998;"></i>
-                  <i class="fab fa-twitter ms-2" style="color: #55acee;"></i>
-                </div>
-              </div>
-              <div class="col-md-2 col-12  p-2">
-                <a href="#" class="btn d-inline-flex btn-sm btn-neutral border-base mx-1 my-3"><span class="pe-2"><i class="fa fa-pencil"></i></span><span>Edit</span></a>
-                <a href="#" class="btn d-inline-flex btn-sm btn-primary mx-1"> <span class=" pe-2"> <i class="fa fa-trash"></i></span><span>Delete</span></a>
-             </div>
-            </div>
-       
         </div>
-       <!-- <div id='calendar'></div>-->
-  </div>
-   
-        <div class="chat-sidebar">
-          <div class="box-header with-border">   
-            <h3 class="box-title">Contacts</h3> 
-          <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-bs-target="#chat-names" data-bs-toggle="collapse"  aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-minus"></i></button></div>
-            </div>
-            <div id="chat-names" class="chat-names fade collapse">
-          <div class="sidebar-name">
-              <!-- Pass username and display name to register popup -->
-              <a href="javascript:register_popup('Contact 1', 'Contact 1');">
-                  <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
-                  <span>Contact 1</span>
-              </a>
+        <!-- end row -->
+        <div class="row g-6 mb-6">
+              <div class="col-xl-3 col-sm-6 col-12">
+                  <div class="card shadow border-0 br-1">
+                      <div class="card-body">
+                          <div class="row">
+                              <div class="col">
+                                  <span class="h6 font-semibold text-muted text-sm d-block mb-2">TOTAL USERS</span>
+                                  <span class="h3 font-bold mb-0 counter" >300</span>
+                                  
+                              </div>
+                              <div class="col-auto">
+                                  <div class="icon p-2 bg-danger text-white text-lg rounded-circle">
+                                      <i class="fa-solid fa-credit-card fa-lg"></i>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="mt-2 mb-0 text-sm">
+                              <span class="badge badge-pill bg-soft-success text-success me-2">
+                                  <i class="fa fa-arrow-up me-1"></i>13%
+                              </span>
+                              <span class="text-nowrap text-xs text-muted">Since last month</span>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-xl-3 col-sm-6 col-12">
+                  <div class="card shadow border-0 br-1">
+                      <div class="card-body">
+                          <div class="row">
+                              <div class="col">
+                                  <span class="h6 font-semibold text-muted text-sm d-block mb-2">TOTAL FEED</span>
+                                  <span class="h3 font-bold mb-0 counter">215</span>
+                              </div>
+                              <div class="col-auto">
+                                  <div class="icon p-2 bg-primary text-white text-lg rounded-circle">
+                                      <i class="fa fa-users fa-lg"></i>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="mt-2 mb-0 text-sm">
+                              <span class="badge badge-pill bg-soft-success text-success me-2">
+                                  <i class="fa fa-arrow-up fa-lg me-1"></i>30%
+                              </span>
+                              <span class="text-nowrap text-xs text-muted">Since last month</span>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-xl-3 col-sm-6 col-12">
+                  <div class="card shadow border-0 br-1">
+                      <div class="card-body">
+                          <div class="row">
+                              <div class="col">
+                                  <span class="h6 font-semibold text-muted text-sm d-block mb-2">TOTAL EVENT</span>
+                                  <span class="h3 font-bold mb-0 counter">24</span>
+                              </div>
+                              <div class="col-auto">
+                                  <div class="icon p-2 bg-info text-white text-lg rounded-circle">
+                                    <i class="fa-regular fa-calendar-check fa-lg"></i>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="mt-2 mb-0 text-sm">
+                              <span class="badge badge-pill bg-soft-danger text-danger me-2">
+                                  <i class="fa fa-arrow-down me-1"></i>-5%
+                              </span>
+                              <span class="text-nowrap text-xs text-muted">Since last month</span>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-xl-3 col-sm-6 col-12">
+                  <div class="card shadow border-0 br-1">
+                      <div class="card-body">
+                          <div class="row">
+                              <div class="col">
+                                  <span class="h6 font-semibold text-muted text-sm d-block mb-2">TOTAL COMMENT</span>
+                                  <span class="h3 font-bold mb-0 counter">250</span>
+                              </div>
+                              <div class="col-auto">
+                                  <div class="icon p-2 bg-warning text-white text-lg rounded-circle">
+                                    <i class="fa-solid fa-comment fa-lg"></i>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="mt-2 mb-0 text-sm">
+                              <span class="badge badge-pill bg-soft-success text-success me-2">
+                                  <i class="fa fa-arrow-up me-1"></i>10%
+                              </span>
+                              <span class="text-nowrap text-xs text-muted">Since last month</span>
+                          </div>
+                      </div>
+                  </div>
+              </div>
           </div>
-          <div class="sidebar-name">
-              <a href="javascript:register_popup('qnimate', 'QNimate');">
-                  <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
-                  <span>QNimate</span>
-              </a>
-          </div>
-          <div class="sidebar-name">
-              <a href="javascript:register_popup('qscutter', 'QScutter');">
-                  <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
-                  <span>QScutter</span>
-              </a>
-          </div>
-          <div class="sidebar-name">
-              <a href="javascript:register_popup('qidea', 'QIdea');">
-                  <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
-                  <span>QIdea</span>
-              </a>
-          </div>
-          <div class="sidebar-name">
-              <a href="javascript:register_popup('qazy', 'QAzy');">
-                  <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
-                  <span>QAzy</span>
-              </a>
-          </div>
-          <div class="sidebar-name">
-              <a href="javascript:register_popup('qblock', 'QBlock');">
-                  <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
-                  <span>QBlock</span>
-              </a>
-          </div>
-        </div>
-      </div>
+        <!--<div class="row text-center">
+               <h3 class="my-3"> Statistics </h3><br>
 
-    </div>
+               <div class="col-lg-2 col-md-4 col-sm-6">
+                      <div class="card-box widget-box-one">
+                             <div class="wigdet-one-content">
+                                    <p class="m-0 text-uppercase font-600 font-secondary text-overflow">Total Users</p>
+                                    <h2 class="text-danger"><span data-plugin="counterup">201</span></h2>
+                             </div>
+                      </div>
+               </div>
+
+               <div class="col-lg-2 col-md-4 col-sm-6">
+                      <div class="card-box widget-box-one">
+                             <div class="wigdet-one-content">
+                                    <p class="m-0 text-uppercase font-600 font-secondary text-overflow">Feed + Youtube + Event + Parking</p>
+                                    <h2 class="text-primary"><span data-plugin="counterup" style="color: #ff9900;">147</span> </h2>
+                             </div>
+                      </div>
+               </div>
+
+               <div class="col-lg-2 col-md-4 col-sm-6">
+                      <div class="card-box widget-box-one">
+                             <div class="wigdet-one-content">
+                                    <p class="m-0 text-uppercase font-600 font-secondary text-overflow">Total Youtube</p>
+                                    <h2 class="text-primary"><span data-plugin="counterup" style="    color: #ff0000;">49</span> </h2>
+                             </div>
+                      </div>
+               </div>
+
+               <div class="col-lg-2 col-md-4 col-sm-6">
+                      <div class="card-box widget-box-one">
+                             <div class="wigdet-one-content">
+                                    <p class="m-0 text-uppercase font-600 font-secondary text-overflow">Total Feed</p>
+                                    <h2 class="text-primary"><span data-plugin="counterup" style="color: #ff00f7">83</span> </h2>
+                             </div>
+                      </div>
+               </div>
+
+               <div class="col-lg-2 col-md-4 col-sm-6">
+                      <div class="card-box widget-box-one">
+                             <div class="wigdet-one-content">
+                                    <p class="m-0 text-uppercase font-600 font-secondary text-overflow">Total Event</p>
+                                    <h2 class="text-primary"><span data-plugin="counterup" style="color: #00a73b">8</span> </h2>
+                             </div>
+                      </div>
+               </div>
+
+               <div class="col-lg-2 col-md-4 col-sm-6">
+                      <div class="card-box widget-box-one">
+                             <div class="wigdet-one-content">
+                                    <p class="m-0 text-uppercase font-600 font-secondary text-overflow">Total Parking</p>
+                                    <h2 class="text-primary"><span data-plugin="counterup" style="color: #2100d5">7</span> </h2>
+                             </div>
+                      </div>
+               </div>
+
+               <div class="col-lg-2 col-md-4 col-sm-6">
+                      <div class="card-box widget-box-one">
+                             <div class="wigdet-one-content">
+                                    <p class="m-0 text-uppercase font-600 font-secondary text-overflow">Total Comment</p>
+                                    <h2 class="text-primary"><span data-plugin="counterup" style="color: #000000">353</span> </h2>
+                             </div>
+                      </div>
+               </div>
+
+               <div class="col-lg-2 col-md-4 col-sm-6">
+                      <div class="card-box widget-box-one">
+                             <div class="wigdet-one-content">
+                                    <p class="m-0 text-uppercase font-600 font-secondary text-overflow">Total Category</p>
+                                    <h2 class="text-success"><span data-plugin="counterup">9</span></h2>
+                             </div>
+                      </div>
+               </div>
+
+
+        </div>-->
+
+ </div>
   </div>
        </div>
     

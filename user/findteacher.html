@@ -49,7 +49,8 @@ body{background: #fff !important;}
     <script>
       $(function() {
         $(".videoblock").hide();
-        $(".buy-btn").hover(function(e){
+        $(".buy-btn").click(function(e){
+          console.log("wrtrh");
           var btn = $(this).closest(".userblock");
           console.log("clientX: " + e.clientX + "- clientY: " + e.clientY);
           $(".videoblock").show();
@@ -59,7 +60,22 @@ body{background: #fff !important;}
       top: btn.offset().top } );
         });
 
-      });
+        var closeTimer;
+
+
+    $(".buy-btn").hover(function(e){
+      console.log("Inside hover")
+      var btn = $(this).closest(".userblock");
+          console.log("clientX: " + e.clientX + "- clientY: " + e.clientY);
+          $(".videoblock").show();
+         //var margin=$(this).offset().top - 150;
+          $(".videoblock").css({
+      position: 'absolute',
+      top: btn.offset().top } );
+        });
+
+
+});
       document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
         var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -86,7 +102,7 @@ body{background: #fff !important;}
   
         <!-- LOGO -->
         <div class="topbar-left">
-               <a href="home.html" class="logo"><span>Golf</span></a>
+               <a href="index.html" class="logo"><span>Golf</span></a>
         </div>
   
         <!-- Button mobile view to collapse sidebar menu -->
@@ -98,21 +114,86 @@ body{background: #fff !important;}
                         <a class="btn border-0 waves-effect button-menu-mobile open-left" id="menu-btn"><i class="fa fa-bars"></i></a>
                       </nav>
   
-                      <!-- Right(Notification) -->
-                      <ul class="nav navbar-nav navbar-right">
-                             <li class="dropdown user-box">
-                                    <a href="#" class="dropdown-toggle waves-effect user-link btn" role="button" data-bs-toggle="dropdown" id="profile" aria-expanded="true">
-                                           Iswarya
-                                    </a>
-  
-                                    <ul class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right user-list notify-list">
-  
-                                           <li><a href="#"><i class="ti-power-off m-r-5"></i> Logout</a></li>
+                           <!-- Right(Notification) -->
+                           <ul class="nav navbar-nav navbar-right flex-row align-items-center">
+                            <li class="ps-2">
+                              <a href="#" class="dropdown-toggle waves-effect user-chat  menu-right text-decoration-none"  id="chatbtn" role="button" data-bs-toggle="dropdown" id="chat" aria-expanded="true">
+                                <i class="fa-brands fa-rocketchat"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right chat-list shadow">
+                                <div class="chat-sidebar">
+                                  <div class="box-header with-border">   
+                                    <h3 class="box-title">Contacts</h3> 
+                                  
+                                    </div>
+                                    <div id="chat-names" class="chat-names">
+                                  <div class="sidebar-name">
+                                      <!-- Pass username and display name to register popup -->
+                                      <a href="javascript:register_popup('Contact 1', 'Contact 1');">
+                                          <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
+                                          <span>Contact 1</span>
+                                      </a>
+                                  </div>
+                                  <div class="sidebar-name">
+                                      <a href="javascript:register_popup('qnimate', 'QNimate');">
+                                          <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
+                                          <span>QNimate</span>
+                                      </a>
+                                  </div>
+                                  <div class="sidebar-name">
+                                      <a href="javascript:register_popup('qscutter', 'QScutter');">
+                                          <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
+                                          <span>QScutter</span>
+                                      </a>
+                                  </div>
+                                  <div class="sidebar-name">
+                                      <a href="javascript:register_popup('qidea', 'QIdea');">
+                                          <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
+                                          <span>QIdea</span>
+                                      </a>
+                                  </div>
+                                  <div class="sidebar-name">
+                                      <a href="javascript:register_popup('qazy', 'QAzy');">
+                                          <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
+                                          <span>QAzy</span>
+                                      </a>
+                                  </div>
+                                  <div class="sidebar-name">
+                                      <a href="javascript:register_popup('qblock', 'QBlock');">
+                                          <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
+                                          <span>QBlock</span>
+                                      </a>
+                                  </div>
+                                </div>
+                              </div>
+                              </div>
+                              </li>
+                              <li class="ps-2">
+                                <a href="#" class="waves-effect user-notification  menu-right text-decoration-none"  id="notificationbtn" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                                  <i class="fa fa-bell"></i><!-- <span class="badge bg-danger rounded-circle">4</span>-->
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right notification-list shadow">
+                                  <div class="notification-box">
+                                    <ul class="notification-drop ps-0">
+                                          <li>First Notification item from user goes here</li>
+                                          <li>Second Notification Item</li>
+                                          <li>Third  Notification Item</li>
                                     </ul>
-                             </li>
-  
-                      </ul> <!-- end navbar-right -->
-  
+                                </div>
+                                </div>
+                                </li>
+                                 <li class="dropdown user-box ps-3">
+                                        <a href="#" class="dropdown-toggle waves-effect user-link text-decoration-none" role="button" data-bs-toggle="dropdown" id="profile" aria-expanded="true">
+                                          <img alt="..." src="https://images.unsplash.com/photo-1610271340738-726e199f0258?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3&amp;w=256&amp;h=256&amp;q=80" class="avatar avatar-sm rounded-circle me-2">
+                                        </a>
+      
+                                        <ul class="dropdown-menu dropdown-menu-right user-list notify-list">
+      
+                                               <li><a href="../index.html"><i class="ti-power-off m-r-5"></i> Logout</a></li>
+                                        </ul>
+                                 </li>
+      
+                          </ul> <!-- end navbar-right -->
                </div><!-- end container -->
         </div><!-- end navbar -->
   </div>
@@ -123,8 +204,8 @@ body{background: #fff !important;}
             <ul>
                    <li class="menu-title"> NAVIGATION </li>
 
-                   <li class="has_sub"><a href="home.html" class="waves-effect"><i class="fa fa-home"></i><span>Home</span> </a> </li>
-                   <li class="has_sub"><a href="index.html" class="waves-effect"><i class="fa fa-feed"></i><span>ポスト</span> </a> </li>
+                   <li class="has_sub"><a href="index.html" class="waves-effect"><i class="fa fa-home"></i><span>Home</span> </a> </li>
+                   <li class="has_sub"><a href="posts.html" class="waves-effect"><i class="fa fa-feed"></i><span>ポスト</span> </a> </li>
                    <li class="has_sub"><a href="events.html" class="waves-effect"><i class="fa fa-calendar-days"></i><span>イベント</span> </a> 
                     <ul class="ps-1">
                       <li class=""><a class="waves-effect " href="createdevents.html">Created Events</a> </li>
@@ -134,7 +215,7 @@ body{background: #fff !important;}
       
                    <hr>
                    <li class="has_sub">
-                    <a href="home.html" class="waves-effect"><i class="fa fa-power"></i><span>Logout</span> </a>
+                    <a href="../index.html" class="waves-effect"><i class="fa fa-power"></i><span>Logout</span> </a>
              </li>
                 
       
@@ -147,13 +228,13 @@ body{background: #fff !important;}
   <div class="content">
 
     <div class="hero">  
-      <div class=""  >
+    
        
           <div class="row justify-content-center p-4">
-            <div class="col-lg-5 col-12 pt-2">
+            <div class="col-lg-6 col-12 pt-2">
                 <div class="table-responsive table-scroll at-shadow-box p-2">
-                  <p>オンライン英語個人レッスン・マンツーマンの先生を紹介</p>
-                  <p class="content_vgEyl">特長1：上質な英語のマンツーマンレッスンを格安で提供しています<br>
+                  <p>オンライン個人レッスン・マンツーマンの先生を紹介</p>
+                  <p class="content_vgEyl">特長1：上質なのマンツーマンレッスンを格安で提供しています<br>
                       コスパNO.1！全員がプロネイティブ講師　25分 150JPY~<br><br>
                       
                       特長2：あなた専用にカスタマイズされたレッスン<br>
@@ -164,7 +245,7 @@ body{background: #fff !important;}
                 </div>
             </div>
         </div>
-        </div>
+       
   </div>
     <div class="row container m-auto">
       <div class="col-md-9 col-12">
@@ -173,12 +254,12 @@ body{background: #fff !important;}
             <a href="teacherprofile.html"class="btn btn-primary" name="profile">プロフィールを追加</a>
           </div>
           <div class="my-3">
-            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative userblock">
-              <div class="col-auto py-3 d-none d-lg-block text-center text-center">
+            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative userblock d-none d-lg-flex">
+              <div class="col-lg-2 py-3  text-center">
                 <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8" width="100" height="100" class="mx-3 userimg" alt="user"> 
                 <br><button class="btn btn-small followbtn btn-outline-warning">フォロー</button>
               </div>
-                <div class="col p-4 d-flex flex-column position-static">
+                <div class="col-lg-7  p-4 d-flex flex-column position-static">
                     
                   <h3 class="mb-0"><a href="teacher-details.html">教師 1</a></h3>
                   <p class="card-text mb-auto">🔥私のクライアントは、エリート大学、コンサルティング、金融、法務、およびソフトウェアの仕事に就いています。他の多くの人がキャリアと自信を大幅に高めました🔥
@@ -189,160 +270,278 @@ body{background: #fff !important;}
                     🥇セルタ/TEFL
                     🥇プレゼンテーションと会議のアドバイス🥇
                     </p>
-
+                    <div class="mt-2">
+                      <div class="rating" style="width: 20rem">
+                        <input id="rating-5" type="radio" name="rating" value="5"/><label for="rating-5"><i class="fas  fa-star"></i></label>
+                        <input id="rating-4" type="radio" name="rating" value="4" checked /><label for="rating-4"><i class="fas  fa-star"></i></label>
+                        <input id="rating-3" type="radio" name="rating" value="3"/><label for="rating-3"><i class="fas  fa-star"></i></label>
+                        <input id="rating-2" type="radio" name="rating" value="2"/><label for="rating-2"><i class="fas  fa-star"></i></label>
+                        <input id="rating-1" type="radio" name="rating" value="1"/><label for="rating-1"><i class="fas  fa-star"></i></label>
+                      </div>
+                    </div>
                   <div class="mt-2">
                   <span class="badge bg-secondary" style="width:max-content">コース</span>
                   <span class="badge bg-success" style="width:max-content">毎月</span>
                 </div>
                 </div>
-                <div class="col-md-3 col-12 p-4 d-flex flex-column position-static">
+                <div class="col-lg-3  p-4 d-flex flex-column position-static">
                     
                   <div  class="private-lesson d-flex flex-column"><strong class="sales-price">¥1,879</strong><small>50分</small></div>
                   <div class="buttons mt-2">
                     <button  class="btn btn-warning mb-2 w-100 text-center buy-btn">体験レッスン</button>
-                    <button  class="btn btn-outline-warning w-100 text-center">先生に連絡する</button>
+                    <a href="javascript:register_popup('教師 1', '教師 1');"  class="btn btn-outline-warning w-100 text-center userchat">先生に連絡する</a>
                   </div>
                 </div>
               </div>
-              <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative userblock">
-                <div class="col-auto py-3 d-none d-lg-block text-center text-center">
+              <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative userblock d-flex d-lg-none">
+                <div class="col-5 py-3 text-center text-center">
                   <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8" width="100" height="100" class="mx-3 userimg" alt="user"> 
                   <br><button class="btn btn-small followbtn btn-outline-warning">フォロー</button>
                 </div>
-                <div class="col p-4 d-flex flex-column position-static">
+                <div class="col-7  p-4 d-flex flex-column position-static">
+                  <h3 class="mb-0"><a href="teacher-details.html">教師 1</a></h3>
+                  <div class="mt-2">
+                    <span class="badge bg-secondary" style="width:max-content">コース</span>
+                    <span class="badge bg-success" style="width:max-content">毎月</span>
+                  </div>
+                  <div class="mt-2">
+                    <div class="rating" style="width: 20rem">
+                      <input id="rating-5" type="radio" name="rating" value="5"/><label for="rating-5"><i class="fas  fa-star"></i></label>
+                      <input id="rating-4" type="radio" name="rating" value="4" checked /><label for="rating-4"><i class="fas  fa-star"></i></label>
+                      <input id="rating-3" type="radio" name="rating" value="3"/><label for="rating-3"><i class="fas  fa-star"></i></label>
+                      <input id="rating-2" type="radio" name="rating" value="2"/><label for="rating-2"><i class="fas  fa-star"></i></label>
+                      <input id="rating-1" type="radio" name="rating" value="1"/><label for="rating-1"><i class="fas  fa-star"></i></label>
+                    </div>
+                  </div>
+               
+                  <div class="buttons mt-2">
+                    <a href="javascript:register_popup('教師 1', '教師 1');"  class="btn btn-warning w-100 text-center userchat">先生に連絡する</a>
+                  </div>
+                </div>
+                  <div class="col-12 p-4 d-flex flex-column position-static">
+                      
+                  
+                    <p class="card-text mb-auto">🔥私のクライアントは、エリート大学、コンサルティング、金融、法務、およびソフトウェアの仕事に就いています。他の多くの人がキャリアと自信を大幅に高めました🔥
+                      🇬🇧 ネイティブ ブリティッシュ 🇺🇸 アメリカ在住 20 年
+                      🥇 4000時間以上のESL、楽しい+リラックス
+                      🥇 20年以上のビジネス/ファイナンス経験
+                      🥇MBA / CFA
+                      🥇セルタ/TEFL
+                      🥇プレゼンテーションと会議のアドバイス🥇
+                      </p>
+                     
+                  </div>
+                  
+                </div>
+              <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative userblock d-none d-lg-flex">
+                <div class="col-lg-2 py-3  text-center">
+                  <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8" width="100" height="100" class="mx-3 userimg" alt="user"> 
+                  <br><button class="btn btn-small followbtn btn-outline-warning">フォロー</button>
+                </div>
+                <div class="col-lg-7 p-4 d-flex flex-column position-static">
                     
                   <h3 class="mb-0"><a href="teacher-details.html">教師 2</a></h3>
                   <p class="card-text mb-auto">ダミーテキスト ダミーテキスト ダミーテキスト ダミーテキストダミーテキストダミーテキストダミーテキスト</p>
-
+                  <div class="mt-2">
+                    <div class="rating" style="width: 20rem">
+                      <input id="rating1-5" type="radio" name="rating1" value="5" /><label for="rating1-5"><i class="fas  fa-star"></i></label>
+                      <input id="rating1-4" type="radio" name="rating1" value="4"  /><label for="rating1-4"><i class="fas  fa-star"></i></label>
+                      <input id="rating1-3" type="radio" name="rating1" value="3" /><label for="rating1-3"><i class="fas  fa-star"></i></label>
+                      <input id="rating1-2" type="radio" name="rating1" value="2" checked/><label for="rating1-2"><i class="fas  fa-star"></i></label>
+                      <input id="rating1-1" type="radio" name="rating1" value="1"/><label for="rating1-1"><i class="fas  fa-star"></i></label>
+                    </div>
+                  </div>
                   <div class="mt-2">
                   <span class="badge bg-secondary" style="width:max-content">コース</span>
                   <span class="badge bg-success" style="width:max-content">毎月</span>
                 </div>
                 </div>
-                <div class="col-md-3 col-12 p-4 d-flex flex-column position-static">
+                <div class="col-lg-3 p-4 d-flex flex-column position-static">
                     
                   <div  class="private-lesson d-flex flex-column"><strong class="sales-price">¥1,879</strong><small>50分</small></div>
                   <div class="buttons mt-2">
                     <button  class="btn btn-warning mb-2 w-100 text-center buy-btn">体験レッスン</button>
-                    <button  class="btn btn-outline-warning w-100 text-center">先生に連絡する</button>
+                    <a href="javascript:register_popup('教師 2', '教師 2');"  class="btn btn-outline-warning w-100 text-center userchat">先生に連絡する</a>
                   </div>
                 </div>
               </div>
-              <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative userblock">
-                <div class="col-auto py-3 d-none d-lg-block text-center text-center">
+              <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative userblock d-flex d-lg-none">
+                <div class="col-5  py-3  text-center">
                   <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8" width="100" height="100" class="mx-3 userimg" alt="user"> 
                   <br><button class="btn btn-small followbtn btn-outline-warning">フォロー</button>
                 </div>
-                <div class="col p-4 d-flex flex-column position-static">
+                <div class="col-7 p-4 d-flex flex-column position-static">
+                    
+                  <h3 class="mb-0"><a href="teacher-details.html">教師 2</a></h3>
+                  <div class="mt-2">
+                    <span class="badge bg-secondary" style="width:max-content">コース</span>
+                    <span class="badge bg-success" style="width:max-content">毎月</span>
+                  </div>
+                  <div class="mt-2">
+                    <div class="rating" style="width: 20rem">
+                      <input id="rating1-5" type="radio" name="rating1" value="5" /><label for="rating1-5"><i class="fas  fa-star"></i></label>
+                      <input id="rating1-4" type="radio" name="rating1" value="4"  /><label for="rating1-4"><i class="fas  fa-star"></i></label>
+                      <input id="rating1-3" type="radio" name="rating1" value="3" /><label for="rating1-3"><i class="fas  fa-star"></i></label>
+                      <input id="rating1-2" type="radio" name="rating1" value="2" checked/><label for="rating1-2"><i class="fas  fa-star"></i></label>
+                      <input id="rating1-1" type="radio" name="rating1" value="1"/><label for="rating1-1"><i class="fas  fa-star"></i></label>
+                    </div>
+                  </div>
+                 
+                <div class="buttons mt-2">
+                  <a href="javascript:register_popup('教師 2', '教師 2');"  class="btn btn-warning w-100 text-center userchat">先生に連絡する</a>
+                </div>
+                </div>
+                <div class="col-12 p-4 d-flex flex-column position-static">
+                  <p class="card-text mb-auto">ダミーテキスト ダミーテキスト ダミーテキスト ダミーテキストダミーテキストダミーテキストダミーテキスト</p>
+                
+                
+                </div>
+              </div>
+              <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative userblock d-none d-lg-flex">
+                <div class="col-lg-2 py-3 d-none d-lg-block text-center text-center">
+                  <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8" width="100" height="100" class="mx-3 userimg" alt="user"> 
+                  <br><button class="btn btn-small followbtn btn-outline-warning">フォロー</button>
+                </div>
+                <div class="col-lg-7 p-4 d-flex flex-column position-static">
                     
                   <h3 class="mb-0"><a href="teacher-details.html">教師 3</a></h3>
                   <p class="card-text mb-auto">ダミーテキスト ダミーテキスト ダミーテキスト ダミーテキストダミーテキストダミーテキストダミーテキスト</p>
-
+                  <div class="mt-2">
+                    <div class="rating" style="width: 20rem">
+                      <input id="rating3-5" type="radio" name="rating3" value="5" checked/><label for="rating3-5"><i class="fas  fa-star"></i></label>
+                      <input id="rating3-4" type="radio" name="rating3" value="4"  /><label for="rating3-4"><i class="fas  fa-star"></i></label>
+                      <input id="rating3-3" type="radio" name="rating3" value="3"/><label for="rating3-3"><i class="fas  fa-star"></i></label>
+                      <input id="rating3-2" type="radio" name="rating3" value="2"/><label for="rating3-2"><i class="fas  fa-star"></i></label>
+                      <input id="rating3-1" type="radio" name="rating3" value="1"/><label for="rating3-1"><i class="fas  fa-star"></i></label>
+                    </div>
+                  </div>
                   <div class="mt-2">
                   <span class="badge bg-secondary" style="width:max-content">コース</span>
                   <span class="badge bg-success" style="width:max-content">毎月</span>
                 </div>
                 </div>
-                <div class="col-md-3 col-12 p-4 d-flex flex-column position-static">
+                <div class="col-lg-3 col-12 p-4 d-flex flex-column position-static">
                     
                   <div  class="private-lesson d-flex flex-column"><strong class="sales-price">¥1,879</strong><small>50分</small></div>
                   <div class="buttons mt-2">
                     <button  class="btn btn-warning mb-2 w-100 text-center buy-btn">体験レッスン</button>
-                    <button  class="btn btn-outline-warning w-100 text-center">先生に連絡する</button>
+                    <a href="javascript:register_popup('教師 3', '教師 3');"  class="btn btn-outline-warning w-100 text-center userchat">先生に連絡する</a>
                   </div>
                 </div>
               </div>
-              <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative userblock">
-                <div class="col-auto py-3 d-none d-lg-block text-center text-center">
+              <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative userblock d-flex d-lg-none">
+                <div class="col-5 py-3 text-center text-center">
+                  <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8" width="100" height="100" class="mx-3 userimg" alt="user"> 
+                  <br><button class="btn btn-small followbtn btn-outline-warning">フォロー</button>
+                </div>
+                <div class="col-7 p-4 d-flex flex-column position-static">
+                    
+                  <h3 class="mb-0"><a href="teacher-details.html">教師 3</a></h3>
+                  <div class="mt-2">
+                    <span class="badge bg-secondary" style="width:max-content">コース</span>
+                    <span class="badge bg-success" style="width:max-content">毎月</span>
+                  </div>
+                  <div class="mt-2">
+                    <div class="rating" style="width: 20rem">
+                      <input id="rating3-5" type="radio" name="rating3" value="5" checked/><label for="rating3-5"><i class="fas  fa-star"></i></label>
+                      <input id="rating3-4" type="radio" name="rating3" value="4"  /><label for="rating3-4"><i class="fas  fa-star"></i></label>
+                      <input id="rating3-3" type="radio" name="rating3" value="3"/><label for="rating3-3"><i class="fas  fa-star"></i></label>
+                      <input id="rating3-2" type="radio" name="rating3" value="2"/><label for="rating3-2"><i class="fas  fa-star"></i></label>
+                      <input id="rating3-1" type="radio" name="rating3" value="1"/><label for="rating3-1"><i class="fas  fa-star"></i></label>
+                    </div>
+                  </div>
+                  <div class="buttons mt-2">
+                    <a href="javascript:register_popup('教師 3', '教師 3');"  class="btn btn-warning w-100 text-center userchat">先生に連絡する</a>
+                  </div>
+                </div>
+                <div class=" col-12 p-4 d-flex flex-column position-static">
+                  <p class="card-text mb-auto">ダミーテキスト ダミーテキスト ダミーテキスト ダミーテキストダミーテキストダミーテキストダミーテキスト</p> 
+                </div>
+              </div>
+              <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative userblock d-none d-lg-flex">
+                <div class="col-lg-2 py-3 text-center text-center">
                     <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8" width="100" height="100" class="mx-3 userimg" alt="user"> 
                     <br><button class="btn btn-small followbtn btn-outline-warning">フォロー</button>
                   </div>
-                <div class="col p-4 d-flex flex-column position-static">
+                <div class="col-lg-7 p-4 d-flex flex-column position-static">
                     
                   <h3 class="mb-0"><a href="teacher-details.html">教師 4</a></h3>
                   <p class="card-text mb-auto">ダミーテキスト ダミーテキスト ダミーテキスト ダミーテキストダミーテキストダミーテキストダミーテキスト</p>
-
+                  <div class="mt-2">
+                    <div class="rating" style="width: 20rem">
+                      <input id="rating4-5" type="radio" name="rating4" value="5"/><label for="rating4-5"><i class="fas  fa-star"></i></label>
+                      <input id="rating4-4" type="radio" name="rating4" value="4"  /><label for="rating4-4"><i class="fas  fa-star"></i></label>
+                      <input id="rating4-3" type="radio" name="rating4" value="3" checked/><label for="rating4-3"><i class="fas  fa-star"></i></label>
+                      <input id="rating4-2" type="radio" name="rating4" value="2"/><label for="rating4-2"><i class="fas  fa-star"></i></label>
+                      <input id="rating4-1" type="radio" name="rating4" value="1"/><label for="rating4-1"><i class="fas  fa-star"></i></label>
+                    </div>
+                  </div>
                   <div class="mt-2">
                   <span class="badge bg-secondary" style="width:max-content">コース</span>
                   <span class="badge bg-success" style="width:max-content">毎月</span>
                 </div>
                 </div>
-                <div class="col-md-3 col-12 p-4 d-flex flex-column position-static">
+                <div class="col-lg-3 col-12 p-4 d-flex flex-column position-static">
                     
                   <div  class="private-lesson d-flex flex-column"><strong class="sales-price">¥1,879</strong><small>50分</small></div>
                   <div class="buttons mt-2">
                     <button  class="btn btn-warning mb-2 w-100 text-center buy-btn">体験レッスン</button>
-                    <button  class="btn btn-outline-warning w-100 text-center">先生に連絡する</button>
+                    <a href="javascript:register_popup('教師 4', '教師 4');"  class="btn btn-outline-warning w-100 text-center userchat">先生に連絡する</a>
                   </div>
                 </div>
               </div>
-         
+              <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative userblock d-flex d-lg-none">
+                <div class="col-5 py-3 text-center text-center">
+                    <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8" width="100" height="100" class="mx-3 userimg" alt="user"> 
+                    <br><button class="btn btn-small followbtn btn-outline-warning">フォロー</button>
+                  </div>
+                <div class="col-7 p-4 d-flex flex-column position-static">
+                  <h3 class="mb-0"><a href="teacher-details.html">教師 4</a></h3>
+                  <div class="mt-2">
+                  <span class="badge bg-secondary" style="width:max-content">コース</span>
+                  <span class="badge bg-success" style="width:max-content">毎月</span>
+                </div>
+                <div class="mt-2">
+                  <div class="rating" style="width: 20rem">
+                    <input id="rating4-5" type="radio" name="rating4" value="5"/><label for="rating4-5"><i class="fas  fa-star"></i></label>
+                    <input id="rating4-4" type="radio" name="rating4" value="4"  /><label for="rating4-4"><i class="fas  fa-star"></i></label>
+                    <input id="rating4-3" type="radio" name="rating4" value="3" checked/><label for="rating4-3"><i class="fas  fa-star"></i></label>
+                    <input id="rating4-2" type="radio" name="rating4" value="2"/><label for="rating4-2"><i class="fas  fa-star"></i></label>
+                    <input id="rating4-1" type="radio" name="rating4" value="1"/><label for="rating4-1"><i class="fas  fa-star"></i></label>
+                  </div>
+                </div>
+                <div class="buttons mt-2">
+                  <a href="javascript:register_popup('教師 4', '教師 4');"  class="btn btn-warning w-100 text-center userchat">先生に連絡する</a>
+                </div>
+                </div>
+                <div class="col-md-3 col-12 p-4 d-flex flex-column position-static">
+                  <p class="card-text mb-auto">ダミーテキスト ダミーテキスト ダミーテキスト ダミーテキストダミーテキストダミーテキストダミーテキスト</p>
+                </div>
+              </div>
           </div>
     </div>
     </div>
     <div class="col-md-3 d-md-block d-none">
-      <div id="container" class="">
-        <div class="p-1 videoblock aside-board at-shadow-box">
-          <video id='video' controls="controls" preload='none' width="100%" poster="https://assets.codepen.io/32795/poster.png"></video>
-          <div id='calendar'></div>
-          <div class="rating-aside-footer mt-3">
-            <a href="teacher-details.html" class="btn btn-outline-warning w-100" target="_self" rel="noopener noreferrer">講師ページを見る</a>
-          </div>
+          <div id="container" class="">
+            <div class="p-1 videoblock aside-board at-shadow-box">
+              <video id='video' controls="controls" preload='none' width="100%" poster="https://assets.codepen.io/32795/poster.png"></video>
+              <div id='calendar'></div>
+              <div class="rating-aside-footer mt-3">
+                <a href="teacher-details.html" class="btn btn-outline-warning w-100" target="_self" rel="noopener noreferrer">講師ページを見る</a>
+                <!--<button  class="btn btn-outline-warning w-100 text-center  userchat">先生に連絡する</button>-->
+              </div>
+            </div>
+            </div>
         </div>
-        </div>
+
+      </div>
+    
      
     </div>
 
     </div>
     </div>
-    </div>
-    <div class="chat-sidebar">
-      <div class="box-header with-border">   
-        <h3 class="box-title">Contacts</h3> 
-      <div class="box-tools pull-right">
-        <button type="button" class="btn btn-box-tool" data-bs-target="#chat-names" data-bs-toggle="collapse"  aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-minus"></i></button></div>
-        </div>
-        <div id="chat-names" class="chat-names fade collapse">
-      <div class="sidebar-name">
-          <!-- Pass username and display name to register popup -->
-          <a href="javascript:register_popup('Contact 1', 'Contact 1');">
-              <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
-              <span>Contact 1</span>
-          </a>
-      </div>
-      <div class="sidebar-name">
-          <a href="javascript:register_popup('qnimate', 'QNimate');">
-              <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
-              <span>QNimate</span>
-          </a>
-      </div>
-      <div class="sidebar-name">
-          <a href="javascript:register_popup('qscutter', 'QScutter');">
-              <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
-              <span>QScutter</span>
-          </a>
-      </div>
-      <div class="sidebar-name">
-          <a href="javascript:register_popup('qidea', 'QIdea');">
-              <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
-              <span>QIdea</span>
-          </a>
-      </div>
-      <div class="sidebar-name">
-          <a href="javascript:register_popup('qazy', 'QAzy');">
-              <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
-              <span>QAzy</span>
-          </a>
-      </div>
-      <div class="sidebar-name">
-          <a href="javascript:register_popup('qblock', 'QBlock');">
-              <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
-              <span>QBlock</span>
-          </a>
-      </div>
-    </div>
-  </div>
-  </div>
+
  
     </body>
     </html>

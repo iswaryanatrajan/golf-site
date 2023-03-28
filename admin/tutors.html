@@ -14,11 +14,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&family=Noto+Sans+JP&display=swap" rel="stylesheet">
+<link href="https://cdn.datatables.net/1.13.3/css/jquery.dataTables.min.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
  <script src="../js/chat.js"></script>
-
+ <script src="https://cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js"></script>
     <link href="../fonts/Hiragino-Sans-GB-W3.otf">
 
 <script> 
@@ -35,7 +36,7 @@
 
       <!-- LOGO -->
       <div class="topbar-left">
-             <a href="home.html" class="logo"><span>Golf</span></a>
+             <a href="index.html" class="logo"><span>Golf</span></a>
       </div>
 
       <!-- Button mobile view to collapse sidebar menu -->
@@ -47,20 +48,86 @@
                       <a class="btn border-0 waves-effect button-menu-mobile open-left" id="menu-btn"><i class="fa fa-bars"></i></a>
                     </nav>
 
-                    <!-- Right(Notification) -->
-                    <ul class="nav navbar-nav navbar-right">
-                           <li class="dropdown user-box">
-                                  <a href="#" class="dropdown-toggle waves-effect user-link btn" role="button" data-bs-toggle="dropdown" id="profile" aria-expanded="true">
-                                         Admin
+                      <!-- Right(Notification) -->
+                      <ul class="nav navbar-nav navbar-right flex-row align-items-center">
+                        <li class="ps-2">
+                          <a href="#" class="dropdown-toggle waves-effect user-chat  menu-right text-decoration-none"  id="chatbtn" role="button" data-bs-toggle="dropdown" id="chat" aria-expanded="true">
+                            <i class="fa-brands fa-rocketchat"></i>
+                          </a>
+                          <div class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right chat-list shadow">
+                            <div class="chat-sidebar">
+                              <div class="box-header with-border">   
+                                <h3 class="box-title">Contacts</h3> 
+                              
+                                </div>
+                                <div id="chat-names" class="chat-names">
+                              <div class="sidebar-name">
+                                  <!-- Pass username and display name to register popup -->
+                                  <a href="javascript:register_popup('Contact 1', 'Contact 1');">
+                                      <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
+                                      <span>Contact 1</span>
                                   </a>
-
-                                  <ul class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right user-list notify-list">
-
-                                         <li><a href="http://165.232.142.13/fishmap/logout"><i class="ti-power-off m-r-5"></i> Logout</a></li>
-                                  </ul>
-                           </li>
-
-                    </ul> <!-- end navbar-right -->
+                              </div>
+                              <div class="sidebar-name">
+                                  <a href="javascript:register_popup('qnimate', 'QNimate');">
+                                      <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
+                                      <span>QNimate</span>
+                                  </a>
+                              </div>
+                              <div class="sidebar-name">
+                                  <a href="javascript:register_popup('qscutter', 'QScutter');">
+                                      <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
+                                      <span>QScutter</span>
+                                  </a>
+                              </div>
+                              <div class="sidebar-name">
+                                  <a href="javascript:register_popup('qidea', 'QIdea');">
+                                      <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
+                                      <span>QIdea</span>
+                                  </a>
+                              </div>
+                              <div class="sidebar-name">
+                                  <a href="javascript:register_popup('qazy', 'QAzy');">
+                                      <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
+                                      <span>QAzy</span>
+                                  </a>
+                              </div>
+                              <div class="sidebar-name">
+                                  <a href="javascript:register_popup('qblock', 'QBlock');">
+                                      <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
+                                      <span>QBlock</span>
+                                  </a>
+                              </div>
+                            </div>
+                          </div>
+                          </div>
+                          </li>
+                          <li class="ps-2">
+                            <a href="#" class="waves-effect user-notification  menu-right text-decoration-none"  id="notificationbtn" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                              <i class="fa fa-bell"></i><!-- <span class="badge bg-danger rounded-circle">4</span>-->
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right notification-list shadow">
+                              <div class="notification-box">
+                                <ul class="notification-drop ps-0">
+                                      <li>First Notification item from user goes here</li>
+                                      <li>Second Notification Item</li>
+                                      <li>Third  Notification Item</li>
+                                </ul>
+                            </div>
+                            </div>
+                            </li>
+                             <li class="dropdown user-box ps-3">
+                                    <a href="#" class="dropdown-toggle waves-effect user-link btn" role="button" data-bs-toggle="dropdown" id="profile" aria-expanded="true">
+                                           Admin
+                                    </a>
+  
+                                    <ul class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right user-list notify-list">
+  
+                                           <li><a href="../index.html"><i class="ti-power-off m-r-5"></i> Logout</a></li>
+                                    </ul>
+                             </li>
+  
+                      </ul> <!-- end navbar-right -->
 
              </div><!-- end container -->
       </div><!-- end navbar -->
@@ -73,10 +140,10 @@
                    <li class="menu-title"> NAVIGATION </li>
       
                    <li class="has_sub">
-                          <a href="dashboard.html" class="waves-effect"><i class="fa fa-dashboard"></i> <span> Dashboard </span>
+                          <a href="index.html" class="waves-effect"><i class="fa fa-dashboard"></i> <span> Dashboard </span>
                           </a>
                    </li>
-                   <li class="has_sub"><a href="index.html" class="waves-effect"><i class="fa fa-feed"></i><span>ポスト</span> </a> </li>
+                   <li class="has_sub"><a href="posts.html" class="waves-effect"><i class="fa fa-feed"></i><span>ポスト</span> </a> </li>
                    <li class="has_sub"><a href="users.html" class="waves-effect"><i class="fa fa-users"></i><span>Users</span> </a> </li>
                    <li class="has_sub"><a href="events.html" class="waves-effect"><i class="fa fa-calendar-days"></i><span>イベント</span> </a> </li>
                    <li class="has_sub"><a href="tournaments.html" class="waves-effect"><i class="fa-solid fa-trophy"></i><span>Tournaments</span> </a> </li>
@@ -84,7 +151,7 @@
       
                    <hr>
                    <li class="has_sub">
-                    <a href="home.html" class="waves-effect"><i class="fa fa-power"></i><span>Logout</span> </a>
+                    <a href="../index.html" class="waves-effect"><i class="fa fa-power"></i><span>Logout</span> </a>
              </li>
                 
       
@@ -96,11 +163,11 @@
       <div class="col content-page px-0"> 
         <div class="content">
     
-                <div class="mb-npx p-3">
-                    <div class="row align-items-center">
-                        <div class="col-sm-6 col-12 mb-4 mb-sm-0">
-                            <!-- Title -->
-                            <h1 class="h2 mb-4 ls-tight">Tutors</h1>
+            <div class="m-3 page-title-box">
+                <div class="row align-items-center">
+                    <div class="col-sm-6 col-12 mb-4 mb-sm-0">
+                        <!-- Title -->
+                        <h1 class="page-title">Teachers</h1>
                         </div>
                         <!-- Actions -->
                         <div class="col-sm-6 col-12 text-sm-end">
@@ -119,15 +186,16 @@
     
                     <div class="card border-0 mb-7 br-1 shadow p-3">
                         <div class="table-responsive ">
-                            <table id="tutorlist" class="table table-hover table-nowrap">
+                            <table id="tutorlist" class="table table-hover table-nowrap p-3">
                                 <thead class="thead-light">
                                     <tr>
                                         <th scope="col">Name</th>
                                         <th scope="col">User Id</th>
                                         <th scope="col">About</th>
+                                        <th scope="col">Rating</th>
+                                        <th scope="col">Awards</th>
                                         <th scope="col">Video URL</th>
                                         <th scope="col">Action</th>
-                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -140,9 +208,18 @@
                                         </td>
                                         <td> 101</td>
                                         <td>すべての年齢層・レベルに教育指導経験1年</td>
+                                        <td><div class="rating" style="width: 20rem">
+                                            <i class="fas  fa-star"></i>
+                                            <i class="fas  fa-star"></i>
+                                            <i class="fas  fa-star"></i>
+                                            <i class="fas  fa-star"></i>
+                                            <i class="fas  fa-star"></i>
+                                          </div></td>
+                                        <td><img src="../images/winner.png" width="30"/></td>
                                         <td>R-IlyGeHjIk </td>
                                         <td class="text-end">
-                                            <a href="../teacher-details.html" class="btn btn-sm btn-neutral"><i class="fa fa-eye"></i></a>
+                                            <a href="../user/teacher-details.html" class="btn btn-sm btn-neutral"><i class="fa fa-eye"></i></a>
+                                            <button type="button" class="btn btn-sm btn-square btn-neutral" data-bs-toggle="modal" data-bs-target="#badgeModal"><i class="fa fa-award"></i></button>
                                             <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
                                                 <i class="fa fa-trash"></i>
                                             </button>
@@ -157,9 +234,18 @@
                                         </td>
                                         <td> 102</td>
                                         <td>すべての年齢層・レベルに教育指導経験1年</td>
+                                        <td><div class="rating" style="width: 20rem">
+                                            <i class="fas  fa-star"></i>
+                                            <i class="fas  fa-star"></i>
+                                            <i class="fas  fa-star"></i>
+                                            <i class="fas  fa-star"></i>
+                                            <i class="fas  fa-star"></i>
+                                          </div></td>
+                                        <td><img src="../images/winner.png" width="30"/></td>
                                         <td>R-IlyGeHjIk </td>
                                         <td class="text-end">
-                                            <a href="../teacher-details.html" class="btn btn-sm btn-neutral"><i class="fa fa-eye"></i></a>
+                                            <a href="../user/teacher-details.html" class="btn btn-sm btn-neutral"><i class="fa fa-eye"></i></a>
+                                            <button type="button" class="btn btn-sm btn-square btn-neutral" data-bs-toggle="modal" data-bs-target="#badgeModal"><i class="fa fa-award"></i></button>
                                             <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
                                                 <i class="fa fa-trash"></i>
                                             </button>
@@ -174,9 +260,18 @@
                                         </td>
                                         <td> 103</td>
                                         <td>すべての年齢層・レベルに教育指導経験1年</td>
+                                        <td><div class="rating" style="width: 20rem">
+                                            <i class="fas  fa-star"></i>
+                                            <i class="fas  fa-star"></i>
+                                            <i class="fas  fa-star"></i>
+                                            <i class="fas  fa-star"></i>
+                                            <i class="fas  fa-star"></i>
+                                          </div></td>
+                                        <td><img src="../images/gold-medal.png" width="30"/></td>
                                         <td>R-IlyGeHjIk </td>
                                         <td class="text-end">
-                                            <a href="../teacher-details.html" class="btn btn-sm btn-neutral"><i class="fa fa-eye"></i></a>
+                                            <a href="../user/teacher-details.html" class="btn btn-sm btn-neutral"><i class="fa fa-eye"></i></a>
+                                            <button type="button" class="btn btn-sm btn-square btn-neutral" data-bs-toggle="modal" data-bs-target="#badgeModal"><i class="fa fa-award"></i></button>
                                             <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
                                                 <i class="fa fa-trash"></i>
                                             </button>
@@ -191,9 +286,18 @@
                                       </td>
                                       <td> 104</td>
                                       <td>すべての年齢層・レベルに教育指導経験1年</td>
+                                      <td><div class="rating" style="width: 20rem">
+                                        <i class="fas  fa-star"></i>
+                                        <i class="fas  fa-star"></i>
+                                        <i class="fas  fa-star"></i>
+                                        <i class="fas  fa-star"></i>
+                                        <i class="fas  fa-star"></i>
+                                      </div></td>
+                                    <td><img src="../images/winner.png" width="30"/></td>
                                         <td>R-IlyGeHjIk </td>
                                         <td class="text-end">
-                                            <a href="../teacher-details.html" class="btn btn-sm btn-neutral"><i class="fa fa-eye"></i></a>
+                                            <a href="../user/teacher-details.html" class="btn btn-sm btn-neutral"><i class="fa fa-eye"></i></a>
+                                            <button type="button" class="btn btn-sm btn-square btn-neutral" data-bs-toggle="modal" data-bs-target="#badgeModal"><i class="fa fa-award"></i></button>
                                             <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
                                                 <i class="fa fa-trash"></i>
                                             </button>
@@ -208,9 +312,18 @@
                                     </td>
                                     <td> 105</td>
                                     <td>すべての年齢層・レベルに教育指導経験1年</td>
+                                    <td><div class="rating" style="width: 20rem">
+                                        <i class="fas  fa-star"></i>
+                                        <i class="fas  fa-star"></i>
+                                        <i class="fas  fa-star"></i>
+                                        <i class="fas  fa-star"></i>
+                                        <i class="fas  fa-star"></i>
+                                      </div></td>
+                                    <td><img src="../images/winner.png" width="30"/></td>
                                         <td>R-IlyGeHjIk </td>
                                         <td class="text-end">
-                                            <a href="../teacher-details.html" class="btn btn-sm btn-neutral"><i class="fa fa-eye"></i></a>
+                                            <a href="../user/teacher-details.html" class="btn btn-sm btn-neutral"><i class="fa fa-eye"></i></a>
+                                            <button type="button" class="btn btn-sm btn-square btn-neutral" data-bs-toggle="modal" data-bs-target="#badgeModal"><i class="fa fa-award"></i></button>
                                             <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
                                                 <i class="fa fa-trash"></i>
                                             </button>
@@ -220,9 +333,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="card-footer border-0 py-5 bg-white">
-                            <span class="text-muted text-sm">Showing 10 items out of 250 results found</span>
-                        </div>
+                    
                     </div>
                   
                  
@@ -235,5 +346,37 @@
     
    
 </div>
+<div class="modal fade" id="badgeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Award Badges</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <ul>
+                <li>
+                  <input type="checkbox" id="myCheckbox1" />
+                  <label for="myCheckbox1"><img src="../images/winner.png" /></label>
+                </li>
+                <li>
+              
+                  <input type="checkbox" id="myCheckbox2" />
+                  <label for="myCheckbox2"><img src="../images/quality.png" /></label>
+                </li>
+                <li>
+              
+                    <input type="checkbox" id="myCheckbox3" />
+                    <label for="myCheckbox3"><img src="../images/gold-medal.png" /></label>
+                  </li>
+            </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
     </body>
     </html>

@@ -181,8 +181,10 @@ $(document).ready(function(){
         wrapper.classList.add("enlarged");
        }
     
-
+    
     });
+
+
   
 
   

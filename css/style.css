@@ -6,16 +6,26 @@ body{font-weight: 400;font-size: 18px;color:#767676}
 .openchildrow{cursor:pointer}
 .postblock{background-color: #fff;}
 .navbar{padding:10px}
-.hero {
+/*.hero {
 
-    height: 40vh;
-    background: #000 url(https://image.freepik.com/free-vector/gradient-geometric-shape-background_78532-307.jpg) center center no-repeat;
+    height: 50vh;
+    background: #000 url("../images/golf-bg4.jpg") center center no-repeat;
     background-size: cover;
-   /* position: relative;*/
     background-repeat: repeat;
     display: flex;
     align-items: center;
     justify-content: center;
+}*/
+.hero{
+    height: 40vh;
+    background: #273517 url(../images/golf-bg4.jpg) center center no-repeat;
+    background-size: cover;
+    /* position: relative; */
+    /* background-repeat: repeat; */
+    background-position: 0 70%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
   
   .hero .container{
@@ -138,8 +148,12 @@ padding:15px
 }
 .navbar { background: transparent !important; }
 
-
-body{font-weight:400;color: #484848;font-size:14px}
+@font-face {
+font-family: "Helvetica-Neue";
+src: url("fonts/Helvetica\ Neue\ Medium\ Extended.ttf");
+}
+body{font-family: 'Roboto', Arial, Helvetica, sans-serif;font-weight:400;color: #484848;font-size:14px}
+body.landingpage{font-family: 'Noto Sans JP', sans-serif;font-size:1rem}
 @-moz-keyframes ping_YmM8C {
           75%,to {
               box-shadow: 0 0 0 1rem transparent
@@ -168,7 +182,7 @@ box-shadow: 0 0 0 0 hsl(0deg 0% 100% / 80%);
 transition: box-shadow .3s cubic-bezier(.4,0,.2,1);
 border-radius: 7px;
 animation: ping_YmM8C 1.5s cubic-bezier(0,0,.2,1) infinite;
-box-shadow: 0 1px 3px 0 rgb(0 0 0 / 16%), 0 0 0 1px rgb(0 0 0 / 8%);
+/*box-shadow: 0 1px 3px 0 rgb(0 0 0 / 16%), 0 0 0 1px rgb(0 0 0 / 8%);*/
 border: 1px solid #eee;
 z-index: 1;
 position: relative;
@@ -315,7 +329,7 @@ position: relative;
     .followbtn{font-size:12px;padding:5px}
     .w-70{width:70%}
     .fc-bg-event{background-color: #43acba !important;}
-    .fixed-pos{position: fixed;width: 200px;}
+   
   
     
     .eventdetails h3{  font-size: 20px;
@@ -426,6 +440,15 @@ input::-webkit-inner-spin-button {
     background-color: #26bbce!important;
 }
 
+@media (min-width: 1441px) {
+    .hero{height:70vh;
+   }
+}
+@media (min-width: 1025px) {
+.hero .row{width:60%;}
+}
+
+
 @media (max-width: 767px) {
     .carousel-inner .carousel-item > div {
         display: none;
@@ -436,20 +459,25 @@ input::-webkit-inner-spin-button {
     .navbar-collapse{background: #fff;}
     .mt-75px{margin-top:75px !important}
     .active-cont{margin-left:0 !important}
-  .hero{display:none}
+  .hero{display:none;height:auto}
   .w-70{width:100%}
   .top_img{width:150px !important}
   .top-keyword_container {
     display: flex;
     width: 100%;
+    justify-content: center;
   }
   .l-section_container h2{font-size:1.5em}
   .top-description-highlight_tx {font-size:1.5em}
+  .container {padding-left:5px;padding-right:5px}
+  .logo::before{content:"G"}
 }
 @media (min-width: 768px){
 .navbar-right {
     float: right!important;
 }
+.fixed-pos{position: fixed;width: 200px;}
+.hero div:first{width:70%}
 }
 
 .waves-effect {
@@ -539,3 +567,103 @@ font-weight:bold
     .navbar-nav .dropdown-menu {
         position: absolute;
     }
+.fa-rocketchat,.fa-bell{
+    font-size: 25px;
+    color: #119ed8;
+    
+}  
+.menu-right{
+    padding:10px;
+   /* background-color: #eee;
+    border-radius:50%*/
+}
+.chat-list,.notification-list{
+    left: auto !important;
+    right:0
+}
+.notification-list{min-width: 100px !important;
+max-width:300px}
+.dropdown-toggle.user-chat:after,.dropdown-toggle.user-link:after{display:none}
+.notification-drop li {
+    font-size: 16px;
+    padding: 15px 0 15px 25px;
+    list-style-type: none;
+  }
+  .notification-drop li:hover {
+    background: #ddd;
+    color: rgba(0, 0, 0, 0.8);
+  }
+  .rating {
+	direction: rtl;
+	unicode-bidi: bidi-override;
+	color: #ddd; /* Personal choice */
+    text-align: left;
+}
+.rating input {
+	display: none;
+}
+.rating label:hover,
+.rating label:hover ~ label,
+.rating input:checked + label,
+.rating input:checked + label ~ label {
+	color: #ffc107; /* Personal color choice. Lifted from Bootstrap 4 */
+}
+#badgeModal input[type="checkbox"][id^="myCheckbox"] {
+    display: none;
+  }
+  #badgeModal  li {
+    display: inline-block;
+  }
+
+  #badgeModal label {
+    border: 1px solid #fff;
+    padding: 10px;
+    display: block;
+    position: relative;
+    margin: 10px;
+    cursor: pointer;
+  }
+  
+  #badgeModal  label:before {
+    background-color: white;
+    color: white;
+    content: " ";
+    display: block;
+    border-radius: 50%;
+    border: 1px solid grey;
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    line-height: 28px;
+    transition-duration: 0.4s;
+    transform: scale(0);
+  }
+  
+  #badgeModal label img {
+    height: 50px;
+    width: 50px;
+    transition-duration: 0.2s;
+    transform-origin: 50% 50%;
+  }
+  
+  #badgeModal :checked + label {
+    border-color: #ddd;
+  }
+  
+  #badgeModal  :checked + label:before {
+    content: "✓";
+    background-color: grey;
+    transform: scale(1);
+  }
+  
+  #badgeModal :checked + label img {
+    transform: scale(0.9);
+    /* box-shadow: 0 0 5px #333; */
+    z-index: -1;
+  }
+  #post:first-line{ font-weight: bold; }
+  .upload__btn-box .btn{font-size:14px}
+  .blogpost{display:none}

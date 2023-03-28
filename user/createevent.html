@@ -53,7 +53,7 @@ color:#426ecc
   
         <!-- LOGO -->
         <div class="topbar-left">
-               <a href="home.html" class="logo"><span>Golf</span></a>
+               <a href="index.html" class="logo"><span>Golf</span></a>
         </div>
   
         <!-- Button mobile view to collapse sidebar menu -->
@@ -65,20 +65,86 @@ color:#426ecc
                         <a class="btn border-0 waves-effect button-menu-mobile open-left" id="menu-btn"><i class="fa fa-bars"></i></a>
                       </nav>
   
-                      <!-- Right(Notification) -->
-                      <ul class="nav navbar-nav navbar-right">
-                             <li class="dropdown user-box">
-                                    <a href="#" class="dropdown-toggle waves-effect user-link btn" role="button" data-bs-toggle="dropdown" id="profile" aria-expanded="true">
-                                           Admin
-                                    </a>
-  
-                                    <ul class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right user-list notify-list">
-  
-                                           <li><a href="http://165.232.142.13/fishmap/logout"><i class="ti-power-off m-r-5"></i> Logout</a></li>
+                          <!-- Right(Notification) -->
+                          <ul class="nav navbar-nav navbar-right flex-row align-items-center">
+                            <li class="ps-2">
+                              <a href="#" class="dropdown-toggle waves-effect user-chat  menu-right text-decoration-none"  id="chatbtn" role="button" data-bs-toggle="dropdown" id="chat" aria-expanded="true">
+                                <i class="fa-brands fa-rocketchat"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right chat-list shadow">
+                                <div class="chat-sidebar">
+                                  <div class="box-header with-border">   
+                                    <h3 class="box-title">Contacts</h3> 
+                                  
+                                    </div>
+                                    <div id="chat-names" class="chat-names">
+                                  <div class="sidebar-name">
+                                      <!-- Pass username and display name to register popup -->
+                                      <a href="javascript:register_popup('Contact 1', 'Contact 1');">
+                                          <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
+                                          <span>Contact 1</span>
+                                      </a>
+                                  </div>
+                                  <div class="sidebar-name">
+                                      <a href="javascript:register_popup('qnimate', 'QNimate');">
+                                          <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
+                                          <span>QNimate</span>
+                                      </a>
+                                  </div>
+                                  <div class="sidebar-name">
+                                      <a href="javascript:register_popup('qscutter', 'QScutter');">
+                                          <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
+                                          <span>QScutter</span>
+                                      </a>
+                                  </div>
+                                  <div class="sidebar-name">
+                                      <a href="javascript:register_popup('qidea', 'QIdea');">
+                                          <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
+                                          <span>QIdea</span>
+                                      </a>
+                                  </div>
+                                  <div class="sidebar-name">
+                                      <a href="javascript:register_popup('qazy', 'QAzy');">
+                                          <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
+                                          <span>QAzy</span>
+                                      </a>
+                                  </div>
+                                  <div class="sidebar-name">
+                                      <a href="javascript:register_popup('qblock', 'QBlock');">
+                                          <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
+                                          <span>QBlock</span>
+                                      </a>
+                                  </div>
+                                </div>
+                              </div>
+                              </div>
+                              </li>
+                              <li class="ps-2">
+                                <a href="#" class="waves-effect user-notification  menu-right text-decoration-none"  id="notificationbtn" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                                  <i class="fa fa-bell"></i><!-- <span class="badge bg-danger rounded-circle">4</span>-->
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right notification-list shadow">
+                                  <div class="notification-box">
+                                    <ul class="notification-drop ps-0">
+                                          <li>First Notification item from user goes here</li>
+                                          <li>Second Notification Item</li>
+                                          <li>Third  Notification Item</li>
                                     </ul>
-                             </li>
-  
-                      </ul> <!-- end navbar-right -->
+                                </div>
+                                </div>
+                                </li>
+                                 <li class="dropdown user-box ps-3">
+                                        <a href="#" class="dropdown-toggle waves-effect user-link text-decoration-none" role="button" data-bs-toggle="dropdown" id="profile" aria-expanded="true">
+                                          <img alt="..." src="https://images.unsplash.com/photo-1610271340738-726e199f0258?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3&amp;w=256&amp;h=256&amp;q=80" class="avatar avatar-sm rounded-circle me-2">
+                                        </a>
+      
+                                        <ul class="dropdown-menu dropdown-menu-right user-list notify-list">
+      
+                                               <li><a href="../index.html"><i class="ti-power-off m-r-5"></i> Logout</a></li>
+                                        </ul>
+                                 </li>
+      
+                          </ul> <!-- end navbar-right -->
   
                </div><!-- end container -->
         </div><!-- end navbar -->
@@ -90,8 +156,8 @@ color:#426ecc
             <ul>
                    <li class="menu-title"> NAVIGATION </li>
 
-                   <li class="has_sub"><a href="home.html" class="waves-effect"><i class="fa fa-home"></i><span>Home</span> </a> </li>
-                   <li class="has_sub"><a href="index.html" class="waves-effect"><i class="fa fa-feed"></i><span>ポスト</span> </a> </li>
+                   <li class="has_sub"><a href="index.html" class="waves-effect"><i class="fa fa-home"></i><span>Home</span> </a> </li>
+                   <li class="has_sub"><a href="posts.html" class="waves-effect"><i class="fa fa-feed"></i><span>ポスト</span> </a> </li>
                    <li class="has_sub"><a href="events.html" class="waves-effect"><i class="fa fa-calendar-days"></i><span>イベント</span> </a> 
                     <ul class="ps-1">
                       <li class=""><a class="waves-effect " href="createdevents.html">Created Events</a> </li>
@@ -101,7 +167,7 @@ color:#426ecc
       
                    <hr>
                    <li class="has_sub">
-                    <a href="home.html" class="waves-effect"><i class="fa fa-power"></i><span>Logout</span> </a>
+                    <a href="../index.html" class="waves-effect"><i class="fa fa-power"></i><span>Logout</span> </a>
              </li>
                 
       
@@ -222,52 +288,7 @@ color:#426ecc
          
           </div>
     </div>
-    <div class="chat-sidebar">
-      <div class="box-header with-border">   
-        <h3 class="box-title">Contacts</h3> 
-      <div class="box-tools pull-right">
-        <button type="button" class="btn btn-box-tool" data-bs-target="#chat-names" data-bs-toggle="collapse"  aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-minus"></i></button></div>
-        </div>
-        <div id="chat-names" class="chat-names fade collapse">
-      <div class="sidebar-name">
-          <!-- Pass username and display name to register popup -->
-          <a href="javascript:register_popup('Contact 1', 'Contact 1');">
-              <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
-              <span>Contact 1</span>
-          </a>
-      </div>
-      <div class="sidebar-name">
-          <a href="javascript:register_popup('qnimate', 'QNimate');">
-              <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
-              <span>QNimate</span>
-          </a>
-      </div>
-      <div class="sidebar-name">
-          <a href="javascript:register_popup('qscutter', 'QScutter');">
-              <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
-              <span>QScutter</span>
-          </a>
-      </div>
-      <div class="sidebar-name">
-          <a href="javascript:register_popup('qidea', 'QIdea');">
-              <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
-              <span>QIdea</span>
-          </a>
-      </div>
-      <div class="sidebar-name">
-          <a href="javascript:register_popup('qazy', 'QAzy');">
-              <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg"  />
-              <span>QAzy</span>
-          </a>
-      </div>
-      <div class="sidebar-name">
-          <a href="javascript:register_popup('qblock', 'QBlock');">
-              <img width="30" height="30" src="https://bootdey.com/img/Content/user_1.jpg" />
-              <span>QBlock</span>
-          </a>
-      </div>
-    </div>
-  </div>
+   
   </div>
     </body>
     </html>
