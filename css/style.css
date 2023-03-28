@@ -1,7 +1,8 @@
 body{background: #edeef0;width: 100%;
     overflow-x: hidden;
 }
-body{font-family: "Hiragino Sans",sans-serif;font-weight: 400;font-size: 18px;color:#767676}
+
+body{font-weight: 400;font-size: 18px;color:#767676}
 .openchildrow{cursor:pointer}
 .postblock{background-color: #fff;}
 .navbar{padding:10px}
@@ -137,11 +138,8 @@ padding:15px
 }
 .navbar { background: transparent !important; }
 
-@font-face {
-font-family: "Helvetica-Neue";
-src: url("fonts/Helvetica\ Neue\ Medium\ Extended.ttf");
-}
-body{font-family: 'Roboto', Arial, Helvetica, sans-serif;font-weight:400;color: #484848;font-size:14px}
+
+body{font-weight:400;color: #484848;font-size:14px}
 @-moz-keyframes ping_YmM8C {
           75%,to {
               box-shadow: 0 0 0 1rem transparent
@@ -244,7 +242,6 @@ position: relative;
 .postblock h3 {
     font-size: 20px;
     font-weight: 600;
-    font-family: 'Hiragino Sans GB';
     color:#484848
 }
     .postblock .userimg{border-radius: 50%;padding: 10px;}
@@ -254,7 +251,7 @@ position: relative;
         .userblock .card-text{    font-size: 14px;color:#767676}
         .userblock h3{  font-size: 20px;
             font-weight: 600;
-            font-family: 'Hiragino Sans GB';
+            font-family: 'Hiragino Sans GB',sans-serif;
         color:#484848}
         .userblock .userimg{border-radius: 50%;padding: 10px;}
         .userblock h3 a{color:#26bbce;text-decoration: none;}
@@ -323,7 +320,7 @@ position: relative;
     
     .eventdetails h3{  font-size: 20px;
         font-weight: 600;
-        font-family: 'Hiragino Sans GB';
+        font-family: 'Hiragino Sans GB',sans-serif;
         color:#484848}
 
     .general{background-color: #fff;box-shadow: 0 1px 3px 0 rgb(0 0 0 / 16%), 0 0 0 1px rgb(0 0 0 / 8%);
@@ -331,7 +328,7 @@ position: relative;
     .general .card-text{    font-size: 14px;color:#767676}
     .general h3{  font-size: 20px;
         font-weight: 600;
-        font-family: 'Hiragino Sans GB';
+        font-family: 'Hiragino Sans GB',sans-serif;
     color:#484848}
 /*left menu */
 .side-navbar {
@@ -421,7 +418,7 @@ input::-webkit-inner-spin-button {
 .text-danger-hover:hover{background:#fff;color: red !important;}
 .text-neutral-hover:hover{background:#fff;color:#26bbce !important;}
 .text-heading{text-decoration: none;color:#000}
-.bg-grey{background-color: #f5f9fc;min-height: 100vh;}
+.bg-grey{background-color: #f5f9fc;}
 #userlist th,#userlist td{padding: 1rem 1.5rem;}
 .logo{color: #26bbce !important;font-size: 1.75rem !important;padding: 1em 1em; font-weight: bold;}
 .nav-link{color: #000;    font-size: 1em;}
