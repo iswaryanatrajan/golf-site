@@ -25,34 +25,60 @@
         $(document).ready(function(){
           $("#userrating").load("../userrating.html")
         });
-          document.addEventListener('DOMContentLoaded', function() {
+        var events = [
+          {
+            start: '2023-03-26T13:00:00',
+            end: '2023-03-26T14:00:00',
+            id:3
+          },
+          {
+            start: '2023-03-26T16:00:00',
+            end: '2023-03-26T18:00:00',
+            id:3
+          },
+          {
+            start: '2023-03-27T13:00:00',
+            end: '2023-03-27T14:00:00',
+            
+            id:3
+          },
+          {
+            start: '2023-03-27T16:00:00',
+            end: '2023-03-27T18:00:00',
+           
+            id:4
+          },
+          {
+            start: '2023-03-28T16:00:00',
+            end: '2023-03-28T18:00:00',
+            
+            id:4
+          },
+          {
+            start: '2023-03-29T16:00:00',
+            end: '2023-03-29T18:00:00',
+           
+            id:4
+          },
+          {
+            start: '2023-03-30T08:00:00',
+            end: '2023-03-30T20:00:00',
+       
+            id:4
+          }
+        ];
+      document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
         var calendar = new FullCalendar.Calendar(calendarEl, {
-          headerToolbar: {
-      left: 'prev,next today',
-      center: 'title',
-      right: 'dayGridMonth,timeGridWeek'
-    },
-          initialDate: '2023-02-20',
-        initialView: 'dayGridMonth',
-        events: [
-          {
-            start: '2023-02-10',
-            end: '2023-02-10',
-            display: 'background'
-          },
-          {
-            start: '2023-02-24T10:00:00',
-            end: '2023-02-24T16:00:00',
-            display: 'background'
-          },
-          {
-        start: '2023-02-24',
-        end: '2023-02-28',
-        overlap: false,
-        display: 'background'
-      },
-        ]
+          locale: 'ja',
+        initialView: 'timeGridWeek',
+        fixedWeekCount:false,
+        events: events,
+        slotDuration: '02:00',
+        height: "auto",
+        allDaySlot:false,
+         slotMinTime: '08:00', // 8am
+        slotMaxTime: '20:00', // 8pm 
         });
         calendar.render();
       });
