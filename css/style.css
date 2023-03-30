@@ -667,3 +667,7 @@ max-width:300px}
   #post:first-line{ font-weight: bold; }
   .upload__btn-box .btn{font-size:14px}
   .blogpost{display:none}
+  .addevent{z-index:10}
+  .fc-timegrid-slot {
+    height: 30px !important
+}
