@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>Golf - Events</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.1.1/fullcalendar.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.1.1/fullcalendar.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+<script>
+    $(function() {
+$('#calendarFull').fullCalendar({
+    header: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'month,agendaWeek,agendaDay'
+    },
+    defaultView: 'month',
+    editable: true,
+    eventSources: [
+      {
+        events: [
+          {
+            title: "event3",
+            start: "2019-03-09T12:30:00"
+          }
+        ],
+        color: "black", // an option!
+        textColor: "yellow" // an option!
+      }
+    ],
+    select: function( start, end, jsEvent, view ) {
+        // set values in inputs
+        $('#event-modal').find('input[name=evtStart]').val(
+            start.format('YYYY-MM-DD HH:mm:ss')
+        );
+        $('#event-modal').find('input[name=evtEnd]').val(
+            end.format('YYYY-MM-DD HH:mm:ss')
+        );
+        
+        // show modal dialog
+        $('#event-modal').modal('show');
+        
+        /*
+        bind event submit. Will perform a ajax call in order to save the event to the database.
+        When save is successful, close modal dialog and refresh fullcalendar.
+        */
+        /*
+        $("#event-modal").find('form').on('submit', function() {
+            $.ajax({
+                url: 'yourFileUrl.php',
+                data: $("#event-modal").serialize(),
+                type: 'post',
+                dataType: 'json',
+                success: function(response) {
+                    // if saved, close modal
+                    $("#event-modal").modal('hide');
+                    
+                    // refetch event source, so event will be showen in calendar
+                    $("#calendar").fullCalendar( 'refetchEvents' );
+                }
+            });
+        });*/
+    },
+    selectHelper: true,
+    selectable: true,
+    snapDuration: '00:10:00'
+});
+    });
+</script>
+     <style>
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+
+        <div id='calendarFull'></div>
+      </div>
+      
+      <div class="modal fade" id="event-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <h4 class="modal-title">Modal title</h4>
+            </div>
+            <div class="modal-body">
+              <form name="save-event" method="post">
+                <div class="form-group">
+                  <label>Title</label>
+                  <input type="text" name="title" class="form-control" />
+                </div>
+                <div class="form-group">
+                  <label>Event start</label>
+                  <input type="text" name="evtStart" class="form-control col-xs-3" />
+                </div>
+                <div class="form-group">
+                  <label>Event end</label>
+                  <input type="text" name="evtEnd" class="form-control col-xs-3" />
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <!-- /.modal -->
+   
+
+    </body>
+    </html>
