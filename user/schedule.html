@@ -36,41 +36,50 @@ var events = [
           {
             start: '2023-03-26T13:00:00',
             end: '2023-03-26T14:00:00',
+            title:'Trial',
+            description:'Some description about event',
             id:3
           },
           {
             start: '2023-03-26T16:00:00',
             end: '2023-03-26T18:00:00',
+            title:'Trial',
+            description:'Some description about event',
             id:3
           },
           {
             start: '2023-03-27T13:00:00',
             end: '2023-03-27T14:00:00',
-            
+            title:'Course 1',
+            description:'Some description about event',
             id:3
           },
           {
             start: '2023-03-27T16:00:00',
             end: '2023-03-27T18:00:00',
-           
+            title:'Course 1',
+            description:'Some description about event',
             id:4
           },
           {
             start: '2023-03-28T16:00:00',
             end: '2023-03-28T18:00:00',
-            
+            title:'Course 1',
+            description:'Some description about event',
             id:4
           },
           {
             start: '2023-03-29T16:00:00',
             end: '2023-03-29T18:00:00',
-           
+            title:'Course 2',
+            description:'Some description about event',
             id:4
           },
           {
             start: '2023-03-30T08:00:00',
             end: '2023-03-30T20:00:00',
-       
+            title:'Course 2',
+            description:'Some description about event',
             id:4
           }
         ];
@@ -82,6 +91,11 @@ var events = [
         document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('mycalendar');
         calendar = new FullCalendar.Calendar(calendarEl, {
+          headerToolbar: {
+    left: 'prev,next',
+    center: 'title',
+    right: 'timeGridWeek,listWeek' // user can switch between the two
+  },
         locale: 'ja',
         initialView: 'timeGridWeek',
         slotDuration: '01:00',
@@ -95,21 +109,61 @@ var events = [
             successCallback(events);
   },
   select: function(selectionInfo) {
+    var abc = prompt('Enter Title');
       calendar.addEvent({
         start: selectionInfo.start,
         end: selectionInfo.end ,//need these and not endTime/startTime, otherwise they won't re-render
-        id:uuid
+        id:uuid,
+        title:abc
       });
       calendar.unselect();
     },
    
-			eventClick: function(info ){
-			console.log(event)
+		/*	eventClick: function(info ){
+		
 			  // $('#mycalendar').fullCalendar('removeEvents',event._id);
-         if (confirm(`Are you sure you want to delete the slot`+info.event.title)) {
+         if (confirm(`Are you sure you want to delete the slot `+info.event.title + `?`)) {
       info.event.remove();
     }
-			},
+			},*/
+      eventClick: function(info) {
+          var title = prompt('Event Title:', info.event.title, { buttons: { Ok: true, Cancel: false} });
+          var description = prompt('Event Description:', info.event.description, { buttons: { Ok: true, Cancel: false} });
+console.log(title);
+          if (title){
+            info.event.title = title;
+            info.event.setProp('title', title);
+              //calendar.updateEvent();
+          }
+},
+/*eventContent: function (args)
+  {
+    //const text = args.event._def.title + '<button onclick="info.event.remove();" style="float: right"> Delete </button>';
+    let italicEl = document.createElement('div')
+
+
+  italicEl.innerHTML = args.event._def.title + args.event.start +'<button style="float: right"> Delete </button>';
+
+
+let arrayOfDomNodes = [ italicEl ]
+return { domNodes: arrayOfDomNodes }
+
+},*/
+
+      eventDidMount: function(info) {
+                var pill = document.createElement("span");
+                var fcevent = info.el.querySelector('.fc-event-time'); // for gridView
+                
+        //console.log(info.event.extendedProps.description);
+                    let description = document.createElement('div');
+                    description.innerHTML=info.event.extendedProps.description;
+                   // document.querySelector('.fc-event-title-container').append(description);
+                    if (fcevent ) { 
+                       //fcevent.textContent += " ";
+                       fcevent.append(description);
+                    }
+                    
+                },
 /*  eventReceive: function( info ) {
 
 //get the bits of data we want to send into a simple object
