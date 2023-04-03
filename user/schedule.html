@@ -31,6 +31,8 @@
     <script>
 
 
+let s = (new Date()).getTime().toString(16) + Math.random().toString(16).substring(2) + "0".repeat(16);
+            let uuid = s.substr(0,8) + '-' + s.substr(8,4) + '-4000-8' + s.substr(12,3) + '-' + s.substr(15,12);
 
 var events = [
           {
@@ -38,54 +40,52 @@ var events = [
             end: '2023-03-26T14:00:00',
             title:'Trial',
             description:'Some description about event',
-            id:3
+            id:uuid
           },
           {
             start: '2023-03-26T16:00:00',
             end: '2023-03-26T18:00:00',
             title:'Trial',
             description:'Some description about event',
-            id:3
+            id:uuid
           },
           {
             start: '2023-03-27T13:00:00',
             end: '2023-03-27T14:00:00',
             title:'Course 1',
             description:'Some description about event',
-            id:3
+            id:uuid
           },
           {
             start: '2023-03-27T16:00:00',
             end: '2023-03-27T18:00:00',
             title:'Course 1',
             description:'Some description about event',
-            id:4
+            id:uuid
           },
           {
             start: '2023-03-28T16:00:00',
             end: '2023-03-28T18:00:00',
             title:'Course 1',
             description:'Some description about event',
-            id:4
+            id:uuid
           },
           {
             start: '2023-03-29T16:00:00',
             end: '2023-03-29T18:00:00',
             title:'Course 2',
             description:'Some description about event',
-            id:4
+            id:uuid
           },
           {
             start: '2023-03-30T08:00:00',
             end: '2023-03-30T20:00:00',
             title:'Course 2',
             description:'Some description about event',
-            id:4
+            id:uuid
           }
         ];
-        let s = (new Date()).getTime().toString(16) + Math.random().toString(16).substring(2) + "0".repeat(16);
-            let uuid = s.substr(0,8) + '-' + s.substr(8,4) + '-4000-8' + s.substr(12,3) + '-' + s.substr(15,12);
-
+   
         var calendar; 
 
         document.addEventListener('DOMContentLoaded', function() {
@@ -127,14 +127,27 @@ var events = [
     }
 			},*/
       eventClick: function(info) {
-          var title = prompt('Event Title:', info.event.title, { buttons: { Ok: true, Cancel: false} });
+        /*  var title = prompt('Event Title:', info.event.title, { buttons: { Ok: true, Cancel: false} });
           var description = prompt('Event Description:', info.event.description, { buttons: { Ok: true, Cancel: false} });
 console.log(title);
           if (title){
             info.event.title = title;
             info.event.setProp('title', title);
-              //calendar.updateEvent();
-          }
+              //calendar.updateEvent();*/
+             // openpopup();
+             console.log(info.event);
+              $('#modalBody > #title').text(info.event.title);
+             $('#modalWhen').text(info.event.start.toLocaleDateString() + " " + info.event.start.toLocaleTimeString() + " - " + info.event.end.toLocaleTimeString());
+             $('#modalDesc').text(info.event.extendedProps.description);
+             $('#modalId').text(info.event.id);
+             $('#calendarModal').modal('show');
+             $('#deleteEvent').click(function () {
+            var id = $('#ModalId').val();
+            console.log("thy");
+            info.event.remove(id);
+           // $("#calendar").fullCalendar('addEventSource', events);
+            $('#calendarModal').modal('hide');
+        });
 },
 /*eventContent: function (args)
   {
@@ -152,7 +165,7 @@ return { domNodes: arrayOfDomNodes }
 
       eventDidMount: function(info) {
                 var pill = document.createElement("span");
-                var fcevent = info.el.querySelector('.fc-event-time'); // for gridView
+                var fcevent = info.el.querySelector('.fc-event-title'); // for gridView
                 
         //console.log(info.event.extendedProps.description);
                     let description = document.createElement('div');
@@ -186,10 +199,25 @@ fetch('add_event.php', {
         calendar.render();
       });
   
-
-
+      $('#deleteEvent').click(function () {
+            var id = $('#ModalId').val();
+            console.log("thy");
+            calendar.event.remove(id);
+           // $('#calendar').fullCalendar('removeEvents', id);
+           // $("#calendar").fullCalendar('addEventSource', events);
+            $('#calendarModal').modal('hide');
+        });
+       
+        $('#createEvent').click(function () {
+            var id = $('#ModalId').val();
+            console.log("thy");
+            calendar.event.remove(id);
+           // $('#calendar').fullCalendar('removeEvents', id);
+           // $("#calendar").fullCalendar('addEventSource', events);
+            $('#calendarModal').modal('hide');
+        }); 
     </script>
-    </script>
+
      <style>
 .eventdetails span{
 color:#426ecc
@@ -350,6 +378,58 @@ color:#426ecc
 
   </div>
   </div>
+  <div id="calendarModal" class="modal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Event Details</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              
+            </div>
+            <div id="modalBody" class="modal-body">
+            <h4 id="title" class="modal-title"></h4>
+            <div id="modalWhen" style="margin-top:5px;"></div>
+            <input id="modalId" type="hidden"/>
+            <div id="modalDesc" style="margin-top:5px;"></div>
+            </div>
+
+            <div class="modal-footer">
+              
+                <button class="btn" data-bs-dismiss="modal" aria-hidden="true">Cancel</button>
+                <button type="submit" class="btn btn-danger" id="deleteEvent">Delete</button>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div id="createEventModal" class="modal">
+      <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Create Event</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                
+              </div>
+              <div id="modalBody" class="modal-body">
+                <form>
+                  <div class="mb-3">
+                    <label for="teacher-name" class="form-label">Event Title</label>
+                    <input type="text" class="form-control" id="event-title" placeholder="event Title">
+                  </div>
+                  <div class="mb-3">
+                    <label for="teacher-name" class="form-label">Event Description</label>
+                    <input type="text" class="form-control" id="event-desc" placeholder="event Description">
+                  </div>
+                </form>
+              </div>
+  
+              <div class="modal-footer">
+                
+                  <button class="btn" data-bs-dismiss="modal" aria-hidden="true">Cancel</button>
+                  <button type="submit" class="btn btn-danger" id="createEvent">Create</button>
+              </div>
+          </div>
+      </div>
+      </div>
   </div>
 
     </body>
