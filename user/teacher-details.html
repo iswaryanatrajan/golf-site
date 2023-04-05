@@ -25,46 +25,44 @@
         $(document).ready(function(){
           $("#userrating").load("../userrating.html")
         });
-        var events = [
+        let s = (new Date()).getTime().toString(16) + Math.random().toString(16).substring(2) + "0".repeat(16);
+            let uuid = s.substr(0,8) + '-' + s.substr(8,4) + '-4000-8' + s.substr(12,3) + '-' + s.substr(15,12);
+
+var events = [
           {
-            start: '2023-03-26T13:00:00',
-            end: '2023-03-26T14:00:00',
-            id:3
+            start: '2023-04-06T13:00:00',
+            end: '2023-04-06T14:00:00',
+            title:'Trial',
+            description:'Some description about event',
+            id:uuid
           },
           {
-            start: '2023-03-26T16:00:00',
-            end: '2023-03-26T18:00:00',
-            id:3
+            start: '2023-04-06T16:00:00',
+            end: '2023-04-06T18:00:00',
+            title:'Trial',
+            description:'Some description about event',
+            id:uuid
           },
           {
-            start: '2023-03-27T13:00:00',
-            end: '2023-03-27T14:00:00',
-            
-            id:3
+            start: '2023-04-07T13:00:00',
+            end: '2023-04-07T14:00:00',
+            title:'Course 1',
+            description:'Some description about event',
+            id:uuid
           },
           {
-            start: '2023-03-27T16:00:00',
-            end: '2023-03-27T18:00:00',
-           
-            id:4
+            start: '2023-04-07T16:00:00',
+            end: '2023-04-07T18:00:00',
+            title:'Course 1',
+            description:'Some description about event',
+            id:uuid
           },
           {
-            start: '2023-03-28T16:00:00',
-            end: '2023-03-28T18:00:00',
-            
-            id:4
-          },
-          {
-            start: '2023-03-29T16:00:00',
-            end: '2023-03-29T18:00:00',
-           
-            id:4
-          },
-          {
-            start: '2023-03-30T08:00:00',
-            end: '2023-03-30T20:00:00',
-       
-            id:4
+            start: '2023-04-08T08:00:00',
+            end: '2023-04-08T20:00:00',
+            title:'Course 2',
+            description:'Some description about event',
+            id:uuid
           }
         ];
       document.addEventListener('DOMContentLoaded', function() {
@@ -79,6 +77,24 @@
         allDaySlot:false,
          slotMinTime: '08:00', // 8am
         slotMaxTime: '20:00', // 8pm 
+      
+      eventClick: function(info) {
+        /*  var title = prompt('Event Title:', info.event.title, { buttons: { Ok: true, Cancel: false} });
+          var description = prompt('Event Description:', info.event.description, { buttons: { Ok: true, Cancel: false} });
+console.log(title);
+          if (title){
+            info.event.title = title;
+            info.event.setProp('title', title);
+              //calendar.updateEvent();*/
+             // openpopup();
+             console.log(info.event);
+              $('#title').text(info.event.title);
+             $('#modalWhen').text(info.event.start.toLocaleDateString() + " " + info.event.start.toLocaleTimeString() + " - " + info.event.end.toLocaleTimeString());
+             $('#modalDesc').text(info.event.extendedProps.description);
+             $('#modalId').text(info.event.id);
+             $('#calendarModal').modal('show');
+        
+},
         });
         calendar.render();
       });
@@ -294,9 +310,34 @@ p{
               </div>
               </div>
     </div>
-  
+ 
   </div>
   </div>
+  <div id="calendarModal" class="modal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Event Details</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              
+            </div>
+            <div id="modalBody" class="modal-body">
+                
+                
+            <h4 id="title" class="modal-title"></h4>
+            <div id="modalWhen" style="margin-top:5px;"></div>
+            <input id="modalId" type="hidden"/>
+            <div id="modalDesc" style="margin-top:5px;"></div>
+
+            </div>
+
+            <div class="modal-footer">
+              
+                <button class="btn" data-bs-dismiss="modal" aria-hidden="true">Close</button>
+            </div>
+        </div>
+    </div>
+    </div>
   </div>
     </body>
     </html>

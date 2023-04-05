@@ -36,50 +36,36 @@ let s = (new Date()).getTime().toString(16) + Math.random().toString(16).substri
 
 var events = [
           {
-            start: '2023-03-26T13:00:00',
-            end: '2023-03-26T14:00:00',
+            start: '2023-04-06T13:00:00',
+            end: '2023-04-06T14:00:00',
             title:'Trial',
             description:'Some description about event',
             id:uuid
           },
           {
-            start: '2023-03-26T16:00:00',
-            end: '2023-03-26T18:00:00',
+            start: '2023-04-06T16:00:00',
+            end: '2023-04-06T18:00:00',
             title:'Trial',
             description:'Some description about event',
             id:uuid
           },
           {
-            start: '2023-03-27T13:00:00',
-            end: '2023-03-27T14:00:00',
+            start: '2023-04-07T13:00:00',
+            end: '2023-04-07T14:00:00',
             title:'Course 1',
             description:'Some description about event',
             id:uuid
           },
           {
-            start: '2023-03-27T16:00:00',
-            end: '2023-03-27T18:00:00',
+            start: '2023-04-07T16:00:00',
+            end: '2023-04-07T18:00:00',
             title:'Course 1',
             description:'Some description about event',
             id:uuid
           },
           {
-            start: '2023-03-28T16:00:00',
-            end: '2023-03-28T18:00:00',
-            title:'Course 1',
-            description:'Some description about event',
-            id:uuid
-          },
-          {
-            start: '2023-03-29T16:00:00',
-            end: '2023-03-29T18:00:00',
-            title:'Course 2',
-            description:'Some description about event',
-            id:uuid
-          },
-          {
-            start: '2023-03-30T08:00:00',
-            end: '2023-03-30T20:00:00',
+            start: '2023-04-08T08:00:00',
+            end: '2023-04-08T20:00:00',
             title:'Course 2',
             description:'Some description about event',
             id:uuid
@@ -109,13 +95,24 @@ var events = [
             successCallback(events);
   },
   select: function(selectionInfo) {
-    var abc = prompt('Enter Title');
+    $('#createEventModal').modal('show');
+    $('#createEvent').on('click',function(){
+      var title= $('#event-title').val();
+      console.log(title)
+      var desc= $('#event-desc').val();
       calendar.addEvent({
         start: selectionInfo.start,
         end: selectionInfo.end ,//need these and not endTime/startTime, otherwise they won't re-render
         id:uuid,
-        title:abc
+        title:title,
+        description:desc
       });
+      $('#createEvent').unbind('click');
+      $('#event-title').val("");
+      $('#event-desc').val("");
+      $('#createEventModal').modal('hide');
+           });
+   
       calendar.unselect();
     },
    
@@ -136,18 +133,28 @@ console.log(title);
               //calendar.updateEvent();*/
              // openpopup();
              console.log(info.event);
-              $('#modalBody > #title').text(info.event.title);
+              $('#title').val(info.event.title);
              $('#modalWhen').text(info.event.start.toLocaleDateString() + " " + info.event.start.toLocaleTimeString() + " - " + info.event.end.toLocaleTimeString());
-             $('#modalDesc').text(info.event.extendedProps.description);
+             $('#modalDesc').val(info.event.extendedProps.description);
              $('#modalId').text(info.event.id);
              $('#calendarModal').modal('show');
+             $('#editEvent').click(function () {
+              var title= $('#title').val();
+              var desc= $('#modalDesc').val();
+              info.event.setProp('title', title);
+              info.event.setExtendedProp('description', desc);
+            $('#calendarModal').modal('hide');
+        });
              $('#deleteEvent').click(function () {
             var id = $('#ModalId').val();
             console.log("thy");
-            info.event.remove(id);
+            if (confirm("Are you sure you want to delete this event?")){
+              info.event.remove(id);
+            }
            // $("#calendar").fullCalendar('addEventSource', events);
             $('#calendarModal').modal('hide');
         });
+        
 },
 /*eventContent: function (args)
   {
@@ -208,14 +215,6 @@ fetch('add_event.php', {
             $('#calendarModal').modal('hide');
         });
        
-        $('#createEvent').click(function () {
-            var id = $('#ModalId').val();
-            console.log("thy");
-            calendar.event.remove(id);
-           // $('#calendar').fullCalendar('removeEvents', id);
-           // $("#calendar").fullCalendar('addEventSource', events);
-            $('#calendarModal').modal('hide');
-        }); 
     </script>
 
      <style>
@@ -387,16 +386,34 @@ color:#426ecc
               
             </div>
             <div id="modalBody" class="modal-body">
+             
+              <form>
+                <div class="mb-3">
+                  <label for="title" class="form-label">Event Date:</label>
+                  <div id="modalWhen" style="margin-top:5px;"></div>
+                </div>
+              <div class="mb-3">
+                <label for="title" class="form-label">Event Title</label>
+                <input type="text" class="form-control" id="title" >
+              </div>
+              <div class="mb-3">
+                <label for="desc" class="form-label">Event Description</label>
+                <textarea class="form-control" id="modalDesc"></textarea>
+              </div>
             <h4 id="title" class="modal-title"></h4>
-            <div id="modalWhen" style="margin-top:5px;"></div>
+            
             <input id="modalId" type="hidden"/>
             <div id="modalDesc" style="margin-top:5px;"></div>
+            
+            </form>
+
             </div>
 
             <div class="modal-footer">
               
                 <button class="btn" data-bs-dismiss="modal" aria-hidden="true">Cancel</button>
-                <button type="submit" class="btn btn-danger" id="deleteEvent">Delete</button>
+                <button type="submit" class="btn btn-danger" id="deleteEvent">Delete Event</button>
+                <button type="submit" class="btn btn-primary" id="editEvent">Save Changes</button>
             </div>
         </div>
     </div>
@@ -413,11 +430,11 @@ color:#426ecc
                 <form>
                   <div class="mb-3">
                     <label for="teacher-name" class="form-label">Event Title</label>
-                    <input type="text" class="form-control" id="event-title" placeholder="event Title">
+                    <input type="text" class="form-control" id="event-title" placeholder="Enter Title">
                   </div>
                   <div class="mb-3">
                     <label for="teacher-name" class="form-label">Event Description</label>
-                    <input type="text" class="form-control" id="event-desc" placeholder="event Description">
+                    <textarea class="form-control" id="event-desc"></textarea>
                   </div>
                 </form>
               </div>
