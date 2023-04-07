@@ -9,30 +9,21 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&family=Noto+Sans+JP&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="stylesheet" type="text/css" href="../css/menu.css">
     <link rel="stylesheet" type="text/css" href="../css/responsive.css">
   <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="../js/chat.js"></script>
-    <link rel="stylesheet" type="text/css" href="../css/chat.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.5/index.global.min.js'></script>
-    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.5/locales/ja.global.js'></script>
-    <!-- Popperjs -->
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-<!-- Tempus Dominus JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/js/tempusdominus-bootstrap-4.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="../css/chat.css"> 
 
-<!-- Tempus Dominus Styles -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/css/tempusdominus-bootstrap-4.min.css" crossorigin="anonymous">
     <script>
         $(document).ready(function(){
-          $(document).on("change",".uploadFile", function()
-    {
-      $(".imagePreview").show();
+        
+     /*     $(document).on("change", ".uploadFile", function() {
+            console.log("tjhyrt");
+      //$(".imagePreview").show();
     		var uploadFile = $(this);
         var files = !!this.files ? this.files : [];
         if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
@@ -47,8 +38,74 @@ uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url(
             }
         }
       
-    });
+    });*/
+
+    $(document).on("change", "#videoUpload", function() {
+    //$(".videoUpload").change(function() {
+      console.log("tjhyrit");
+      var uploadFile = $(this);
+      var files = !!this.files ? this.files : [];
+        if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
+ 
+        //if (/^image/.test( files[0].type)){ // only image file
+            var reader = new FileReader(); // instance of the FileReader
+            reader.readAsDataURL(files[0]); // read the local file
+ 
+            reader.onload = function (e) {
+              var video=uploadFile.closest(".avatar-upload").find("video");
+              video.show();
+             //var video1= videodiv.find("#video");
+             //const video = document.getElementById('video');
+             //console.log(video1);
+             //var videoSource=  "<source />" 
+             video.find("source").attr('src', e.target.result);
+    //videoSource.src = 
+    //videoSource.type = 'video/mp4';
+    //video.append(videoSource);
+    uploadFile.closest(".avatar-upload").find("video")[0].load();
+    //video.load();
+    //video.play();
+  };
+        /*    reader.onloadend = function(){ // set image data as background of div
+                //alert(uploadFile.closest(".upimage").find('.imagePreview').length);
+uploadFile.closest(".avatar-upload").find('.imagePreview').css("background", "url("+this.result+")");
+            }
+        //}*/
+    //readvideoURL(this);
 });
+    $("#imageUpload").change(function() {
+    readURL(this);
+});
+
+
+});
+function readURL(input) {
+    if (input.files && input.files[0]) {
+      if (/^image/.test( input.files[0].type)){
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            $('#imagePreview').css('background-image', 'url('+e.target.result +')');
+            $('#imagePreview').hide();
+            $('#imagePreview').fadeIn(650);
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+  }
+}
+function readvideoURL(input) {
+  console.log("tjhyrit")
+  if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          console.log(input.files);
+          videopreview=input.files.closest(".imagePreview");
+            $(videopreview).css('background-image', 'url('+e.target.result +')');
+            $(videopreview).hide();
+            $(videopreview).fadeIn(650);
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
 
 /*
 var events = [
@@ -168,7 +225,7 @@ fetch('add_event.php', {
 */
 
     </script>
-    </script>
+ 
      <style>
 .eventdetails span{
 color:#426ecc
@@ -177,12 +234,126 @@ color:#426ecc
     width: 100%;
     height: 180px;
     background-position: center center;
-  background:url(http://cliquecities.com/assets/no-image-e3699ae23f866f6cbdf8ba2443ee5c4e.jpg);
+  background:url("../images/bg.jpg");
   background-color:#fff;
     background-size: cover;
   background-repeat:no-repeat;
     display: inline-block;
     border-radius:10px
+}
+.avatar-upload {
+  position: relative;
+  max-width: 205px;
+  margin: 50px auto;
+}
+.avatar-upload .avatar-edit {
+  position: absolute;
+  right: 12px;
+  z-index: 1;
+  top: 10px;
+}
+.avatar-upload .avatar-edit input,.avatar-upload .video-edit input {
+  display: none;
+}
+.videodiv .avatar-upload{
+  padding:10px
+}
+.videodiv video{
+  display:none
+}
+.videodiv .avatar-upload .video-edit input + label{
+  border-radius: 0%;
+  display: inline-block;
+  width: 70px;
+  height: 70px;
+  margin-bottom: 0;
+  background: #FFFFFF;
+  border: 1px solid transparent;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  font-weight: normal;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.videodiv .avatar-upload .video-edit input + label:hover{
+  background: #f1f1f1;
+  border-color: #d6d6d6;
+}
+.videodiv .avatar-upload .video-edit input .fa-plus{
+  
+}
+.videodiv .avatar-upload .video-edit{
+  display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.avatar-upload .avatar-edit input + label {
+  display: inline-block;
+  width: 34px;
+  height: 34px;
+  margin-bottom: 0;
+  border-radius: 100%;
+  background: #FFFFFF;
+  border: 1px solid transparent;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  font-weight: normal;
+  transition: all 0.2s ease-in-out;
+}
+.avatar-upload .avatar-edit input + label:hover {
+  background: #f1f1f1;
+  border-color: #d6d6d6;
+}
+.avatar-upload .avatar-edit input + label:after {
+  content: "\f040";
+  font-family: 'FontAwesome';
+  color: #757575;
+  position: absolute;
+  top: 10px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  margin: auto;
+}
+.avatar-upload .avatar-preview {
+  width: 192px;
+  height: 192px;
+  position: relative;
+  border-radius: 100%;
+  border: 6px solid #F8F8F8;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+}
+.videodiv .avatar-preview{
+  width: 250px;
+  height: 150px;
+  position: relative;
+  border-radius: 0%;
+  border: 6px solid #F8F8F8;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+}
+.avatar-upload .avatar-preview > div {
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.imgAdd
+{
+  width:30px;
+  height:30px;
+  border-radius:50%;
+  background-color:#4bd7ef;
+  color:#fff;
+  box-shadow:0px 0px 2px 1px rgba(0,0,0,0.2);
+  text-align:center;
+  line-height:30px;
+  margin-top:0px;
+  cursor:pointer;
+  font-size:15px;
 }
 
     </style>
@@ -325,8 +496,18 @@ color:#426ecc
             <div class="row g-0 overflow-hidden flex-md-row m-4  h-md-250 position-relative">
                
                   <div class="col-sm-4 col-md-2 imgUp p-3 text-center">
-                    <div class="imagePreview mb-1"></div>
-                <div class="btn btn-outline-primary">画像をアップロード<input type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;"></div>
+                    <!--<div class="imagePreview mb-1"></div>
+                <div class="btn btn-outline-primary">画像をアップロード<input type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;"></div>-->
+                <div class="avatar-upload">
+                  <div class="avatar-edit">
+                      <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
+                      <label for="imageUpload"></label>
+                  </div>
+                  <div class="avatar-preview">
+                      <div id="imagePreview" style="background-image: url(http://i.pravatar.cc/500?img=7);">
+                      </div>
+                  </div>
+              </div>
                   </div>
                   <div class="col-md-10 col-sm-8 p-3">
                     <div class="mb-3">
@@ -341,12 +522,80 @@ color:#426ecc
                         <label for="teacher-phone" class="form-label">電話番号</label>
                         <input type="number" class="form-control" id="teacher-phone">
                       </div>
-                    <div class="col-3 mb-3">
-                      <label for="uploadvideo" class="form-label">ムービーをアップロード </label>
+                    <div class="mb-3">
+                     <!-- <label for="uploadvideo" class="form-label">ムービーをアップロード </label>
                       <input type="file" id="uploadvideo" accept="video/mp4,video/x-m4v,video/*" multiple> 
+                      <div class="upload__img-wrap"></div>
+                      <div class="upload__btn-box">
+                        <label class="">
+                          <p class="btn btn-outline-warning mb-0">ムービーをアップロード</p>
+                          <input type="file" multiple="" data-max_length="20" id="uploadvideo" accept="video/mp4,video/x-m4v,video/*" class="upload__inputfile">
+                        </label>
+                    </div>-->
+                    <div class="row videodiv">
+                      <div class="col-md-3 col-12">
+                      <div class="avatar-upload">
+                     
+                        <div class="avatar-preview">
+                          <video class="video" width="250" height="150" controls>
+                            <source src="" />
+                          </video>
+                          <div class="video-edit">
+                            <input type='file' id="videoUpload" accept="video/*" />
+                            <label for="videoUpload"><i class="fa-solid fa-plus fa-2x"></i></label>
+                        </div>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="col-md-3 col-12">
+                        <div class="avatar-upload">
+                          <div class="avatar-edit">
+                              <input type='file' class="videoUpload" accept="video/*" />
+                              <label for="videoUpload"></label>
+                          </div>
+                          <div class="avatar-preview">
+                            <video class="video" width="250" height="150" controls>
+                              <source src="" />
+                            </video>
+                              </div>
+                          </div>
+                        </div>
+                        <div class="col-md-3 col-12">
+                          <div class="avatar-upload">
+                            <div class="avatar-edit">
+                                <input type='file' class="videoUpload" accept="video/*" />
+                                <label for="videoUpload"></label>
+                            </div>
+                            <div class="avatar-preview">
+                              <video class="video" width="250" height="150" controls>
+                                <source src="" />
+                              </video>
+                                </div>
+                            </div>
+                          </div>
+                          <div class="col-md-3 col-12">
+                            <div class="avatar-upload">
+                              <div class="avatar-edit">
+                                  <input type='file' class="videoUpload" accept="video/*" />
+                                  <label for="videoUpload"></label>
+                              </div>
+                              <div class="avatar-preview">
+                                <video class="video" width="250" height="150" controls>
+                                  <source src="" />
+                                </video>
+                                  </div>
+                              </div>
+                            </div>
                     </div>
+                  <!-- <div class="col-sm-2 imgUp">
+                    <div class="imagePreview mb-1"></div>
+                <div class="btn btn-outline-primary">ムービーをアップロード<input type="file" class="uploadvideo img" value="Upload Photo"  accept="video/mp4,video/x-m4v,video/*" style="width: 0px;height: 0px;overflow: hidden;"></div>
+              </div>-->
+              <i class="fa fa-plus imgAdd"></i>
+            </div>
                     <button type="submit" class="btn btn-primary mt-2">Submit</button>
                   </div>
+                </div>
                 </div>
               </form>
                 

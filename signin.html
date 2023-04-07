@@ -25,6 +25,25 @@ location.href="user/index.html";
 });
 });
     </script>
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+    
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyChncZIpiQ2lh7KDq9Wlff3zh39yQRpraA",
+        authDomain: "golf-33d18.firebaseapp.com",
+        projectId: "golf-33d18",
+        storageBucket: "golf-33d18.appspot.com",
+        messagingSenderId: "250836863787",
+        appId: "1:250836863787:web:d66218af679fb72fc3d36e"
+      };
+    
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+    </script>
      <style>
 .form-signin {
     width: 100%;
@@ -137,6 +156,12 @@ location.href="user/index.html";
                 </form>
               </main>
     </div>
+    <div id="firebaseui-auth-container">
+      <!-- This is where the Login ui will load -->
+    </div>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+   <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css"/>
+   <script src="./auth.js"></script>
     </div>
     </div>
     </body>
