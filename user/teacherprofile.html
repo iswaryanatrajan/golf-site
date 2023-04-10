@@ -11,192 +11,239 @@
     <link rel="stylesheet" type="text/css" href="../css/menu.css">
     <link rel="stylesheet" type="text/css" href="../css/responsive.css">
     <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+   
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
     <script src="https://unpkg.com/filepond/dist/filepond.min.js"></script>
-
-<script src="https://unpkg.com/jquery-filepond/filepond.jquery.js"></script>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.5/index.global.min.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.5/locales/ja.global.js'></script>
+    <script src="../js/chat.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/chat.css">
+        <!-- Popperjs -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script>
 $(document).ready(function(){
-  $("video").hide();
-$(document).on("change", ".file_multi_video", function(evt) {
-  var $source = $(this).closest(".video video").show();
-  var $source = $(this).closest(".video").find('.video_here');
-  $source[0].src = URL.createObjectURL(this.files[0]);
-  $source.parent()[0].load();
-  var html=  '<div class="col-md-4 col-12 video">'+
-    '<video width="280" height="240" controls>'+
-      '<source src="mov_bbb.mp4" class="video_here">Your browser does not support HTML5 video.'+
-      '</video>'+
-      '<input type="file" name="file[]" class="file_multi_video" accept="video/*">'+
-      '</div>';
-  $(".videos").append(html);
-});
-});
-     /*   $(document).ready(function(){
-
-     /*     ImgUpload();
-  $(".imagePreview").hide();
-  function ImgUpload() {
-  var imgWrap = "";
-  var imgArray = [];
-
-  $('.upload__inputfile').each(function () {
-    $(this).on('change', function (e) {
-      imgWrap = $(this).closest('.upload__box').find('.upload__img-wrap');
-      var maxLength = $(this).attr('data-max_length');
-
-      var files = e.target.files;
-      var filesArr = Array.prototype.slice.call(files);
-      var iterator = 0;
-      filesArr.forEach(function (f, index) {
-
-        if (!f.type.match('video.*')) {
-          return;
-        }
-
-        if (imgArray.length > maxLength) {
-          return false
-        } else {
-          var len = 0;
-          for (var i = 0; i < imgArray.length; i++) {
-            if (imgArray[i] !== undefined) {
-              len++;
-            }
-          }
-          if (len > maxLength) {
-            return false;
-          } else {
-            imgArray.push(f);
-
-            var reader = new FileReader();
-            reader.readAsDataURL(files[i]);
-            reader.onload = function (e) {
-              /*var source = document.createElement('video'); //added now
-
-                source.width = 280;
-
-                source.height = 240;
-
-                source.controls = true;
-
-                source.src = e.target.result;
-              var html = "<div class='upload__img-box'><div style='' data-number='" + $(".upload__img-close").length + "' data-file='" + f.name + "' class='img-bg'><video controls width=300 height=300><source src="+e.target.result+"/></video><div class='upload__img-close'></div></div></div>";
-              imgWrap.append(html);
-              $(this).closest('video').load();
-              iterator++;
-            }
-           // reader.readAsDataURL(f);
-          }
-        }
-      });
-    });
-  });
-
-  $('body').on('click', ".upload__img-close", function (e) {
-    var file = $(this).parent().data("file");
-    for (var i = 0; i < imgArray.length; i++) {
-      if (imgArray[i].name === file) {
-        imgArray.splice(i, 1);
-        break;
+  $(document).on("change", ".file_multi_video", function(evt) {
+  var files = event.target.files;
+  var maxLength = $(this).attr('data-max_length');
+    for (var i = 0; i < files.length; i++) {
+      var f = files[i];
+      // Only process video files.
+      if (!f.type.match('video.*')) {
+        continue;
       }
-    }
-    $(this).parent().parent().remove();
-  });
 
-}*/
-
-    /*     $(document).on("change", ".uploadFile", function() {
-            console.log("tjhyrt");
-      //$(".imagePreview").show();
-    		var uploadFile = $(this);
-        var files = !!this.files ? this.files : [];
-        if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
- 
-        if (/^image/.test( files[0].type)){ // only image file
-            var reader = new FileReader(); // instance of the FileReader
-            reader.readAsDataURL(files[0]); // read the local file
- 
-            reader.onloadend = function(){ // set image data as background of div
-                //alert(uploadFile.closest(".upimage").find('.imagePreview').length);
-uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url("+this.result+")");
-            }
+      if (files.length > maxLength) {
+          return false
         }
       
-    })*/
-/*
- videoupload();
- function videoupload(){
-$('.videoUpload').each(function () {
-      console.log("tjhyrit");
-    $(this).change(function(e) {
-      console.log("tjhyrit");
-      var uploadFile = $(this);
-      var files = !!this.files ? this.files : [];
-        if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
- 
-        //if (/^image/.test( files[0].type)){ // only image file
-            var reader = new FileReader(); // instance of the FileReader
-            reader.readAsDataURL(files[0]); // read the local file
- 
-            reader.onload = function (e) {
-              var video=uploadFile.closest(".avatar-upload").find("video");
-              video.show();
-             //var video1= videodiv.find("#video");
-             //const video = document.getElementById('video');
-             //console.log(video1);
-             //var videoSource=  "<source />" 
-             video.find("source").attr('src', e.target.result);
-    //videoSource.src = 
-    //videoSource.type = 'video/mp4';
-    //video.append(videoSource);
-    //uploadFile.closest(".avatar-upload").find("video")[0].load();
-    video.load();
-    //video.play();
-  };
-            reader.onloadend = function(){ // set image data as background of div
-                //alert(uploadFile.closest(".upimage").find('.imagePreview').length);
-uploadFile.closest(".avatar-upload").find('.imagePreview').css("background", "url("+this.result+")");
-            }
-        //}
-    //readvideoURL(this);
-});
-});
+  
+  var html=  '<div class="col-md-4 col-12 video">'+
+    '<span class="videodel mb-3"><i class="fa fa-trash"></i></span>'+
+    '<video width="280" controls>'+
+      '<source src="'+ URL.createObjectURL(files[i]) +'" class="video_here">Your browser does not support HTML5 video.'+
+      '</video>'+
+      '</div>';
+  $(".previewvideos").append(html);
+    }
 
-}
-    $("#imageUpload").change(function() {
+    
+
+});
+$("#imageUpload").change(function() {
     readURL(this);
-});*/
-
-/*
-$('body').on('change','.videoUpload',function(e) {
-      console.log("tjhyrit");
-      var uploadFile = $(this);
-      console.log(uploadFile);
-      var files = !!this.files ? this.files : [];
-        if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
- 
-        //if (/^image/.test( files[0].type)){ // only image file
-            var reader = new FileReader(); // instance of the FileReader
-            reader.readAsDataURL(files[0]); // read the local file
- 
-            reader.onload = function (e) {
-              var video=uploadFile.closest(".avatar-upload").find("video");
-              video.show();
-             video.find("source").attr('src', e.target.result);
-            //video.load();
-    //video.play();
-  };
-            /*reader.onloadend = function(){ 
-                //alert(uploadFile.closest(".upimage").find('.imagePreview').length);
-                $(this).closest(".avatar-upload").find('.imagePreview').css("background", "url("+this.result+")");
-            }
-        //}
-    //readvideoURL(this);
+});
+$(document).on("click", ".videodel", function(evt) {
+$(this).closest(".video").hide();
 });
 
-*/
-//});
-/*
+
+});
+let s = (new Date()).getTime().toString(16) + Math.random().toString(16).substring(2) + "0".repeat(16);
+            let uuid = s.substr(0,8) + '-' + s.substr(8,4) + '-4000-8' + s.substr(12,3) + '-' + s.substr(15,12);
+
+var events = [
+          {
+            start: '2023-04-06T13:00:00',
+            end: '2023-04-06T14:00:00',
+            title:'Trial',
+            description:'Some description about event',
+            id:uuid
+          },
+          {
+            start: '2023-04-06T16:00:00',
+            end: '2023-04-06T18:00:00',
+            title:'Trial',
+            description:'Some description about event',
+            id:uuid
+          },
+          {
+            start: '2023-04-07T13:00:00',
+            end: '2023-04-07T14:00:00',
+            title:'Course 1',
+            description:'Some description about event',
+            id:uuid
+          },
+          {
+            start: '2023-04-07T16:00:00',
+            end: '2023-04-07T18:00:00',
+            title:'Course 1',
+            description:'Some description about event',
+            id:uuid
+          },
+          {
+            start: '2023-04-08T08:00:00',
+            end: '2023-04-08T20:00:00',
+            title:'Course 2',
+            description:'Some description about event',
+            id:uuid
+          }
+        ];
+    
+        var calendar; 
+
+document.addEventListener('DOMContentLoaded', function() {
+var calendarEl = document.getElementById('mycalendar');
+calendar = new FullCalendar.Calendar(calendarEl, {
+  headerToolbar: {
+left: 'prev,next',
+center: 'title',
+right: 'timeGridWeek,listWeek' // user can switch between the two
+},
+locale: 'ja',
+initialView: 'timeGridWeek',
+slotDuration: '01:00',
+editable: true,
+selectable:true,
+height: "auto",
+slotMinTime: '08:00', // 8am
+slotMaxTime: '20:00', // 8pm
+
+events: function(info, successCallback, failureCallback) {
+    successCallback(events);
+},
+select: function(selectionInfo) {
+$('#createEventModal').modal('show');
+$('#createEvent').on('click',function(){
+var title= $('#event-title').val();
+console.log(title)
+var desc= $('#event-desc').val();
+calendar.addEvent({
+start: selectionInfo.start,
+end: selectionInfo.end ,//need these and not endTime/startTime, otherwise they won't re-render
+id:uuid,
+title:title,
+description:desc
+});
+$('#createEvent').unbind('click');
+$('#event-title').val("");
+$('#event-desc').val("");
+$('#createEventModal').modal('hide');
+   });
+
+calendar.unselect();
+},
+
+/*	eventClick: function(info ){
+
+// $('#mycalendar').fullCalendar('removeEvents',event._id);
+ if (confirm(`Are you sure you want to delete the slot `+info.event.title + `?`)) {
+info.event.remove();
+}
+},*/
+eventClick: function(info) {
+/*  var title = prompt('Event Title:', info.event.title, { buttons: { Ok: true, Cancel: false} });
+  var description = prompt('Event Description:', info.event.description, { buttons: { Ok: true, Cancel: false} });
+console.log(title);
+  if (title){
+    info.event.title = title;
+    info.event.setProp('title', title);
+      //calendar.updateEvent();*/
+     // openpopup();
+     console.log(info.event);
+      $('#title').val(info.event.title);
+     $('#modalWhen').text(info.event.start.toLocaleDateString() + " " + info.event.start.toLocaleTimeString() + " - " + info.event.end.toLocaleTimeString());
+     $('#modalDesc').val(info.event.extendedProps.description);
+     $('#modalId').text(info.event.id);
+     $('#calendarModal').modal('show');
+     $('#editEvent').click(function () {
+      var title= $('#title').val();
+      var desc= $('#modalDesc').val();
+      info.event.setProp('title', title);
+      info.event.setExtendedProp('description', desc);
+    $('#calendarModal').modal('hide');
+});
+     $('#deleteEvent').click(function () {
+    var id = $('#ModalId').val();
+    console.log("thy");
+    if (confirm("Are you sure you want to delete this event?")){
+      info.event.remove(id);
+    }
+   // $("#calendar").fullCalendar('addEventSource', events);
+    $('#calendarModal').modal('hide');
+});
+
+},
+/*eventContent: function (args)
+{
+//const text = args.event._def.title + '<button onclick="info.event.remove();" style="float: right"> Delete </button>';
+let italicEl = document.createElement('div')
+
+
+italicEl.innerHTML = args.event._def.title + args.event.start +'<button style="float: right"> Delete </button>';
+
+
+let arrayOfDomNodes = [ italicEl ]
+return { domNodes: arrayOfDomNodes }
+
+},*/
+
+eventDidMount: function(info) {
+        var pill = document.createElement("span");
+        var fcevent = info.el.querySelector('.fc-event-title'); // for gridView
+        
+//console.log(info.event.extendedProps.description);
+            let description = document.createElement('div');
+            description.innerHTML=info.event.extendedProps.description;
+           // document.querySelector('.fc-event-title-container').append(description);
+            if (fcevent ) { 
+               //fcevent.textContent += " ";
+               fcevent.append(description);
+            }
+            
+        },
+/*  eventReceive: function( info ) {
+
+//get the bits of data we want to send into a simple object
+var eventData = {
+title: info.event.title,
+start: info.event.start,
+end: info.event.end,
+id: info.event.id,
+};
+//send the data via an AJAX POST request, and log any response which comes from the server
+fetch('add_event.php', {
+method: 'POST',
+headers: {'Accept': 'application/json'},
+body: encodeFormData(eventData)
+})
+.then(response => console.log(response))
+.catch(error => console.log(error));
+}*/
+});
+calendar.render();
+});
+
+$('#deleteEvent').click(function () {
+    var id = $('#ModalId').val();
+    console.log("thy");
+    calendar.event.remove(id);
+   // $('#calendar').fullCalendar('removeEvents', id);
+   // $("#calendar").fullCalendar('addEventSource', events);
+    $('#calendarModal').modal('hide');
+});
+
 function readURL(input) {
     if (input.files && input.files[0]) {
       if (/^image/.test( input.files[0].type)){
@@ -210,139 +257,7 @@ function readURL(input) {
     }
   }
 }
-function readvideoURL(input) {
-  console.log("tjhyrit")
-  if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function(e) {
-          console.log(input.files);
-          videopreview=input.files.closest(".imagePreview");
-            $(videopreview).css('background-image', 'url('+e.target.result +')');
-            $(videopreview).hide();
-            $(videopreview).fadeIn(650);
-        }
-        reader.readAsDataURL(input.files[0]);
-    }
-}
-*/
-/*
-var events = [
-          {
-            start: '2023-03-26T13:00:00',
-            end: '2023-03-26T14:00:00',
-            id:3
-          },
-          {
-            start: '2023-03-26T16:00:00',
-            end: '2023-03-26T18:00:00',
-            id:3
-          },
-          {
-            start: '2023-03-27T13:00:00',
-            end: '2023-03-27T14:00:00',
-            
-            id:3
-          },
-          {
-            start: '2023-03-27T16:00:00',
-            end: '2023-03-27T18:00:00',
-           
-            id:4
-          },
-          {
-            start: '2023-03-28T16:00:00',
-            end: '2023-03-28T18:00:00',
-            
-            id:4
-          },
-          {
-            start: '2023-03-29T16:00:00',
-            end: '2023-03-29T18:00:00',
-           
-            id:4
-          },
-          {
-            start: '2023-03-30T08:00:00',
-            end: '2023-03-30T20:00:00',
-       
-            id:4
-          }
-        ];
-        let s = (new Date()).getTime().toString(16) + Math.random().toString(16).substring(2) + "0".repeat(16);
-            let uuid = s.substr(0,8) + '-' + s.substr(8,4) + '-4000-8' + s.substr(12,3) + '-' + s.substr(15,12);
-        function addevent(){
-    
-  events.push({
-    title: document.getElementById('eventName').value,
-    start: document.getElementById('event-from').value,
-    end: document.getElementById('event-to').value,
-   
-    id:uuid
-  });
-  console.log(events);
-  calendar.refetchEvents()
-
-        }
-
-        console.log(events);
-        var calendar; 
-
-        document.addEventListener('DOMContentLoaded', function() {
-        var calendarEl = document.getElementById('mycalendar');
-        calendar = new FullCalendar.Calendar(calendarEl, {
-        locale: 'ja',
-        initialView: 'timeGridWeek',
-        slotDuration: '01:00',
-        editable: true,
-        selectable:true,
-        height: "auto",
-        slotMinTime: '08:00', // 8am
-        slotMaxTime: '20:00', // 8pm
-
-        events: function(info, successCallback, failureCallback) {
-            successCallback(events);
-  }
-  select: function(selectionInfo) {
-      calendar.addEvent({
-        start: selectionInfo.start,
-        end: selectionInfo.end ,//need these and not endTime/startTime, otherwise they won't re-render
-        id:uuid
-      });
-      calendar.unselect();
-    },
-   
-			eventClick: function(info ){
-			console.log(event)
-			  // $('#mycalendar').fullCalendar('removeEvents',event._id);
-         if (confirm(`Are you sure you want to delete the slot`+info.event.title)) {
-      info.event.remove();
-    }
-			},
-/*  eventReceive: function( info ) {
-
-//get the bits of data we want to send into a simple object
-var eventData = {
-  title: info.event.title,
-  start: info.event.start,
-  end: info.event.end,
-  id: info.event.id,
-};
-//send the data via an AJAX POST request, and log any response which comes from the server
-fetch('add_event.php', {
-  method: 'POST',
-  headers: {'Accept': 'application/json'},
-  body: encodeFormData(eventData)
-})
-.then(response => console.log(response))
-.catch(error => console.log(error));
-}
-        });
-        calendar.render();
-      });
-  
-*/
-
-    </script>
+</script>
  
      <style>
 .eventdetails span{
@@ -373,40 +288,7 @@ color:#426ecc
 .avatar-upload .avatar-edit input,.avatar-upload .video-edit input {
   display: none;
 }
-.videodiv .avatar-upload{
-  padding:10px
-}
-.videodiv video{
-  display:none
-}
-.videodiv .avatar-upload .video-edit input + label{
-  border-radius: 0%;
-  display: inline-block;
-  width: 70px;
-  height: 70px;
-  margin-bottom: 0;
-  background: #FFFFFF;
-  border: 1px solid transparent;
-  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
-  cursor: pointer;
-  font-weight: normal;
-  transition: all 0.2s ease-in-out;
-  display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.videodiv .avatar-upload .video-edit input + label:hover{
-  background: #f1f1f1;
-  border-color: #d6d6d6;
-}
-.videodiv .avatar-upload .video-edit input .fa-plus{
-  
-}
-.videodiv .avatar-upload .video-edit{
-  display: flex;
-    align-items: center;
-    justify-content: center;
-}
+
 .avatar-upload .avatar-edit input + label {
   display: inline-block;
   width: 34px;
@@ -436,21 +318,14 @@ color:#426ecc
   margin: auto;
 }
 .avatar-upload .avatar-preview {
-  width: 192px;
-  height: 192px;
+  width: 150px;
+  height: 150px;
   position: relative;
   border-radius: 100%;
   border: 6px solid #F8F8F8;
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
 }
-.videodiv .avatar-preview{
-  width: 250px;
-  height: 150px;
-  position: relative;
-  border-radius: 0%;
-  border: 6px solid #F8F8F8;
-  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
-}
+
 .avatar-upload .avatar-preview > div {
   width: 100%;
   height: 100%;
@@ -459,21 +334,56 @@ color:#426ecc
   background-repeat: no-repeat;
   background-position: center;
 }
-.imgAdd
-{
-  width:30px;
-  height:30px;
-  border-radius:50%;
-  background-color:#4bd7ef;
-  color:#fff;
-  box-shadow:0px 0px 2px 1px rgba(0,0,0,0.2);
-  text-align:center;
-  line-height:30px;
-  margin-top:0px;
-  cursor:pointer;
-  font-size:15px;
+
+.videos [type=file] {
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position:absolute
 }
 
+.videos [type=file] + label {
+  background: #f15d22;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Rubik", sans-serif;
+  font-size: inherit;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  outline: none;
+  padding: 1rem 50px;
+  position: relative;
+  transition: all 0.3s;
+  vertical-align: middle;
+}
+.videos [type=file] + label:hover {
+  background-color: #d3460d;
+}
+.videos [type=file] + label.btn-1 {
+  background-color: #f79159;
+  box-shadow: 0 6px #f57128;
+  transition: none;
+}
+.videos [type=file] + label.btn-1:hover {
+  box-shadow: 0 4px #f57128;
+  top: 2px;
+}
+.videodel{
+  background: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 240px;
+    top: 35px;
+}
     </style>
       <script>
        /* window.onload=function(){
@@ -648,7 +558,7 @@ function showThumbnail(files) {
             <ul>
                    <li class="menu-title"> NAVIGATION </li>
 
-                   <li class="has_sub"><a href="index.html" class="waves-effect"><i class="fa fa-home"></i><span>Home</span> </a> </li>
+                   <li class="has_sub"><a href="index.html" class="waves-effect"><i class="fa fa-home"></i><span>ホーム</span> </a> </li>
                    <li class="has_sub"><a href="posts.html" class="waves-effect"><i class="fa fa-feed"></i><span>ポスト</span> </a> </li>
                    <li class="has_sub"><a href="events.html" class="waves-effect"><i class="fa fa-calendar-days"></i><span>イベント</span> </a> 
                     <ul class="ps-1">
@@ -656,7 +566,7 @@ function showThumbnail(files) {
                       <li class=""><a class="waves-effect " href="participatedevents.html">Joined Events<span class="badge bg-success ms-1 rounded-circle">5</span></a></li>
                     </ul></li>
                    <li class="has_sub"><a href="findteacher.html" class="waves-effect"><i class="fa fa-user"></i><span>先生を探す</span> </a> </li>
-                   <li class="has_sub"><a href="schedule.html" class="waves-effect"><i class="fa fa-clock"></i><span>時刻表</span> </a> </li>
+                   <li class="has_sub"><a href="teacherprofile.html" class="waves-effect"><i class="fa fa-edit"></i><span>プロフィールを追加</span> </a> </li>
                   
                    <hr>
                    <li class="has_sub">
@@ -672,6 +582,7 @@ function showThumbnail(files) {
         <div class="col content-page px-0 bg-grey"> 
   <div class="content">
           <div class="container">
+            <h2 class="pageTitle py-5">教師プロフィール</h2>
           <div class="my-3">
             <form>
             <div class="row g-0 overflow-hidden flex-md-row m-4  h-md-250 position-relative">
@@ -704,84 +615,16 @@ function showThumbnail(files) {
                         <input type="number" class="form-control" id="teacher-phone">
                       </div>
                     <div class="mb-3">
-                     <!-- <label for="uploadvideo" class="form-label">ムービーをアップロード </label>
-                      <input type="file" id="uploadvideo" accept="video/mp4,video/x-m4v,video/*" multiple> 
-                      <div class="upload__img-wrap"></div>
-                      <div class="upload__btn-box">
-                        <label class="">
-                          <p class="btn btn-outline-warning mb-0">ムービーをアップロード</p>
-                          <input type="file" multiple="" data-max_length="20" id="uploadvideo" accept="video/mp4,video/x-m4v,video/*" class="upload__inputfile">
-                        </label>
-                    </div>-->
-<!--
-                    <div class="upload__box col-md-10 col-12">
-                      <div class="upload__img-wrap"></div>
-                      <div class="upload__btn-box">
-                        <label class="">
-                          <p class="btn btn-outline-warning mb-0">画像をアップロード</p>
-                          <input type="file" multiple="" data-max_length="20" class="upload__inputfile">
-                        </label>
+                      <div class="row videos">
+                            <div class="col-md-4 col-12  ">
+                              <input type="file" id="vidupload" name="file[]" class="file_multi_video" multiple="multiple" data-max_length="8" accept="video/*">
+                              <label for="vidupload" class="btn-1">ムービーをアップロード</label>
+                            </div>
                       </div>
+                      <div class="previewvideos row my-3"></div>
+                      <div class="my-5"> <div id="mycalendar"></div></div>
                     </div>
-                    <div class="row videodiv" id="videodiv">
-                      
-
-                      <div class="col-md-6 col-12">
-                        <div class="avatar-upload">
-                          <div class="avatar-edit">
-                              <input type='file' class="videoUpload" id="input1" />
-                              <label for="videoUpload"></label>
-                          </div>
-                          <div class="avatar-preview">
-                            <video class="video" width="250" height="150" controls>
-                              <source src="" />
-                            </video>
-                              </div>
-                          </div>
-                        </div>
-                        <div class="col-md-6 col-12">
-                          <div class="avatar-upload">
-                            <div class="avatar-edit">
-                                <input type='file' class="videoUpload" id="input2"  />
-                                <label for="videoUpload"></label>
-                            </div>
-                            <div class="avatar-preview">
-                              <video class="video" width="250" height="150" controls>
-                                <source src="" />
-                              </video>
-                                </div>
-                            </div>
-                          </div>
-                          <div class="col-md-3 col-12">
-                            <div class="avatar-upload">
-                              <div class="avatar-edit">
-                                  <input type='file' class="videoUpload" accept="video/*" />
-                                  <label for="videoUpload"></label>
-                              </div>
-                              <div class="avatar-preview">
-                                <video class="video" width="250" height="150" controls>
-                                  <source src="" />
-                                </video>
-                                  </div>
-                              </div>
-                            </div>
-                    </div>
-              <div class="col-sm-2 imgUp">
-                    <div class="imagePreview mb-1"></div>
-                <div class="btn btn-outline-primary">ムービーをアップロード<input type="file" class="uploadvideo img" value="Upload Photo"  accept="video/mp4,video/x-m4v,video/*" style="width: 0px;height: 0px;overflow: hidden;"></div>
-              </div>-->
-             <div class="row videos">
-              <div class="col-md-4 col-12 video">
-                <video width="280" height="240"  controls>
-                  <source src="mov_bbb.mp4" class="video_here">
-                    Your browser does not support HTML5 video.
-                </video>
-                
-                <input type="file" name="file[]" class="file_multi_video" accept="video/*">
-              </div>
-             </div>
-            </div>
-                    <button type="submit" class="btn btn-primary mt-2">Submit</button>
+                    <button type="submit" class="btn btn-primary mt-2">送信</button>
                   </div>
                 </div>
                 </div>
@@ -795,5 +638,75 @@ function showThumbnail(files) {
   </div>
   </div>
   </div>
+  <div id="calendarModal" class="modal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Event Details</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              
+            </div>
+            <div id="modalBody" class="modal-body">
+             
+              <form>
+                <div class="mb-3">
+                  <label for="title" class="form-label">Event Date:</label>
+                  <div id="modalWhen" style="margin-top:5px;"></div>
+                </div>
+              <div class="mb-3">
+                <label for="title" class="form-label">Event Title</label>
+                <input type="text" class="form-control" id="title" >
+              </div>
+              <div class="mb-3">
+                <label for="desc" class="form-label">Event Description</label>
+                <textarea class="form-control" id="modalDesc"></textarea>
+              </div>
+            <h4 id="title" class="modal-title"></h4>
+            
+            <input id="modalId" type="hidden"/>
+            <div id="modalDesc" style="margin-top:5px;"></div>
+            
+            </form>
+
+            </div>
+
+            <div class="modal-footer">
+              
+                <button class="btn" data-bs-dismiss="modal" aria-hidden="true">Cancel</button>
+                <button type="submit" class="btn btn-danger" id="deleteEvent">Delete Event</button>
+                <button type="submit" class="btn btn-primary" id="editEvent">Save Changes</button>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div id="createEventModal" class="modal">
+      <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Create Event</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                
+              </div>
+              <div id="modalBody" class="modal-body">
+                <form>
+                  <div class="mb-3">
+                    <label for="teacher-name" class="form-label">Event Title</label>
+                    <input type="text" class="form-control" id="event-title" placeholder="Enter Title">
+                  </div>
+                  <div class="mb-3">
+                    <label for="teacher-name" class="form-label">Event Description</label>
+                    <textarea class="form-control" id="event-desc"></textarea>
+                  </div>
+                </form>
+              </div>
+  
+              <div class="modal-footer">
+                
+                  <button class="btn" data-bs-dismiss="modal" aria-hidden="true">Cancel</button>
+                  <button type="submit" class="btn btn-danger" id="createEvent">Create</button>
+              </div>
+          </div>
+      </div>
+      </div>
   </body>
     </html>

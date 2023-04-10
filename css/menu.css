@@ -312,6 +312,9 @@ File: Menu
     color: #ffffff !important;
     background-color: #16192C;
   }
+  #wrapper.enlarged .left.side-menu #sidebar-menu ul ul a {
+    color: #edeaea;
+  }
   #wrapper.enlarged .left.side-menu #sidebar-menu > ul > li > a i {
     margin-right: 20px !important;
     font-size: 20px;
