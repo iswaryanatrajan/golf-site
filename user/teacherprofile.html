@@ -5,23 +5,107 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <title>Golf</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&family=Noto+Sans+JP&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/jquery-comments.css">
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="stylesheet" type="text/css" href="../css/menu.css">
     <link rel="stylesheet" type="text/css" href="../css/responsive.css">
-  <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+    <script src="https://unpkg.com/filepond/dist/filepond.min.js"></script>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="../js/chat.js"></script>
-    <link rel="stylesheet" type="text/css" href="../css/chat.css"> 
-
+<script src="https://unpkg.com/jquery-filepond/filepond.jquery.js"></script>
     <script>
-        $(document).ready(function(){
-        
-     /*     $(document).on("change", ".uploadFile", function() {
+$(document).ready(function(){
+  $("video").hide();
+$(document).on("change", ".file_multi_video", function(evt) {
+  var $source = $(this).closest(".video video").show();
+  var $source = $(this).closest(".video").find('.video_here');
+  $source[0].src = URL.createObjectURL(this.files[0]);
+  $source.parent()[0].load();
+  var html=  '<div class="col-md-4 col-12 video">'+
+    '<video width="280" height="240" controls>'+
+      '<source src="mov_bbb.mp4" class="video_here">Your browser does not support HTML5 video.'+
+      '</video>'+
+      '<input type="file" name="file[]" class="file_multi_video" accept="video/*">'+
+      '</div>';
+  $(".videos").append(html);
+});
+});
+     /*   $(document).ready(function(){
+
+     /*     ImgUpload();
+  $(".imagePreview").hide();
+  function ImgUpload() {
+  var imgWrap = "";
+  var imgArray = [];
+
+  $('.upload__inputfile').each(function () {
+    $(this).on('change', function (e) {
+      imgWrap = $(this).closest('.upload__box').find('.upload__img-wrap');
+      var maxLength = $(this).attr('data-max_length');
+
+      var files = e.target.files;
+      var filesArr = Array.prototype.slice.call(files);
+      var iterator = 0;
+      filesArr.forEach(function (f, index) {
+
+        if (!f.type.match('video.*')) {
+          return;
+        }
+
+        if (imgArray.length > maxLength) {
+          return false
+        } else {
+          var len = 0;
+          for (var i = 0; i < imgArray.length; i++) {
+            if (imgArray[i] !== undefined) {
+              len++;
+            }
+          }
+          if (len > maxLength) {
+            return false;
+          } else {
+            imgArray.push(f);
+
+            var reader = new FileReader();
+            reader.readAsDataURL(files[i]);
+            reader.onload = function (e) {
+              /*var source = document.createElement('video'); //added now
+
+                source.width = 280;
+
+                source.height = 240;
+
+                source.controls = true;
+
+                source.src = e.target.result;
+              var html = "<div class='upload__img-box'><div style='' data-number='" + $(".upload__img-close").length + "' data-file='" + f.name + "' class='img-bg'><video controls width=300 height=300><source src="+e.target.result+"/></video><div class='upload__img-close'></div></div></div>";
+              imgWrap.append(html);
+              $(this).closest('video').load();
+              iterator++;
+            }
+           // reader.readAsDataURL(f);
+          }
+        }
+      });
+    });
+  });
+
+  $('body').on('click', ".upload__img-close", function (e) {
+    var file = $(this).parent().data("file");
+    for (var i = 0; i < imgArray.length; i++) {
+      if (imgArray[i].name === file) {
+        imgArray.splice(i, 1);
+        break;
+      }
+    }
+    $(this).parent().parent().remove();
+  });
+
+}*/
+
+    /*     $(document).on("change", ".uploadFile", function() {
             console.log("tjhyrt");
       //$(".imagePreview").show();
     		var uploadFile = $(this);
@@ -38,10 +122,13 @@ uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url(
             }
         }
       
-    });*/
-
-    $(document).on("change", "#videoUpload", function() {
-    //$(".videoUpload").change(function() {
+    })*/
+/*
+ videoupload();
+ function videoupload(){
+$('.videoUpload').each(function () {
+      console.log("tjhyrit");
+    $(this).change(function(e) {
       console.log("tjhyrit");
       var uploadFile = $(this);
       var files = !!this.files ? this.files : [];
@@ -62,23 +149,54 @@ uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url(
     //videoSource.src = 
     //videoSource.type = 'video/mp4';
     //video.append(videoSource);
-    uploadFile.closest(".avatar-upload").find("video")[0].load();
-    //video.load();
+    //uploadFile.closest(".avatar-upload").find("video")[0].load();
+    video.load();
     //video.play();
   };
-        /*    reader.onloadend = function(){ // set image data as background of div
+            reader.onloadend = function(){ // set image data as background of div
                 //alert(uploadFile.closest(".upimage").find('.imagePreview').length);
 uploadFile.closest(".avatar-upload").find('.imagePreview').css("background", "url("+this.result+")");
             }
-        //}*/
+        //}
     //readvideoURL(this);
 });
+});
+
+}
     $("#imageUpload").change(function() {
     readURL(this);
+});*/
+
+/*
+$('body').on('change','.videoUpload',function(e) {
+      console.log("tjhyrit");
+      var uploadFile = $(this);
+      console.log(uploadFile);
+      var files = !!this.files ? this.files : [];
+        if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
+ 
+        //if (/^image/.test( files[0].type)){ // only image file
+            var reader = new FileReader(); // instance of the FileReader
+            reader.readAsDataURL(files[0]); // read the local file
+ 
+            reader.onload = function (e) {
+              var video=uploadFile.closest(".avatar-upload").find("video");
+              video.show();
+             video.find("source").attr('src', e.target.result);
+            //video.load();
+    //video.play();
+  };
+            /*reader.onloadend = function(){ 
+                //alert(uploadFile.closest(".upimage").find('.imagePreview').length);
+                $(this).closest(".avatar-upload").find('.imagePreview').css("background", "url("+this.result+")");
+            }
+        //}
+    //readvideoURL(this);
 });
 
-
-});
+*/
+//});
+/*
 function readURL(input) {
     if (input.files && input.files[0]) {
       if (/^image/.test( input.files[0].type)){
@@ -106,7 +224,7 @@ function readvideoURL(input) {
         reader.readAsDataURL(input.files[0]);
     }
 }
-
+*/
 /*
 var events = [
           {
@@ -357,6 +475,69 @@ color:#426ecc
 }
 
     </style>
+      <script>
+       /* window.onload=function(){
+     $('div').on('click', '.closeDiv', function() {
+  $(this).prev().remove();
+  $(this).remove();
+  $('#upload-file').val("");
+});
+let fileDiv = document.getElementById("upload");
+let fileInput = document.getElementById("upload-file");
+
+fileInput.addEventListener("change", function(e) {
+
+  let filesVAR = this.files;
+
+  showThumbnail(filesVAR);
+
+}, false);
+
+
+function showThumbnail(files) {
+
+  debugger
+
+  for (let i = 0; i < files.length; i++) {
+
+    let file = files[i];
+
+    let thumbnail = document.getElementById("thumbnail");
+    let pDiv = document.createElement("div");
+    let video = document.createElement("video");
+    let div = document.createElement("div");
+
+
+    pDiv.setAttribute('class', 'pDiv');
+    thumbnail.appendChild(pDiv);
+
+
+    video.setAttribute('class', 'imgKLIK5');
+    pDiv.appendChild(video)
+
+    div.innerHTML = "Excluir";
+    div.setAttribute('class', 'closeDiv');
+    pDiv.appendChild(div)
+
+    video.file = file;
+    let reader = new FileReader()
+    reader.onload = (function(aImg) {
+      return function(e) {
+        let blobURL = URL.createObjectURL(file);
+        aImg.src = blobURL;
+        aImg.setAttribute("controls", "")
+      };
+    }(video))
+    let ret = reader.readAsDataURL(file);
+    let canvas = document.createElement("canvas");
+    ctx = canvas.getContext("2d");
+    video.onload = function() {
+      ctx.drawImage(video, 300, 200);
+    }
+  }
+}
+}*/
+</script>
   </head>
   <body>
     <div id="wrapper" class="forced ">
@@ -532,25 +713,23 @@ color:#426ecc
                           <input type="file" multiple="" data-max_length="20" id="uploadvideo" accept="video/mp4,video/x-m4v,video/*" class="upload__inputfile">
                         </label>
                     </div>-->
-                    <div class="row videodiv">
-                      <div class="col-md-3 col-12">
-                      <div class="avatar-upload">
-                     
-                        <div class="avatar-preview">
-                          <video class="video" width="250" height="150" controls>
-                            <source src="" />
-                          </video>
-                          <div class="video-edit">
-                            <input type='file' id="videoUpload" accept="video/*" />
-                            <label for="videoUpload"><i class="fa-solid fa-plus fa-2x"></i></label>
-                        </div>
-                            </div>
-                        </div>
+<!--
+                    <div class="upload__box col-md-10 col-12">
+                      <div class="upload__img-wrap"></div>
+                      <div class="upload__btn-box">
+                        <label class="">
+                          <p class="btn btn-outline-warning mb-0">画像をアップロード</p>
+                          <input type="file" multiple="" data-max_length="20" class="upload__inputfile">
+                        </label>
                       </div>
-                      <div class="col-md-3 col-12">
+                    </div>
+                    <div class="row videodiv" id="videodiv">
+                      
+
+                      <div class="col-md-6 col-12">
                         <div class="avatar-upload">
                           <div class="avatar-edit">
-                              <input type='file' class="videoUpload" accept="video/*" />
+                              <input type='file' class="videoUpload" id="input1" />
                               <label for="videoUpload"></label>
                           </div>
                           <div class="avatar-preview">
@@ -560,10 +739,10 @@ color:#426ecc
                               </div>
                           </div>
                         </div>
-                        <div class="col-md-3 col-12">
+                        <div class="col-md-6 col-12">
                           <div class="avatar-upload">
                             <div class="avatar-edit">
-                                <input type='file' class="videoUpload" accept="video/*" />
+                                <input type='file' class="videoUpload" id="input2"  />
                                 <label for="videoUpload"></label>
                             </div>
                             <div class="avatar-preview">
@@ -587,11 +766,20 @@ color:#426ecc
                               </div>
                             </div>
                     </div>
-                  <!-- <div class="col-sm-2 imgUp">
+              <div class="col-sm-2 imgUp">
                     <div class="imagePreview mb-1"></div>
                 <div class="btn btn-outline-primary">ムービーをアップロード<input type="file" class="uploadvideo img" value="Upload Photo"  accept="video/mp4,video/x-m4v,video/*" style="width: 0px;height: 0px;overflow: hidden;"></div>
               </div>-->
-              <i class="fa fa-plus imgAdd"></i>
+             <div class="row videos">
+              <div class="col-md-4 col-12 video">
+                <video width="280" height="240"  controls>
+                  <source src="mov_bbb.mp4" class="video_here">
+                    Your browser does not support HTML5 video.
+                </video>
+                
+                <input type="file" name="file[]" class="file_multi_video" accept="video/*">
+              </div>
+             </div>
             </div>
                     <button type="submit" class="btn btn-primary mt-2">Submit</button>
                   </div>
@@ -607,6 +795,5 @@ color:#426ecc
   </div>
   </div>
   </div>
-  
-    </body>
+  </body>
     </html>
