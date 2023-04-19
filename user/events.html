@@ -31,10 +31,10 @@ $('.eventsnav .nav-link').click(function(){
   var eventbtnid=$(this).attr('id');
   $('.allevents div.'+eventbtnid+'' ).show();
 });
-        $(".eventblock").click(function(){
+        $(".eventblock h3").click(function(){
           window.location.href="event-details.html"
         });
-        $(".tournaments").click(function(){
+        $(".tournaments h3").click(function(){
           window.location.href="tournament-details.html"
         });
         $(".childrow").hide();
@@ -103,24 +103,7 @@ items2.forEach((el) => {
     next = next.nextElementSibling
 }
 });
-var $star_rating = $('.star-rating .fa');
 
-var SetRatingStar = function() {
-  return $star_rating.each(function() {
-    if (parseInt($star_rating.siblings('input.rating-value').val()) >= parseInt($(this).data('rating'))) {
-      return $(this).removeClass('fa-regular fa-star').addClass('fa-solid fa-star');
-    } else {
-      return $(this).removeClass('fa-solid fa-star').addClass('fa-regular fa-star');
-    }
-  });
-};
-
-$star_rating.on('click', function() {
-  $star_rating.siblings('input.rating-value').val($(this).data('rating'));
-  return SetRatingStar();
-});
-
-SetRatingStar();
 });
     </script>
     <style>
@@ -306,24 +289,7 @@ SetRatingStar();
         </div>
         <div class="col content-page px-0 bg-grey"> 
   <div class="content">
-    <!--  <div class="hero"  >
-       
-          <div class="row justify-content-center p-4">
-            <div class="col-lg-6 col-12 pt-2">
-                <div class="table-responsive table-scroll at-shadow-box p-2">
-                  <p>オンライン個人レッスン・マンツーマンの先生を紹介</p>
-                  <p class="content_vgEyl">特長1：上質なのマンツーマンレッスンを格安で提供しています<br>
-                      コスパNO.1！全員がプロネイティブ講師　25分 150JPY~<br><br>
-                      
-                      特長2：あなた専用にカスタマイズされたレッスン<br>
-                      95%の受講生がAIマッチングシステムにより、自分に合ったレッスンを受講していただいております。学習目標などを記入するだけであなたにピッタリの講師をAIが見つけてくれます。<br><br>
-                      
-                      ぜひ一度、無料体験レッスンをお試しください。
-                      </p>
-                </div>
-            </div>
-        </div>
-        </div>-->
+
 
   <div class="row">
     <div class="col-12">
@@ -389,20 +355,10 @@ SetRatingStar();
                             <img src="https://img.freepik.com/free-vector/golf-swing-silhouette-collection_23-2147768420.jpg?w=826&t=st=1675408330~exp=1675408930~hmac=e4411e2879607034615fcc432dc0062727a403bfab00d1e29466443da45a9a59" width="130" class="img-fluid">
                           </div>
                           <div class="col p-4 d-flex flex-column position-static text-start">
-                            <h4 class="mb-0">イベント 1</h4>
-                            <p class="card-text mb-auto">ダミーテキスト ダミーテキスト ダミーテキスト ダミーテキスト</p>
-                            <div class="row">
-                              <div class="col-lg-12">
-                                <div class="star-rating">
-                                  <span class="fa fa-star-o" data-rating="1"></span>
-                                  <span class="fa fa-star-o" data-rating="2"></span>
-                                  <span class="fa fa-star-o" data-rating="3"></span>
-                                  <span class="fa fa-star-o" data-rating="4"></span>
-                                  <span class="fa fa-star-o" data-rating="5"></span>
-                                  <input type="hidden" name="whatever1" class="rating-value" value="2.56">
-                                </div>
-                              </div>
-                            </div>
+                       
+                            <h4 class="mb-1">イベント 1</h4>
+                            <p class="card-text mb-1">ダミーテキスト ダミーテキスト ダミーテキスト ダミーテキスト</p>
+                            <p class="card-text mb-auto">参加者の数: 2/20</p>
                           </div>
                         </div>
                       </div>
@@ -414,20 +370,9 @@ SetRatingStar();
                             <img src="https://img.freepik.com/free-vector/golf-swing-silhouette-collection_23-2147768420.jpg?w=826&t=st=1675408330~exp=1675408930~hmac=e4411e2879607034615fcc432dc0062727a403bfab00d1e29466443da45a9a59" width="130" class="img-fluid">
                           </div>
                           <div class="col p-4 d-flex flex-column position-static text-start">
-                            <h4 class="mb-0">イベント 2</h4>
-                            <p class="card-text mb-auto">ダミーテキスト ダミーテキスト ダミーテキスト ダミーテキスト</p>
-                            <div class="row">
-                              <div class="col-lg-12">
-                                <div class="star-rating">
-                                  <span class="fa fa-star-o" data-rating="1"></span>
-                                  <span class="fa fa-star-o" data-rating="2"></span>
-                                  <span class="fa fa-star-o" data-rating="3"></span>
-                                  <span class="fa fa-star-o" data-rating="4"></span>
-                                  <span class="fa fa-star-o" data-rating="5"></span>
-                                  <input type="hidden" name="whatever1" class="rating-value" value="2.56">
-                                </div>
-                              </div>
-                            </div>
+                            <h4 class="mb-1">イベント 2</h4>
+                            <p class="card-text mb-1">ダミーテキスト ダミーテキスト ダミーテキスト ダミーテキスト</p>
+                            <p class="card-text mb-auto">参加者の数: 2/20</p>
                           </div>
                         </div>
                       </div>
@@ -439,20 +384,9 @@ SetRatingStar();
                             <img src="https://img.freepik.com/free-vector/golf-swing-silhouette-collection_23-2147768420.jpg?w=826&t=st=1675408330~exp=1675408930~hmac=e4411e2879607034615fcc432dc0062727a403bfab00d1e29466443da45a9a59" width="130" class="img-fluid">
                           </div>
                           <div class="col p-4 d-flex flex-column position-static text-start">
-                            <h4 class="mb-0">イベント 3</h4>
-                            <p class="card-text mb-auto">ダミーテキスト ダミーテキスト ダミーテキスト ダミーテキスト</p>
-                            <div class="row">
-                              <div class="col-lg-12">
-                                <div class="star-rating">
-                                  <span class="fa fa-star-o" data-rating="1"></span>
-                                  <span class="fa fa-star-o" data-rating="2"></span>
-                                  <span class="fa fa-star-o" data-rating="3"></span>
-                                  <span class="fa fa-star-o" data-rating="4"></span>
-                                  <span class="fa fa-star-o" data-rating="5"></span>
-                                  <input type="hidden" name="whatever1" class="rating-value" value="2.56">
-                                </div>
-                              </div>
-                            </div>
+                            <h4 class="mb-1">イベント 3</h4>
+                            <p class="card-text mb-1">ダミーテキスト ダミーテキスト ダミーテキスト ダミーテキスト</p>
+                            <p class="card-text mb-auto">参加者の数: 5/20</p>
                           </div>
                         </div>
                       </div>
@@ -464,20 +398,9 @@ SetRatingStar();
                             <img src="https://img.freepik.com/free-vector/golf-swing-silhouette-collection_23-2147768420.jpg?w=826&t=st=1675408330~exp=1675408930~hmac=e4411e2879607034615fcc432dc0062727a403bfab00d1e29466443da45a9a59" width="130" class="img-fluid">
                           </div>
                           <div class="col p-4 d-flex flex-column position-static text-start">
-                            <h4 class="mb-0">イベント 4</h4>
-                            <p class="card-text mb-auto">ダミーテキスト ダミーテキスト ダミーテキスト ダミーテキスト</p>
-                            <div class="row">
-                              <div class="col-lg-12">
-                                <div class="star-rating">
-                                  <span class="fa fa-star-o" data-rating="1"></span>
-                                  <span class="fa fa-star-o" data-rating="2"></span>
-                                  <span class="fa fa-star-o" data-rating="3"></span>
-                                  <span class="fa fa-star-o" data-rating="4"></span>
-                                  <span class="fa fa-star-o" data-rating="5"></span>
-                                  <input type="hidden" name="whatever1" class="rating-value" value="2.56">
-                                </div>
-                              </div>
-                            </div>
+                            <h4 class="mb-1">イベント 4</h4>
+                            <p class="card-text mb-1">ダミーテキスト ダミーテキスト ダミーテキスト ダミーテキスト</p>
+                            <p class="card-text mb-auto">参加者の数: 2/20</p>
                           </div>
                         </div>
                       </div>
@@ -489,20 +412,9 @@ SetRatingStar();
                             <img src="https://img.freepik.com/free-vector/golf-swing-silhouette-collection_23-2147768420.jpg?w=826&t=st=1675408330~exp=1675408930~hmac=e4411e2879607034615fcc432dc0062727a403bfab00d1e29466443da45a9a59" width="130" class="img-fluid">
                           </div>
                           <div class="col p-4 d-flex flex-column position-static text-start">
-                            <h4 class="mb-0">イベント 5</h4>
-                            <p class="card-text mb-auto">ダミーテキスト ダミーテキスト ダミーテキスト ダミーテキスト</p>
-                            <div class="row">
-                              <div class="col-lg-12">
-                                <div class="star-rating">
-                                  <span class="fa fa-star-o" data-rating="1"></span>
-                                  <span class="fa fa-star-o" data-rating="2"></span>
-                                  <span class="fa fa-star-o" data-rating="3"></span>
-                                  <span class="fa fa-star-o" data-rating="4"></span>
-                                  <span class="fa fa-star-o" data-rating="5"></span>
-                                  <input type="hidden" name="whatever1" class="rating-value" value="2.56">
-                                </div>
-                              </div>
-                            </div>
+                            <h4 class="mb-1">イベント 5</h4>
+                            <p class="card-text mb-1">ダミーテキスト ダミーテキスト ダミーテキスト ダミーテキスト</p>
+                            <p class="card-text mb-auto">参加者の数: 2/20</p>
                           </div>
                         </div>
                       </div>
@@ -526,7 +438,7 @@ SetRatingStar();
               <button class="nav-link badge bg-success p-2 border-0" id="tournaments"   type="button" role="tab" aria-controls="pills-home" aria-selected="true">ゴルフ大会</button>
             </li>
             <li class="nav-item me-2 mb-2">
-              <button class="nav-link badge bg-success p-2 border-0" id="bbq"   type="button" role="tab" aria-controls="pills-home" aria-selected="true">BBQイベント</button>
+              <button class="nav-link badge bg-success p-2 border-0" id="bbq"   type="button" role="tab" aria-controls="pills-home" aria-selected="true">    </button>
             </li>
             <li class="nav-item me-2 mb-2">
               <button class="nav-link badge bg-success p-2 border-0" id="others"  type="button" role="tab" aria-controls="pills-home" aria-selected="true">その他</button>
@@ -548,11 +460,27 @@ SetRatingStar();
                         <svg class="bd-placeholder-img" width="100%" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="30%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
                       </div>
                     <div class="col-12 col-md-10 p-4 d-flex flex-column position-static eventdetails">
+                      <div class="row">
+                        <div class="col"><strong class="d-inline-block mb-2 text-primary tag">BBQイベント</strong>
+                          <div class="mb-1 username"><i class="fa fa-user" style="color: #3b5998;"></i> Current user name</div></div>
+                          <div class="col-1 text-end">
+                            <div class="dropdown postactions">
+                              <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa fa-ellipsis-h"></i>
+                              </button>
+                              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li><a class="dropdown-item" href="#">Edit Event</a></li>
+                                <li><a class="dropdown-item" href="#">Delete Event</a></li>
+                              </ul>
+                            </div>
+                            
+                            </div>
+                          </div>
                       <h3 class="mb-1">イベントタイトル : <span class="event-title">バーベキューイベント</span></h3>
                       <p class="card-text mb-1">ダミーテキスト ダミーテキスト ダミーテキスト ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト ダミーテキスト ダミーテキスト ダミーテキストダミーテキストダミーテキストダミーテキスト</p>
                       <div class="mb-1">開催日: <span class="event-date">Nov 12 2022</span></div>
-                      <div class="mb-1">イベントオーナー: <span class="event-owner">User 1</span></div>
                       <div class="mb-1">都道府県: <span class="event-prefecture">愛知県</span></div>
+                      <div class="mb-1">参加者の数: <span class="event-participants">2/20</span></div>
                     </div>
                   </div>
                   <div id="" data-prefecture="shizuoka" class="general tournaments  row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative ">
@@ -561,11 +489,27 @@ SetRatingStar();
                           <svg class="bd-placeholder-img" width="100%" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="30%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
                         </div>
                       <div class="col-12 col-md-10 p-4 d-flex flex-column position-static eventdetails">
+                        <div class="row">
+                          <div class="col"><strong class="d-inline-block mb-2 text-primary tag">ゴルフ大会</strong>
+                            <div class="mb-1 username"><i class="fa fa-user" style="color: #3b5998;"></i> Current user name</div></div>
+                            <div class="col-1 text-end">
+                              <div class="dropdown postactions">
+                                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                  <i class="fa fa-ellipsis-h"></i>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                  <li><a class="dropdown-item" href="#">Edit Event</a></li>
+                                  <li><a class="dropdown-item" href="#">Delete Event</a></li>
+                                </ul>
+                              </div>
+                              
+                              </div>
+                            </div>
                         <h3 class="mb-1">イベントタイトル : <span class="event-title">トーナメント 1</span></h3>
                         <p class="card-text mb-1">ダミーテキスト ダミーテキスト ダミーテキスト ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト ダミーテキスト ダミーテキスト ダミーテキストダミーテキストダミーテキストダミーテキスト</p>
                         <div class="mb-1">開催日: <span class="event-date">Nov 12 2022</span></div>
-                        <div class="mb-1">イベントオーナー: <span class="event-owner">User 1</span></div>
                         <div class="mb-1">都道府県: <span class="event-prefecture">静岡県</span></div>
+                        <div class="mb-1">参加者の数: <span class="event-participants">2/20</span></div>
                       
                       <div class=" p-2 d-flex flex-column position-static event">
                         <div class="table-responsive">
@@ -837,11 +781,27 @@ SetRatingStar();
                         <svg class="bd-placeholder-img" width="100%" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="30%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
                       </div>
                       <div class="col-12 col-md-10 p-4 d-flex flex-column position-static eventdetails">
+                        <div class="row">
+                          <div class="col"><strong class="d-inline-block mb-2 text-primary tag">一般的なイベント</strong>
+                            <div class="mb-1 username"><i class="fa fa-user" style="color: #3b5998;"></i> User 2</div></div>
+                            <div class="col-1 text-end">
+                              <div class="dropdown postactions">
+                                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                  <i class="fa fa-ellipsis-h"></i>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                  <li><a class="dropdown-item" href="#">Report an issue</a></li>
+                                  <li><a class="dropdown-item" href="#">Block User</a></li>
+                                </ul>
+                              </div>
+                              
+                              </div>
+                            </div>
                         <h3 class="mb-1">イベントタイトル : <span class="event-title">タイトル 2</span></h3>
                         <p class="card-text mb-1">ダミーテキスト ダミーテキスト ダミーテキスト ダミーテキストダミーテキストダミーテキストダミーテキスト</p>
                         <div class="mb-1">開催日: <span class="event-date">Nov 12 2022</span></div>
-                        <div class="mb-1">イベントオーナー: <span class="event-owner">User 1</span></div>
                         <div class="mb-1">都道府県: <span class="event-prefecture">新潟県</span></div>
+                        <div class="mb-1">参加者の数: <span class="event-participants">2/20</span></div>
                       </div>
                   </div>
                   <div data-prefecture="fukui" id="" class="general others  row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative eventblock">
@@ -849,11 +809,28 @@ SetRatingStar();
                         <svg class="bd-placeholder-img" width="100%" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="30%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
                       </div>
                       <div class="col-12 col-md-10 p-4 d-flex flex-column position-static eventdetails">
+                        <div class="row">
+                          <div class="col"><strong class="d-inline-block mb-2 text-primary tag">一般的なイベント</strong>
+                            <div class="mb-1 username"><i class="fa fa-user" style="color: #3b5998;"></i> User 2</div></div>
+                            <div class="col-1 text-end">
+                              <div class="dropdown postactions">
+                                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                  <i class="fa fa-ellipsis-h"></i>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                  <li><a class="dropdown-item" href="#">Report an issue</a></li>
+                                  <li><a class="dropdown-item" href="#">Block User</a></li>
+                                </ul>
+                              </div>
+                              
+                              </div>
+                            </div>
                         <h3 class="mb-1">イベントタイトル : <span class="event-title">タイトル 3</span></h3>
                         <p class="card-text mb-1">ダミーテキスト ダミーテキスト ダミーテキスト ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト ダミーテキスト ダミーテキスト ダミーテキストダミーテキストダミーテキストダミーテキスト</p>
                         <div class="mb-1">開催日: <span class="event-date">Nov 12 2022</span></div>
                         <div class="mb-1">イベントオーナー: <span class="event-owner">User 1</span></div>
                         <div class="mb-1">都道府県: <span class="event-prefecture">福井県</span></div>
+                        <div class="mb-1">参加者の数: <span class="event-participants">2/20</span></div>
                       </div>
                   </div>
                  
@@ -863,12 +840,27 @@ SetRatingStar();
                           <svg class="bd-placeholder-img" width="100%" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="30%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
                         </div>
                       <div class="col-12 col-md-10 p-4 d-flex flex-column position-static eventdetails">
+                        <div class="row">
+                          <div class="col"><strong class="d-inline-block mb-2 text-primary tag">ゴルフ大会</strong>
+                            <div class="mb-1 username"><i class="fa fa-user" style="color: #3b5998;"></i> User 2</div></div>
+                            <div class="col-1 text-end">
+                              <div class="dropdown postactions">
+                                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                  <i class="fa fa-ellipsis-h"></i>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                  <li><a class="dropdown-item" href="#">Report an issue</a></li>
+                                  <li><a class="dropdown-item" href="#">Block User</a></li>
+                                </ul>
+                              </div>
+                              
+                              </div>
+                            </div>
                         <h3 class="mb-1">イベントタイトル : <span class="event-title">トーナメント 2</span></h3>
                         <p class="card-text mb-1">ダミーテキスト ダミーテキスト ダミーテキスト ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト ダミーテキスト ダミーテキスト ダミーテキストダミーテキストダミーテキストダミーテキスト</p>
                         <div class="mb-1">開催日: <span class="event-date">Nov 12 2022</span></div>
-                        <div class="mb-1">イベントオーナー: <span class="event-owner">User 1</span></div>
                         <div class="mb-1">都道府県: <span class="event-prefecture">福井県</span></div>
-                     
+                        <div class="mb-1">参加者の数: <span class="event-participants">2/20</span></div>
                       <div class="p-2 d-flex flex-column position-static event">
                         <div class="table-responsive">
                         <table class="table">
