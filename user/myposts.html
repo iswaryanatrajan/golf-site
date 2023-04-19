@@ -25,7 +25,6 @@
     <script type="text/javascript" src="../js/jquery-comments.js"></script>
     <script type="text/javascript" src="../js/images-grid.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAILGVlt-SOiL381JT3TQ9dxxoNIUuxrV8&amp;libraries=places" ></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/simplePagination.js/1.6/jquery.simplePagination.js"></script>
     <script>
        /*   document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
@@ -36,71 +35,7 @@
       });*/
 
 $(function() {
-  ImgUpload();
-  $(".imagePreview").hide();
-  function ImgUpload() {
-  var imgWrap = "";
-  var imgArray = [];
-
-  $('.upload__inputfile').each(function () {
-    $(this).on('change', function (e) {
-      imgWrap = $(this).closest('.upload__box').find('.upload__img-wrap');
-      var maxLength = $(this).attr('data-max_length');
-
-      var files = e.target.files;
-      var filesArr = Array.prototype.slice.call(files);
-      var iterator = 0;
-      filesArr.forEach(function (f, index) {
-
-        if (!f.type.match('image.*')) {
-          return;
-        }
-
-        if (imgArray.length > maxLength) {
-          return false
-        } else {
-          var len = 0;
-          for (var i = 0; i < imgArray.length; i++) {
-            if (imgArray[i] !== undefined) {
-              len++;
-            }
-          }
-          if (len > maxLength) {
-            return false;
-          } else {
-            imgArray.push(f);
-
-            var reader = new FileReader();
-            reader.onload = function (e) {
-              var html = "<div class='upload__img-box'><div style='background-image: url(" + e.target.result + ")' data-number='" + $(".upload__img-close").length + "' data-file='" + f.name + "' class='img-bg'><div class='upload__img-close'></div></div></div>";
-              imgWrap.append(html);
-              iterator++;
-            }
-            reader.readAsDataURL(f);
-          }
-        }
-      });
-    });
-  });
-
-  $('body').on('click', ".upload__img-close", function (e) {
-    var file = $(this).parent().data("file");
-    for (var i = 0; i < imgArray.length; i++) {
-      if (imgArray[i].name === file) {
-        imgArray.splice(i, 1);
-        break;
-      }
-    }
-    $(this).parent().parent().remove();
-  });
-
-}
-$(".locationdiv").hide();
-$('body').on('click', "#locationbtn", function (e) {
-  $(".locationdiv").toggle();
-});
-
-$(".comments").hide();
+    $(".comments").hide();
 $('body').on('click', ".showcomments", function (e) {
   $(this).parent().parent().find('.comments').toggle();
 });
@@ -174,24 +109,6 @@ $('.newpost').html(post);
 });
 /*for testing ends - delete later*/
 
-/*Pagination - with Jquery plugin */
-var items = $(".list-wrapper .postblock");
-    var numItems = items.length;
-    var perPage = 3; //change to 10
-
-    items.slice(perPage).hide();
-
-    $('#pagination-container').pagination({
-        items: numItems,
-        itemsOnPage: perPage,
-        prevText: "&laquo;",
-        nextText: "&raquo;",
-        onPageClick: function (pageNumber) {
-            var showFrom = perPage * (pageNumber - 1);
-            var showTo = showFrom + perPage;
-            items.hide().slice(showFrom, showTo).show();
-        }
-    });
 });
 
 
@@ -354,43 +271,13 @@ var items = $(".list-wrapper .postblock");
     <div class="row container m-auto">
       <div class="col-12">
         <div class="container p-0">
-          <div class="my-3 signedinblock">
-            <textarea id="post" class="form-control" placeholder="Write a post..." rows="3"></textarea>
-            <div class="row m-0">
-          <div class="upload__box col-md-10 col-12">
-            <div class="upload__img-wrap"></div>
-            <div class="upload__btn-box">
-              <label class="">
-                <p class="btn btn-outline-warning mb-0">画像をアップロード</p>
-                <input type="file" multiple="" data-max_length="20" class="upload__inputfile">
-              </label>
-              <!--data-bs-toggle="modal" data-bs-target="#locationModal"-->
-              <button type="button" class="btn btn-outline-warning" id="locationbtn" >
-                Add Location
-              </button>
 
-            <div class="flex justify-center p-8 mt-3 locationdiv">
-              <div class="max-w-sm bg-white rounded overflow-hidden" style="    width: 480px;
-              height: 200px;">
-                <div class="w-full relative" id="js-preview-map"><img src="https://maps.googleapis.com/maps/api/staticmap?key=AIzaSyAILGVlt-SOiL381JT3TQ9dxxoNIUuxrV8&amp;center=35.019162, 138.480845&amp;zoom=12&amp;size=480x125&amp;maptype=roadmap&amp;sensor=false" width="480" height="125" alt="Google Maps"/></div>
-                <div class="w-full float-left border-b-2 border-gray-400 px-6 py-4">
-                  <label class="block text-gray-700 text-sm w-full font-semibold mb-2">Address:</label>
-                  <input class="w-full bg-gray-200 text-gray-700 appearance-none rounded border-2 border-gray-300 py-2 px-4" type="text" id="address"/>
-                </div>
-                <pre class="w-full bg-gray-200 text-blue-900 float-left px-6 py-4"><code id="js-preview-json"></code></pre>
-              </div>
-            </div>
-            </div>
-          </div>
-          <div class="text-end col-md-2 col-12"><a href="#" class="btn btn-warning my-2" id="publish" name="publish">Publish</a></div>
-        </div>
-        </div>
 
         <div class="row my-3"><div class="form-outline">
           <input type="search" id="form1" class="form-control" placeholder="Search post" aria-label="Search" />
         </div></div>
-        <div class="my-3 list-wrapper">
-          <div class="row g-0   overflow-hidden flex-md-row mb-4  h-md-250 position-relative postblock ">
+        <div class="my-3">
+          <div class="row g-0   overflow-hidden flex-md-row mb-4  h-md-250 position-relative postblock">
             <div class="col-md-12 col-12 p-4 d-flex flex-column position-static">
               <div class="row">
                 <div class="col"><strong class="d-inline-block mb-2 text-primary tag">ゴルフ</strong>
@@ -436,17 +323,16 @@ var items = $(".list-wrapper .postblock");
               <div class="col-md-6 col-12 p-4 d-flex flex-column position-static">
                 <div class="row">
                   <div class="col"><strong class="d-inline-block mb-2 text-primary tag">ゴルフ</strong>
-                    <div class="mb-1 username"><i class="fa fa-user" style="color: #3b5998;"></i> User 2</div></div>
+                    <div class="mb-1 username"><i class="fa fa-user" style="color: #3b5998;"></i> User 1</div></div>
                     <div class="col-1 text-end">
                       <div class="dropdown postactions">
                         <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                           <i class="fa fa-ellipsis-h"></i>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                          <li><a class="dropdown-item" href="#">Report Post</a></li>
-                          <li><a class="dropdown-item" href="#">Hide Post</a></li>
-                          <li><a class="dropdown-item" href="#">Block User</a></li>
-                        </ul>
+                            <li><a class="dropdown-item" href="#">Edit Post</a></li>
+                            <li><a class="dropdown-item" href="#">Delete Post</a></li>
+                          </ul>
                       </div>
                       
                       </div>
@@ -479,17 +365,16 @@ var items = $(".list-wrapper .postblock");
               <div class="col-md-6 col-12 p-4 d-flex flex-column position-static">
                 <div class="row">
                   <div class="col"><strong class="d-inline-block mb-2 text-primary tag">イベント</strong>
-                    <div class="mb-1 username"><i class="fa fa-user" style="color: #3b5998;"></i> User 2</div></div>
+                    <div class="mb-1 username"><i class="fa fa-user" style="color: #3b5998;"></i> User 1</div></div>
                     <div class="col-1 text-end">
                       <div class="dropdown postactions">
                         <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                           <i class="fa fa-ellipsis-h"></i>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                          <li><a class="dropdown-item" href="#">Report Post</a></li>
-                          <li><a class="dropdown-item" href="#">Hide Post</a></li>
-                          <li><a class="dropdown-item" href="#">Block User</a></li>
-                        </ul>
+                            <li><a class="dropdown-item" href="#">Edit Post</a></li>
+                            <li><a class="dropdown-item" href="#">Delete Post</a></li>
+                          </ul>
                       </div>
                       
                       </div>
@@ -513,17 +398,16 @@ var items = $(".list-wrapper .postblock");
               <div class="col-md-6 col-12 p-4 d-flex flex-column position-static">
                 <div class="row">
                   <div class="col"><strong class="d-inline-block mb-2 text-primary tag">イベント</strong>
-                    <div class="mb-1 username"><i class="fa fa-user" style="color: #3b5998;"></i> User 2</div></div>
+                    <div class="mb-1 username"><i class="fa fa-user" style="color: #3b5998;"></i> User 1</div></div>
                     <div class="col-1 text-end">
                       <div class="dropdown postactions">
                         <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                           <i class="fa fa-ellipsis-h"></i>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                          <li><a class="dropdown-item" href="#">Report Post</a></li>
-                          <li><a class="dropdown-item" href="#">Hide Post</a></li>
-                          <li><a class="dropdown-item" href="#">Block User</a></li>
-                        </ul>
+                            <li><a class="dropdown-item" href="#">Edit Post</a></li>
+                            <li><a class="dropdown-item" href="#">Delete Post</a></li>
+                          </ul>
                       </div>
                       
                       </div>
@@ -548,10 +432,7 @@ var items = $(".list-wrapper .postblock");
               </div>
             </div>
        
-            
         </div>
-        <div id="pagination-container"></div>
-
        <!-- <div id='calendar'></div>-->
   </div>
       </div>
