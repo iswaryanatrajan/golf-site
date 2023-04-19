@@ -748,14 +748,14 @@ max-width:300px}
 .simple-pagination .current,
 .simple-pagination .prev.current, 
 .simple-pagination .next.current {
-  background-color: #087f5b;
-  border-color: #087f5b;
+  background-color: #26bbce;
+  border-color: #26bbce;
   color: #fff;
 }
 
 .simple-pagination .prev:hover, 
 .simple-pagination .next:hover {
-  background-color: #087f5b;
-  border-color: #087f5b;
+  background-color: #26bbce;
+  border-color: #26bbce;
   color: #fff;
 }
