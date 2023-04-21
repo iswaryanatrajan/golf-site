@@ -759,3 +759,15 @@ max-width:300px}
   border-color: #26bbce;
   color: #fff;
 }
+
+.blue-border{ border: 1px solid #26bbce; }
+.navbar-right .dropdown-menu a{   
+     color: #747681;
+    text-decoration: none;
+}
+.navbar-right .dropdown-menu li{   
+  padding: 7px;
+}
+.navbar-right .dropdown-menu{
+    left: -46px;
+}
