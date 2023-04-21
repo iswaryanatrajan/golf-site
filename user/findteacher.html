@@ -44,7 +44,9 @@
     border-color: #43acba !important;
 }
 .aside-board .fc-daygrid-day-events{display:none}
+.fc-v-event .fc-event-title{display:none}
 body{background: #fff !important;}
+
     </style>
     <script>
       $(function() {
@@ -74,7 +76,24 @@ body{background: #fff !important;}
       top: btn.offset().top } );
         });
 
+        var $star_rating = $('.star-rating .fa');
 
+var SetRatingStar = function() {
+  return $star_rating.each(function() {
+    if (parseInt($star_rating.siblings('input.rating-value').val()) >= parseInt($(this).data('rating'))) {
+      return $(this).removeClass('fa-regular fa-star').addClass('fa-solid fa-star');
+    } else {
+      return $(this).removeClass('fa-solid fa-star').addClass('fa-regular fa-star');
+    }
+  });
+};
+
+/*$star_rating.on('click', function() {
+  $star_rating.siblings('input.rating-value').val($(this).data('rating'));
+  return SetRatingStar();
+});*/
+
+SetRatingStar();
 });
 let s = (new Date()).getTime().toString(16) + Math.random().toString(16).substring(2) + "0".repeat(16);
 let uuid = s.substr(0,8) + '-' + s.substr(8,4) + '-4000-8' + s.substr(12,3) + '-' + s.substr(15,12);
@@ -212,11 +231,11 @@ var events = [
                                         <a href="#" class="dropdown-toggle waves-effect user-link text-decoration-none" role="button" data-bs-toggle="dropdown" id="profile" aria-expanded="true">
                                           <img alt="..." src="https://images.unsplash.com/photo-1610271340738-726e199f0258?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3&amp;w=256&amp;h=256&amp;q=80" class="avatar avatar-sm rounded-circle me-2">
                                         </a>
-      
                                         <ul class="dropdown-menu dropdown-menu-right user-list notify-list">
-      
-                                               <li><a href="../index.html"><i class="ti-power-off m-r-5"></i> Logout</a></li>
-                                        </ul>
+        
+                                          <li class="has_sub"><a href="myprofile.html" class="waves-effect"><i class="fa fa-user me-2"></i>My Profile</a></li>
+                                          <li><a href="../index.html" class="waves-effect"><i class="fa fa-power-off me-2"></i>Logout</a></li>
+                                   </ul>
                                  </li>
       
                           </ul> <!-- end navbar-right -->
@@ -289,7 +308,7 @@ var events = [
               </div>
                 <div class="col-lg-7  p-4 d-flex flex-column position-static">
                     
-                  <h3 class="mb-0"><a href="teacher-details.html">教師 1</a></h3>
+                  <h3 class="mb-0"><a href="teacher-details.html">教師 1</a><span class="ms-2"><img src="../images/winner.png" width="20"/></span></h3>
                   <p class="card-text mb-auto">🔥私のクライアントは、エリート大学、コンサルティング、金融、法務、およびソフトウェアの仕事に就いています。他の多くの人がキャリアと自信を大幅に高めました🔥
                     🇬🇧 ネイティブ ブリティッシュ 🇺🇸 アメリカ在住 20 年
                     🥇 4000時間以上のESL、楽しい+リラックス
@@ -299,12 +318,13 @@ var events = [
                     🥇プレゼンテーションと会議のアドバイス🥇
                     </p>
                     <div class="mt-2">
-                      <div class="rating" style="width: 20rem">
-                        <input id="rating-5" type="radio" name="rating" value="5"/><label for="rating-5"><i class="fas  fa-star"></i></label>
-                        <input id="rating-4" type="radio" name="rating" value="4" checked /><label for="rating-4"><i class="fas  fa-star"></i></label>
-                        <input id="rating-3" type="radio" name="rating" value="3"/><label for="rating-3"><i class="fas  fa-star"></i></label>
-                        <input id="rating-2" type="radio" name="rating" value="2"/><label for="rating-2"><i class="fas  fa-star"></i></label>
-                        <input id="rating-1" type="radio" name="rating" value="1"/><label for="rating-1"><i class="fas  fa-star"></i></label>
+                      <div class="star-rating">
+                        <span class="fa fa-star-o" data-rating="1"></span>
+                        <span class="fa fa-star-o" data-rating="2"></span>
+                        <span class="fa fa-star-o" data-rating="3"></span>
+                        <span class="fa fa-star-o" data-rating="4"></span>
+                        <span class="fa fa-star-o" data-rating="5"></span>
+                        <input type="hidden" name="whatever1" class="rating-value" value="2">
                       </div>
                     </div>
                   <div class="mt-2">
@@ -333,12 +353,13 @@ var events = [
                     <span class="badge bg-success" style="width:max-content">毎月</span>
                   </div>
                   <div class="mt-2">
-                    <div class="rating" style="width: 20rem">
-                      <input id="rating-5" type="radio" name="rating" value="5"/><label for="rating-5"><i class="fas  fa-star"></i></label>
-                      <input id="rating-4" type="radio" name="rating" value="4" checked /><label for="rating-4"><i class="fas  fa-star"></i></label>
-                      <input id="rating-3" type="radio" name="rating" value="3"/><label for="rating-3"><i class="fas  fa-star"></i></label>
-                      <input id="rating-2" type="radio" name="rating" value="2"/><label for="rating-2"><i class="fas  fa-star"></i></label>
-                      <input id="rating-1" type="radio" name="rating" value="1"/><label for="rating-1"><i class="fas  fa-star"></i></label>
+                    <div class="star-rating">
+                      <span class="fa fa-star-o" data-rating="1"></span>
+                      <span class="fa fa-star-o" data-rating="2"></span>
+                      <span class="fa fa-star-o" data-rating="3"></span>
+                      <span class="fa fa-star-o" data-rating="4"></span>
+                      <span class="fa fa-star-o" data-rating="5"></span>
+                      <input type="hidden" name="whatever2" class="rating-value" value="2.56">
                     </div>
                   </div>
                
@@ -368,17 +389,17 @@ var events = [
                 </div>
                 <div class="col-lg-7 p-4 d-flex flex-column position-static">
                     
-                  <h3 class="mb-0"><a href="teacher-details.html">教師 2</a></h3>
+                  <h3 class="mb-0"><a href="teacher-details.html">教師 2</a><span class="ms-2"><img src="../images/gold-medal.png" width="20"/></span></h3>
                   <p class="card-text mb-auto">ダミーテキスト ダミーテキスト ダミーテキスト ダミーテキストダミーテキストダミーテキストダミーテキスト</p>
                   <div class="mt-2">
-                    <div class="rating" style="width: 20rem">
-                      <input id="rating1-5" type="radio" name="rating1" value="5" /><label for="rating1-5"><i class="fas  fa-star"></i></label>
-                      <input id="rating1-4" type="radio" name="rating1" value="4"  /><label for="rating1-4"><i class="fas  fa-star"></i></label>
-                      <input id="rating1-3" type="radio" name="rating1" value="3" /><label for="rating1-3"><i class="fas  fa-star"></i></label>
-                      <input id="rating1-2" type="radio" name="rating1" value="2" checked/><label for="rating1-2"><i class="fas  fa-star"></i></label>
-                      <input id="rating1-1" type="radio" name="rating1" value="1"/><label for="rating1-1"><i class="fas  fa-star"></i></label>
-                    </div>
-                  </div>
+                  <div class="star-rating">
+                    <span class="fa fa-star-o" data-rating="1"></span>
+                    <span class="fa fa-star-o" data-rating="2"></span>
+                    <span class="fa fa-star-o" data-rating="3"></span>
+                    <span class="fa fa-star-o" data-rating="4"></span>
+                    <span class="fa fa-star-o" data-rating="5"></span>
+                    <input type="hidden" name="whatever1" class="rating-value" value="2.56">
+                  </div></div>
                   <div class="mt-2">
                   <span class="badge bg-secondary" style="width:max-content">コース</span>
                   <span class="badge bg-success" style="width:max-content">毎月</span>
@@ -406,12 +427,13 @@ var events = [
                     <span class="badge bg-success" style="width:max-content">毎月</span>
                   </div>
                   <div class="mt-2">
-                    <div class="rating" style="width: 20rem">
-                      <input id="rating1-5" type="radio" name="rating1" value="5" /><label for="rating1-5"><i class="fas  fa-star"></i></label>
-                      <input id="rating1-4" type="radio" name="rating1" value="4"  /><label for="rating1-4"><i class="fas  fa-star"></i></label>
-                      <input id="rating1-3" type="radio" name="rating1" value="3" /><label for="rating1-3"><i class="fas  fa-star"></i></label>
-                      <input id="rating1-2" type="radio" name="rating1" value="2" checked/><label for="rating1-2"><i class="fas  fa-star"></i></label>
-                      <input id="rating1-1" type="radio" name="rating1" value="1"/><label for="rating1-1"><i class="fas  fa-star"></i></label>
+                    <div class="star-rating">
+                      <span class="fa fa-star-o" data-rating="1"></span>
+                      <span class="fa fa-star-o" data-rating="2"></span>
+                      <span class="fa fa-star-o" data-rating="3"></span>
+                      <span class="fa fa-star-o" data-rating="4"></span>
+                      <span class="fa fa-star-o" data-rating="5"></span>
+                      <input type="hidden" name="whatever1" class="rating-value" value="3">
                     </div>
                   </div>
                  
@@ -435,12 +457,13 @@ var events = [
                   <h3 class="mb-0"><a href="teacher-details.html">教師 3</a></h3>
                   <p class="card-text mb-auto">ダミーテキスト ダミーテキスト ダミーテキスト ダミーテキストダミーテキストダミーテキストダミーテキスト</p>
                   <div class="mt-2">
-                    <div class="rating" style="width: 20rem">
-                      <input id="rating3-5" type="radio" name="rating3" value="5" checked/><label for="rating3-5"><i class="fas  fa-star"></i></label>
-                      <input id="rating3-4" type="radio" name="rating3" value="4"  /><label for="rating3-4"><i class="fas  fa-star"></i></label>
-                      <input id="rating3-3" type="radio" name="rating3" value="3"/><label for="rating3-3"><i class="fas  fa-star"></i></label>
-                      <input id="rating3-2" type="radio" name="rating3" value="2"/><label for="rating3-2"><i class="fas  fa-star"></i></label>
-                      <input id="rating3-1" type="radio" name="rating3" value="1"/><label for="rating3-1"><i class="fas  fa-star"></i></label>
+                    <div class="star-rating">
+                      <span class="fa fa-star-o" data-rating="1"></span>
+                      <span class="fa fa-star-o" data-rating="2"></span>
+                      <span class="fa fa-star-o" data-rating="3"></span>
+                      <span class="fa fa-star-o" data-rating="4"></span>
+                      <span class="fa fa-star-o" data-rating="5"></span>
+                      <input type="hidden" name="whatever1" class="rating-value" value="2.56">
                     </div>
                   </div>
                   <div class="mt-2">
@@ -470,12 +493,13 @@ var events = [
                     <span class="badge bg-success" style="width:max-content">毎月</span>
                   </div>
                   <div class="mt-2">
-                    <div class="rating" style="width: 20rem">
-                      <input id="rating3-5" type="radio" name="rating3" value="5" checked/><label for="rating3-5"><i class="fas  fa-star"></i></label>
-                      <input id="rating3-4" type="radio" name="rating3" value="4"  /><label for="rating3-4"><i class="fas  fa-star"></i></label>
-                      <input id="rating3-3" type="radio" name="rating3" value="3"/><label for="rating3-3"><i class="fas  fa-star"></i></label>
-                      <input id="rating3-2" type="radio" name="rating3" value="2"/><label for="rating3-2"><i class="fas  fa-star"></i></label>
-                      <input id="rating3-1" type="radio" name="rating3" value="1"/><label for="rating3-1"><i class="fas  fa-star"></i></label>
+                    <div class="star-rating">
+                      <span class="fa fa-star-o" data-rating="1"></span>
+                      <span class="fa fa-star-o" data-rating="2"></span>
+                      <span class="fa fa-star-o" data-rating="3"></span>
+                      <span class="fa fa-star-o" data-rating="4"></span>
+                      <span class="fa fa-star-o" data-rating="5"></span>
+                      <input type="hidden" name="whatever1" class="rating-value" value="2.56">
                     </div>
                   </div>
                   <div class="buttons mt-2">
@@ -496,12 +520,13 @@ var events = [
                   <h3 class="mb-0"><a href="teacher-details.html">教師 4</a></h3>
                   <p class="card-text mb-auto">ダミーテキスト ダミーテキスト ダミーテキスト ダミーテキストダミーテキストダミーテキストダミーテキスト</p>
                   <div class="mt-2">
-                    <div class="rating" style="width: 20rem">
-                      <input id="rating4-5" type="radio" name="rating4" value="5"/><label for="rating4-5"><i class="fas  fa-star"></i></label>
-                      <input id="rating4-4" type="radio" name="rating4" value="4"  /><label for="rating4-4"><i class="fas  fa-star"></i></label>
-                      <input id="rating4-3" type="radio" name="rating4" value="3" checked/><label for="rating4-3"><i class="fas  fa-star"></i></label>
-                      <input id="rating4-2" type="radio" name="rating4" value="2"/><label for="rating4-2"><i class="fas  fa-star"></i></label>
-                      <input id="rating4-1" type="radio" name="rating4" value="1"/><label for="rating4-1"><i class="fas  fa-star"></i></label>
+                    <div class="star-rating">
+                      <span class="fa fa-star-o" data-rating="1"></span>
+                      <span class="fa fa-star-o" data-rating="2"></span>
+                      <span class="fa fa-star-o" data-rating="3"></span>
+                      <span class="fa fa-star-o" data-rating="4"></span>
+                      <span class="fa fa-star-o" data-rating="5"></span>
+                      <input type="hidden" name="whatever1" class="rating-value" value="2.56">
                     </div>
                   </div>
                   <div class="mt-2">
@@ -530,12 +555,13 @@ var events = [
                   <span class="badge bg-success" style="width:max-content">毎月</span>
                 </div>
                 <div class="mt-2">
-                  <div class="rating" style="width: 20rem">
-                    <input id="rating4-5" type="radio" name="rating4" value="5"/><label for="rating4-5"><i class="fas  fa-star"></i></label>
-                    <input id="rating4-4" type="radio" name="rating4" value="4"  /><label for="rating4-4"><i class="fas  fa-star"></i></label>
-                    <input id="rating4-3" type="radio" name="rating4" value="3" checked/><label for="rating4-3"><i class="fas  fa-star"></i></label>
-                    <input id="rating4-2" type="radio" name="rating4" value="2"/><label for="rating4-2"><i class="fas  fa-star"></i></label>
-                    <input id="rating4-1" type="radio" name="rating4" value="1"/><label for="rating4-1"><i class="fas  fa-star"></i></label>
+                  <div class="star-rating">
+                    <span class="fa fa-star-o" data-rating="1"></span>
+                    <span class="fa fa-star-o" data-rating="2"></span>
+                    <span class="fa fa-star-o" data-rating="3"></span>
+                    <span class="fa fa-star-o" data-rating="4"></span>
+                    <span class="fa fa-star-o" data-rating="5"></span>
+                    <input type="hidden" name="whatever1" class="rating-value" value="4">
                   </div>
                 </div>
                 <div class="buttons mt-2">

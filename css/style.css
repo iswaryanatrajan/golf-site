@@ -133,7 +133,7 @@ body{font-weight: 400;font-size: 18px;color:#767676}
     }
     .star-rating {
     line-height:16px;
-    font-size:1.25em;
+    font-size:1em;
   }
   .star-rating .fa-star{color: #ffa500;}
   footer{background: #fff;}
