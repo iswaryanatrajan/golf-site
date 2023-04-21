@@ -70,6 +70,7 @@ var events = [
             end:  todayStr + 'T14:00:00',
             title:'ゴルフ基礎：スイングの基本',
             description:'Some description about event',
+            participants:3,
             id:uuid
           },
           {
@@ -77,6 +78,7 @@ var events = [
             end: todayStr +'T18:00:00',
             title:'パターのテクニックを磨く',
             description:'Some description about event',
+            participants:1,
             id:uuid
           },
           {
@@ -84,6 +86,7 @@ var events = [
             end: yesterdayStr + 'T18:00:00',
             title:'フェアウェイに出る：ボールを飛ばすためのコツ',
             description:'Some description about event',
+            participants:1,
             id:uuid
           },
         ];
@@ -152,6 +155,7 @@ console.log(title);
       $('#title').val(info.event.title);
      $('#modalWhen').text(info.event.start.toLocaleDateString() + " " + info.event.start.toLocaleTimeString() + " - " + info.event.end.toLocaleTimeString());
      $('#modalDesc').val(info.event.extendedProps.description);
+     $('#participants').val(info.event.extendedProps.participants);
      $('#modalId').text(info.event.id);
      $('#calendarModal').modal('show');
      $('#editEvent').click(function () {
@@ -659,6 +663,10 @@ function showThumbnail(files) {
                 <label for="desc" class="form-label">Event Description</label>
                 <textarea class="form-control" id="modalDesc"></textarea>
               </div>
+              <div class="mb-3">
+                <label for="teacher-name" class="form-label">No.of participants</label>
+                <input type="number" class="form-control" style="width:100px" id="participants">
+              </div>
             <h4 id="title" class="modal-title"></h4>
             
             <input id="modalId" type="hidden"/>
@@ -694,6 +702,10 @@ function showThumbnail(files) {
                   <div class="mb-3">
                     <label for="teacher-name" class="form-label">Event Description</label>
                     <textarea class="form-control" id="event-desc"></textarea>
+                  </div>
+                  <div class="mb-3">
+                    <label for="teacher-name" class="form-label">No.of participants</label>
+                    <input type="number" class="form-control" style="width:100px" id="participants">
                   </div>
                 </form>
               </div>
