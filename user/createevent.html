@@ -39,6 +39,19 @@
         }
     }
           });
+
+
+            $('#eventtag').on('change', function() {
+            console.log($(this).val())
+            if($(this).val()=="ゴルフ大会"){
+              $('#handicapdiv').show()
+            }
+            else
+            $('#handicapdiv').hide()
+          });
+
+
+         
 });
     </script>
      <style>
@@ -281,7 +294,7 @@ color:#426ecc
                       <input type="number" id="participantslimit" class="form-control"> 
                     </div>
                     <div class="col-md-4 mb-3">
-                      <label for="event-phone" class="form-label">参加者の数</label>
+                      <label for="event-phone" class="form-label">プレイヤーを招待する</label>
                       <select class="form-select" id="userselect" multiple="multiple">
                         <option value="user1" selected>User 1</option>
                         <option value="user2">User 2</option>
@@ -292,11 +305,20 @@ color:#426ecc
                       </select>
                     </div>
                     <div class="col-md-2 col-4 mb-3">
-                      <label for="event-tag" class="form-label">Select Tag</label>
-                      <select class="form-select" id="event-tag">
-                        <option value="tag1" selected>ゴルフ大会</option>
-                        <option value="tag2">BBQイベント</option>
-                        <option value="tag3">その他</option>
+                      <label for="eventtag" class="form-label">Select Tag</label>
+                      <select class="form-select" id="eventtag">
+                        <option value="ゴルフ大会" selected>ゴルフ大会</option>
+                        <option value="BBQイベント">BBQイベント</option>
+                        <option value="その他">その他</option>
+                      </select>
+                    </div>
+                    <div class="col-md-2 col-4 mb-3" id="handicapdiv">
+                      <label for="event-handicap" class="form-label">ハンディキャップ</label>
+                      <select class="form-select" id="event-handicap">
+                        <option value="handicap1" selected>ドラコン</option>
+                        <option value="handicap2">ニアピン</option>
+                        <option value="handicap3">しんペリヤ方式</option>
+                        <option value="handicap4">しんしんペリヤ方式</option>
                       </select>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
