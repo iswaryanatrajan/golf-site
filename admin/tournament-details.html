@@ -14,15 +14,45 @@
     <link rel="stylesheet" type="text/css" href="../css/menu.css">
     <link rel="stylesheet" type="text/css" href="../css/responsive.css">
     <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.0.3/index.global.min.js"></script>
     <script type="text/javascript" src="../js/jquery-comments.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
     <script src="../js/chat.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/chat.css">
     <script>
         $(document).ready(function(){
+
+          var urlParams = new URLSearchParams(window.location.search);
+          $("#draconinput").hide();
+          $("#nearpininput").hide();
+          $(".dperiahdcptd").hide();
+          $(".periahdcptd").hide();
+
+          if(urlParams.has("dracon")){
+            $("#draconinput").show();
+          }
+          else if(urlParams.has("nearpin")){
+            $("#nearpininput").show();
+          }
+          else if(urlParams.has("doubleperia")){
+            $(".dperiahdcptd").show();
+          }
+          
+          var $el = $("#dperiarangeselect");
+          for (i=1;i<19;i++) {
+            var newOptionsSelect = newOptionsSelect + '<option value="range_'+i+'">range'+i+'</option>';
+        }
+          $el.append(newOptionsSelect)
+
+          $('#dperiarangeselect').select2({
+            multiple:true,
+          });
+
         $('#comments').comments({
   profilePictureURL: 'https://viima-app.s3.amazonaws.com/media/public/defaults/user-icon.png',
   getComments: function(success, error) {
@@ -37,9 +67,87 @@
     success(commentsArray);
   }
 });
+$(".childrow").hide();
+$('.openchildrow').click(function(e){
+  e.preventDefault();
+  var parentid = $(this).closest("tr").attr('id');
+  console.log(parentid);
+  $('tr[data-id='+parentid+']' ).toggle();
+    $(this).find('i').toggleClass('fa-caret-down fa-caret-up')
+});
+
 $(".eventchat").click(function(e){
       register_popup('user1', 'user1');
     });
+
+      $('#draconhole').on("blur", function(e) { 
+        console.log("reto");
+      var rangeval = $(this).val();
+      var range = rangeval.split("_").pop();
+      console.log(range);
+      cols='<tr><td class="Table__TD"><span class="Scorecard__Score total"></span></td>'
+      for(i=1;i<20;i++){
+        if(i==range){
+          cols= cols + '<td class="Table__TD"><span class="Scorecard__Score"><input type="number" class="form-control hole hole'+i+'" /></span></td>';
+        }
+        else
+        cols= cols + '<td class="Table__TD"><span class="Scorecard__Score"></span></td>';
+      }
+      cols= cols + ' <td class="Table__TD"><span class="Scorecard__Score playertotal dperiahdcptd" ></span></td>'+
+      '<td class="Table__TD"><span class="Scorecard__Score hdcp dperiahdcptd"></span></td>'+
+      '<td class="Table__TD"><span class="Scorecard__Score net dperiahdcptd"></span></td></tr>';
+
+      console.log(cols)
+    //$(".scoreedittable .Table__TBODY tr").append("<tr></tr>")
+    $('.scoreedittable .Table__TBODY tr').each(function(){
+      $(this).after(cols);
+    });
+    
+    $(".scoreedittable").find(".Table__TH:eq("+(range)+")").prepend("<div>Drivers contest</div>")
+    });
+
+    $('#nearpinhole').on("blur", function(e) { 
+        console.log("reto");
+      var rangeval = $(this).val();
+      var range = rangeval.split("_").pop();
+      console.log(range);
+      cols='<tr><td class="Table__TD"><span class="Scorecard__Score total"></span></td>'
+      for(i=1;i<20;i++){
+        if(i==range){
+          cols= cols + '<td class="Table__TD"><span class="Scorecard__Score"><input type="number" class="form-control hole hole'+i+'" /></span></td>';
+        }
+        else
+        cols= cols + '<td class="Table__TD"><span class="Scorecard__Score"></span></td>';
+      }
+      cols= cols + ' <td class="Table__TD"><span class="Scorecard__Score playertotal dperiahdcptd" ></span></td>'+
+      '<td class="Table__TD"><span class="Scorecard__Score hdcp dperiahdcptd"></span></td>'+
+      '<td class="Table__TD"><span class="Scorecard__Score net dperiahdcptd"></span></td></tr>';
+
+      console.log(cols)
+      $('.scoreedittable .Table__TBODY tr').each(function(){
+      $(this).after(cols);
+    });
+    $(".scoreedittable").find(".Table__TH:eq("+(range)+")").prepend("<div>Near Pin</div>")
+    });
+
+    $("#calculatetotal").click(function(e){
+      console.log("djfho");
+      var sum = 0;
+      var id=$(this).parents("tr");
+//$(this).parents('tr').find('.hole').each(function(){
+$(".hole").each(function(){
+ console.log($(this).val());
+  if($(this).val()){
+    sum += parseInt($(this).val());
+    console.log(sum);
+  }
+});
+//$(this).('.playertotal').text("sum");
+$('.playertotal').text(sum);
+
+
+    });
+    
 });
     </script>
      <style>
@@ -207,10 +315,26 @@ color:#426ecc
                                 </div>
                                 <div class="mb-1">登録リンク: <span class="event-link"><a href="#">Registration Link</a></span></div>
                                 <div class="mb-1">YoutubeのURL: <span class="event-url"><a href="#">Youtube link</a></span></div>
-                                <div class="mb-1"><span class="event-phone"><i class="fa fa-phone me-2" style="color: #3b5998;"></i>0775465679</span></div>
+                                <div class="mb-3"><span class="event-phone"><i class="fa fa-phone me-2" style="color: #3b5998;"></i>0775465679</span></div>
                            
-                          
-    
+                                <div id="draconinput">
+                                  <label for="draconhole" class="form-label">ドラコン</label>
+                                  <input class="form-control w-auto" id="draconhole" type="number" min="1" max="18" />
+                                </div>
+                                <div id="nearpininput">
+                                  <label for="nearpinhole" class="form-label">ニアピン</label>
+                                  <input class="form-control w-auto" id="nearpinhole" type="number" min="1" max="18"/>
+                                </div>
+                                <div class="dperiahdcptd">
+                                  <label for="dperiarangeselect" class="form-label">ダブルペリア</label>
+                                  <select class="form-select" id="dperiarangeselect" multiple="multiple">
+                                  </select> 
+                                </div>
+                                <div class="periahdcptd">
+                                  <label for="dperiarangeselect" class="form-label">ペリア</label>
+                                  <select class="form-select" id="periarangeselect" multiple="multiple">
+                                  </select> 
+                                </div>
                             <div class=" p-2 d-flex flex-column position-static event d-md-none">
                                 <div class="table-responsive">
                                 <table class="table editscore d-flex">
@@ -272,7 +396,6 @@ color:#426ecc
                                               <th title="" class="Table__TH">7</th>
                                               <th title="" class="Table__TH">8</th>
                                               <th title="" class="Table__TH">9</th>
-                                              <th title="" class="Table__TH">Out</th>
                                               <th title="" class="Table__TH">10</th>
                                               <th title="" class="Table__TH">11</th>
                                               <th title="" class="Table__TH">12</th>
@@ -282,38 +405,37 @@ color:#426ecc
                                               <th title="" class="Table__TH">16</th>
                                               <th title="" class="Table__TH">17</th>
                                               <th title="" class="Table__TH">18</th>
-                                              <th title="" class="Table__TH">In</th>
-                                              <th title="" class="Table__TH">Tot</th>
-                                              <th title="" class="Table__TH">HDCP</th>
-                                              <th title="" class="Table__TH">Net</th>
+                                              <th title="" class="Table__TH"></th>
+                                              <th title="" class="Table__TH dperiahdcptd">Tot</th>
+                                              <th title="" class="Table__TH dperiahdcptd" >HDCP</th>
+                                              <th title="" class="Table__TH dperiahdcptd">Net</th>
                                             </tr>
                                           </thead>
                                             <tbody class="Table__TBODY">
                                               <tr class="Table__TR Table__TR--sm Table__even" data-idx="0">
                                                 <td class="Table__TD"><span class="Scorecard__Score total">Par</span></td>
-                                                <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control" /></span></td>
-                                                <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control" /></span></span></td>
-                                                <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control" /></span></span></td>
-                                                <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control" /></span></span></td>
-                                                <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control" /></span></span></td>
-                                                <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control" /></span></span></td>
-                                                <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control" /></span></span></td>
-                                                <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control" /></span></span></td>
-                                                <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control" /></span></span></td>
-                                                <td class="Table__TD"><span class="Scorecard__Score total"><button class="btn btn-primary">Calculate</button></span></td>
-                                                <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control" /></span></span></td>
-                                                <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control" /></span></span></td>
-                                                <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control" /></span></span></td>
-                                                <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control" /></span></span></td>
-                                                <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control" /></span></span></td>
-                                                <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control" /></span></span></td>
-                                                <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control" /></span></span></td>
-                                                <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control" /></span></span></td>
-                                                <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control" /></span></span></td>
-                                                <td class="Table__TD"><span class="Scorecard__Score total"><button class="btn btn-primary">Calculate</button></span></td>
-                                                <td class="Table__TD"><span class="Scorecard__Score total"></span></td>
-                                                <td class="Table__TD"><span class="Scorecard__Score total"></span></td>
-                                                <td class="Table__TD"><span class="Scorecard__Score total"></span></td>
+                                                <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control hole hole1" /></span></td>
+                                                <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control hole hole2" /></span></span></td>
+                                                <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control hole hole3" /></span></span></td>
+                                                <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control hole hole4" /></span></span></td>
+                                                <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control hole hole5" /></span></span></td>
+                                                <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control hole hole6" /></span></span></td>
+                                                <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control hole hole7" /></span></span></td>
+                                                <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control hole hole8" /></span></span></td>
+                                                <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control hole hole9" /></span></span></td>
+                                                <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control hole hole10" /></span></span></td>
+                                                <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control hole hole11" /></span></span></td>
+                                                <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control hole hole12" /></span></span></td>
+                                                <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control hole hole13" /></span></span></td>
+                                                <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control hole hole14" /></span></span></td>
+                                                <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control hole hole15" /></span></span></td>
+                                                <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control hole hole16" /></span></span></td>
+                                                <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control hole hole17" /></span></span></td>
+                                                <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control hole hole18" value="5" /></span></span></td>
+                                                <td class="Table__TD"><span class="Scorecard__Score"><button class="btn btn-primary">Calculate</button></span></td>
+                                                <td class="Table__TD"><span class="Scorecard__Score playertotal dperiahdcptd" ></span></td>
+                                                <td class="Table__TD"><span class="Scorecard__Score hdcp dperiahdcptd"></span></td>
+                                                <td class="Table__TD"><span class="Scorecard__Score net dperiahdcptd"></span></td>
                                               </tr>
                                               <tr class="Table__TR Table__TR--sm Table__even" data-idx="1">
                                                 <td class="Table__TD"><span class="Scorecard__Score total">Score</span></td>
@@ -326,7 +448,6 @@ color:#426ecc
                                                 <td class="Table__TD"><span class="Scorecard__Score Scorecard__Score--par br-1"><input type="number" class="form-control" /></span></span></td>
                                                 <td class="Table__TD"><span class="Scorecard__Score Scorecard__Score--par br-1"><input type="number" class="form-control" /></span></span></td>
                                                 <td class="Table__TD"><span class="Scorecard__Score Scorecard__Score--birdie br-1"><input type="number" class="form-control" /></span></span></td>
-                                                <td class="Table__TD"><span class="Scorecard__Score total"><button class="btn btn-primary">Calculate</button></span></td>
                                                 <td class="Table__TD"><span class="Scorecard__Score Scorecard__Score--par br-1"><input type="number" class="form-control" /></span></span></td>
                                                 <td class="Table__TD"><span class="Scorecard__Score Scorecard__Score--birdie br-1"><input type="number" class="form-control" /></span></span></td>
                                                 <td class="Table__TD"><span class="Scorecard__Score Scorecard__Score--par br-1"><input type="number" class="form-control" /></span></span></td>
@@ -337,9 +458,9 @@ color:#426ecc
                                                 <td class="Table__TD"><span class="Scorecard__Score Scorecard__Score--par br-1"><input type="number" class="form-control" /></span></span></td>
                                                 <td class="Table__TD"><span class="Scorecard__Score Scorecard__Score--birdie br-1"><input type="number" class="form-control" /></span></span></td>
                                                 <td class="Table__TD"><span class="Scorecard__Score total"><button class="btn btn-primary">Calculate</button></span></td>
-                                                <td class="Table__TD"><span class="Scorecard__Score total"></span></td>
-                                                <td class="Table__TD"><span class="Scorecard__Score total"></span></td>
-                                                <td class="Table__TD"><span class="Scorecard__Score total"></span></td>
+                                                <td class="Table__TD"><span class="Scorecard__Score total dperiahdcptd"></span></td>
+                                                <td class="Table__TD"><span class="Scorecard__Score total dperiahdcptd"></span></td>
+                                                <td class="Table__TD"><span class="Scorecard__Score total dperiahdcptd"></span></td>
                                               </tr>
                                             </tbody>
                                           </table>
@@ -393,7 +514,7 @@ color:#426ecc
                                           <option  value="1">Round 1</option>
                                         </select>
                                       </div>
-                                    <table class="table Table--align-right" style="border-collapse: collapse; border-spacing: 0px;">
+                                    <table class="table Table--align-right scoreedittable" style="border-collapse: collapse; border-spacing: 0px;">
                                       <colgroup class="Table__Colgroup">
                                         <col class="Table__Column">
                                         <col class="Table__Column">
@@ -415,7 +536,6 @@ color:#426ecc
                                           <th title="" class="Table__TH">7</th>
                                           <th title="" class="Table__TH">8</th>
                                           <th title="" class="Table__TH">9</th>
-                                          <th title="" class="Table__TH">Out</th>
                                           <th title="" class="Table__TH">10</th>
                                           <th title="" class="Table__TH">11</th>
                                           <th title="" class="Table__TH">12</th>
@@ -427,12 +547,12 @@ color:#426ecc
                                           <th title="" class="Table__TH">18</th>
                                           <th title="" class="Table__TH">In</th>
                                           <th title="" class="Table__TH">Tot</th>
-                                          <th title="" class="Table__TH">HDCP</th>
-                                          <th title="" class="Table__TH">Net</th>
+                                          <td class="Table__TH"><span class="Scorecard__Score  dperiahdcptd" >HDCP</span></td>
+                                          <td class="Table__TH"><span class="Scorecard__Score  dperiahdcptd">Net</span></td>
                                         </tr>
                                       </thead>
                                         <tbody class="Table__TBODY">
-                                          <tr class="Table__TR Table__TR--sm Table__even" data-idx="0">
+                                          <tr class="Table__TR Table__TR--sm Table__even" data-idx="0" id="tr1">
                                             <td class="Table__TD"><span class="Scorecard__Score total">Par</span></td>
                                             <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control" /></span></td>
                                             <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control" /></span></span></td>
@@ -443,7 +563,6 @@ color:#426ecc
                                             <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control" /></span></span></td>
                                             <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control" /></span></span></td>
                                             <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control" /></span></span></td>
-                                            <td class="Table__TD"><span class="Scorecard__Score total"><button class="btn btn-primary">Calculate</button></span></td>
                                             <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control" /></span></span></td>
                                             <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control" /></span></span></td>
                                             <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control" /></span></span></td>
@@ -453,10 +572,10 @@ color:#426ecc
                                             <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control" /></span></span></td>
                                             <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control" /></span></span></td>
                                             <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control" /></span></span></td>
-                                            <td class="Table__TD"><span class="Scorecard__Score total"><button class="btn btn-primary">Calculate</button></span></td>
-                                            <td class="Table__TD"><span class="Scorecard__Score total"></span></td>
-                                            <td class="Table__TD"><span class="Scorecard__Score total"></span></td>
-                                            <td class="Table__TD"><span class="Scorecard__Score total"></span></td>
+                                            <td class="Table__TD"><span class="Scorecard__Score total"><button id="calculatetotal" class="btn btn-primary">Calculate</button></span></td>
+                                            <td class="Table__TD"><span class="Scorecard__Score playertotal dperiahdcptd"></span></td>
+                                            <td class="Table__TD"><span class="Scorecard__Score hdcp dperiahdcptd"></span></td>
+                                            <td class="Table__TD"><span class="Scorecard__Score net dperiahdcptd"></span></td>
                                           </tr>
                                           <tr class="Table__TR Table__TR--sm Table__even" data-idx="1">
                                             <td class="Table__TD"><span class="Scorecard__Score total">Score</span></td>
@@ -469,7 +588,6 @@ color:#426ecc
                                             <td class="Table__TD"><span class="Scorecard__Score Scorecard__Score--par br-1"><input type="number" class="form-control" /></span></span></td>
                                             <td class="Table__TD"><span class="Scorecard__Score Scorecard__Score--par br-1"><input type="number" class="form-control" /></span></span></td>
                                             <td class="Table__TD"><span class="Scorecard__Score Scorecard__Score--birdie br-1"><input type="number" class="form-control" /></span></span></td>
-                                            <td class="Table__TD"><span class="Scorecard__Score total"><button class="btn btn-primary">Calculate</button></span></td>
                                             <td class="Table__TD"><span class="Scorecard__Score Scorecard__Score--par br-1"><input type="number" class="form-control" /></span></span></td>
                                             <td class="Table__TD"><span class="Scorecard__Score Scorecard__Score--birdie br-1"><input type="number" class="form-control" /></span></span></td>
                                             <td class="Table__TD"><span class="Scorecard__Score Scorecard__Score--par br-1"><input type="number" class="form-control" /></span></span></td>
@@ -480,10 +598,9 @@ color:#426ecc
                                             <td class="Table__TD"><span class="Scorecard__Score Scorecard__Score--par br-1"><input type="number" class="form-control" /></span></span></td>
                                             <td class="Table__TD"><span class="Scorecard__Score Scorecard__Score--birdie br-1"><input type="number" class="form-control" /></span></span></td>
                                             <td class="Table__TD"><span class="Scorecard__Score total"><button class="btn btn-primary">Calculate</button></span></td>
-                                            <td class="Table__TD"><span class="Scorecard__Score total"></span></td>
-                                            <td class="Table__TD"><span class="Scorecard__Score total"></span></td>
-                                            <td class="Table__TD"><span class="Scorecard__Score total"></span></td>
-
+                                            <td class="Table__TD"><span class="Scorecard__Score playertotal dperiahdcptd"></span></td>
+                                            <td class="Table__TD"><span class="Scorecard__Score hdcp dperiahdcptd"></span></td>
+                                            <td class="Table__TD"><span class="Scorecard__Score net dperiahdcptd"></span></td>
                                           </tr>
                                         </tbody>
                                       </table>
@@ -550,8 +667,7 @@ color:#426ecc
                                           <th title="" class="Table__TH">18</th>
                                           <th title="" class="Table__TH">In</th>
                                           <th title="" class="Table__TH">Tot</th>
-                                          <th title="" class="Table__TH">HDCP</th>
-                                          <th title="" class="Table__TH">Net</th>
+
                                         </tr>
                                       </thead>
                                         <tbody class="Table__TBODY">
@@ -578,8 +694,7 @@ color:#426ecc
                                             <td class="Table__TD"><span class="Scorecard__Score br-1">5</span></td>
                                             <td class="Table__TD"><span class="Scorecard__Score total">36</span></td>
                                             <td class="Table__TD"><span class="Scorecard__Score total">72</span></td>
-                                            <td class="Table__TD"><span class="Scorecard__Score "></span></td>
-                                            <td class="Table__TD"><span class="Scorecard__Score "></span></td>
+                                        
                                           </tr>
                                           <tr class="Table__TR Table__TR--sm Table__even" data-idx="1">
                                             <td class="Table__TD"><span class="Scorecard__Score total">Score</span></td>
@@ -604,8 +719,6 @@ color:#426ecc
                                             <td class="Table__TD"><span class="Scorecard__Score Scorecard__Score--birdie br-1">4</span></td>
                                             <td class="Table__TD"><span class="Scorecard__Score total">34</span></td>
                                             <td class="Table__TD"><span class="Scorecard__Score total">66</span></td>
-                                            <td class="Table__TD"><span class="Scorecard__Score "></span></td>
-                                            <td class="Table__TD"><span class="Scorecard__Score "></span></td>
                                           </tr>
                                         </tbody>
                                       </table>
