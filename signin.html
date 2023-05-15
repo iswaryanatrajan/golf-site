@@ -23,6 +23,14 @@ $('#signin').click(function(e){
   e.preventDefault();
 location.href="user/index.html";
 });
+$('#forgotpassword').hide();
+$('#forgotpasswordlink').click(function(e){
+  e.preventDefault();
+  $('#forgotpassword').show();
+  $('#signinform').hide();
+});
+
+
 });
     </script>
     <script type="module">
@@ -132,7 +140,7 @@ location.href="user/index.html";
 
 
           <div class="text-center loginform">
-            <main class="form-signin">
+            <main class="form-signin" id="signinform">
                 <form>
                  
                   <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
@@ -151,10 +159,40 @@ location.href="user/index.html";
                       <input type="checkbox" value="remember-me"> Remember me
                     </label>
                   </div>
-                  <button class="w-100 btn btn-lg btn-primary" id="signin" >ログイン</button>
-                 
+                  <button class="w-100 btn btn-lg btn-primary mb-3" id="signin" >ログイン</button>
+                  <div class=" mb-3">
+                  <a href="#" class="" id="forgotpasswordlink">Forgot Password</a>
+                  </div>
                 </form>
+
+
               </main>
+              
+              <div class="row align-items-center justify-content-center forgotpassword w-100 h-100" id="forgotpassword">
+                <div class="col-12 col-md-8 col-lg-4">
+                  <div class="card shadow-sm">
+                    <div class="card-body">
+                      <div class="mb-4">
+                        <h5>Forgot Password?</h5>
+                        <p class="mb-2">Enter your registered email ID to reset the password
+                        </p>
+                      </div>
+                      <form>
+                        <div class="mb-3 text-left">
+                          <input type="email" id="email" class="form-control" name="email" placeholder="Enter Your Email"
+                            required="">
+                        </div>
+                        <div class="mb-3 d-grid" style="justify-items:center" >
+                          <button type="submit" class="btn btn-primary">
+                            Reset Password
+                          </button>
+                        </div>
+                        <span>Don't have an account? <a href="signup.html">Sign Up</a></span>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
     </div>
     <div id="firebaseui-auth-container">
       <!-- This is where the Login ui will load -->

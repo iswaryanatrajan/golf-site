@@ -59,6 +59,14 @@ $(this).closest(".video").hide();
 });
 
 
+$(".recurdiv").hide();
+$("#event-recurrence").on("change", function(evt) {
+  if($(this).is(":checked")) {
+    $(".recurdiv").show();
+  }
+  else
+    $(".recurdiv").hide();
+});
 });
 let s = (new Date()).getTime().toString(16) + Math.random().toString(16).substring(2) + "0".repeat(16);
 let uuid = s.substr(0,8) + '-' + s.substr(8,4) + '-4000-8' + s.substr(12,3) + '-' + s.substr(15,12);
@@ -66,11 +74,13 @@ let todayStr = new Date().toISOString().replace(/T.*$/, '') // YYYY-MM-DD of tod
 let yesterdayStr =new Date(Date.now() - 86400000).toISOString().replace(/T.*$/, '')
 var events = [
           {
-            start:  todayStr +'T13:00:00',
-            end:  todayStr + 'T14:00:00',
+            startTime:  '10:00:00',
+            endTime:  '13:00:00',
+            startRecur:todayStr +'T13:00:00',
             title:'ゴルフ基礎：スイングの基本',
             description:'Some description about event',
             participants:3,
+            daysOfWeek:['1'],
             id:uuid
           },
           {
@@ -117,11 +127,15 @@ select: function(selectionInfo) {
 $('#createEventModal').modal('show');
 $('#createEvent').on('click',function(){
 var title= $('#event-title').val();
-console.log(title)
 var desc= $('#event-desc').val();
+//var limit= $('#event-participants').val();
+//var recur= $('#event-recurend').val();
 calendar.addEvent({
 start: selectionInfo.start,
 end: selectionInfo.end ,//need these and not endTime/startTime, otherwise they won't re-render
+//startTime:selectionInfo.start,
+//endTime:selectionInfo.end,
+//endRecur:recur,
 id:uuid,
 title:title,
 description:desc
@@ -156,13 +170,16 @@ console.log(title);
      $('#modalWhen').text(info.event.start.toLocaleDateString() + " " + info.event.start.toLocaleTimeString() + " - " + info.event.end.toLocaleTimeString());
      $('#modalDesc').val(info.event.extendedProps.description);
      $('#participants').val(info.event.extendedProps.participants);
+     $('#recurend').val(info.event.extendedProps.endRecur);
      $('#modalId').text(info.event.id);
      $('#calendarModal').modal('show');
      $('#editEvent').click(function () {
       var title= $('#title').val();
       var desc= $('#modalDesc').val();
+      var endRecur= $('#recurend').val();
       info.event.setProp('title', title);
       info.event.setExtendedProp('description', desc);
+      info.event.setExtendedProp('endRecur', endRecur);
     $('#calendarModal').modal('hide');
 });
      $('#deleteEvent').click(function () {
@@ -193,8 +210,6 @@ return { domNodes: arrayOfDomNodes }
 eventDidMount: function(info) {
         var pill = document.createElement("span");
         var fcevent = info.el.querySelector('.fc-event-title'); // for gridView
-        
-//console.log(info.event.extendedProps.description);
             let description = document.createElement('div');
             description.innerHTML=info.event.extendedProps.description;
            // document.querySelector('.fc-event-title-container').append(description);
@@ -569,9 +584,11 @@ function showThumbnail(files) {
                 <li class=""><a class="waves-effect " href="participatedevents.html">Joined Events<span class="badge bg-success ms-1 rounded-circle">5</span></a></li>
               </ul></li>
              <li class="has_sub"><a href="findteacher.html" class="waves-effect"><i class="fa fa-user"></i><span>先生を探す</span> </a> </li>
-             <li class="has_sub"><a href="teacherprofile.html" class="waves-effect"><i class="fa fa-edit"></i><span>プロフィールを追加</span> </a> </li>
-             <li class="has_sub"><a href="mycalendar.html" class="waves-effect"><i class="fa fa-calendar-check"></i>カレンダー<span></span> </a> </li>
-             <hr>
+             <li class="has_sub"><a href="teacherprofile.html" class="waves-effect"><i class="fa fa-edit"></i><span>プロフィールを追加</span> </a> 
+              <ul class="ps-1">
+               <li class=""><a href="mycalendar.html" class="waves-effect">カレンダー<span></span> </a> </li>
+             </ul>
+           </li> <hr>
              <li class="has_sub">
               <a href="../index.html" class="waves-effect"><i class="fa fa-power-off"></i><span>Logout</span> </a>
        </li>
@@ -706,7 +723,14 @@ function showThumbnail(files) {
                   </div>
                   <div class="mb-3">
                     <label for="teacher-name" class="form-label">No.of participants</label>
-                    <input type="number" class="form-control" style="width:100px" id="participants">
+                    <input type="number" class="form-control" style="width:100px" id="event-participants">
+                  </div>
+                  <div class="mb-3">
+                    <input type="checkbox" class="form-checkbox" id="event-recurrence"> <label for="teacher-name" class="form-label">Repeat Event</label>
+                  </div>
+                  <div class="mb-3 recurdiv">
+                    <label for="teacher-name" class="form-label">Repeat Event Until</label>
+                    <input type="date" class="form-control" style="width:100px" id="event-recurend">
                   </div>
                 </form>
               </div>
