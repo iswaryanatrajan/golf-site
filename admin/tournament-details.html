@@ -103,7 +103,8 @@ $(".eventchat").click(function(e){
       $(this).after(cols);
     });
     
-    $(".scoreedittable").find(".Table__TH:eq("+(range)+")").prepend("<div>Drivers contest</div>")
+    $(".scoreedittable").find(".Table__TH:eq("+(range)+")").prepend("<div>Drivers contest</div>");
+    $("#draconhole").prop("disabled",true)
     });
 
     $('#nearpinhole').on("blur", function(e) { 
