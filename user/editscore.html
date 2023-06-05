@@ -79,6 +79,14 @@ if( handicapval =="3"  || handicapval=="4" ){
   console.log("hgh");
   $(this).parents("table").find($(".inputtr td:nth-child(6)")).css("backgroundColor","cyan");
 });
+$(".inputtr td input:eq(6)").focus(function(e){
+  console.log("hgh");
+  $(this).parents("table").find($(".inputtr td:nth-child(8)")).css("backgroundColor","cyan");
+});
+$(".inputtr td input:eq(8)").focus(function(e){
+  console.log("hgh");
+  $(this).parents("table").find($(".inputtr td:nth-child(10)")).css("backgroundColor","cyan");
+});
 $(".inputtr td input:eq(2)").focus(function(e){
   $(this).parents("table").find($(".inputtr td:nth-child(4)")).css("backgroundColor","cyan");
 });
