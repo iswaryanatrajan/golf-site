@@ -27,7 +27,7 @@
     <script>
         $(document).ready(function(){
 
-          var urlParams = new URLSearchParams(window.location.search);
+         /* var urlParams = new URLSearchParams(window.location.search);
           $("#draconinput").hide();
           $("#nearpininput").hide();
           $(".dperiahdcptd").hide();
@@ -51,7 +51,7 @@
 
           $('#dperiarangeselect').select2({
             multiple:true,
-          });
+          });*/
 
         $('#comments').comments({
   profilePictureURL: 'https://viima-app.s3.amazonaws.com/media/public/defaults/user-icon.png',
@@ -80,7 +80,7 @@ $(".eventchat").click(function(e){
       register_popup('user1', 'user1');
     });
 
-      $('#draconhole').on("blur", function(e) { 
+     /* $('#draconhole').on("blur", function(e) { 
         console.log("reto");
       var rangeval = $(this).val();
       var range = rangeval.split("_").pop();
@@ -129,7 +129,7 @@ $(".eventchat").click(function(e){
       $(this).after(cols);
     });
     $(".scoreedittable").find(".Table__TH:eq("+(range)+")").prepend("<div>Near Pin</div>")
-    });
+    });*/
 
     $("#calculatetotal").click(function(e){
       console.log("djfho");
@@ -317,7 +317,7 @@ color:#426ecc
                                 <div class="mb-1">登録リンク: <span class="event-link"><a href="#">Registration Link</a></span></div>
                                 <div class="mb-1">YoutubeのURL: <span class="event-url"><a href="#">Youtube link</a></span></div>
                                 <div class="mb-3"><span class="event-phone"><i class="fa fa-phone me-2" style="color: #3b5998;"></i>0775465679</span></div>
-                           
+                           <!--
                                 <div id="draconinput">
                                   <label for="draconhole" class="form-label">ドラコン</label>
                                   <input class="form-control w-auto" id="draconhole" type="number" min="1" max="18" />
@@ -335,7 +335,7 @@ color:#426ecc
                                   <label for="dperiarangeselect" class="form-label">ペリア</label>
                                   <select class="form-select" id="periarangeselect" multiple="multiple">
                                   </select> 
-                                </div>
+                                </div>-->
                             <div class=" p-2 d-flex flex-column position-static event d-md-none">
                                 <div class="table-responsive">
                                 <table class="table editscore d-flex">

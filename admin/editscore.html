@@ -32,6 +32,10 @@ $('.openchildrow').click(function(e){
   $('tr[data-id='+parentid+']' ).toggle();
     $(this).find('i').toggleClass('fa-caret-down fa-caret-up')
 });
+$(".inputtr input:nth-child(3)").click(function(e){
+  console.log("hgh")
+  $(this).parents("table").find($("tr td:nth-child(3)")).css("backgroundColor","cyan");
+});
 });
     </script>
     <style>
@@ -233,7 +237,7 @@ $('.openchildrow').click(function(e){
                                         </tr>
                                       </thead>
                                         <tbody class="Table__TBODY">
-                                          <tr class="Table__TR Table__TR--sm Table__even" data-idx="0">
+                                          <tr class="Table__TR Table__TR--sm Table__even inputtr" data-idx="0">
                                             <td class="Table__TD"><span class="Scorecard__Score total">Par</span></td>
                                             <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control" /></span></td>
                                             <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control" /></span></span></td>
@@ -259,7 +263,7 @@ $('.openchildrow').click(function(e){
                                             <td class="Table__TD"><span class="Scorecard__Score total"></span></td>
                                             <td class="Table__TD"><span class="Scorecard__Score total"></span></td>
                                           </tr>
-                                          <tr class="Table__TR Table__TR--sm Table__even" data-idx="1">
+                                          <tr class="Table__TR Table__TR--sm Table__even inputtr" data-idx="1">
                                             <td class="Table__TD"><span class="Scorecard__Score total">Score</span></td>
                                             <td class="Table__TD"><span class="Scorecard__Score Scorecard__Score--par br-1"><input type="number" class="form-control" /></span></span></td>
                                             <td class="Table__TD"><span class="Scorecard__Score Scorecard__Score--par br-1"><input type="number" class="form-control" /></span></span></td>
@@ -376,7 +380,7 @@ $('.openchildrow').click(function(e){
                                     </tr>
                                   </thead>
                                     <tbody class="Table__TBODY">
-                                      <tr class="Table__TR Table__TR--sm Table__even" data-idx="0">
+                                      <tr class="Table__TR Table__TR--sm Table__even inputtr" data-idx="0">
                                         <td class="Table__TD"><span class="Scorecard__Score total">Par</span></td>
                                         <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control" /></span></td>
                                         <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control" /></span></span></td>
@@ -402,7 +406,7 @@ $('.openchildrow').click(function(e){
                                         <td class="Table__TD"><span class="Scorecard__Score total"></span></td>
                                         <td class="Table__TD"><span class="Scorecard__Score total"></span></td>
                                       </tr>
-                                      <tr class="Table__TR Table__TR--sm Table__even" data-idx="1">
+                                      <tr class="Table__TR Table__TR--sm Table__even inputtr" data-idx="1">
                                         <td class="Table__TD"><span class="Scorecard__Score total">Score</span></td>
                                         <td class="Table__TD"><span class="Scorecard__Score Scorecard__Score--par br-1"><input type="number" class="form-control" /></span></span></td>
                                         <td class="Table__TD"><span class="Scorecard__Score Scorecard__Score--par br-1"><input type="number" class="form-control" /></span></span></td>
@@ -497,7 +501,7 @@ $('.openchildrow').click(function(e){
                                       </tr>
                                     </thead>
                                       <tbody class="Table__TBODY">
-                                        <tr class="Table__TR Table__TR--sm Table__even" data-idx="0">
+                                        <tr class="Table__TR Table__TR--sm Table__even inputtr" data-idx="0">
                                           <td class="Table__TD"><span class="Scorecard__Score total">Par</span></td>
                                           <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control" /></span></td>
                                           <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control" /></span></span></td>
@@ -521,7 +525,7 @@ $('.openchildrow').click(function(e){
                                           <td class="Table__TD"><span class="Scorecard__Score total"><button class="btn btn-primary">Calculate</button></span></td>
                                           <td class="Table__TD"><span class="Scorecard__Score total"></span></td>
                                         </tr>
-                                        <tr class="Table__TR Table__TR--sm Table__even" data-idx="1">
+                                        <tr class="Table__TR Table__TR--sm Table__even inputtr" data-idx="1">
                                           <td class="Table__TD"><span class="Scorecard__Score total">Score</span></td>
                                           <td class="Table__TD"><span class="Scorecard__Score Scorecard__Score--par br-1"><input type="number" class="form-control" /></span></span></td>
                                           <td class="Table__TD"><span class="Scorecard__Score Scorecard__Score--par br-1"><input type="number" class="form-control" /></span></span></td>

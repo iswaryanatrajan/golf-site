@@ -34,6 +34,60 @@ $('.openchildrow').click(function(e){
   $('tr[data-id='+parentid+']' ).toggle();
     $(this).find('i').toggleClass('fa-caret-down fa-caret-up')
 });
+function getUrlVars()
+{
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for(var i = 0; i < hashes.length; i++)
+    {
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+    return vars;
+}
+var handicapval= getUrlVars()["handicap"];
+console.log(handicapval)
+var handicap;
+switch(handicapval){
+  case "1": 
+  handicap = "ドラコン";
+  break;
+  case "2":
+    handicap="ニアピン";
+    break;
+  case "3":
+    handicap="しんペリヤ方式";
+    break;
+  case "4": 
+  handicap="しんしんペリヤ方式";
+
+
+}
+console.log(handicap)
+if( handicapval =="1"  || handicapval=="2" ){
+  $(".handicap").text(handicap);
+}
+else{
+  $(".handicap").text("");
+  $(".handicaptr").hide();
+}
+
+if( handicapval =="3"  || handicapval=="4" ){
+  $(".peria").show();
+}
+else{
+  $(".peria").hide();
+}
+
+$(".inputtr td input:eq(4)").focus(function(e){
+  console.log("hgh");
+  $(this).parents("table").find($(".inputtr td:nth-child(6)")).css("backgroundColor","cyan");
+});
+$(".inputtr td input:eq(2)").focus(function(e){
+  $(this).parents("table").find($(".inputtr td:nth-child(4)")).css("backgroundColor","cyan");
+});
+
 });
     </script>
     <style>
@@ -205,6 +259,7 @@ $('.openchildrow').click(function(e){
           </li>
              <li class="has_sub"><a href="events.html" class="waves-effect"><i class="fa fa-calendar-days"></i><span>イベント</span> </a> 
               <ul class="ps-1">
+                <li class=""><a class="waves-effect " href="createevent.html">Create Event</a> </li>
                 <li class=""><a class="waves-effect " href="createdevents.html">Created Events</a> </li>
                 <li class=""><a class="waves-effect " href="participatedevents.html">Joined Events<span class="badge bg-success ms-1 rounded-circle">5</span></a></li>
               </ul></li>
@@ -295,7 +350,7 @@ $('.openchildrow').click(function(e){
                                         <col class="Table__Column">
                                         <col class="Table__Column">
                                         <col class="Table__Column">
-                                        <col class="Table__Column"><col class="Table__Column"><col class="Table__Column"><col class="Table__Column"><col class="Table__Column"><col class="Table__Column"><col class="Table__Column"><col class="Table__Column">
+                                        <col class="Table__Column"><col class="Table__Column"><col class="Table__Column"><col class="Table__Column"><col class="Table__Column"><col class="Table__Column"><col class="Table__Column">
                                         <col class="Table__Column"><col class="Table__Column"><col class="Table__Column"><col class="Table__Column"><col class="Table__Column"><col class="Table__Column"><col class="Table__Column"><col class="Table__Column">
                                         <col class="Table__Column"><col class="Table__Column"></colgroup>
                                         <thead class="Table__header-group Table__THEAD">
@@ -311,7 +366,6 @@ $('.openchildrow').click(function(e){
                                           <th title="" class="Table__TH">7</th>
                                           <th title="" class="Table__TH">8</th>
                                           <th title="" class="Table__TH">9</th>
-                                          <th title="" class="Table__TH">Out</th>
                                           <th title="" class="Table__TH">10</th>
                                           <th title="" class="Table__TH">11</th>
                                           <th title="" class="Table__TH">12</th>
@@ -321,8 +375,10 @@ $('.openchildrow').click(function(e){
                                           <th title="" class="Table__TH">16</th>
                                           <th title="" class="Table__TH">17</th>
                                           <th title="" class="Table__TH">18</th>
-                                          <th title="" class="Table__TH">In</th>
+                                          <th title="" class="Table__TH"></th>
                                           <th title="" class="Table__TH">Tot</th>
+                                          <th title="" class="Table__TH peria">HDCP</th>
+                                          <th title="" class="Table__TH peria">Net</th>
                                         </tr>
                                       </thead>
                                         <tbody class="Table__TBODY">
@@ -337,7 +393,6 @@ $('.openchildrow').click(function(e){
                                             <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control" /></span></span></td>
                                             <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control" /></span></span></td>
                                             <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control" /></span></span></td>
-                                            <td class="Table__TD"><span class="Scorecard__Score total"><button class="btn btn-primary">Calculate</button></span></td>
                                             <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control" /></span></span></td>
                                             <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control" /></span></span></td>
                                             <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control" /></span></span></td>
@@ -349,6 +404,8 @@ $('.openchildrow').click(function(e){
                                             <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control" /></span></span></td>
                                             <td class="Table__TD"><span class="Scorecard__Score total"><button class="btn btn-primary">Calculate</button></span></td>
                                             <td class="Table__TD"><span class="Scorecard__Score total"></span></td>
+                                            <td class="Table__TD"><span class="Scorecard__Score hdcp peria"></span></td>
+                                            <td class="Table__TD"><span class="Scorecard__Score net peria"></span></td>
                                           </tr>
                                           <tr class="Table__TR Table__TR--sm Table__even" data-idx="1">
                                             <td class="Table__TD"><span class="Scorecard__Score total">Score</span></td>
@@ -361,7 +418,6 @@ $('.openchildrow').click(function(e){
                                             <td class="Table__TD"><span class="Scorecard__Score Scorecard__Score--par br-1"><input type="number" class="form-control" /></span></span></td>
                                             <td class="Table__TD"><span class="Scorecard__Score Scorecard__Score--par br-1"><input type="number" class="form-control" /></span></span></td>
                                             <td class="Table__TD"><span class="Scorecard__Score Scorecard__Score--birdie br-1"><input type="number" class="form-control" /></span></span></td>
-                                            <td class="Table__TD"><span class="Scorecard__Score total"><button class="btn btn-primary">Calculate</button></span></td>
                                             <td class="Table__TD"><span class="Scorecard__Score Scorecard__Score--par br-1"><input type="number" class="form-control" /></span></span></td>
                                             <td class="Table__TD"><span class="Scorecard__Score Scorecard__Score--birdie br-1"><input type="number" class="form-control" /></span></span></td>
                                             <td class="Table__TD"><span class="Scorecard__Score Scorecard__Score--par br-1"><input type="number" class="form-control" /></span></span></td>
@@ -373,6 +429,8 @@ $('.openchildrow').click(function(e){
                                             <td class="Table__TD"><span class="Scorecard__Score Scorecard__Score--birdie br-1"><input type="number" class="form-control" /></span></span></td>
                                             <td class="Table__TD"><span class="Scorecard__Score total"><button class="btn btn-primary">Calculate</button></span></td>
                                             <td class="Table__TD"><span class="Scorecard__Score total"></span></td>
+                                            <td class="Table__TD"><span class="Scorecard__Score hdcp peria"></span></td>
+                                            <td class="Table__TD"><span class="Scorecard__Score net peria"></span></td>
                                           </tr>
                                         </tbody>
                                       </table>
@@ -432,23 +490,22 @@ $('.openchildrow').click(function(e){
                                     <col class="Table__Column">
                                     <col class="Table__Column">
                                     <col class="Table__Column">
-                                    <col class="Table__Column"><col class="Table__Column"><col class="Table__Column"><col class="Table__Column"><col class="Table__Column"><col class="Table__Column"><col class="Table__Column"><col class="Table__Column">
+                                    <col class="Table__Column"><col class="Table__Column"><col class="Table__Column"><col class="Table__Column"><col class="Table__Column"><col class="Table__Column"><col class="Table__Column">
                                     <col class="Table__Column"><col class="Table__Column"><col class="Table__Column"><col class="Table__Column"><col class="Table__Column"><col class="Table__Column"><col class="Table__Column"><col class="Table__Column">
                                     <col class="Table__Column"><col class="Table__Column"></colgroup>
                                     <thead class="Table__header-group Table__THEAD">
                                   
-                                    <tr class="Table__sub-header Table__TR Table__even">
+                                    <tr class="Table__sub-header Table__TR Table__even ">
                                       <th title="" class="Table__TH">Hole</th>
                                       <th title="" class="Table__TH">1</th>
                                       <th title="" class="Table__TH">2</th>
                                       <th title="" class="Table__TH">3</th>
                                       <th title="" class="Table__TH">4</th>
-                                      <th title="" class="Table__TH">5</th>
+                                      <th title="" class="Table__TH"><span class="handicap">ドラコン</span>5</th>
                                       <th title="" class="Table__TH">6</th>
                                       <th title="" class="Table__TH">7</th>
                                       <th title="" class="Table__TH">8</th>
                                       <th title="" class="Table__TH">9</th>
-                                      <th title="" class="Table__TH">Out</th>
                                       <th title="" class="Table__TH">10</th>
                                       <th title="" class="Table__TH">11</th>
                                       <th title="" class="Table__TH">12</th>
@@ -458,12 +515,14 @@ $('.openchildrow').click(function(e){
                                       <th title="" class="Table__TH">16</th>
                                       <th title="" class="Table__TH">17</th>
                                       <th title="" class="Table__TH">18</th>
-                                      <th title="" class="Table__TH">In</th>
+                                      <th title="" class="Table__TH"></th>
                                       <th title="" class="Table__TH">Tot</th>
+                                      <th title="" class="Table__TH peria">Hdcp</th>
+                                      <th title="" class="Table__TH peria">Net</th>
                                     </tr>
                                   </thead>
                                     <tbody class="Table__TBODY">
-                                      <tr class="Table__TR Table__TR--sm Table__even" data-idx="0">
+                                      <tr class="Table__TR Table__TR--sm Table__even inputtr" data-idx="0">
                                         <td class="Table__TD"><span class="Scorecard__Score total">Par</span></td>
                                         <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control" /></span></td>
                                         <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control" /></span></span></td>
@@ -474,7 +533,6 @@ $('.openchildrow').click(function(e){
                                         <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control" /></span></span></td>
                                         <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control" /></span></span></td>
                                         <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control" /></span></span></td>
-                                        <td class="Table__TD"><span class="Scorecard__Score total"><button class="btn btn-primary">Calculate</button></span></td>
                                         <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control" /></span></span></td>
                                         <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control" /></span></span></td>
                                         <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control" /></span></span></td>
@@ -486,8 +544,34 @@ $('.openchildrow').click(function(e){
                                         <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control" /></span></span></td>
                                         <td class="Table__TD"><span class="Scorecard__Score total"><button class="btn btn-primary">Calculate</button></span></td>
                                         <td class="Table__TD"><span class="Scorecard__Score total"></span></td>
+                                        <td class="Table__TD"><span class="Scorecard__Score hdcp peria"></span></td>
+                                        <td class="Table__TD"><span class="Scorecard__Score net peria"></span></td>
                                       </tr>
-                                      <tr class="Table__TR Table__TR--sm Table__even" data-idx="1">
+                                      <tr class="Table__TR Table__TR--sm Table__even handicaptr" data-idx="0">
+                                        <td class="Table__TD"><span class="Scorecard__Score total">Par</span></td>
+                                        <td class="Table__TD"><span class="Scorecard__Score br-1"></span></td>
+                                        <td class="Table__TD"><span class="Scorecard__Score br-1"></span></td>
+                                        <td class="Table__TD"><span class="Scorecard__Score br-1"></span></td>
+                                        <td class="Table__TD"><span class="Scorecard__Score br-1"></span></td>
+                                        <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control" /></span></span></td>
+                                        <td class="Table__TD"><span class="Scorecard__Score br-1"></span></td>
+                                        <td class="Table__TD"><span class="Scorecard__Score br-1"></span></td>
+                                        <td class="Table__TD"><span class="Scorecard__Score br-1"></span></td>
+                                        <td class="Table__TD"><span class="Scorecard__Score br-1"></span></td>
+                                        <td class="Table__TD"><span class="Scorecard__Score br-1"></span></td>
+                                        <td class="Table__TD"><span class="Scorecard__Score br-1"></span></td>
+                                        <td class="Table__TD"><span class="Scorecard__Score br-1"></span></td>
+                                        <td class="Table__TD"><span class="Scorecard__Score br-1"></span></td>
+                                        <td class="Table__TD"><span class="Scorecard__Score br-1"></span></td>
+                                        <td class="Table__TD"><span class="Scorecard__Score br-1"></span></td>
+                                        <td class="Table__TD"><span class="Scorecard__Score br-1"></span></td>
+                                        <td class="Table__TD"><span class="Scorecard__Score br-1"></span></td>
+                                        <td class="Table__TD"><span class="Scorecard__Score br-1"></span></td>
+                                        <td class="Table__TD"><span class="Scorecard__Score total"></span></td>
+                                        <td class="Table__TD"><span class="Scorecard__Score total"></span></td>
+                                        
+                                      </tr>
+                                      <tr class="Table__TR Table__TR--sm Table__even inputtr" data-idx="1">
                                         <td class="Table__TD"><span class="Scorecard__Score total">Score</span></td>
                                         <td class="Table__TD"><span class="Scorecard__Score Scorecard__Score--par br-1"><input type="number" class="form-control" /></span></span></td>
                                         <td class="Table__TD"><span class="Scorecard__Score Scorecard__Score--par br-1"><input type="number" class="form-control" /></span></span></td>
@@ -498,7 +582,6 @@ $('.openchildrow').click(function(e){
                                         <td class="Table__TD"><span class="Scorecard__Score Scorecard__Score--par br-1"><input type="number" class="form-control" /></span></span></td>
                                         <td class="Table__TD"><span class="Scorecard__Score Scorecard__Score--par br-1"><input type="number" class="form-control" /></span></span></td>
                                         <td class="Table__TD"><span class="Scorecard__Score Scorecard__Score--birdie br-1"><input type="number" class="form-control" /></span></span></td>
-                                        <td class="Table__TD"><span class="Scorecard__Score total"><button class="btn btn-primary">Calculate</button></span></td>
                                         <td class="Table__TD"><span class="Scorecard__Score Scorecard__Score--par br-1"><input type="number" class="form-control" /></span></span></td>
                                         <td class="Table__TD"><span class="Scorecard__Score Scorecard__Score--birdie br-1"><input type="number" class="form-control" /></span></span></td>
                                         <td class="Table__TD"><span class="Scorecard__Score Scorecard__Score--par br-1"><input type="number" class="form-control" /></span></span></td>
@@ -509,6 +592,31 @@ $('.openchildrow').click(function(e){
                                         <td class="Table__TD"><span class="Scorecard__Score Scorecard__Score--par br-1"><input type="number" class="form-control" /></span></span></td>
                                         <td class="Table__TD"><span class="Scorecard__Score Scorecard__Score--birdie br-1"><input type="number" class="form-control" /></span></span></td>
                                         <td class="Table__TD"><span class="Scorecard__Score total"><button class="btn btn-primary">Calculate</button></span></td>
+                                        <td class="Table__TD"><span class="Scorecard__Score total"></span></td>
+                                        <td class="Table__TD"><span class="Scorecard__Score hdcp peria"></span></td>
+                                        <td class="Table__TD"><span class="Scorecard__Score net peria"></span></td>
+                                      </tr>
+                                      <tr class="Table__TR Table__TR--sm Table__even handicaptr" data-idx="1">
+                                        <td class="Table__TD"><span class="Scorecard__Score total">Par</span></td>
+                                        <td class="Table__TD"><span class="Scorecard__Score br-1"></span></td>
+                                        <td class="Table__TD"><span class="Scorecard__Score br-1"></span></td>
+                                        <td class="Table__TD"><span class="Scorecard__Score br-1"></span></td>
+                                        <td class="Table__TD"><span class="Scorecard__Score br-1"></span></td>
+                                        <td class="Table__TD"><span class="Scorecard__Score br-1"><input type="number" class="form-control" /></span></span></td>
+                                        <td class="Table__TD"><span class="Scorecard__Score br-1"></span></td>
+                                        <td class="Table__TD"><span class="Scorecard__Score br-1"></span></td>
+                                        <td class="Table__TD"><span class="Scorecard__Score br-1"></span></td>
+                                        <td class="Table__TD"><span class="Scorecard__Score br-1"></span></td>
+                                        <td class="Table__TD"><span class="Scorecard__Score br-1"></span></td>
+                                        <td class="Table__TD"><span class="Scorecard__Score br-1"></span></td>
+                                        <td class="Table__TD"><span class="Scorecard__Score br-1"></span></td>
+                                        <td class="Table__TD"><span class="Scorecard__Score br-1"></span></td>
+                                        <td class="Table__TD"><span class="Scorecard__Score br-1"></span></td>
+                                        <td class="Table__TD"><span class="Scorecard__Score br-1"></span></td>
+                                        <td class="Table__TD"><span class="Scorecard__Score br-1"></span></td>
+                                        <td class="Table__TD"><span class="Scorecard__Score br-1"></span></td>
+                                        <td class="Table__TD"><span class="Scorecard__Score br-1"></span></td>
+                                        <td class="Table__TD"><span class="Scorecard__Score total"></span></td>
                                         <td class="Table__TD"><span class="Scorecard__Score total"></span></td>
                                       </tr>
                                     </tbody>
@@ -564,7 +672,6 @@ $('.openchildrow').click(function(e){
                                       <th title="" class="Table__TH">7</th>
                                       <th title="" class="Table__TH">8</th>
                                       <th title="" class="Table__TH">9</th>
-                                      <th title="" class="Table__TH">Out</th>
                                       <th title="" class="Table__TH">10</th>
                                       <th title="" class="Table__TH">11</th>
                                       <th title="" class="Table__TH">12</th>
@@ -574,8 +681,10 @@ $('.openchildrow').click(function(e){
                                       <th title="" class="Table__TH">16</th>
                                       <th title="" class="Table__TH">17</th>
                                       <th title="" class="Table__TH">18</th>
-                                      <th title="" class="Table__TH">In</th>
+                                      <th title="" class="Table__TH"></th>
                                       <th title="" class="Table__TH">Tot</th>
+                                      <th title="" class="Table__TH peria">HDCP</th>
+                                      <th title="" class="Table__TH peria">Net</th>
                                     </tr>
                                   </thead>
                                     <tbody class="Table__TBODY">
@@ -590,7 +699,6 @@ $('.openchildrow').click(function(e){
                                         <td class="Table__TD"><span class="Scorecard__Score br-1">4</span></td>
                                         <td class="Table__TD"><span class="Scorecard__Score br-1">3</span></td>
                                         <td class="Table__TD"><span class="Scorecard__Score br-1">5</span></td>
-                                        <td class="Table__TD"><span class="Scorecard__Score total">36</span></td>
                                         <td class="Table__TD"><span class="Scorecard__Score br-1">4</span></td>
                                         <td class="Table__TD"><span class="Scorecard__Score br-1">3</span></td>
                                         <td class="Table__TD"><span class="Scorecard__Score br-1">4</span></td>
@@ -600,8 +708,10 @@ $('.openchildrow').click(function(e){
                                         <td class="Table__TD"><span class="Scorecard__Score br-1">3</span></td>
                                         <td class="Table__TD"><span class="Scorecard__Score br-1">4</span></td>
                                         <td class="Table__TD"><span class="Scorecard__Score br-1">5</span></td>
-                                        <td class="Table__TD"><span class="Scorecard__Score total">36</span></td>
+                                        <td class="Table__TD"><span class="Scorecard__Score total"></span></td>
                                         <td class="Table__TD"><span class="Scorecard__Score total">72</span></td>
+                                        <td class="Table__TD"><span class="Scorecard__Score hdcp peria">48</span></td>
+                                        <td class="Table__TD"><span class="Scorecard__Score net peria"></span></td>
                                       </tr>
                                       <tr class="Table__TR Table__TR--sm Table__even" data-idx="1">
                                         <td class="Table__TD"><span class="Scorecard__Score total">Score</span></td>
@@ -614,7 +724,6 @@ $('.openchildrow').click(function(e){
                                         <td class="Table__TD"><span class="Scorecard__Score Scorecard__Score--par br-1">4</span></td>
                                         <td class="Table__TD"><span class="Scorecard__Score Scorecard__Score--par br-1">3</span></td>
                                         <td class="Table__TD"><span class="Scorecard__Score Scorecard__Score--birdie br-1">4</span></td>
-                                        <td class="Table__TD"><span class="Scorecard__Score total">32</span></td>
                                         <td class="Table__TD"><span class="Scorecard__Score Scorecard__Score--par br-1">4</span></td>
                                         <td class="Table__TD"><span class="Scorecard__Score Scorecard__Score--birdie br-1">2</span></td>
                                         <td class="Table__TD"><span class="Scorecard__Score Scorecard__Score--par br-1">4</span></td>
@@ -624,8 +733,10 @@ $('.openchildrow').click(function(e){
                                         <td class="Table__TD"><span class="Scorecard__Score Scorecard__Score--birdie br-1">2</span></td>
                                         <td class="Table__TD"><span class="Scorecard__Score Scorecard__Score--par br-1">4</span></td>
                                         <td class="Table__TD"><span class="Scorecard__Score Scorecard__Score--birdie br-1">4</span></td>
-                                        <td class="Table__TD"><span class="Scorecard__Score total">34</span></td>
-                                        <td class="Table__TD"><span class="Scorecard__Score total">66</span></td>
+                                        <td class="Table__TD"><span class="Scorecard__Score total"></span></td>
+                                        <td class="Table__TD"><span class="Scorecard__Score total">82</span></td>
+                                        <td class="Table__TD"><span class="Scorecard__Score hdcp peria">48</span></td>
+                                        <td class="Table__TD"><span class="Scorecard__Score net peria">77.2</span></td>
                                       </tr>
                                     </tbody>
                                   </table>

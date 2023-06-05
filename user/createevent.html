@@ -40,6 +40,13 @@
     }
           });
 
+          $('#handicap3val').select2({
+            multiple:true,
+          });
+          $('#handicap4val').select2({
+            multiple:true,
+          });
+
 
             $('#eventtag').on('change', function() {
             console.log($(this).val())
@@ -49,8 +56,23 @@
             else
             $('#handicapdiv').hide()
           });
-
-
+          $('.handicapdiv').hide();
+          $('#event-handicap').on('change', function() {
+            
+            $('.handicapdiv').hide();
+            if($(this).val()=="handicap1"){
+              $('#handicap1').show()
+            }
+            else if($(this).val()=="handicap2"){
+              $('#handicap2').show()
+            }
+            else if($(this).val()=="handicap3"){
+              $('#handicap3').show()
+            }
+            else if($(this).val()=="handicap4"){
+              $('#handicap4').show()
+            }
+          });
          
 });
     </script>
@@ -177,6 +199,7 @@ color:#426ecc
           </li>
              <li class="has_sub"><a href="events.html" class="waves-effect"><i class="fa fa-calendar-days"></i><span>イベント</span> </a> 
               <ul class="ps-1">
+                <li class=""><a class="waves-effect " href="createevent.html">Create Event</a> </li>
                 <li class=""><a class="waves-effect " href="createdevents.html">Created Events</a> </li>
                 <li class=""><a class="waves-effect " href="participatedevents.html">Joined Events<span class="badge bg-success ms-1 rounded-circle">5</span></a></li>
               </ul></li>
@@ -317,11 +340,66 @@ color:#426ecc
                     <div class="col-md-2 col-4 mb-3" id="handicapdiv">
                       <label for="event-handicap" class="form-label">ハンディキャップ</label>
                       <select class="form-select" id="event-handicap">
-                        <option value="handicap1" selected>ドラコン</option>
+                        <option value="0">Select</option>
+                        <option value="handicap1" >ドラコン</option>
                         <option value="handicap2">ニアピン</option>
                         <option value="handicap3">しんペリヤ方式</option>
                         <option value="handicap4">しんしんペリヤ方式</option>
                       </select>
+                    </div>
+                    <div class="col-md-2 col-4 mb-3 handicapdiv" id="handicap1">
+                      <label for="event-handicap" class="form-label">ドラコン</label>
+                      <input type="number" id="handicap1val" class="form-control" min="1" max="18" > 
+                    </div>
+                    <div class="col-md-2 col-4 mb-3 handicapdiv" id="handicap2">
+                      <label for="event-handicap" class="form-label">ニアピン</label>
+                      <input type="number" id="handicap2val" class="form-control" min="1" max="18" > 
+                    </div>
+                    <div class="col-md-2 col-4 mb-3 handicapdiv" id="handicap3">
+                      <label for="event-handicap" class="form-label">しんペリヤ方式</label>
+                      <select class="form-select" id="handicap3val" multiple="multiple">
+                        <option value="user1" >Range 1</option>
+                        <option value="user2">Range 2</option>
+                        <option value="user3" selected>Range 3</option>
+                        <option value="user4">Range 4</option>
+                        <option value="user5" selected>Range 5</option>
+                        <option value="user6">Range 6</option>
+                        <option value="user4">Range 7</option>
+                        <option value="user5">Range 8</option>
+                        <option value="user6">Range 9</option>
+                        <option value="user4">Range 10</option>
+                        <option value="user5">Range 11</option>
+                        <option value="user6">Range 12</option>
+                        <option value="user4">Range 13</option>
+                        <option value="user5">Range 14</option>
+                        <option value="user6">Range 15</option>
+                        <option value="user6">Range 16</option>
+                        <option value="user6">Range 17</option>
+                        <option value="user6">Range 18</option>
+                      </select> 
+                    </div>
+                    <div class="col-md-2 col-4 mb-3 handicapdiv" id="handicap4">
+                      <label for="event-handicap" class="form-label">しんしんペリヤ方式</label>
+                      <select class="form-select" id="handicap4val" multiple="multiple">
+                        <option value="user1" >Range 1</option>
+                        <option value="user2">Range 2</option>
+                        <option value="user3" selected>Range 3</option>
+                        <option value="user4">Range 4</option>
+                        <option value="user5" selected>Range 5</option>
+                        <option value="user6">Range 6</option>
+                        <option value="user4">Range 7</option>
+                        <option value="user5">Range 8</option>
+                        <option value="user6">Range 9</option>
+                        <option value="user4">Range 10</option>
+                        <option value="user5">Range 11</option>
+                        <option value="user6">Range 12</option>
+                        <option value="user4">Range 13</option>
+                        <option value="user5">Range 14</option>
+                        <option value="user6">Range 15</option>
+                        <option value="user6">Range 16</option>
+                        <option value="user6">Range 17</option>
+                        <option value="user6">Range 18</option>
+                      </select> 
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                   </form>
