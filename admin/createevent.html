@@ -180,122 +180,210 @@ color:#426ecc
     <div class="content">
               <div class="row m-5 overflow-hidden flex-md-row mb-4 h-md-250 position-relative">
               
-                  <form>
-                    <div class="mb-3 mt-3">
-                      <label for="event-type" class="form-label">イベントタイプ</label>
-                      <button type="button" class="btn btn-outline-primary ms-2" id="tournament" >
-                         Tournament
-                        </button>
-                        <button type="button" class="btn btn-outline-primary ms-2" id="otherevents" >
-                          Other Events
-                         </button>
-                    </div>
+                <form>
+                  <!--<div class="mb-3 mt-3">
+                    <label for="event-type" class="form-label">イベントタイプ</label>
+                    <button type="button" class="btn btn-outline-primary ms-2" id="tournament" >
+                       Tournament
+                      </button>
+                      <button type="button" class="btn btn-outline-primary ms-2" id="otherevents" >
+                        Other Events
+                       </button>
+                  </div>-->
+                    <div class="mt-5 mb-3">
+                        <label for="event-name" class="form-label">イベントタイトル</label>
+                        <input type="text" class="form-control" id="event-name" placeholder="Event name">
+                      </div>
                       <div class="mb-3">
-                          <label for="event-name" class="form-label">イベントタイトル</label>
-                          <input type="text" class="form-control" id="event-name" placeholder="Event name">
-                        </div>
-                        <div class="mb-3">
-                          <label for="event-name" class="form-label">イベントタイトル</label>
-                          <textarea class="form-control" id="event-description" placeholder="Event description"></textarea>
-                        </div>
-                      <div class="col-3 mb-3">
-                        <label for="event-date" class="form-label">開催日</label>
-                        <input type="date" class="form-control" id="event-date">
+                        <label for="event-name" class="form-label">イベントの説明</label>
+                        <textarea class="form-control" id="event-description" placeholder="Event description"></textarea>
                       </div>
-                      <div class="col-3 mb-3">
-                        <label for="event-prefecture" class="form-label">都道府県</label>
-                            <select class="form-select"   id="event-prefecture">
-                              <option value="北海道">北海道</option>
-                              <option value="青森県">青森県</option>
-                              <option value="岩手県">岩手県</option>
-                              <option value="宮城県">宮城県</option>
-                              <option value="秋田県">秋田県</option>
-                              <option value="山形県">山形県</option>
-                              <option value="福島県">福島県</option>
-                              <option value="茨城県">茨城県</option>
-                              <option value="栃木県">栃木県</option>
-                              <option value="群馬県">群馬県</option>
-                              <option value="埼玉県">埼玉県</option>
-                              <option value="千葉県">千葉県</option>
-                              <option value="東京都">東京都</option>
-                              <option value="神奈川県">神奈川県</option>
-                              <option value="新潟県">新潟県</option>
-                              <option value="富山県">富山県</option>
-                              <option value="石川県">石川県</option>
-                              <option value="福井県">福井県</option>
-                              <option value="山梨県">山梨県</option>
-                              <option value="長野県">長野県</option>
-                              <option value="岐阜県">岐阜県</option>
-                              <option value="静岡県">静岡県</option>
-                              <option value="愛知県">愛知県</option>
-                              <option value="三重県">三重県</option>
-                              <option value="滋賀県">滋賀県</option>
-                              <option value="京都府">京都府</option>
-                              <option value="大阪府">大阪府</option>
-                              <option value="兵庫県">兵庫県</option>
-                              <option value="奈良県">奈良県</option>
-                              <option value="和歌山県">和歌山県</option>
-                              <option value="鳥取県">鳥取県</option>
-                              <option value="島根県">島根県</option>
-                              <option value="岡山県">岡山県</option>
-                              <option value="広島県">広島県</option>
-                              <option value="山口県">山口県</option>
-                              <option value="徳島県">徳島県</option>
-                              <option value="香川県">香川県</option>
-                              <option value="愛媛県">愛媛県</option>
-                              <option value="高知県">高知県</option>
-                              <option value="福岡県">福岡県</option>
-                              <option value="佐賀県">佐賀県</option>
-                              <option value="長崎県">長崎県</option>
-                              <option value="熊本県">熊本県</option>
-                              <option value="大分県">大分県</option>
-                              <option value="宮崎県">宮崎県</option>
-                              <option value="鹿児島県">鹿児島県</option>
-                              <option value="沖縄県">沖縄県</option>
-                              <option value="海外">海外</option>
-                            </select>
-                      </div>
-                      <div class="col mb-3">
-                        <label  class="form-label">登録リンク</label>
-                        <input type="text" class="form-control" id="event-reg-link">
-                      </div>
-                      <div class="col mb-3">
-                        <label  class="form-label">YoutubeのURL</label>
-                        <input type="text" class="form-control" id="event-url">
-                      </div>
-                      <div class="col mb-3">
-                        <label for="event-phone" class="form-label">電話番号</label>
-                        <input type="number" class="form-control" id="event-phone">
-                      </div>
-                      <div class="col-3 mb-3">
-                        <label for="uploadimage" class="form-label">画像をアップロード</label>
-                        <input type="file" id="uploadimage" accept="image/*" > 
-                      </div>
+                    <div class="col-3 mb-3">
+                      <label for="event-date" class="form-label">開催日</label>
+                      <input type="date" class="form-control" id="event-date">
+                    </div>
+                    <div class="col-md-2 col-4 mb-3">
+                      <label for="event-phone" class="form-label">イベントタイプ</label>
+                      <div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="event-type" id="privateEvent" value="privateEvent">
+                      <label class="form-check-label" for="privateEvent">Private</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="event-type" id="" value="publicEvent">
+                      <label class="form-check-label" for="publicEvent">Public</label>
+                    </div>
+                  </div>
+                  </div>
+                    <div class="col-md-2 col-4 mb-3">
+                      <label for="eventtag" class="form-label">カテゴリー</label>
+                      <select class="form-select" id="eventtag">
+                        <option value="ゴルフ大会" selected>ゴルフ大会</option>
+                        <option value="BBQイベント">BBQイベント</option>
+                        <option value="その他">その他</option>
+                      </select>
+                    </div>
+                    <div class="tournamentdiv my-2 mb-3 ">
                       <div class="col-md-1 col-3 mb-3">
-                        <label for="participantslimit" class="form-label">Participants Limit</label>
-                        <input type="number" id="participantslimit" class="form-control"> 
+                        <label for="eventdays" class="form-label">No.of Days</label>
+                        <input type="number" id="event-days" class="form-control" min="1" max="5" value="1" style="width:80px"> 
                       </div>
-                      <div class="col-md-4 mb-3">
-                        <label for="event-phone" class="form-label">参加者の数</label>
-                        <select class="form-select" id="userselect" multiple="multiple">
-                          <option value="user1" selected>User 1</option>
-                          <option value="user2">User 2</option>
-                          <option value="user3" selected>User 3</option>
-                          <option value="user4">User 4</option>
-                          <option value="user5">User 5</option>
-                          <option value="user6">User 6</option>
+                      <div class="col-md-5 col-4 mb-3" id="handicapdiv">
+                        <label for="event-handicap" class="form-label">ハンディキャップ</label>
+                        <select class="form-select multiple" id="event-handicap">
+                          <option value="handicap1" selected>ドラコン</option>
+                          <option value="handicap2" >ニアピン</option>
+                          <option value="handicap3" >しんペリヤ方式</option>
+                          <option value="handicap4" >しんしんペリヤ方式</option>
                         </select>
                       </div>
-                      <div class="col-md-2 col-4 mb-3">
-                        <label for="event-tag" class="form-label">Select Tag</label>
-                        <select class="form-select" id="event-tag">
-                          <option value="tag1" selected>ゴルフ大会</option>
-                          <option value="tag2">BBQイベント</option>
-                          <option value="tag3">その他</option>
-                        </select>
+                     
+                      <div class="row">
+                        <div class="col-md-2 col-4 mb-3 handicapdiv" id="handicap1">
+                          <label for="event-handicap" class="form-label">ドラコン</label>
+                          <input type="number" id="handicap1val" class="form-control" min="1" max="18" > 
+                        </div>
+                        <div class="col-md-2 col-4 mb-3 handicapdiv" id="handicap2">
+                          <label for="event-handicap" class="form-label">ニアピン</label>
+                          <input type="number" id="handicap2val" class="form-control" min="1" max="18" > 
+                        </div>
+                        <div class="col-md-3 col-4 mb-3 handicapdiv" id="handicap3">
+                          <label for="event-handicap" class="form-label">しんペリヤ方式</label>
+                          <select class="form-select" id="handicap3val" multiple="multiple">
+                            <option value="user1" >Range 1</option>
+                            <option value="user2">Range 2</option>
+                            <option value="user3" selected>Range 3</option>
+                            <option value="user4">Range 4</option>
+                            <option value="user5" selected>Range 5</option>
+                            <option value="user6">Range 6</option>
+                            <option value="user4">Range 7</option>
+                            <option value="user5">Range 8</option>
+                            <option value="user6">Range 9</option>
+                            <option value="user4">Range 10</option>
+                            <option value="user5">Range 11</option>
+                            <option value="user6">Range 12</option>
+                            <option value="user4">Range 13</option>
+                            <option value="user5">Range 14</option>
+                            <option value="user6">Range 15</option>
+                            <option value="user6">Range 16</option>
+                            <option value="user6">Range 17</option>
+                            <option value="user6">Range 18</option>
+                          </select> 
+                        </div>
+                        <div class="col-md-3 col-4 mb-3 handicapdiv" id="handicap4">
+                          <label for="event-handicap" class="form-label">しんしんペリヤ方式</label>
+                          <select class="form-select" id="handicap4val" multiple="multiple">
+                            <option value="user1" >Range 1</option>
+                            <option value="user2">Range 2</option>
+                            <option value="user3" selected>Range 3</option>
+                            <option value="user4">Range 4</option>
+                            <option value="user5" selected>Range 5</option>
+                            <option value="user6">Range 6</option>
+                            <option value="user4">Range 7</option>
+                            <option value="user5">Range 8</option>
+                            <option value="user6">Range 9</option>
+                            <option value="user4">Range 10</option>
+                            <option value="user5">Range 11</option>
+                            <option value="user6">Range 12</option>
+                            <option value="user4">Range 13</option>
+                            <option value="user5">Range 14</option>
+                            <option value="user6">Range 15</option>
+                            <option value="user6">Range 16</option>
+                            <option value="user6">Range 17</option>
+                            <option value="user6">Range 18</option>
+                          </select> 
+                        </div>
                       </div>
-                      <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
+                    
+                    </div>
+                  
+                    <div class="col-3 mb-3">
+                      <label for="event-prefecture" class="form-label">都道府県</label>
+                          <select class="form-select"   id="event-prefecture">
+                            <option value="北海道">北海道</option>
+                            <option value="青森県">青森県</option>
+                            <option value="岩手県">岩手県</option>
+                            <option value="宮城県">宮城県</option>
+                            <option value="秋田県">秋田県</option>
+                            <option value="山形県">山形県</option>
+                            <option value="福島県">福島県</option>
+                            <option value="茨城県">茨城県</option>
+                            <option value="栃木県">栃木県</option>
+                            <option value="群馬県">群馬県</option>
+                            <option value="埼玉県">埼玉県</option>
+                            <option value="千葉県">千葉県</option>
+                            <option value="東京都">東京都</option>
+                            <option value="神奈川県">神奈川県</option>
+                            <option value="新潟県">新潟県</option>
+                            <option value="富山県">富山県</option>
+                            <option value="石川県">石川県</option>
+                            <option value="福井県">福井県</option>
+                            <option value="山梨県">山梨県</option>
+                            <option value="長野県">長野県</option>
+                            <option value="岐阜県">岐阜県</option>
+                            <option value="静岡県">静岡県</option>
+                            <option value="愛知県">愛知県</option>
+                            <option value="三重県">三重県</option>
+                            <option value="滋賀県">滋賀県</option>
+                            <option value="京都府">京都府</option>
+                            <option value="大阪府">大阪府</option>
+                            <option value="兵庫県">兵庫県</option>
+                            <option value="奈良県">奈良県</option>
+                            <option value="和歌山県">和歌山県</option>
+                            <option value="鳥取県">鳥取県</option>
+                            <option value="島根県">島根県</option>
+                            <option value="岡山県">岡山県</option>
+                            <option value="広島県">広島県</option>
+                            <option value="山口県">山口県</option>
+                            <option value="徳島県">徳島県</option>
+                            <option value="香川県">香川県</option>
+                            <option value="愛媛県">愛媛県</option>
+                            <option value="高知県">高知県</option>
+                            <option value="福岡県">福岡県</option>
+                            <option value="佐賀県">佐賀県</option>
+                            <option value="長崎県">長崎県</option>
+                            <option value="熊本県">熊本県</option>
+                            <option value="大分県">大分県</option>
+                            <option value="宮崎県">宮崎県</option>
+                            <option value="鹿児島県">鹿児島県</option>
+                            <option value="沖縄県">沖縄県</option>
+                            <option value="海外">海外</option>
+                          </select>
+                    </div>
+                    <div class="col mb-3">
+                      <label  class="form-label">登録リンク</label>
+                      <input type="text" class="form-control" id="event-reg-link">
+                    </div>
+                    <div class="col mb-3">
+                      <label  class="form-label">YoutubeのURL</label>
+                      <input type="text" class="form-control" id="event-url">
+                    </div>
+                    <div class="col mb-3">
+                      <label for="event-phone" class="form-label">電話番号</label>
+                      <input type="number" class="form-control" id="event-phone">
+                    </div>
+                    <div class="col-3 mb-3">
+                      <label for="uploadimage" class="form-label">画像をアップロード</label>
+                      <input type="file" id="uploadimage" accept="image/*" > 
+                    </div>
+                    <div class="col-md-2 col-3 mb-3">
+                      <label for="participantslimit" class="form-label">Participants Limit</label>
+                      <input type="number" id="participantslimit" class="form-control" style="width:80px"> 
+                    </div>
+                    <div class="col-md-4 mb-3">
+                     <label for="event-phone" class="form-label">プレイヤーを招待する</label>
+                      <select class="form-select" id="userselect" multiple="multiple">
+                        <option value="user1" selected>User 1</option>
+                        <option value="user2">User 2</option>
+                        <option value="user3" selected>User 3</option>
+                        <option value="user4">User 4</option>
+                        <option value="user5">User 5</option>
+                        <option value="user6">User 6</option>
+                      </select> 
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
                 </div>
            
             </div>
