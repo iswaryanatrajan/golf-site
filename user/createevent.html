@@ -46,31 +46,48 @@
           $('#handicap4val').select2({
             multiple:true,
           });
+          $('#event-handicap').select2({
+            multiple:true,
+          });
+          
 
 
             $('#eventtag').on('change', function() {
             console.log($(this).val())
             if($(this).val()=="ゴルフ大会"){
               $('#handicapdiv').show()
+              $('.tournamentdiv').show()
             }
             else
             $('#handicapdiv').hide()
+            $('.tournamentdiv').hide()
           });
           $('.handicapdiv').hide();
-          $('#event-handicap').on('change', function() {
+
+          $('#event-handicap').on('change', function(e) {
             
             $('.handicapdiv').hide();
-            if($(this).val()=="handicap1"){
+            var select_val = $(e.currentTarget).val();
+            console.log(select_val)
+            if(select_val.includes("handicap1")){
               $('#handicap1').show()
+            }else{
+              $('#handicap1').hide()
             }
-            else if($(this).val()=="handicap2"){
+            if(select_val.includes("handicap2")){
               $('#handicap2').show()
+            }else{
+              $('#handicap2').hide()
             }
-            else if($(this).val()=="handicap3"){
+            if(select_val.includes("handicap3")){
               $('#handicap3').show()
+            }else{
+              $('#handicap3').hide()
             }
-            else if($(this).val()=="handicap4"){
+            if(select_val.includes("handicap4")){
               $('#handicap4').show()
+            }else{
+              $('#handicap4').hide()
             }
           });
          
@@ -80,6 +97,7 @@
 .eventdetails span{
 color:#426ecc
 }
+
     </style>
   </head>
   <body>
@@ -224,7 +242,7 @@ color:#426ecc
             <div class="row m-5 overflow-hidden flex-md-row mb-4 h-md-250 position-relative">
             
                 <form>
-                  <div class="mb-3 mt-3">
+                  <!--<div class="mb-3 mt-3">
                     <label for="event-type" class="form-label">イベントタイプ</label>
                     <button type="button" class="btn btn-outline-primary ms-2" id="tournament" >
                        Tournament
@@ -232,19 +250,114 @@ color:#426ecc
                       <button type="button" class="btn btn-outline-primary ms-2" id="otherevents" >
                         Other Events
                        </button>
-                  </div>
-                    <div class="mb-3">
+                  </div>-->
+                    <div class="mt-5 mb-3">
                         <label for="event-name" class="form-label">イベントタイトル</label>
                         <input type="text" class="form-control" id="event-name" placeholder="Event name">
                       </div>
                       <div class="mb-3">
-                        <label for="event-name" class="form-label">イベントタイトル</label>
+                        <label for="event-name" class="form-label">イベントの説明</label>
                         <textarea class="form-control" id="event-description" placeholder="Event description"></textarea>
                       </div>
                     <div class="col-3 mb-3">
                       <label for="event-date" class="form-label">開催日</label>
                       <input type="date" class="form-control" id="event-date">
                     </div>
+                    <div class="col-md-2 col-4 mb-3">
+                      <label for="event-phone" class="form-label">イベントタイプ</label>
+                      <div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="event-type" id="privateEvent" value="privateEvent">
+                      <label class="form-check-label" for="privateEvent">Private</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="event-type" id="" value="publicEvent">
+                      <label class="form-check-label" for="publicEvent">Public</label>
+                    </div>
+                  </div>
+                  </div>
+                    <div class="col-md-2 col-4 mb-3">
+                      <label for="eventtag" class="form-label">カテゴリー</label>
+                      <select class="form-select" id="eventtag">
+                        <option value="ゴルフ大会" selected>ゴルフ大会</option>
+                        <option value="BBQイベント">BBQイベント</option>
+                        <option value="その他">その他</option>
+                      </select>
+                    </div>
+                    <div class="tournamentdiv my-2 mb-3 ">
+                      <div class="col-md-1 col-3 mb-3">
+                        <label for="eventdays" class="form-label">No.of Days</label>
+                        <input type="number" id="event-days" class="form-control" min="1" max="5" value="1" style="width:80px"> 
+                      </div>
+                      <div class="col-md-5 col-4 mb-3" id="handicapdiv">
+                        <label for="event-handicap" class="form-label">ハンディキャップ</label>
+                        <select class="form-select multiple" id="event-handicap">
+                          <option value="handicap1" selected>ドラコン</option>
+                          <option value="handicap2" >ニアピン</option>
+                          <option value="handicap3" >しんペリヤ方式</option>
+                          <option value="handicap4" >しんしんペリヤ方式</option>
+                        </select>
+                      </div>
+                     
+                      <div class="row">
+                        <div class="col-md-2 col-4 mb-3 handicapdiv" id="handicap1">
+                          <label for="event-handicap" class="form-label">ドラコン</label>
+                          <input type="number" id="handicap1val" class="form-control" min="1" max="18" > 
+                        </div>
+                        <div class="col-md-2 col-4 mb-3 handicapdiv" id="handicap2">
+                          <label for="event-handicap" class="form-label">ニアピン</label>
+                          <input type="number" id="handicap2val" class="form-control" min="1" max="18" > 
+                        </div>
+                        <div class="col-md-3 col-4 mb-3 handicapdiv" id="handicap3">
+                          <label for="event-handicap" class="form-label">しんペリヤ方式</label>
+                          <select class="form-select" id="handicap3val" multiple="multiple">
+                            <option value="user1" >Range 1</option>
+                            <option value="user2">Range 2</option>
+                            <option value="user3" selected>Range 3</option>
+                            <option value="user4">Range 4</option>
+                            <option value="user5" selected>Range 5</option>
+                            <option value="user6">Range 6</option>
+                            <option value="user4">Range 7</option>
+                            <option value="user5">Range 8</option>
+                            <option value="user6">Range 9</option>
+                            <option value="user4">Range 10</option>
+                            <option value="user5">Range 11</option>
+                            <option value="user6">Range 12</option>
+                            <option value="user4">Range 13</option>
+                            <option value="user5">Range 14</option>
+                            <option value="user6">Range 15</option>
+                            <option value="user6">Range 16</option>
+                            <option value="user6">Range 17</option>
+                            <option value="user6">Range 18</option>
+                          </select> 
+                        </div>
+                        <div class="col-md-3 col-4 mb-3 handicapdiv" id="handicap4">
+                          <label for="event-handicap" class="form-label">しんしんペリヤ方式</label>
+                          <select class="form-select" id="handicap4val" multiple="multiple">
+                            <option value="user1" >Range 1</option>
+                            <option value="user2">Range 2</option>
+                            <option value="user3" selected>Range 3</option>
+                            <option value="user4">Range 4</option>
+                            <option value="user5" selected>Range 5</option>
+                            <option value="user6">Range 6</option>
+                            <option value="user4">Range 7</option>
+                            <option value="user5">Range 8</option>
+                            <option value="user6">Range 9</option>
+                            <option value="user4">Range 10</option>
+                            <option value="user5">Range 11</option>
+                            <option value="user6">Range 12</option>
+                            <option value="user4">Range 13</option>
+                            <option value="user5">Range 14</option>
+                            <option value="user6">Range 15</option>
+                            <option value="user6">Range 16</option>
+                            <option value="user6">Range 17</option>
+                            <option value="user6">Range 18</option>
+                          </select> 
+                        </div>
+                      </div>
+                    
+                    </div>
+                  
                     <div class="col-3 mb-3">
                       <label for="event-prefecture" class="form-label">都道府県</label>
                           <select class="form-select"   id="event-prefecture">
@@ -314,9 +427,9 @@ color:#426ecc
                       <label for="uploadimage" class="form-label">画像をアップロード</label>
                       <input type="file" id="uploadimage" accept="image/*" > 
                     </div>
-                    <div class="col-md-1 col-3 mb-3">
+                    <div class="col-md-2 col-3 mb-3">
                       <label for="participantslimit" class="form-label">Participants Limit</label>
-                      <input type="number" id="participantslimit" class="form-control"> 
+                      <input type="number" id="participantslimit" class="form-control" style="width:80px"> 
                     </div>
                     <div class="col-md-4 mb-3">
                      <label for="event-phone" class="form-label">プレイヤーを招待する</label>
@@ -329,78 +442,7 @@ color:#426ecc
                         <option value="user6">User 6</option>
                       </select> 
                     </div>
-                    <div class="col-md-2 col-4 mb-3">
-                      <label for="eventtag" class="form-label">Select Tag</label>
-                      <select class="form-select" id="eventtag">
-                        <option value="ゴルフ大会" selected>ゴルフ大会</option>
-                        <option value="BBQイベント">BBQイベント</option>
-                        <option value="その他">その他</option>
-                      </select>
-                    </div>
-                    <div class="col-md-2 col-4 mb-3" id="handicapdiv">
-                      <label for="event-handicap" class="form-label">ハンディキャップ</label>
-                      <select class="form-select" id="event-handicap">
-                        <option value="0">Select</option>
-                        <option value="handicap1" >ドラコン</option>
-                        <option value="handicap2">ニアピン</option>
-                        <option value="handicap3">しんペリヤ方式</option>
-                        <option value="handicap4">しんしんペリヤ方式</option>
-                      </select>
-                    </div>
-                    <div class="col-md-2 col-4 mb-3 handicapdiv" id="handicap1">
-                      <label for="event-handicap" class="form-label">ドラコン</label>
-                      <input type="number" id="handicap1val" class="form-control" min="1" max="18" > 
-                    </div>
-                    <div class="col-md-2 col-4 mb-3 handicapdiv" id="handicap2">
-                      <label for="event-handicap" class="form-label">ニアピン</label>
-                      <input type="number" id="handicap2val" class="form-control" min="1" max="18" > 
-                    </div>
-                    <div class="col-md-2 col-4 mb-3 handicapdiv" id="handicap3">
-                      <label for="event-handicap" class="form-label">しんペリヤ方式</label>
-                      <select class="form-select" id="handicap3val" multiple="multiple">
-                        <option value="user1" >Range 1</option>
-                        <option value="user2">Range 2</option>
-                        <option value="user3" selected>Range 3</option>
-                        <option value="user4">Range 4</option>
-                        <option value="user5" selected>Range 5</option>
-                        <option value="user6">Range 6</option>
-                        <option value="user4">Range 7</option>
-                        <option value="user5">Range 8</option>
-                        <option value="user6">Range 9</option>
-                        <option value="user4">Range 10</option>
-                        <option value="user5">Range 11</option>
-                        <option value="user6">Range 12</option>
-                        <option value="user4">Range 13</option>
-                        <option value="user5">Range 14</option>
-                        <option value="user6">Range 15</option>
-                        <option value="user6">Range 16</option>
-                        <option value="user6">Range 17</option>
-                        <option value="user6">Range 18</option>
-                      </select> 
-                    </div>
-                    <div class="col-md-2 col-4 mb-3 handicapdiv" id="handicap4">
-                      <label for="event-handicap" class="form-label">しんしんペリヤ方式</label>
-                      <select class="form-select" id="handicap4val" multiple="multiple">
-                        <option value="user1" >Range 1</option>
-                        <option value="user2">Range 2</option>
-                        <option value="user3" selected>Range 3</option>
-                        <option value="user4">Range 4</option>
-                        <option value="user5" selected>Range 5</option>
-                        <option value="user6">Range 6</option>
-                        <option value="user4">Range 7</option>
-                        <option value="user5">Range 8</option>
-                        <option value="user6">Range 9</option>
-                        <option value="user4">Range 10</option>
-                        <option value="user5">Range 11</option>
-                        <option value="user6">Range 12</option>
-                        <option value="user4">Range 13</option>
-                        <option value="user5">Range 14</option>
-                        <option value="user6">Range 15</option>
-                        <option value="user6">Range 16</option>
-                        <option value="user6">Range 17</option>
-                        <option value="user6">Range 18</option>
-                      </select> 
-                    </div>
+
                     <button type="submit" class="btn btn-primary">Submit</button>
                   </form>
               </div>
