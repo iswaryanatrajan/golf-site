@@ -1,14 +1,23 @@
 
 @media only screen and (max-width : 540px) 
 {
-    .chat-sidebar
+   .chat-sidebar
     {
-        display: none !important;
+        /* display: none !important;*/
+           
     }
     
-    .chat-popup
+   .chat-popup
     {
-        display: none !important;
+       /* display: none !important;*/
+       width:100%;
+       height:100%;
+       display:block
+    }
+
+    .chat-list, .notification-list {
+        left: -46px !important;
+        right: 0;
     }
 }
 
