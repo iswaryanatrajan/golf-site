@@ -52,9 +52,7 @@ body{background: #fff !important;}
       $(function() {
         $(".videoblock").hide();
         $(".buy-btn").click(function(e){
-          console.log("wrtrh");
           var btn = $(this).closest(".userblock");
-          console.log("clientX: " + e.clientX + "- clientY: " + e.clientY);
           $(".videoblock").show();
          //var margin=$(this).offset().top - 150;
           $(".videoblock").css({
@@ -66,9 +64,7 @@ body{background: #fff !important;}
 
 
     $(".buy-btn").hover(function(e){
-      console.log("Inside hover")
       var btn = $(this).closest(".userblock");
-          console.log("clientX: " + e.clientX + "- clientY: " + e.clientY);
           $(".videoblock").show();
          //var margin=$(this).offset().top - 150;
           $(".videoblock").css({

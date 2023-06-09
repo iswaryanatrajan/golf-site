@@ -132,7 +132,7 @@ console.log(title);
             info.event.setProp('title', title);
               //calendar.updateEvent();*/
              // openpopup();
-             console.log(info.event);
+             //console.log(info.event);
               $('#title').val(info.event.title);
              $('#modalWhen').text(info.event.start.toLocaleDateString() + " " + info.event.start.toLocaleTimeString() + " - " + info.event.end.toLocaleTimeString());
              $('#modalDesc').val(info.event.extendedProps.description);
@@ -147,7 +147,6 @@ console.log(title);
         });
              $('#deleteEvent').click(function () {
             var id = $('#ModalId').val();
-            console.log("thy");
             if (confirm("Are you sure you want to delete this event?")){
               info.event.remove(id);
             }
@@ -208,7 +207,6 @@ fetch('add_event.php', {
   
       $('#deleteEvent').click(function () {
             var id = $('#ModalId').val();
-            console.log("thy");
             calendar.event.remove(id);
            // $('#calendar').fullCalendar('removeEvents', id);
            // $("#calendar").fullCalendar('addEventSource', events);
