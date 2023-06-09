@@ -127,7 +127,8 @@ function calculate_popups()
     var width = window.innerWidth;
     if(width < 540)
     {
-        total_popups = 0;
+       // total_popups = 0;
+        total_popups = 1;
     }
     else
     {

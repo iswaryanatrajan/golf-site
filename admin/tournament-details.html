@@ -132,15 +132,12 @@ $(".eventchat").click(function(e){
     });*/
 
     $("#calculatetotal").click(function(e){
-      console.log("djfho");
       var sum = 0;
       var id=$(this).parents("tr");
 //$(this).parents('tr').find('.hole').each(function(){
 $(".hole").each(function(){
- console.log($(this).val());
   if($(this).val()){
     sum += parseInt($(this).val());
-    console.log(sum);
   }
 });
 //$(this).('.playertotal').text("sum");

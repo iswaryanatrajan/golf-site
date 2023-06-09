@@ -28,12 +28,10 @@
 $('.openchildrow').click(function(e){
   e.preventDefault();
   var parentid = $(this).closest("tr").attr('id');
-  console.log(parentid);
   $('tr[data-id='+parentid+']' ).toggle();
     $(this).find('i').toggleClass('fa-caret-down fa-caret-up')
 });
 $(".inputtr input:nth-child(3)").click(function(e){
-  console.log("hgh")
   $(this).parents("table").find($("tr td:nth-child(3)")).css("backgroundColor","cyan");
 });
 });

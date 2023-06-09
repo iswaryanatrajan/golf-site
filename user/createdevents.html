@@ -32,7 +32,6 @@
 $('.openchildrow').click(function(e){
   e.preventDefault();
   var parentid = $(this).closest("tr").attr('id');
-  console.log(parentid);
   $('tr[data-id='+parentid+']' ).toggle();
     $(this).find('i').toggleClass('fa-caret-down fa-caret-up')
 });

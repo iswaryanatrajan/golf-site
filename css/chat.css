@@ -10,9 +10,10 @@
    .chat-popup
     {
        /* display: none !important;*/
-       width:100%;
+       width:100% !important;
        height:100%;
-       display:block
+       display:block;
+       right:auto !important
     }
 
     .chat-list, .notification-list {

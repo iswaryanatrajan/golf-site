@@ -30,7 +30,6 @@
 $('.openchildrow').click(function(e){
   e.preventDefault();
   var parentid = $(this).closest("tr").attr('id');
-  console.log(parentid);
   $('tr[data-id='+parentid+']' ).toggle();
     $(this).find('i').toggleClass('fa-caret-down fa-caret-up')
 });
@@ -47,7 +46,6 @@ function getUrlVars()
     return vars;
 }
 var handicapval= getUrlVars()["handicap"];
-console.log(handicapval)
 var handicap;
 switch(handicapval){
   case "1": 
@@ -64,7 +62,7 @@ switch(handicapval){
 
 
 }
-console.log(handicap)
+
 if( handicapval =="1"  || handicapval=="2" ){
   $(".handicap").text(handicap);
 }
@@ -76,15 +74,15 @@ else{
 if( handicapval =="3"  || handicapval=="4" ){
   $(".peria").show();
   $(".inputtr td input:eq(4)").focus(function(e){
-  console.log("hgh");
+
   $(this).parents("table").find($(".inputtr td:nth-child(6)")).css("backgroundColor","cyan");
 });
 $(".inputtr td input:eq(6)").focus(function(e){
-  console.log("hgh");
+
   $(this).parents("table").find($(".inputtr td:nth-child(8)")).css("backgroundColor","cyan");
 });
 $(".inputtr td input:eq(8)").focus(function(e){
-  console.log("hgh");
+
   $(this).parents("table").find($(".inputtr td:nth-child(10)")).css("backgroundColor","cyan");
 });
 $(".inputtr td input:eq(2)").focus(function(e){
